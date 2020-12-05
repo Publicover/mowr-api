@@ -38,6 +38,61 @@ class ActiveSupport::TestCase
       "Content-Type" => "application/json"
     }
   end
+
+  def login_as_new_admin
+    @user = User.create(email: 'admin@mowr.com',
+                        f_name: 'Jim',
+                        l_name: 'Pub',
+                        password: 'password',
+                        password_confirmation: 'password',
+                        role: :admin)
+    @headers = valid_headers(@user.id).except('Authorization')
+    @valid_creds = { email: @user.email, password: @user.password }.to_json
+    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
+    post auth_login_path, headers: @headers, params: @valid_creds
+    @authorized_headers = {
+      "Content-Type" => 'application/json',
+      'Authorization' => "#{json['auth_token']}",
+      'Accepts' => 'application/json'
+    }
+
+  end
+
+  def login_as_new_driver
+    @user = User.create(email: 'driver@mowr.com',
+                        f_name: 'Jim',
+                        l_name: 'Pub',
+                        password: 'password',
+                        password_confirmation: 'password',
+                        role: :driver)
+    @headers = valid_headers(@user.id).except('Authorization')
+    @valid_creds = { email: @user.email, password: @user.password }.to_json
+    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
+    post auth_login_path, headers: @headers, params: @valid_creds
+    @authorized_headers = {
+      "Content-Type" => 'application/json',
+      'Authorization' => "#{json['auth_token']}",
+      'Accepts' => 'application/json'
+    }
+  end
+
+  def login_as_new_customer
+    @user = User.create(email: 'customer@mowr.com',
+                        f_name: 'Jim',
+                        l_name: 'Pub',
+                        password: 'password',
+                        password_confirmation: 'password',
+                        role: :customer)
+    @headers = valid_headers(@user.id).except('Authorization')
+    @valid_creds = { email: @user.email, password: @user.password }.to_json
+    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
+    post auth_login_path, headers: @headers, params: @valid_creds
+    @authorized_headers = {
+      "Content-Type" => 'application/json',
+      'Authorization' => "#{json['auth_token']}",
+      'Accepts' => 'application/json'
+    }
+  end
 end
 
 class ActionDispatch::IntegrationTest
