@@ -1,0 +1,104 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - node_modules/**/*
+    - app/models/concerns/active_storage_helpers.rb
+    - config/environments/development.rb
+    - config/initializers/devise.rb
+    - db/migrations/**/*
+    - db/migrate/**/*
+    - db/schema.rb
+    - db/seeds.rb
+    - bin/**/*
+    - vendor/assets/**/*
+    - vendor/bundle/**/*
+    - test/**/**
+
+Layout:
+  Metrics/LineLength:
+    Max: 110
+    Exclude:
+      - Rakefile
+      - Gemfile
+      - config/**/*
+      - lib/tasks/**/*
+      - test/**/*
+    IgnoredPatterns:
+      - (\A|\s)#
+
+Layout/ExtraSpacing:
+  Exclude:
+    - db/migrate/**/*
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+  Exclude:
+    - config/routes.rb
+
+Layout/SpaceBeforeFirstArg:
+  Exclude:
+    - config/routes.rb
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Lint/Debugger:
+  AutoCorrect: False
+
+Style/AndOr:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/**/*
+    - test/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodDefParentheses:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/StructInheritance:
+  Exclude:
+    - app/policies/**/*
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - test/**/*
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/**/*
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/*.rake
+    - config/routes.rb
+    - config/**/*
+    - Gemfile
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - db/migrate/*
+  ExcludedMethods:
+    - base_attributes
+    - full_includes
+    - raw_sql
+
+Rails:
+  Enabled: true
+
+Rails/ReflectionClassName:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
