@@ -7,6 +7,7 @@ AllCops:
     - app/models/concerns/active_storage_helpers.rb
     - config/environments/development.rb
     - config/initializers/devise.rb
+    - config/application.rb
     - db/migrations/**/*
     - db/migrate/**/*
     - db/schema.rb

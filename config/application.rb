@@ -41,10 +41,10 @@ module MowrApi
       allow do
         origins '*'
         resource(
-         '*',
-         headers: :any,
-         expose: ["Authorization"],
-         methods: [:get, :patch, :put, :delete, :post, :options, :show]
+          '*',
+          headers: :any,
+          expose: ["Authorization"],
+          methods: %i[get patch put delete post options show]
         )
       end
     end
