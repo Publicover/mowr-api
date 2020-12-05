@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::UsersController < ApplicationController
   # before_action :set_user, except: [:index, :show]
 
@@ -6,35 +8,35 @@ class Api::V1::UsersController < ApplicationController
       @users = User.all
       json_response(@users)
     else
-      json_response({ message: Message.invalid_credentials})
+      json_response({ message: Message.invalid_credentials })
     end
   end
 
   def show
-    if current_user.admin?
-      @user = User.find(params[:target_id])
-    else
-      @user = User.find(params[:id])
-    end
+    @user = if current_user.admin?
+              User.find(params[:target_id])
+            else
+              User.find(params[:id])
+            end
     json_response(@user)
   end
 
   def update
-    if current_user.admin?
-      @user = User.find(params[:target_id])
-    else
-      @user = User.find(params[:id])
-    end
+    @user = if current_user.admin?
+              User.find(params[:target_id])
+            else
+              User.find(params[:id])
+            end
     @user.update(user_params)
     json_response(@user)
   end
 
   def destroy
-    if current_user.admin?
-      @user = User.find(params[:target_id])
-    else
-      @user = User.find(params[:id])
-    end
+    @user = if current_user.admin?
+              User.find(params[:target_id])
+            else
+              User.find(params[:id])
+            end
     @user.destroy
     json_response(@user)
   end
