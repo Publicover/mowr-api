@@ -7,7 +7,7 @@ class CustomerUsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not get index as customer' do
     get api_v1_users_path, headers: @authorized_headers
-    assert_match json['message'], Message.invalid_credentials
+    assert_match json['message'], Message.unauthorized
   end
 
   test 'should show own record as customer' do

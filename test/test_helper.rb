@@ -40,7 +40,7 @@ class ActiveSupport::TestCase
   end
 
   def login_as_new_admin
-    @user = User.create(email: 'admin@mowr.com',
+    @user = User.create(email: 'test_admin@mowr.com',
                         f_name: 'Jim',
                         l_name: 'Pub',
                         password: 'password',
@@ -59,7 +59,7 @@ class ActiveSupport::TestCase
   end
 
   def login_as_new_driver
-    @user = User.create(email: 'driver@mowr.com',
+    @user = User.create(email: 'test_driver@mowr.com',
                         f_name: 'Jim',
                         l_name: 'Pub',
                         password: 'password',
@@ -77,7 +77,7 @@ class ActiveSupport::TestCase
   end
 
   def login_as_new_customer
-    @user = User.create(email: 'customer@mowr.com',
+    @user = User.create(email: 'test_customer@mowr.com',
                         f_name: 'Jim',
                         l_name: 'Pub',
                         password: 'password',

@@ -3,9 +3,14 @@
 class ApplicationController < ActionController::API
   include Response
   include ExceptionHandler
+  include Pundit
 
   before_action :authorize_request
   attr_reader :current_user
+
+  rescue_from Pundit::NotAuthorizedError do
+    json_response({ message: Message.unauthorized })
+  end
 
   private
 
