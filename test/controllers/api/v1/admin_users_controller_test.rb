@@ -13,6 +13,7 @@ class AdminUsersControllerTest < ActionDispatch::IntegrationTest
   test 'should get index as admin' do
     get api_v1_users_path, headers: @authorized_headers
     assert_response :success
+    assert_equal User.count, json['data'].size
   end
 
   test 'should update user of choice as admin' do

@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'fast_jsonapi'
 gem 'jwt'
 gem 'pundit'
 gem 'rubocop', '~> 0.62'

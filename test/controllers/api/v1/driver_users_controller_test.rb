@@ -13,7 +13,7 @@ class DriverUsersControllerTest < ActionDispatch::IntegrationTest
   test 'should show own record as driver' do
     get api_v1_user_path(@user), headers: @authorized_headers
     assert_response :success
-    assert_equal json['id'], @user.id.to_i
+    assert_equal json['data']['id'].to_i, @user.id.to_i
   end
 
   test "should not get another user's record as driver" do
