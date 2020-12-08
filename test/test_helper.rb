@@ -38,14 +38,20 @@ class ActiveSupport::TestCase
       "Content-Type" => "application/json"
     }
   end
+end
 
-  def login_as_new_admin
-    @user = User.create(email: 'test_admin@mowr.com',
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+end
+
+module LoginHelpers
+  def login_as_new_customer
+    @user = User.create(email: 'test_customer@mowr.com',
                         f_name: 'Jim',
                         l_name: 'Pub',
                         password: 'password',
                         password_confirmation: 'password',
-                        role: :admin)
+                        role: :customer)
     @headers = valid_headers(@user.id).except('Authorization')
     @valid_creds = { email: @user.email, password: @user.password }.to_json
     @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
@@ -55,7 +61,6 @@ class ActiveSupport::TestCase
       'Authorization' => "#{json['auth_token']}",
       'Accepts' => 'application/json'
     }
-
   end
 
   def login_as_new_driver
@@ -76,13 +81,13 @@ class ActiveSupport::TestCase
     }
   end
 
-  def login_as_new_customer
-    @user = User.create(email: 'test_customer@mowr.com',
+  def login_as_new_admin
+    @user = User.create(email: 'test_admin@mowr.com',
                         f_name: 'Jim',
                         l_name: 'Pub',
                         password: 'password',
                         password_confirmation: 'password',
-                        role: :customer)
+                        role: :admin)
     @headers = valid_headers(@user.id).except('Authorization')
     @valid_creds = { email: @user.email, password: @user.password }.to_json
     @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
@@ -95,6 +100,19 @@ class ActiveSupport::TestCase
   end
 end
 
-class ActionDispatch::IntegrationTest
-  include Capybara::DSL
+module AroundEachTest
+  def before_setup
+    super
+    DatabaseCleaner.start
+  end
+
+  def after_teardown
+    super
+    DatabaseCleaner.clean
+  end
+end
+
+class Minitest::Test
+  include AroundEachTest
+  include LoginHelpers
 end

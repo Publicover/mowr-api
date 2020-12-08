@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Creating 2 admins..."
+
+admin_count = 1
+2.times do
+  User.create!(email: "admin_#{admin_count}@mowr.com", f_name: Faker::Name.first_name,
+  l_name: Faker::Name.last_name, password: "password", role: :admin)
+
+  admin_count += 1
+end
+
+puts "Creating 4 drivers..."
+
+driver_count = 1
+4.times do
+  User.create!(email: "driver_#{driver_count}@mowr.com", f_name: Faker::Name.first_name,
+               l_name: Faker::Name.last_name, password: "password", role: :driver)
+
+  driver_count += 1
+end
+
+puts "Creating 300 customers with addresses..."
+
+customer_count = 1
+300.times do
+  user = User.create!(email: "customer_#{customer_count}@mowr.com", f_name: Faker::Name.first_name,
+                      l_name: Faker::Name.last_name, password: "password", role: :customer)
+
+  rand(5).times do
+    Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+                    state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id)
+  end
+
+  customer_count += 1
+end
+
+puts "Seeds complete."
