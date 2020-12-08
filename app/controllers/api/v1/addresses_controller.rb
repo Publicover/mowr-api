@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Api::V1::AddressesController < ApplicationController
   before_action :set_user, except: :index
-  before_action :set_address, except: [:index, :create]
+  before_action :set_address, except: %i[index create]
 
   def index
     @addresses = policy_scope([:api, :v1, Address])
@@ -15,9 +17,7 @@ class Api::V1::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
 
-    if @address.save
-      serialized_response(@address, Address)
-    end
+    serialized_response(@address, Address) if @address.save
   end
 
   def update
