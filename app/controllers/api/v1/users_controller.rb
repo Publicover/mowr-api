@@ -33,6 +33,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :f_name, :l_name, :password, :password_confirmation, :role, :target_id)
+      params.require(:user).permit(policy([:api, :v1, User]).permitted_attributes)
     end
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  licence_plate: 456 NOPE
+  color: Red
+  make: Toyota
+  model: Corolla
+  user: one
+
+two:
+  licence_plate: 123 NOPE
+  color: Blue
+  make: Toyota
+  model: Corolla
+  user: two
