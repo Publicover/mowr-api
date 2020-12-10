@@ -26,7 +26,7 @@ driver_count = 1
   driver_count += 1
 end
 
-puts "Creating 300 customers with addresses..."
+puts "Creating 300 customers with addresses and size estimates..."
 
 customer_count = 1
 300.times do
@@ -34,8 +34,9 @@ customer_count = 1
                       l_name: Faker::Name.last_name, password: "password", role: :customer)
 
   rand(5).times do
-    Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
-                    state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id)
+    address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+                              state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id)
+    SizeEstimate.create!(acreage: Faker::Number.between(from: 0.0, to: 3.0).round(2), address_id: address.id)
   end
 
   customer_count += 1

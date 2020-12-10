@@ -4,6 +4,19 @@ require 'rails/test_help'
 require 'capybara/rails'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'database_cleaner'
+
+module AroundEachTest
+  def before_setup
+    super
+    DatabaseCleaner.start
+  end
+
+  def after_teardown
+    DatabaseCleaner.clean
+    super
+  end
+end
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -13,6 +26,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  include AroundEachTest
+
   def json
     JSON.parse(response.body)
   end
@@ -38,81 +53,59 @@ class ActiveSupport::TestCase
       "Content-Type" => "application/json"
     }
   end
+
+  def unauthorized_headers
+    {
+      "Content-Type" => "application/json",
+      "Accepts" => "application/json"
+    }
+  end
 end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+  include AroundEachTest
 end
 
 module LoginHelpers
-  def login_as_new_customer
-    @user = User.create(email: 'test_customer@mowr.com',
-                        f_name: 'Jim',
-                        l_name: 'Pub',
-                        password: 'password',
-                        password_confirmation: 'password',
-                        role: :customer)
-    @headers = valid_headers(@user.id).except('Authorization')
-    @valid_creds = { email: @user.email, password: @user.password }.to_json
-    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
-    post auth_login_path, headers: @headers, params: @valid_creds
-    @authorized_headers = {
-      "Content-Type" => 'application/json',
-      'Authorization' => "#{json['auth_token']}",
-      'Accepts' => 'application/json'
-    }
+  def login_as_customer
+    @user = users(:three)
+    @valid_creds = { email: @user.email, password: 'password' }.to_json
+    post auth_login_path, headers: unauthorized_headers, params: @valid_creds
+    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 
-  def login_as_new_driver
-    @user = User.create(email: 'test_driver@mowr.com',
-                        f_name: 'Jim',
-                        l_name: 'Pub',
-                        password: 'password',
-                        password_confirmation: 'password',
-                        role: :driver)
-    @headers = valid_headers(@user.id).except('Authorization')
-    @valid_creds = { email: @user.email, password: @user.password }.to_json
-    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
-    post auth_login_path, headers: @headers, params: @valid_creds
-    @authorized_headers = {
-      "Content-Type" => 'application/json',
-      'Authorization' => "#{json['auth_token']}",
-      'Accepts' => 'application/json'
-    }
+  def login_as_driver
+    @user = users(:two)
+    @valid_creds = { email: @user.email, password: 'password' }.to_json
+    post auth_login_path, headers: unauthorized_headers, params: @valid_creds
+    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 
-  def login_as_new_admin
-    @user = User.create(email: 'test_admin@mowr.com',
-                        f_name: 'Jim',
-                        l_name: 'Pub',
-                        password: 'password',
-                        password_confirmation: 'password',
-                        role: :admin)
-    @headers = valid_headers(@user.id).except('Authorization')
-    @valid_creds = { email: @user.email, password: @user.password }.to_json
-    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
-    post auth_login_path, headers: @headers, params: @valid_creds
-    @authorized_headers = {
-      "Content-Type" => 'application/json',
-      'Authorization' => "#{json['auth_token']}",
-      'Accepts' => 'application/json'
-    }
+  def login_as_admin
+    @user = users(:one)
+    @valid_creds = { email: @user.email, password: 'password' }.to_json
+    post auth_login_path, headers: unauthorized_headers, params: @valid_creds
+    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 end
 
-module AroundEachTest
-  def before_setup
-    super
-    DatabaseCleaner.start
-  end
-
-  def after_teardown
-    super
-    DatabaseCleaner.clean
+module CreateData
+  def populate_size_estimates
+    5.times do
+      address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+                                state: Faker::Address.state, zip: Faker::Address.zip_code,
+                                user_id: [User.first.id, User.last.id].sample)
+      SizeEstimate.create!(acreage: Faker::Number.between(from: 0.0, to: 3.0).round(2), address_id: address.id)
+    end
+    Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+                    state: Faker::Address.state, zip: Faker::Address.zip_code,
+                    user_id: [User.first.id, User.last.id].sample)
   end
 end
 
 class Minitest::Test
   include AroundEachTest
   include LoginHelpers
+  include CreateData
 end

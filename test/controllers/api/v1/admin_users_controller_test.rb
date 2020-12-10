@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AdminUsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_admin
+    login_as_admin
   end
 
   test 'should not get user info without auth_token' do

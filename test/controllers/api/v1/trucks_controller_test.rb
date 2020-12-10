@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TrucksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_admin
+    login_as_admin
     @truck = trucks(:one)
   end
 
@@ -51,13 +51,13 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not get trucks as driver' do
-    login_as_new_driver
+    login_as_driver
     get api_v1_trucks_path, headers: @authorized_headers
     assert_equal Message.unauthorized, json['message']
   end
 
   test 'should not create truck as driver' do
-    login_as_new_driver
+    login_as_driver
     post api_v1_trucks_path,
       params: {
         truck: {
@@ -73,13 +73,13 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not get trucks as customer' do
-    login_as_new_customer
+    login_as_customer
     get api_v1_trucks_path, headers: @authorized_headers
     assert_equal Message.unauthorized, json['message']
   end
 
   test 'should not create truck as customer' do
-    login_as_new_customer
+    login_as_customer
     post api_v1_trucks_path,
       params: {
         truck: {

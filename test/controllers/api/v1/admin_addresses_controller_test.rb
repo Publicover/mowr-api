@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_admin
+    login_as_admin
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
@@ -23,27 +23,10 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index of all addresses' do
     # TODO
-    # OK, in this test and this test only, the admin user would become the
-    # customer user immediately upon completing the setup method. No idea why.
-    # It only happened when the full test suite was run so there's a db problem somewhere
-    # but I can't find it after several hours. It works if you just put the whole method here.
-
-    @user = User.create(email: 'test_admin@mowr.com',
-                        f_name: 'Jim',
-                        l_name: 'Pub',
-                        password: 'password',
-                        password_confirmation: 'password',
-                        role: :admin)
-    @headers = valid_headers(@user.id).except('Authorization')
-    @valid_creds = { email: @user.email, password: @user.password }.to_json
-    @invalid_creds = { email: Faker::Internet.email, password: Faker::Internet.password }.to_json
-    post auth_login_path, headers: @headers, params: @valid_creds
-    @authorized_headers = {
-      "Content-Type" => 'application/json',
-      'Authorization' => "#{json['auth_token']}",
-      'Accepts' => 'application/json'
-    }
-
+    # OK, my admin user gets overwritten sometimes for reasons that are unclear.
+    # It is hard to keep caring about this after all the time I spent. 
+    # Everything works if I run the helper method again, so that's what we get here.
+    login_as_admin
     get api_v1_addresses_path, headers: @authorized_headers
     assert_response :success
     assert_equal Address.count, json['data'].size

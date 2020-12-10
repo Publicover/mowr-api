@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_customer
+    login_as_customer
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,

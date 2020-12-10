@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, except: [:create]
       resources :addresses
+      resources :size_estimates
       resources :trucks
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DriverUsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_driver
+    login_as_driver
   end
 
   test 'should not get index as driver' do

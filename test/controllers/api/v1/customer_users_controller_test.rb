@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CustomerUsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    login_as_new_customer
+    login_as_customer
   end
 
   test 'should not get index as customer' do

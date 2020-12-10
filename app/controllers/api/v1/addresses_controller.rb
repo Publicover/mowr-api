@@ -16,6 +16,7 @@ class Api::V1::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    authorize [:api, :v1, @address]
 
     serialized_response(@address, Address) if @address.save
   end
