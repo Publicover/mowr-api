@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :users, except: [:create]
       resources :addresses
       resources :size_estimates
-      resources :trucks
+      resources :plows
     end
   end
 end

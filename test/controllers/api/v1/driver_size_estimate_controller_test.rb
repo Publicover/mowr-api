@@ -13,12 +13,12 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
     assert_equal Message.unauthorized, json['message']
 
     post api_v1_size_estimates_path,
-         params: { size_estimate: { acreage: 0.75, address_id: Address.last.id } }.to_json,
+         params: { size_estimate: { square_footage: 100.75, address_id: Address.last.id } }.to_json,
          headers: @authorized_headers
     assert_equal Message.unauthorized, json['message']
 
     patch api_v1_size_estimate_path(id: size_estimate_id),
-          params: { size_estimate: { acreage: 12.75 } }.to_json,
+          params: { size_estimate: { square_footage: 112.75 } }.to_json,
           headers: @authorized_headers
     assert_equal Message.unauthorized, json['message']
 

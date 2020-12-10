@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :addresses, inverse_of: :user, dependent: :destroy
 
-  has_one :truck, inverse_of: :user, dependent: :destroy
+  has_one :plow, inverse_of: :user, dependent: :destroy
 
   validates :email, :f_name, :l_name, :role, presence: true
 

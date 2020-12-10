@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_105210) do
+ActiveRecord::Schema.define(version: 2020_12_10_112705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,11 @@ ActiveRecord::Schema.define(version: 2020_12_09_105210) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "estimate_complete", default: false
     t.boolean "estimate_confirmed", default: false
-    t.string "actual_acreage", default: "f"
+    t.string "actual_footage", default: "f"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "size_estimates", force: :cascade do |t|
-    t.decimal "acreage", precision: 5, scale: 2
-    t.bigint "address_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_size_estimates_on_address_id"
-  end
-
-  create_table "trucks", force: :cascade do |t|
+  create_table "plows", force: :cascade do |t|
     t.string "licence_plate"
     t.string "year"
     t.string "color"
@@ -47,7 +39,15 @@ ActiveRecord::Schema.define(version: 2020_12_09_105210) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_trucks_on_user_id"
+    t.index ["user_id"], name: "index_plows_on_user_id"
+  end
+
+  create_table "size_estimates", force: :cascade do |t|
+    t.decimal "square_footage", precision: 5, scale: 2
+    t.bigint "address_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_size_estimates_on_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,6 +63,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_105210) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "plows", "users"
   add_foreign_key "size_estimates", "addresses"
-  add_foreign_key "trucks", "users"
 end

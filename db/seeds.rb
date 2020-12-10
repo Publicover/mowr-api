@@ -36,7 +36,7 @@ customer_count = 1
   rand(5).times do
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id)
-    SizeEstimate.create!(acreage: Faker::Number.between(from: 0.0, to: 3.0).round(2), address_id: address.id)
+    SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
   end
 
   customer_count += 1

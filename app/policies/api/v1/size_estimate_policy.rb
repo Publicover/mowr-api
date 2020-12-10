@@ -34,7 +34,7 @@ module Api
       end
 
       def permitted_attributes
-        %i[acreage address_id]
+        %i[square_footage address_id]
       end
     end
   end

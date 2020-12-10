@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class TruckPolicy < ApplicationPolicy
+    class PlowPolicy < ApplicationPolicy
       class Scope < Scope
         def resolve
           scope.all

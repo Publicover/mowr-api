@@ -2,5 +2,5 @@
 
 class SizeEstimateSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :acreage, :address_id
+  attributes :square_footage, :address_id
 end

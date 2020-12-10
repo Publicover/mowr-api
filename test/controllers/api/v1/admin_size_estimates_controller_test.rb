@@ -23,7 +23,7 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
     login_as_admin
     assert_difference('SizeEstimate.count') do
       post api_v1_size_estimates_path,
-           params: { size_estimate: { acreage: 0.75, address_id: Address.last.id } }.to_json,
+           params: { size_estimate: { square_footage: 100.75, address_id: Address.last.id } }.to_json,
            headers: @authorized_headers
       end
     assert_response :success
@@ -32,10 +32,10 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
   test 'should update any size estimate as admin' do
     login_as_admin
     patch api_v1_size_estimate_path(@random_se_id),
-          params: { size_estimate: { acreage: 12.75 } }.to_json,
+          params: { size_estimate: { square_footage: 52.75 } }.to_json,
           headers: @authorized_headers
     assert_response :success
-    assert_equal 12.75, SizeEstimate.find(@random_se_id).acreage
+    assert_equal 52.75, SizeEstimate.find(@random_se_id).square_footage
   end
 
   test 'should destroy any size estimate as admin' do
@@ -51,7 +51,7 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
       address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                                 state: Faker::Address.state, zip: Faker::Address.zip_code,
                                 user_id: [User.first.id, User.last.id].sample)
-      SizeEstimate.create!(acreage: Faker::Number.between(from: 0.0, to: 3.0).round(2), address_id: address.id)
+      SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
     end
     Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,

@@ -23,19 +23,19 @@ class CustomerSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: @user.id)
     post api_v1_size_estimates_path, params: {
-      size_estimate: { acreage: 4.75, address_id: address.id }
+      size_estimate: { square_footage: 74.75, address_id: address.id }
       }.to_json,
       headers: @authorized_headers
     assert_response :success
-    assert 4.75, address.size_estimate.reload.acreage
+    assert 74.75, address.size_estimate.reload.square_footage
   end
 
   test 'should update own size estimate as customer' do
     patch api_v1_size_estimate_path(@size_estimate),
-      params: { size_estimate: { acreage: 12.99 } }.to_json,
+      params: { size_estimate: { square_footage: 122.99 } }.to_json,
       headers: @authorized_headers
     assert_response :success
-    assert_equal 12.99, @size_estimate.reload.acreage
+    assert_equal 122.99, @size_estimate.reload.square_footage
   end
 
   test 'should destroy own size estimate as customer' do
