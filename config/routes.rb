@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :addresses
       resources :size_estimates
       resources :plows
+      resources :services
     end
   end
 end

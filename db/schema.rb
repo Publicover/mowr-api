@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_112705) do
+ActiveRecord::Schema.define(version: 2020_12_10_154737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(version: 2020_12_10_112705) do
     t.index ["user_id"], name: "index_plows_on_user_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_requests_on_service_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.decimal "cost"
+    t.time "time_estimate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "size_estimates", force: :cascade do |t|
     t.decimal "square_footage", precision: 5, scale: 2
     t.bigint "address_id", null: false
@@ -64,5 +81,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_112705) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "plows", "users"
+  add_foreign_key "requests", "services"
+  add_foreign_key "requests", "users"
   add_foreign_key "size_estimates", "addresses"
 end

@@ -35,13 +35,14 @@ module Api
       end
 
       def permitted_attributes
-        %i[
-          email
-          f_name
-          l_name
-          password
-          password_confirmation
-          role
+        [
+          :email,
+          :f_name,
+          :l_name,
+          :password,
+          :password_confirmation,
+          :role,
+          service_ids: [] 
         ]
       end
     end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Driveway Plow
+  cost: 20.0
+  time_estimate: 0.5.hours
+
+two:
+  name: De-Icing
+  cost: 9.99
+  time_estimate: 2020-12-10 16:46:33
