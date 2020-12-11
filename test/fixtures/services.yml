@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Weekly Plowing
+  price_per_quarter_hour: 15.99
+
+two:
+  name: Emergency Plowing
+  price_per_quarter_hour: 19.99
+
+three:
+  name: De-Icing
+  price_per_quarter_hour: 5.0

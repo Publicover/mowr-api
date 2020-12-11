@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Creating 3 services..."
+
+Service.create!(name: 'Driveway Plow', price_per_quarter_hour: 25.0)
+Service.create!(name: 'De-Icing', price_per_quarter_hour: 5.0)
+Service.create!(name: 'Morning Phone Call', price_per_quarter_hour: 3.0)
+
 puts "Creating 2 admins..."
 
 admin_count = 1
