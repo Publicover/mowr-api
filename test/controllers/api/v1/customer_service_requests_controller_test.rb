@@ -7,22 +7,21 @@ class Api::V1::AdminServiceRequestsControllerTest < ActionDispatch::IntegrationT
     @service_request = ServiceRequest.last
   end
 
-  test "should get index" do
-    login_as_admin
+  test 'should not get index as customer' do
+    login_as_customer
     get api_v1_service_requests_path, headers: @authorized_headers
-    assert_response :success
-    assert_equal ServiceRequest.count, json['data'].size
+    assert_match Message.unauthorized, json['message']
   end
 
-  test 'should get record as admin' do
-    login_as_admin
+  test 'should get record as customer' do
+    login_as_customer
     get api_v1_service_request_path(@service_request), headers: @authorized_headers
     assert_response :success
     assert_equal ServiceRequest.last.id, json['data']['id'].to_i
   end
 
-  test 'should create as admin' do
-    login_as_admin
+  test 'should create as customer' do
+    login_as_customer
     assert_difference('ServiceRequest.count') do
       post api_v1_service_requests_path, params: { service_request: {
         address_id: @address.id, approved: false, recurring: false,
@@ -33,8 +32,8 @@ class Api::V1::AdminServiceRequestsControllerTest < ActionDispatch::IntegrationT
     assert_response :success
   end
 
-  test 'should update as admin' do
-    login_as_admin
+  test 'should update as customer' do
+    login_as_customer
     patch api_v1_service_request_path(@service_request), params: { service_request:
         { approved: true }
       }.to_json, headers: @authorized_headers
@@ -42,8 +41,8 @@ class Api::V1::AdminServiceRequestsControllerTest < ActionDispatch::IntegrationT
     assert_equal true, @service_request.reload.approved
   end
 
-  test 'should delete as admin' do
-    login_as_admin
+  test 'should destroy as customer' do
+    login_as_customer
     request_count = ServiceRequest.count
     delete api_v1_service_request_path(@service_request), headers: @authorized_headers
     assert_response :success
