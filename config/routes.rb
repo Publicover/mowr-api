@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   namespace :api do
     namespace :v1 do
+      resources :plows
+      resources :services
       resources :users, except: [:create]
       resources :addresses
       resources :size_estimates
-      resources :plows
-      resources :services
+      resources :service_requests
     end
   end
 end

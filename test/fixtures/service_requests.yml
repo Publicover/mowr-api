@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: one
+  approved: false
+  recurring: false
+  service_ids: <%= Service.pluck(:id) %>
+
+two:
+  address: two
+  approved: false
+  recurring: false
+  service_ids: <%= Service.pluck(:id) %>

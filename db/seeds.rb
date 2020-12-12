@@ -33,6 +33,7 @@ driver_count = 1
 end
 
 puts "Creating 300 customers with addresses and size estimates..."
+puts "Creating requests..."
 
 customer_count = 1
 300.times do
@@ -43,6 +44,8 @@ customer_count = 1
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id)
     SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
+    Request.create!(address_id: address.id, approved: [true, false].sample,
+                    recurring: [true, false].sample, service_ids: [Service.first.id, Service.last.id])
   end
 
   customer_count += 1

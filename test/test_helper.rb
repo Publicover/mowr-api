@@ -102,6 +102,12 @@ module CreateData
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: [User.first.id, User.last.id].sample)
   end
+
+  def populate_blank_address
+    @address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+                    state: Faker::Address.state, zip: Faker::Address.zip_code,
+                    user_id: [User.first.id, User.last.id].sample)
+  end
 end
 
 class Minitest::Test
