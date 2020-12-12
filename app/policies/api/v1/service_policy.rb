@@ -32,7 +32,7 @@ module Api
       end
 
       def permitted_attributes
-        [:name, :price_per_quarter_hour]
+        %i[name price_per_quarter_hour]
       end
     end
   end

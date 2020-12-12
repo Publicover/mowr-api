@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Driver::ServiceRequestsController < ApplicationController
-  before_action :set_service_request, except: [:index, :create]
+  before_action :set_service_request, except: %i[index create]
 
   def index
     @service_requests = policy_scope([:api, :v1, ServiceRequest])
@@ -30,6 +32,7 @@ class Api::V1::Driver::ServiceRequestsController < ApplicationController
   end
 
   private
+
     def set_service_request
       @service_request = ServiceRequest.find(params[:id])
       authorize [:api, :v1, @service_request]
