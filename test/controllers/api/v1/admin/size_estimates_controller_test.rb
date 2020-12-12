@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_as_admin
     populate_size_estimates
@@ -9,20 +9,20 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get all size estimates as admin' do
     login_as_admin
-    get api_v1_size_estimates_path, headers: @authorized_headers
+    get api_v1_admin_size_estimates_path, headers: @authorized_headers
     assert_response :success
     assert_equal SizeEstimate.count, json['data'].size
   end
 
   test 'should get any size estimate as admin' do
-    get api_v1_size_estimate_path(id: @random_se_id), headers: @authorized_headers
+    get api_v1_admin_size_estimate_path(id: @random_se_id), headers: @authorized_headers
     assert_response :success
   end
 
   test 'should create size estimate as admin' do
     login_as_admin
     assert_difference('SizeEstimate.count') do
-      post api_v1_size_estimates_path,
+      post api_v1_admin_size_estimates_path,
            params: { size_estimate: { square_footage: 100.75, address_id: Address.last.id } }.to_json,
            headers: @authorized_headers
       end
@@ -31,7 +31,7 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update any size estimate as admin' do
     login_as_admin
-    patch api_v1_size_estimate_path(@random_se_id),
+    patch api_v1_admin_size_estimate_path(@random_se_id),
           params: { size_estimate: { square_footage: 52.75 } }.to_json,
           headers: @authorized_headers
     assert_response :success
@@ -41,7 +41,7 @@ class AdminSizeEstimatesControllerTest < ActionDispatch::IntegrationTest
   test 'should destroy any size estimate as admin' do
     login_as_admin
     se_count = SizeEstimate.count
-    delete api_v1_size_estimate_path(@random_se_id), headers: @authorized_headers
+    delete api_v1_admin_size_estimate_path(@random_se_id), headers: @authorized_headers
     assert_response :success
     assert_equal SizeEstimate.count, se_count - 1
   end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AddressesControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_as_admin
     5.times do
@@ -12,34 +12,34 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not get index without headers' do
-    get api_v1_addresses_path(@address.user), headers: @headers
+    get api_v1_admin_addresses_path(@address.user), headers: @headers
     assert_equal Message.missing_token, json['message']
   end
 
   test 'should respond with standard message if address does not exist' do
-    get api_v1_address_path(id: Address.last.id + 1), headers: @authorized_headers
+    get api_v1_admin_address_path(id: Address.last.id + 1), headers: @authorized_headers
     assert_equal "Couldn't find Address with 'id'=#{Address.last.id + 1}", json['message']
   end
 
   test 'should get index of all addresses' do
     # TODO
     # OK, my admin user gets overwritten sometimes for reasons that are unclear.
-    # It is hard to keep caring about this after all the time I spent. 
+    # It is hard to keep caring about this after all the time I spent.
     # Everything works if I run the helper method again, so that's what we get here.
     login_as_admin
-    get api_v1_addresses_path, headers: @authorized_headers
+    get api_v1_admin_addresses_path, headers: @authorized_headers
     assert_response :success
     assert_equal Address.count, json['data'].size
   end
 
   test 'should show any address' do
-    get api_v1_address_path(@address), headers: @authorized_headers
+    get api_v1_admin_address_path(@address), headers: @authorized_headers
     assert_response :success
   end
 
   test 'should create any address' do
     assert_difference('Address.count') do
-      post api_v1_addresses_path,
+      post api_v1_admin_addresses_path,
            params: {
              address: {
                line_1: '234 Test Ave',
@@ -55,7 +55,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update any address' do
-    patch api_v1_address_path(@address),
+    patch api_v1_admin_address_path(@address),
       params: { address: { city: 'Shropinshire Upon Avon' } }.to_json,
       headers: @authorized_headers
     assert_response :success
@@ -64,7 +64,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should delete any address' do
     address_count = Address.count
-    delete api_v1_address_path(@address), headers: @authorized_headers
+    delete api_v1_admin_address_path(@address), headers: @authorized_headers
     assert_response :success
     assert_equal Address.count, address_count - 1
   end

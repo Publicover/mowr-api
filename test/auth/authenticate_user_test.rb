@@ -23,7 +23,7 @@ class AuthenticateUserTest < ActionDispatch::IntegrationTest
     @valid_creds = { email: user.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
     @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
-    get api_v1_users_path, headers: @authorized_headers
+    get api_v1_admin_users_path, headers: @authorized_headers
     assert_response :success
   end
 end
