@@ -108,6 +108,11 @@ module CreateData
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: [User.first.id, User.last.id].sample)
   end
+
+  def fill_request_service_ids
+    ids = Service.pluck(:id)
+    ServiceRequest.all.each { |record| record.update(service_ids: ids)}
+  end
 end
 
 class Minitest::Test

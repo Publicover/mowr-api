@@ -8,7 +8,6 @@ class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationT
   end
 
   test 'should get all size estimates as admin' do
-    login_as_admin
     get api_v1_admin_size_estimates_path, headers: @authorized_headers
     assert_response :success
     assert_equal SizeEstimate.count, json['data'].size
@@ -20,7 +19,6 @@ class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationT
   end
 
   test 'should create size estimate as admin' do
-    login_as_admin
     assert_difference('SizeEstimate.count') do
       post api_v1_admin_size_estimates_path,
            params: { size_estimate: { square_footage: 100.75, address_id: Address.last.id } }.to_json,
@@ -30,7 +28,6 @@ class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationT
   end
 
   test 'should update any size estimate as admin' do
-    login_as_admin
     patch api_v1_admin_size_estimate_path(@random_se_id),
           params: { size_estimate: { square_footage: 52.75 } }.to_json,
           headers: @authorized_headers
@@ -39,7 +36,6 @@ class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationT
   end
 
   test 'should destroy any size estimate as admin' do
-    login_as_admin
     se_count = SizeEstimate.count
     delete api_v1_admin_size_estimate_path(@random_se_id), headers: @authorized_headers
     assert_response :success

@@ -4,7 +4,6 @@ class Api::V1::Driver::ServiceRequestsControllerTest < ActionDispatch::Integrati
   setup do
     login_as_driver
     fill_request_service_ids
-    populate_blank_address
     @service_request = ServiceRequest.last
   end
 
@@ -20,6 +19,7 @@ class Api::V1::Driver::ServiceRequestsControllerTest < ActionDispatch::Integrati
   end
 
   test 'should not create, update or destroy as driver' do
+    populate_blank_address
     post api_v1_driver_service_requests_path, params: { service_request: {
       address_id: @address.id, approved: false, recurring: false,
       service_ids: [ServiceRequest.first.id] }
@@ -34,10 +34,5 @@ class Api::V1::Driver::ServiceRequestsControllerTest < ActionDispatch::Integrati
 
     delete api_v1_driver_service_request_path(@service_request), headers: @authorized_headers
     assert_match Message.unauthorized, json['message']
-  end
-
-  def fill_request_service_ids
-    ids = Service.pluck(:id)
-    ServiceRequest.all.each { |record| record.update(service_ids: ids)}
   end
 end

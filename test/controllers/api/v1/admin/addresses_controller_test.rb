@@ -22,11 +22,6 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index of all addresses' do
-    # TODO
-    # OK, my admin user gets overwritten sometimes for reasons that are unclear.
-    # It is hard to keep caring about this after all the time I spent.
-    # Everything works if I run the helper method again, so that's what we get here.
-    login_as_admin
     get api_v1_admin_addresses_path, headers: @authorized_headers
     assert_response :success
     assert_equal Address.count, json['data'].size
