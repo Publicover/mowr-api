@@ -18,6 +18,7 @@ class Api::V1::Customer::ServiceRequestsController < ApplicationController
     @service_request = ServiceRequest.new(service_request_params)
     authorize [:api, :v1, @service_request]
 
+    ServiceRequestMailer.service_request_confirmation(current_user).deliver_later
     serialized_response(@service_request, ServiceRequest) if @service_request.save
   end
 
