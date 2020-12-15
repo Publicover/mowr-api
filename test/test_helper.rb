@@ -4,19 +4,7 @@ require 'rails/test_help'
 require 'capybara/rails'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'database_cleaner'
-
-module AroundEachTest
-  def before_setup
-    super
-    DatabaseCleaner.start
-  end
-
-  def after_teardown
-    DatabaseCleaner.clean
-    super
-  end
-end
+require 'pry'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -26,7 +14,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  include AroundEachTest
+  # include AroundEachTest
 
   def json
     JSON.parse(response.body)
@@ -64,29 +52,28 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  include AroundEachTest
 end
 
 module LoginHelpers
-  def login_as_customer
-    @user = users(:three)
-    @valid_creds = { email: @user.email, password: 'password' }.to_json
+  def login_as_admin
+    @admin = users(:one)
+    @valid_creds = { email: @admin.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
-    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
+    @admin_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 
   def login_as_driver
-    @user = users(:two)
-    @valid_creds = { email: @user.email, password: 'password' }.to_json
+    @driver = users(:two)
+    @valid_creds = { email: @driver.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
-    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
+    @driver_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 
-  def login_as_admin
-    @user = users(:one)
-    @valid_creds = { email: @user.email, password: 'password' }.to_json
+  def login_as_customer
+    @customer = users(:three)
+    @valid_creds = { email: @customer.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
-    @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
+    @customer_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
   end
 end
 
@@ -116,7 +103,19 @@ module CreateData
 end
 
 class Minitest::Test
-  include AroundEachTest
+  # include AroundEachTest
   include LoginHelpers
   include CreateData
 end
+
+# DatabaseCleaner.strategy = :transaction
+#
+# class Minitest::Spec
+#   before :each do
+#     DatabaseCleaner.start
+#   end
+#
+#   after :each do
+#     DatabaseCleaner.clean
+#   end
+# end

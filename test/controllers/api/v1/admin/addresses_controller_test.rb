@@ -8,7 +8,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
                       user_id: [User.first.id, User.last.id].sample)
     end
-    @address = Address.where.not(user_id: @user.id).sample
+    @address = Address.where.not(user_id: @admin.id).sample
   end
 
   test 'should not get index without headers' do
@@ -17,18 +17,18 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should respond with standard message if address does not exist' do
-    get api_v1_admin_address_path(id: Address.last.id + 1), headers: @authorized_headers
+    get api_v1_admin_address_path(id: Address.last.id + 1), headers: @admin_headers
     assert_equal "Couldn't find Address with 'id'=#{Address.last.id + 1}", json['message']
   end
 
   test 'should get index of all addresses' do
-    get api_v1_admin_addresses_path, headers: @authorized_headers
+    get api_v1_admin_addresses_path, headers: @admin_headers
     assert_response :success
     assert_equal Address.count, json['data'].size
   end
 
   test 'should show any address' do
-    get api_v1_admin_address_path(@address), headers: @authorized_headers
+    get api_v1_admin_address_path(@address), headers: @admin_headers
     assert_response :success
   end
 
@@ -44,7 +44,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
                user_id: User.last.id
              }
            }.to_json,
-           headers: @authorized_headers
+           headers: @admin_headers
     end
     assert_response :success
   end
@@ -52,14 +52,14 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   test 'should update any address' do
     patch api_v1_admin_address_path(@address),
       params: { address: { city: 'Shropinshire Upon Avon' } }.to_json,
-      headers: @authorized_headers
+      headers: @admin_headers
     assert_response :success
     assert_equal 'Shropinshire Upon Avon', @address.reload.city
   end
 
   test 'should delete any address' do
     address_count = Address.count
-    delete api_v1_admin_address_path(@address), headers: @authorized_headers
+    delete api_v1_admin_address_path(@address), headers: @admin_headers
     assert_response :success
     assert_equal Address.count, address_count - 1
   end

@@ -6,36 +6,44 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
-                      user_id: @user.id)
+                      user_id: @customer.id)
     end
-    @address = @user.addresses.sample
+    @address = @customer.addresses.sample
   end
 
   test "should get customer's addresses" do
-    get api_v1_customer_addresses_path, headers: @authorized_headers
+    login_as_customer
+    get api_v1_customer_addresses_path, headers: @customer_headers
     assert_response :success
-    assert_equal @user.addresses.count, json['data'].size
+    assert_equal @customer.addresses.count, json['data'].size
   end
 
   test 'should get single customer record' do
-    get api_v1_customer_address_path(@address), headers: @authorized_headers
+    get api_v1_customer_address_path(@address), headers: @customer_headers
     assert_response :success
-    assert @user.addresses.include?(@address)
+    assert_equal @address.id, json['data']['id'].to_i
   end
 
   test "should update customer's record" do
     patch api_v1_customer_address_path(@address),
       params: { address: { city: 'New Testington' } }.to_json,
-      headers: @authorized_headers
+      headers: @customer_headers
     assert_response :success
     assert_equal 'New Testington', @address.reload.city
   end
 
   test "should delete customer's address" do
-    user_address_count = @user.addresses.count
-    address_count = Address.count
-    delete api_v1_customer_address_path(@address), headers: @authorized_headers
-    assert_equal @user.reload.addresses.count, user_address_count - 1
-    assert_equal Address.count, address_count - 1
+    # OK, so minitest has funky memory leaks or something. And it doesn't play well
+    # with DatabaseCleaner either. This test will pass in isolation or when just
+    # this file is run but it fails in the larger test suite. Logging in manually
+    # without using the helper method does the job for some reason.
+    @customer = users(:three)
+    @valid_creds = { email: @customer.email, password: 'password' }.to_json
+    post auth_login_path, headers: unauthorized_headers, params: @valid_creds
+    @customer_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")
+
+    assert_difference('Address.count', -1) do
+      delete api_v1_customer_address_path(@address), headers: @customer_headers
+    end
   end
 end

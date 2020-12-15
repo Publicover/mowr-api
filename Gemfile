@@ -37,7 +37,7 @@ gem 'rubocop', '~> 0.62'
 gem 'rubocop-rails'
 
 group :test do
-  gem 'database_cleaner'
+  # gem 'database_cleaner-active_record'
 end
 
 group :development, :test do
@@ -45,6 +45,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '>= 2.15'
   gem 'faker'
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'selenium-webdriver'
 end
 

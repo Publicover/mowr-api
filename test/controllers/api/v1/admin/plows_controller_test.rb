@@ -7,13 +7,13 @@ class Api::V1::Admin::PlowsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin should get full index' do
-    get api_v1_admin_plows_path, headers: @authorized_headers
+    get api_v1_admin_plows_path, headers: @admin_headers
     assert_response :success
     assert_equal Plow.count, json['data'].size
   end
 
   test 'should get show as admin' do
-    get api_v1_admin_plow_path(@plow), headers: @authorized_headers
+    get api_v1_admin_plow_path(@plow), headers: @admin_headers
     assert_response :success
     assert_equal @plow.id, json['data']['id'].to_i
   end
@@ -27,10 +27,10 @@ class Api::V1::Admin::PlowsControllerTest < ActionDispatch::IntegrationTest
             color: 'red',
             make: 'Toyota',
             model: 'Car',
-            user_id: @user.id
+            user_id: @admin.id
           }
         }.to_json,
-        headers: @authorized_headers
+        headers: @admin_headers
     end
     assert_response :success
   end
@@ -38,14 +38,14 @@ class Api::V1::Admin::PlowsControllerTest < ActionDispatch::IntegrationTest
   test 'should update as admin' do
     patch api_v1_admin_plow_path(@plow),
           params: { plow: { year: '2002' } }.to_json,
-          headers: @authorized_headers
+          headers: @admin_headers
     assert_response :success
     assert_equal '2002', @plow.reload.year
   end
 
   test 'should destroy as admin' do
     plow_count = Plow.count
-    delete api_v1_admin_plow_path(@plow), headers: @authorized_headers
+    delete api_v1_admin_plow_path(@plow), headers: @admin_headers
     assert_response :success
     assert_equal Plow.count, plow_count - 1
   end

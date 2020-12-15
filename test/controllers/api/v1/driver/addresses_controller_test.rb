@@ -6,36 +6,35 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
-                      user_id: @user.id)
+                      user_id: @driver.id)
     end
-    @address = @user.addresses.sample
+    @address = @driver.addresses.sample
   end
 
-  test "should get driver's addresses" do
-    get api_v1_driver_addresses_path, headers: @authorized_headers
+  test "should get any address as driver" do
+    get api_v1_admin_addresses_path, headers: @driver_headers
     assert_response :success
-    assert_equal @user.addresses.count, json['data'].size
+    assert_equal Address.count, json['data'].size
   end
 
-  test 'should get single driver record' do
-    get api_v1_driver_address_path(@address), headers: @authorized_headers
+  test 'should get any record as driver' do
+    get api_v1_admin_address_path(@address), headers: @driver_headers
     assert_response :success
-    assert @user.addresses.include?(@address)
   end
 
-  test "should update driver's record" do
-    patch api_v1_driver_address_path(@address),
-      params: { address: { city: 'New Testington' } }.to_json,
-      headers: @authorized_headers
+  test "should update any record as driver" do
+    patch api_v1_admin_address_path(@address),
+      params: { address: { city: 'Shropinshire Upon Avon' } }.to_json,
+      headers: @driver_headers
     assert_response :success
-    assert_equal 'New Testington', @address.reload.city
+    assert_equal 'Shropinshire Upon Avon', @address.reload.city
   end
 
-  test "should delete driver's address" do
-    user_address_count = @user.addresses.count
+  test "should not delete record as driver" do
+    user_address_count = @driver.addresses.count
     address_count = Address.count
-    delete api_v1_driver_address_path(@address), headers: @authorized_headers
-    assert_equal @user.reload.addresses.count, user_address_count - 1
-    assert_equal Address.count, address_count - 1
+    delete api_v1_driver_address_path(@address), headers: @driver_headers
+    assert_match Message.unauthorized, json['message']
+    assert_equal Address.count, address_count
   end
 end

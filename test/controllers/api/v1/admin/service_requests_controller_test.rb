@@ -8,13 +8,13 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
   end
 
   test "should get index" do
-    get api_v1_admin_service_requests_path, headers: @authorized_headers
+    get api_v1_admin_service_requests_path, headers: @admin_headers
     assert_response :success
     assert_equal ServiceRequest.count, json['data'].size
   end
 
   test 'should get record as admin' do
-    get api_v1_admin_service_request_path(@service_request), headers: @authorized_headers
+    get api_v1_admin_service_request_path(@service_request), headers: @admin_headers
     assert_response :success
     assert_equal ServiceRequest.last.id, json['data']['id'].to_i
   end
@@ -26,7 +26,7 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
         address_id: @address.id, approved: false, recurring: false,
         service_ids: [ServiceRequest.first.id] }
         }.to_json,
-        headers: @authorized_headers
+        headers: @admin_headers
     end
     assert_response :success
   end
@@ -34,14 +34,14 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
   test 'should update as admin' do
     patch api_v1_admin_service_request_path(@service_request), params: { service_request:
         { approved: true }
-      }.to_json, headers: @authorized_headers
+      }.to_json, headers: @admin_headers
     assert_response :success
     assert_equal true, @service_request.reload.approved
   end
 
   test 'should delete as admin' do
     request_count = ServiceRequest.count
-    delete api_v1_admin_service_request_path(@service_request), headers: @authorized_headers
+    delete api_v1_admin_service_request_path(@service_request), headers: @admin_headers
     assert_response :success
     assert_equal ServiceRequest.count, request_count - 1
   end

@@ -8,12 +8,12 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
   end
 
   test 'should not get index as customer' do
-    get api_v1_customer_service_requests_path, headers: @authorized_headers
+    get api_v1_customer_service_requests_path, headers: @customer_headers
     assert_match Message.unauthorized, json['message']
   end
 
   test 'should get record as customer' do
-    get api_v1_customer_service_request_path(@service_request), headers: @authorized_headers
+    get api_v1_customer_service_request_path(@service_request), headers: @customer_headers
     assert_response :success
     assert_equal ServiceRequest.last.id, json['data']['id'].to_i
   end
@@ -25,7 +25,7 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
         address_id: @address.id, approved: false, recurring: false,
         service_ids: [ServiceRequest.first.id] }
         }.to_json,
-        headers: @authorized_headers
+        headers: @customer_headers
     end
     assert_response :success
   end
@@ -33,14 +33,14 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
   test 'should update as customer' do
     patch api_v1_customer_service_request_path(@service_request), params: { service_request:
         { approved: true }
-      }.to_json, headers: @authorized_headers
+      }.to_json, headers: @customer_headers
     assert_response :success
     assert_equal true, @service_request.reload.approved
   end
 
   test 'should destroy as customer' do
     request_count = ServiceRequest.count
-    delete api_v1_customer_service_request_path(@service_request), headers: @authorized_headers
+    delete api_v1_customer_service_request_path(@service_request), headers: @customer_headers
     assert_response :success
     assert_equal ServiceRequest.count, request_count - 1
   end

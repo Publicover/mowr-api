@@ -8,12 +8,12 @@ class Api::V1::Driver::ServiceRequestsControllerTest < ActionDispatch::Integrati
   end
 
   test 'should not get index as driver' do
-    get api_v1_driver_service_requests_path, headers: @authorized_headers
+    get api_v1_driver_service_requests_path, headers: @driver_headers
     assert_match Message.unauthorized, json['message']
   end
 
   test 'should get record as driver' do
-    get api_v1_driver_service_request_path(@service_request), headers: @authorized_headers
+    get api_v1_driver_service_request_path(@service_request), headers: @driver_headers
     assert_response :success
     assert @service_request.id, json['data']['id'].to_i
   end
@@ -24,15 +24,15 @@ class Api::V1::Driver::ServiceRequestsControllerTest < ActionDispatch::Integrati
       address_id: @address.id, approved: false, recurring: false,
       service_ids: [ServiceRequest.first.id] }
       }.to_json,
-      headers: @authorized_headers
+      headers: @driver_headers
     assert_match Message.unauthorized, json['message']
 
     patch api_v1_driver_service_request_path(@service_request), params: { service_request:
         { approved: true }
-      }.to_json, headers: @authorized_headers
+      }.to_json, headers: @driver_headers
     assert_match Message.unauthorized, json['message']
 
-    delete api_v1_driver_service_request_path(@service_request), headers: @authorized_headers
+    delete api_v1_driver_service_request_path(@service_request), headers: @driver_headers
     assert_match Message.unauthorized, json['message']
   end
 end

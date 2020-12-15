@@ -5,8 +5,8 @@ module Api
     class AddressPolicy < ApplicationPolicy
       class Scope < Scope
         def resolve
-          return scope.all if user.admin?
-          return scope.where(user_id: user.id) if user.driver? || user.customer?
+          return scope.all if user.admin? || user.driver?
+          return scope.where(user_id: user.id) if user.customer?
         end
       end
 
@@ -27,7 +27,9 @@ module Api
       end
 
       def destroy?
-        index?
+        # binding.pry
+        return true if user.admin? || user.customer?
+        return false if user.driver?
       end
 
       def permitted_attributes
