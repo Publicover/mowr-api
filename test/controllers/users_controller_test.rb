@@ -8,7 +8,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       l_name: 'Pub',
       password: 'password',
       password_confirmation: 'password',
-      role: 'customer'
+      role: 'customer',
+      phone: '3334445555'
     }.to_json
     @headers = { "Content-Type" => "application/json" }
     @validation_message = "Validation failed: Password can't be blank, First name can't be blank,"\

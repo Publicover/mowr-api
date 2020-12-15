@@ -6,6 +6,7 @@ one:
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
   role: 0
+  phone: 3334445555
 
 two:
   email: driver@mowr.com
@@ -13,6 +14,7 @@ two:
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
   role: 1
+  phone: 4445556666
 
 three:
   email: customer@mowr.com
@@ -20,3 +22,4 @@ three:
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
   role: 2
+  phone: 5556667777

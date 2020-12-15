@@ -2,7 +2,8 @@ require 'test_helper'
 
 class AuthenticateUserTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.create(email: 'jim@home.com', f_name: 'Jim', l_name: 'Pub', password: 'password', role: :admin)
+    @user = User.create(email: 'jim@home.com', f_name: 'Jim', l_name: 'Pub',
+                        password: 'password', role: :admin, phone: '3334445555')
     @valid_auth = AuthenticateUser.new(@user.email, @user.password)
     @invalid_auth = AuthenticateUser.new('bad', 'creds')
   end

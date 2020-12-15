@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceRequestMailer < ApplicationMailer
   def service_request_confirmation(user)
     @email = user.email
