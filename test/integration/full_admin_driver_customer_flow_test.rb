@@ -49,7 +49,7 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     login_as_driver
     patch api_v1_driver_address_path(@address), params: confirm_params, headers: @driver_headers
     assert_response :success
-    
+
     # deliveries are populated by admin
       # ApprovedService?
     # delvieries are run through OSRM
@@ -80,6 +80,7 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
       city: 'Ashtabula',
       state: 'Ohio',
       zip: '44004',
+      name: 'Convenient Mart',
       user_id: @customer.id
     }.to_json
   end

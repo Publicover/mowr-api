@@ -17,10 +17,8 @@ class Api::V1::Customer::SizeEstimatesController < ApplicationController
   def create
     @size_estimate = SizeEstimate.new(size_estimate_params)
     authorize [:api, :v1, @size_estimate]
-    return unless @size_estimate.save
 
-    @size_estimate.address.update(estimate_complete: true)
-    serialized_response(@size_estimate, SizeEstimate)
+    serialized_response(@size_estimate, SizeEstimate) if @size_estimate.save
   end
 
   def update

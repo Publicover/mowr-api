@@ -34,4 +34,17 @@ class AddressTest < ActiveSupport::TestCase
     assert_not address.save
     assert_not_nil address.errors[:zip]
   end
+
+  test 'should return compact_address' do
+    address = addresses(:one)
+    assert address.compact_address
+  end
+
+  test 'should geocode after_validation' do
+    user = users(:three)
+    Address.create!(line_1: '3300 Lake Rd W', city: 'Ashtabula', state: 'Ohio',
+                    zip: '44004', name: 'KSU', user_id: user.id)
+    assert_not_nil Address.last.latitude
+    assert_not_nil Address.last.longitude
+  end
 end

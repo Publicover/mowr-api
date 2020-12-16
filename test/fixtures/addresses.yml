@@ -1,17 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  line_1: 123 Front St
-  line_2: Apt 2
+  line_1: 1128 Bridge St
   city: Ashtabula
   state: Ohio
   zip: 44004
+  latitude: 41.900375
+  longitude: -80.797666
+  name: Iriquois Lounge
   user: one
 
 two:
-  line_1: 234 Front St
-  line_2: Apt 1
+  line_1: 1714 W 19th St
   city: Ashtabula
   state: Ohio
   zip: 44004
+  latitude: 41.882113
+  longitude: -80.807315
+  name: Convenient Mart
   user: three

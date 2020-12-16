@@ -40,6 +40,9 @@ module Api
           state
           zip
           user_id
+          name
+          latitude
+          longitude
         ]
       end
     end
