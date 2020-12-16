@@ -18,7 +18,7 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
     assert_equal @customer.addresses.last.id, json['data']['id'].to_i
   end
 
-  test 'should create own size estimate as customer' do
+  test 'should create own size estimate and change parent address as customer' do
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: @customer.id)
@@ -28,6 +28,7 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
       headers: @customer_headers
     assert_response :success
     assert 74.75, address.size_estimate.reload.square_footage
+    assert address.reload.estimate_complete
   end
 
   test 'should update own size estimate as customer' do

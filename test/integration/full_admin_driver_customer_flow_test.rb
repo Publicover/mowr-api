@@ -34,6 +34,7 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     assert_difference('SizeEstimate.count') do
       post api_v1_customer_size_estimates_path, params: size_params, headers: customer_headers
     end
+    assert SizeEstimate.last.address.reload.estimate_complete
 
     # customer gives services
     assert_difference('ServiceRequest.count') do
@@ -45,7 +46,10 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     assert_enqueued_emails 1
 
     # driver confirms size and services
-
+    login_as_driver
+    patch api_v1_driver_address_path(@address), params: confirm_params, headers: @driver_headers
+    assert_response :success
+    
     # deliveries are populated by admin
       # ApprovedService?
     # delvieries are run through OSRM
@@ -91,6 +95,13 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     {
       address_id: @address.id,
       service_ids: Service.pluck(:id)
+    }.to_json
+  end
+
+  def confirm_params
+    {
+      estimate_confirmed: true,
+      actual_footage: 275.50
     }.to_json
   end
 end

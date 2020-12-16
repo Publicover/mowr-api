@@ -33,7 +33,7 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
   end
 
   test "should delete customer's address" do
-    # OK, so minitest has funky memory leaks or something. And it doesn't play well
+    # OK, so minitest has funky memory things going on. And it doesn't play well
     # with DatabaseCleaner either. This test will pass in isolation or when just
     # this file is run but it fails in the larger test suite. Logging in manually
     # without using the helper method does the job for some reason.
