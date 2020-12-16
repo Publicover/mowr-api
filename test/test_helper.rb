@@ -2,9 +2,26 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'capybara/rails'
+# require 'database_cleaner'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
+require 'vcr'
+
+# DatabaseCleaner.clean_with :truncation
+# DatabaseCleaner.strategy = :transaction
+#
+# module AroundEachTest
+#   def before_setup
+#     super
+#     DatabaseCleaner.start
+#   end
+#
+#   def after_teardown
+#     super
+#     DatabaseCleaner.clean
+#   end
+# end
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -54,6 +71,14 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
 end
 
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = true
+  config.default_cassette_options = { :match_requests_on => [:query] }
+end
+
+
 module LoginHelpers
   def login_as_admin
     @admin = users(:one)
@@ -82,18 +107,24 @@ module CreateData
     5.times do
       address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                                 state: Faker::Address.state, zip: Faker::Address.zip_code,
-                                user_id: [User.first.id, User.last.id].sample)
+                                user_id: [User.first.id, User.last.id].sample,
+                                latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                                name: Faker::Company.name)
       SizeEstimate.create!(square_footage: Faker::Number.between(from: 30.0, to: 100.0).round(2), address_id: address.id)
     end
     Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: [User.first.id, User.last.id].sample)
+                    user_id: [User.first.id, User.last.id].sample,
+                    latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                    name: Faker::Company.name)
   end
 
   def populate_blank_address
     @address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: [User.first.id, User.last.id].sample)
+                    user_id: [User.first.id, User.last.id].sample,
+                    latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                    name: Faker::Company.name)
   end
 
   def fill_request_service_ids
@@ -107,15 +138,3 @@ class Minitest::Test
   include LoginHelpers
   include CreateData
 end
-
-# DatabaseCleaner.strategy = :transaction
-#
-# class Minitest::Spec
-#   before :each do
-#     DatabaseCleaner.start
-#   end
-#
-#   after :each do
-#     DatabaseCleaner.clean
-#   end
-# end

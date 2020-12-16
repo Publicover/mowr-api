@@ -46,11 +46,15 @@ class Api::V1::Admin::SizeEstimatesControllerTest < ActionDispatch::IntegrationT
     5.times do
       address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                                 state: Faker::Address.state, zip: Faker::Address.zip_code,
-                                user_id: [User.first.id, User.last.id].sample)
+                                user_id: [User.first.id, User.last.id].sample,
+                                latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                                name: Faker::Company.name)
       SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
     end
     Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: [User.first.id, User.last.id].sample)
+                    user_id: [User.first.id, User.last.id].sample,
+                    latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                    name: Faker::Company.name)
   end
 end

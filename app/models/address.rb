@@ -2,8 +2,8 @@
 
 class Address < ApplicationRecord
   geocoded_by :compact_address
-  after_validation :geocode
-  
+  after_validation :geocode, if: ->(obj) { obj.line_1.present? && obj.city.present? && obj.latitude.blank? }
+
   belongs_to :user, inverse_of: :addresses
 
   has_one :size_estimate, inverse_of: :address, dependent: :destroy

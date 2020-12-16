@@ -37,9 +37,9 @@ gem 'pundit'
 gem 'rubocop', '~> 0.62'
 gem 'rubocop-rails'
 
-group :test do
-  # gem 'database_cleaner-active_record'
-end
+# group :test do
+#   gem 'database_cleaner'
+# end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +49,8 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'selenium-webdriver'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

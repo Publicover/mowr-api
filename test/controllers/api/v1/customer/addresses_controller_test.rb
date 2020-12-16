@@ -6,7 +6,8 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
-                      user_id: @customer.id)
+                      user_id: @customer.id, latitude: Faker::Address.latitude,
+                      longitude: Faker::Address.longitude, name: Faker::Company.name)
     end
     @address = @customer.addresses.sample
   end

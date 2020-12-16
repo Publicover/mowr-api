@@ -21,7 +21,8 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
   test 'should create own size estimate and change parent address as customer' do
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: @customer.id)
+                    user_id: @customer.id, latitude: Faker::Address.latitude,
+                    longitude: Faker::Address.longitude, name: Faker::Company.name)
     post api_v1_customer_size_estimates_path, params: {
       size_estimate: { square_footage: 74.75, address_id: address.id }
       }.to_json,

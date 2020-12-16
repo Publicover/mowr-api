@@ -6,7 +6,9 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
     5.times do
       Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
-                      user_id: [User.first.id, User.last.id].sample)
+                      user_id: [User.first.id, User.last.id].sample,
+                      latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                      name: Faker::Company.name)
     end
     @address = Address.where.not(user_id: @admin.id).sample
   end

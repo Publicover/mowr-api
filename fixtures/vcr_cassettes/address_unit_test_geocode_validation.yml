@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=3300%20Lake%20Rd%20W,Ashtabula,Ohio,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 16 Dec 2020 10:46:06 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjkzNTc4MTI3LCJsaWNlbmNlIjoiRGF0YSDCqSBPcGVuU3RyZWV0TWFwIGNvbnRyaWJ1dG9ycywgT0RiTCAxLjAuIGh0dHBzOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6IndheSIsIm9zbV9pZCI6MTg5NjM3NDUsImJvdW5kaW5nYm94IjpbIjQxLjg0NTk5OCIsIjQxLjg1NDMxOTIiLCItODAuOTc5MDk3MSIsIi04MC45NzQ0NDgiXSwibGF0IjoiNDEuODQ5NjkiLCJsb24iOiItODAuOTc4Mjk4IiwiZGlzcGxheV9uYW1lIjoiTGFrZSBSb2FkIFdlc3QsIEdlbmV2YSwgQXNodGFidWxhIENvdW50eSwgT2hpbywgNDQwNDEsIFVuaXRlZCBTdGF0ZXMiLCJjbGFzcyI6ImhpZ2h3YXkiLCJ0eXBlIjoidW5jbGFzc2lmaWVkIiwiaW1wb3J0YW5jZSI6MC41MSwiYWRkcmVzcyI6eyJyb2FkIjoiTGFrZSBSb2FkIFdlc3QiLCJ2aWxsYWdlIjoiR2VuZXZhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwNDEiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19LHsicGxhY2VfaWQiOjE4OTIwMjM2MCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjQyNjQ1NDc2MSwiYm91bmRpbmdib3giOlsiNDEuODUzNDI2OSIsIjQxLjg1MzQ3OTkiLCItODAuOTg5Nzc0NiIsIi04MC45ODk1ODEzIl0sImxhdCI6IjQxLjg1MzQ3OTkiLCJsb24iOiItODAuOTg5NTgxMyIsImRpc3BsYXlfbmFtZSI6Ikxha2UgUm9hZCBXZXN0LCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDA0MSwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoiaGlnaHdheSIsInR5cGUiOiJ1bmNsYXNzaWZpZWQiLCJpbXBvcnRhbmNlIjowLjUxLCJhZGRyZXNzIjp7InJvYWQiOiJMYWtlIFJvYWQgV2VzdCIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDQxIiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fSx7InBsYWNlX2lkIjoxODkyMDMwNjIsImxpY2VuY2UiOiJEYXRhIMKpIE9wZW5TdHJlZXRNYXAgY29udHJpYnV0b3JzLCBPRGJMIDEuMC4gaHR0cHM6Ly9vc20ub3JnL2NvcHlyaWdodCIsIm9zbV90eXBlIjoid2F5Iiwib3NtX2lkIjo0MjY0NTQ3NTcsImJvdW5kaW5nYm94IjpbIjQxLjg1MjUxNyIsIjQxLjg1MzQyNjkiLCItODEuMDAyMjMxIiwiLTgwLjk4OTc3NDYiXSwibGF0IjoiNDEuODUzMTIxMiIsImxvbiI6Ii04MC45OTU1ODIiLCJkaXNwbGF5X25hbWUiOiJMYWtlIFJvYWQgV2VzdCwgRHJpZnR3b29kLCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDA0MSwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoiaGlnaHdheSIsInR5cGUiOiJ1bmNsYXNzaWZpZWQiLCJpbXBvcnRhbmNlIjowLjUxLCJhZGRyZXNzIjp7InJvYWQiOiJMYWtlIFJvYWQgV2VzdCIsImhhbWxldCI6IkRyaWZ0d29vZCIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDQxIiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fV0=
+  recorded_at: Wed, 16 Dec 2020 10:46:08 GMT
+recorded_with: VCR 6.0.0
