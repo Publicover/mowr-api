@@ -19,7 +19,6 @@ Rails.application.routes.draw do
         resources :services, only: [:index, :show]
         resources :users, except: [:create]
         resources :addresses
-        resources :size_estimates
         resources :service_requests, only: [:show]
         resources :early_birds, only: [:index, :show]
       end

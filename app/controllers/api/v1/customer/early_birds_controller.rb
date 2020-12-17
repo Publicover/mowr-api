@@ -3,7 +3,8 @@ class Api::V1::Customer::EarlyBirdsController < ApplicationController
 
   def index
     @early_birds = policy_scope([:api, :v1, EarlyBird])
-    authorize (:api, :v1, @early_birds)
+    authorize [:api, :v1, @early_birds]
+    
     serialized_response(@early_birds, EarlyBird)
   end
 
