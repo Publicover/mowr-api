@@ -57,6 +57,12 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     #         enum status: { open: 0, confirmed: 1 }
 
 
+    # calculate square footage x rate x rate for depth of snow
+    #   A good rule of thumb for any removal project over six inches is to add $30
+    #   per additional half-foot of snow. So, removal of six inches might start at
+    #   $85, while removal of 18 inches would cost $145. Many contractors require a
+    #   deposit, usually around $50 at the beginning of the season.
+
     # admin confirms service and price
     # login_as_admin
     # post api_v1_admin_confirmed_services_path, params:
@@ -64,6 +70,8 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     # deliveries are populated by admin
       # ApprovedService?
     # delvieries are run through OSRM
+      # early bird service starts before 8 am and starts the day
+      # everyone else goes after them
     # drivers and admins have access to the routes
     # customers can pay through stripe
   end

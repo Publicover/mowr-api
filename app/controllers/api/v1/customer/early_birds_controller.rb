@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Api::V1::Customer::EarlyBirdsController < ApplicationController
-  before_action :set_early_bird, except: [:index, :create]
+  before_action :set_early_bird, except: %i[index create]
 
   def index
     @early_birds = policy_scope([:api, :v1, EarlyBird])
     authorize [:api, :v1, @early_birds]
-    
+
     serialized_response(@early_birds, EarlyBird)
   end
 

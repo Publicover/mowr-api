@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Admin::EarlyBirdsController < ApplicationController
-  before_action :set_early_bird, except: [:index, :create]
+  before_action :set_early_bird, except: %i[index create]
 
   def index
     @early_birds = policy_scope([:api, :v1, EarlyBird])

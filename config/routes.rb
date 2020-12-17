@@ -16,11 +16,12 @@ Rails.application.routes.draw do
       end
       namespace :driver do
         resources :plows
-        resources :services, only: [:index, :show]
+        resources :services, only: %i[index show]
         resources :users, except: [:create]
         resources :addresses
+        resources :size_estimates
         resources :service_requests, only: [:show]
-        resources :early_birds, only: [:index, :show]
+        resources :early_birds, only: %i[index show]
       end
       namespace :customer do
         resources :plows

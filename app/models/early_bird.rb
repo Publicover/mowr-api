@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EarlyBird < ApplicationRecord
   belongs_to :address, inverse_of: :early_bird
 

@@ -13,8 +13,6 @@ class Address < ApplicationRecord
   validates :line_1, :city, :state, :zip, presence: true
 
   def compact_address
-    return if line_1.blank? || city.blank? || state.blank? || zip.blank?
-
     components = [line_1, city, state, zip]
     line_2.blank? ? components.compact.join(',') : components.insert(1, line_2).compact.join(',')
   end

@@ -31,7 +31,7 @@ module Api
       end
 
       def permitted_attributes
-        [:address_id, :priority]
+        %i[address_id priority]
       end
     end
   end
