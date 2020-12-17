@@ -40,6 +40,9 @@ module Api
           state
           zip
           user_id
+          estimate_complete
+          estimate_confirmed
+          actual_footage
           name
           latitude
           longitude

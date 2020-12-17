@@ -8,6 +8,7 @@ class Address < ApplicationRecord
 
   has_one :size_estimate, inverse_of: :address, dependent: :destroy
   has_one :service_request, inverse_of: :address, dependent: :destroy
+  has_one :early_bird, inverse_of: :address, dependent: :destroy
 
   validates :line_1, :city, :state, :zip, presence: true
 

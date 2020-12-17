@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_093724) do
+ActiveRecord::Schema.define(version: 2020_12_16_171648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2020_12_16_093724) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "early_birds", force: :cascade do |t|
+    t.integer "priority", default: 1
+    t.bigint "address_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_early_birds_on_address_id"
+  end
+
   create_table "plows", force: :cascade do |t|
     t.string "licence_plate"
     t.string "year"
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_093724) do
     t.integer "service_ids", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["address_id"], name: "index_service_requests_on_address_id"
   end
 
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_093724) do
     t.bigint "address_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["address_id"], name: "index_size_estimates_on_address_id"
   end
 
@@ -84,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_093724) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "early_birds", "addresses"
   add_foreign_key "plows", "users"
   add_foreign_key "service_requests", "addresses"
   add_foreign_key "size_estimates", "addresses"

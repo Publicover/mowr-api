@@ -6,13 +6,13 @@ class User < ApplicationRecord
   phony_normalize :phone, default_country_code: 'US'
 
   has_many :addresses, inverse_of: :user, dependent: :destroy
+  has_many :size_estimates, through: :addresses
+  has_many :service_requests, through: :addresses
+  has_many :early_birds, through: :addresses
 
   has_one :plow, inverse_of: :user, dependent: :destroy
 
   validates :email, :f_name, :l_name, :role, :phone, presence: true
-  # validates_format_of :phone,
-  #                     with: /\(?[0-9]{3}\)?-[0-9]{3}-[0-9]{4}/,
-  #                     message: "Phone numbers must be in xxx-xxx-xxxx format."
 
   enum role: {
     admin: 0,

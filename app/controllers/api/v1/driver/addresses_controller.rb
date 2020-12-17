@@ -23,6 +23,18 @@ class Api::V1::Driver::AddressesController < ApplicationController
 
   def update
     @address.update(address_params)
+    # if params['estimate_confirmed'].present?
+    #   puts "YES!"
+    # else
+    #   puts "NO!"
+    #   puts params
+    # end
+    # if params[:city].present?
+    #   puts 'YES!'
+    # else
+    #   puts params
+    # end
+    @address.size_estimate.confirmed! if address_params[:estimate_confirmed].present?
     serialized_response(@address, Address)
   end
 

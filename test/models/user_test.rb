@@ -51,16 +51,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil user.phone.phony_formatted
   end
 
-  # test 'should validate phone number format' do
-  #   user_count = User.count
-  #   user = User.new(f_name: 'tester', l_name: 'mcgee', role: :customer, email: 'test@test.com',
-  #                   password: 'testinghere', phone: '33445555')
-  #   assert_not user.save
-  #
-  #   assert_match user.errors[:phone][0], 'Phone numbers must be in xxx-xxx-xxxx format.'
-  #   user = User.new(f_name: 'tester', l_name: 'mcgee', role: :customer, email: 'test@test.com',
-  #                   password: 'testinghere', phone: Faker::PhoneNumber.phone_number)
-  #   assert user.save
-  #   assert_equal User.count, user_count + 1
-  # end
+  test 'should retrieve size estimates' do
+    user = users(:three)
+    assert_not_nil user.size_estimates
+  end
+
+  test 'should know service_requests' do
+    user = users(:three)
+    assert_not_nil user.service_requests
+  end
+
 end

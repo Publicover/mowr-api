@@ -3,4 +3,6 @@
 class ServiceRequestSerializer
   include FastJsonapi::ObjectSerializer
   attributes :address_id, :approved, :recurring, :service_ids
+
+  belongs_to :address
 end

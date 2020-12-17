@@ -7,9 +7,10 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
     @service_request = ServiceRequest.last
   end
 
-  test 'should not get index as customer' do
+  test 'should get own records as customer' do
     get api_v1_customer_service_requests_path, headers: @customer_headers
-    assert_match Message.unauthorized, json['message']
+    assert_response :success
+    assert @customer.service_requests.count, json['data'].size
   end
 
   test 'should get record as customer' do

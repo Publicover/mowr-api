@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class ServiceRequestPolicy < ApplicationPolicy
+    class EarlyBirdPolicy < ApplicationPolicy
       class Scope < Scope
         def resolve
           return scope.all if user.admin? || user.driver?
@@ -11,29 +11,27 @@ module Api
       end
 
       def index?
-        return true if user.admin? || user.customer?
-
-        false
-      end
-
-      def show?
         true
       end
 
+      def show?
+        index?
+      end
+
       def create?
-        return true if user.admin? || user.customer?
+        index?
       end
 
       def update?
-        create?
+        index?
       end
 
       def destroy?
-        create?
+        index?
       end
 
       def permitted_attributes
-        [:address_id, :approved, :recurring, service_ids: []]
+        [:address_id, :priority]
       end
     end
   end

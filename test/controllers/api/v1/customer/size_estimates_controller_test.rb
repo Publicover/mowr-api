@@ -7,9 +7,10 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
     @size_estimate = @address.size_estimate
   end
 
-  test 'should not get index as customer' do
-    get api_v1_customer_size_estimates_path, headers: @customer_headers
-    assert_match json['message'], Message.unauthorized
+  test 'should get own records as customer' do
+    get api_v1_customer_service_requests_path, headers: @customer_headers
+    assert_response :success
+    assert_equal @customer.service_requests.count, json['data'].size
   end
 
   test 'should get own size estimate as customer' do
