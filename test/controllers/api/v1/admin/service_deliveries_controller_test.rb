@@ -19,15 +19,13 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
   end
 
   test 'should create service delivery as admin' do
-    address = populate_blank_address
-    service_request = ServiceRequest.create(address_id: address.id, recurring: false)
-    fill_request_service_ids
-    
+    populate_service_request
+
     assert_difference('ServiceDelivery.count') do
       post api_v1_admin_service_deliveries_path,
            params: { service_delivery: {
              total_cost: 300.0,
-             address_id: address.id
+             address_id: @address.id
             }
           }.to_json,
           headers: @admin_headers
@@ -54,17 +52,15 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
   end
 
   test 'creation flips sibling service_request#approved' do
-    address = populate_blank_address
-    service_request = ServiceRequest.create(address_id: address.id, recurring: false)
-    fill_request_service_ids
+    populate_service_request
 
     post api_v1_admin_service_deliveries_path,
          params: { service_delivery: {
            total_cost: 300.0,
-           address_id: address.id
+           address_id: @address.id
           }
         }.to_json,
         headers: @admin_headers
-    assert ServiceDelivery.last.address.service_request.reload.approved
+    assert @service_request.reload.approved
   end
 end

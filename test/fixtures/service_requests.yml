@@ -3,11 +3,9 @@
 one:
   address: one
   approved: false
-  recurring: false
   service_ids: <%= Service.pluck(:id) %>
 
 two:
   address: two
   approved: false
-  recurring: false
   service_ids: <%= Service.pluck(:id) %>

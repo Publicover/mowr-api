@@ -23,7 +23,7 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
     populate_blank_address
     assert_difference('ServiceRequest.count') do
       post api_v1_admin_service_requests_path, params: { service_request: {
-        address_id: @address.id, approved: false, recurring: false,
+        address_id: @address.id, approved: false,
         service_ids: [ServiceRequest.first.id] }
         }.to_json,
         headers: @admin_headers

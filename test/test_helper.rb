@@ -115,6 +115,12 @@ module CreateData
     ids = Service.pluck(:id)
     ServiceRequest.all.each { |record| record.update(service_ids: ids)}
   end
+
+  def populate_service_request
+    @address = populate_blank_address
+    @service_request = ServiceRequest.create(address_id: @address.id)
+    fill_request_service_ids
+  end
 end
 
 class Minitest::Test

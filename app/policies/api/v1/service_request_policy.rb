@@ -33,7 +33,7 @@ module Api
       end
 
       def permitted_attributes
-        [:address_id, :approved, :recurring, service_ids: []]
+        [:address_id, :approved, service_ids: []]
       end
     end
   end
