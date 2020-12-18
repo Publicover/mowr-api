@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class ServicePolicy < ApplicationPolicy
+    class ServiceDeliveryPolicy < ApplicationPolicy
       class Scope < Scope
         def resolve
           scope.all
@@ -10,7 +10,7 @@ module Api
       end
 
       def index?
-        true
+        return true if user.admin?
       end
 
       def show?
@@ -18,21 +18,19 @@ module Api
       end
 
       def create?
-        return true if user.admin?
-
-        false
+        index?
       end
 
       def update?
-        create?
+        index?
       end
 
       def destroy?
-        create?
+        index?
       end
 
       def permitted_attributes
-        %i[name price_per_sq_ft price_per_inch_of_snow price_per_season]
+        [:total_cost, :address_id]
       end
     end
   end

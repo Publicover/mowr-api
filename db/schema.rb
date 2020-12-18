@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_171648) do
+ActiveRecord::Schema.define(version: 2020_12_17_160912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_12_16_171648) do
     t.index ["user_id"], name: "index_plows_on_user_id"
   end
 
+  create_table "service_deliveries", force: :cascade do |t|
+    t.bigint "address_id", null: false
+    t.string "total_cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_service_deliveries_on_address_id"
+  end
+
   create_table "service_requests", force: :cascade do |t|
     t.bigint "address_id", null: false
     t.boolean "approved", default: false
@@ -66,9 +74,11 @@ ActiveRecord::Schema.define(version: 2020_12_16_171648) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.decimal "price_per_quarter_hour", precision: 5, scale: 2
+    t.decimal "price_per_sq_ft", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price_per_inch_of_snow", precision: 5, scale: 2
+    t.decimal "price_per_season", precision: 5, scale: 2
   end
 
   create_table "size_estimates", force: :cascade do |t|
@@ -96,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_171648) do
   add_foreign_key "addresses", "users"
   add_foreign_key "early_birds", "addresses"
   add_foreign_key "plows", "users"
+  add_foreign_key "service_deliveries", "addresses"
   add_foreign_key "service_requests", "addresses"
   add_foreign_key "size_estimates", "addresses"
 end

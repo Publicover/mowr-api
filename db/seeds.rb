@@ -8,9 +8,14 @@
 
 puts "Creating 3 services..."
 
-Service.create!(name: 'Driveway Plow', price_per_quarter_hour: 25.0)
-Service.create!(name: 'De-Icing', price_per_quarter_hour: 5.0)
-Service.create!(name: 'Morning Phone Call', price_per_quarter_hour: 3.0)
+Service.create!(name: 'Driveway Plow', price_per_sq_ft: 0.30, price_per_inch_of_snow: 5,
+                price_per_season: 150.0)
+Service.create!(name: 'De-Icing', price_per_sq_ft: 0.50, price_per_inch_of_snow: 5,
+                price_per_season: 75.0)
+Service.create!(name: 'Morning Phone Call', price_per_sq_ft: 0.01, price_per_inch_of_snow: 5,
+                price_per_season: 10.0)
+Service.create!(name: 'Early Bird List', price_per_sq_ft: 0.10, price_per_inch_of_snow: 5,
+                price_per_season: 1.0)
 
 puts "Creating 2 admins..."
 

@@ -13,13 +13,13 @@ Rails.application.routes.draw do
         resources :size_estimates
         resources :service_requests
         resources :early_birds
+        resources :service_deliveries
       end
       namespace :driver do
         resources :plows
         resources :services, only: %i[index show]
         resources :users, except: [:create]
         resources :addresses
-        resources :size_estimates
         resources :service_requests, only: [:show]
         resources :early_birds, only: %i[index show]
       end

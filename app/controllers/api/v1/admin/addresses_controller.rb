@@ -7,6 +7,7 @@ class Api::V1::Admin::AddressesController < ApplicationController
   def index
     @addresses = policy_scope([:api, :v1, Address])
     authorize [:api, :v1, @addresses]
+
     serialized_response(@addresses, Address)
   end
 

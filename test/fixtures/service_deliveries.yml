@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_cost: 74.99
+  address: one
+
+two:
+  total_cost: 22.0
+  address: two

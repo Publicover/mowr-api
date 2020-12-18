@@ -51,7 +51,7 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     assert_response :success
     assert @address.size_estimate.confirmed?
 
-
+    
     # TODO: when admin confirms service request,
     #       flip an enum in service request to reflect that
     #         enum status: { open: 0, confirmed: 1 }

@@ -9,11 +9,16 @@ class Address < ApplicationRecord
   has_one :size_estimate, inverse_of: :address, dependent: :destroy
   has_one :service_request, inverse_of: :address, dependent: :destroy
   has_one :early_bird, inverse_of: :address, dependent: :destroy
+  has_one :service_delivery, inverse_of: :address, dependent: :destroy
 
   validates :line_1, :city, :state, :zip, presence: true
 
   def compact_address
     components = [line_1, city, state, zip]
     line_2.blank? ? components.compact.join(',') : components.insert(1, line_2).compact.join(',')
+  end
+
+  def service_ids
+    service_request.blank? ? nil : service_request.service_ids
   end
 end
