@@ -93,14 +93,14 @@ module CreateData
                                 state: Faker::Address.state, zip: Faker::Address.zip_code,
                                 user_id: [User.first.id, User.last.id].sample,
                                 latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
-                                name: Faker::Company.name)
+                                name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
       SizeEstimate.create!(square_footage: Faker::Number.between(from: 30.0, to: 100.0).round(2), address_id: address.id)
     end
     Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: [User.first.id, User.last.id].sample,
                     latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
-                    name: Faker::Company.name)
+                    name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
   end
 
   def populate_blank_address
@@ -108,7 +108,7 @@ module CreateData
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: [User.first.id, User.last.id].sample,
                     latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
-                    name: Faker::Company.name)
+                    name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
   end
 
   def fill_request_service_ids
@@ -118,7 +118,8 @@ module CreateData
 
   def populate_service_request
     @address = populate_blank_address
-    @service_request = ServiceRequest.create(address_id: @address.id)
+    @service_request = ServiceRequest.create(address_id: @address.id, status: :pending)
+    @size_estimate = SizeEstimate.create(address_id: @address.id, status: :pending)
     fill_request_service_ids
   end
 end

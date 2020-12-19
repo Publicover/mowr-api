@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_103911) do
+ActiveRecord::Schema.define(version: 2020_12_18_150028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 2020_12_18_103911) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "estimate_complete", default: false
-    t.boolean "estimate_confirmed", default: false
-    t.string "actual_footage", default: "f"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.string "name"
+    t.integer "driveway"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_12_18_103911) do
 
   create_table "service_requests", force: :cascade do |t|
     t.bigint "address_id", null: false
-    t.boolean "approved", default: false
     t.integer "service_ids", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,11 +70,10 @@ ActiveRecord::Schema.define(version: 2020_12_18_103911) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.decimal "price_per_sq_ft", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price_per_inch_of_snow", precision: 5, scale: 2
-    t.decimal "price_per_season", precision: 5, scale: 2
+    t.integer "price_per_driveway", default: [], array: true
   end
 
   create_table "size_estimates", force: :cascade do |t|

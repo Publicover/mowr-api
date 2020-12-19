@@ -8,7 +8,16 @@ class ServiceRequest < ApplicationRecord
   has_one :user, through: :address
 
   enum status: {
-    open: 0,
+    pending: 0,
     confirmed: 1
   }
+
+  def calculate_service_cost_subtotal
+    services = Service.find(service_ids)
+    price_index = Address.driveways[address.driveway]
+    prices = services.each_with_object([]) do |service, memo|
+      memo << service.price_per_driveway[price_index]
+    end
+    prices.sum
+  end
 end

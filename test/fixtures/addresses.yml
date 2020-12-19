@@ -9,6 +9,7 @@ one:
   longitude: -80.797666
   name: Iriquois Lounge
   user: one
+  driveway: medium
 
 two:
   line_1: 1714 W 19th St
@@ -19,3 +20,4 @@ two:
   longitude: -80.807315
   name: Convenient Mart
   user: three
+  driveway: large

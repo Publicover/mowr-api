@@ -51,7 +51,7 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
     assert_response :success
   end
 
-  test 'creation flips sibling service_request#approved' do
+  test 'creation confirms siblings' do
     populate_service_request
 
     post api_v1_admin_service_deliveries_path,
@@ -61,6 +61,7 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
           }
         }.to_json,
         headers: @admin_headers
-    assert @service_request.reload.approved
+    assert @service_request.reload.confirmed?
+    assert @size_estimate.reload.confirmed?
   end
 end

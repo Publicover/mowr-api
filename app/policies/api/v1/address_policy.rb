@@ -40,9 +40,7 @@ module Api
           state
           zip
           user_id
-          estimate_complete
-          estimate_confirmed
-          actual_footage
+          driveway
           name
           latitude
           longitude

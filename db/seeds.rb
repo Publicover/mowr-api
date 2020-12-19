@@ -8,14 +8,12 @@
 
 puts "Creating 3 services..."
 
-Service.create!(name: 'Driveway Plow', price_per_sq_ft: 0.30, price_per_inch_of_snow: 5,
-                price_per_season: 150.0)
-Service.create!(name: 'De-Icing', price_per_sq_ft: 0.50, price_per_inch_of_snow: 5,
-                price_per_season: 75.0)
-Service.create!(name: 'Morning Phone Call', price_per_sq_ft: 0.01, price_per_inch_of_snow: 5,
-                price_per_season: 10.0)
-Service.create!(name: 'Early Bird List', price_per_sq_ft: 0.10, price_per_inch_of_snow: 5,
-                price_per_season: 1.0)
+Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,
+                price_per_driveway: [25, 40, 60])
+Service.create!(name: 'De-Icing', price_per_inch_of_snow: 5,
+                price_per_driveway: [10, 15, 20])
+Service.create!(name: 'Snowblower Rental', price_per_inch_of_snow: 5,
+                price_per_driveway: [25, 35, 45])
 
 puts "Creating 2 admins..."
 
@@ -41,9 +39,10 @@ end
 
 puts "Creating 300 customers with addresses and size estimates..."
 puts "With requests..."
-puts "With a few early bird specials..."
+puts "And a few early bird specials..."
 
 customer_count = 1
+
 300.times do
   user = User.create!(email: "customer_#{customer_count}@mowr.com", f_name: Faker::Name.first_name,
                       l_name: Faker::Name.last_name, password: "password", role: :customer,
@@ -52,13 +51,12 @@ customer_count = 1
   rand(5).times do
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id,
-                              latitude: Faker::Location.latitude, longitude: Faker.Location.longitude,
-                              name: Faker::Company.name)
+                              latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
+                              name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
     SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
-    ServiceRequest.create!(address_id: address.id, approved: [true, false].sample,
-                    recurring: [true, false].sample, service_ids: [Service.first.id, Service.last.id])
+    ServiceRequest.create!(address_id: address.id, service_ids: [Service.first.id, Service.last.id])
 
-    rand(10) == 5 ? EarlyBird.create(address_id: address.id, priority: :active) : return
+    rand(10) == 5 ? EarlyBird.create(address_id: address.id, priority: :active) : next
   end
 
   customer_count += 1

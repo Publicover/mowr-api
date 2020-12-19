@@ -2,10 +2,10 @@
 
 one:
   address: one
-  approved: false
+  status: 0
   service_ids: <%= Service.pluck(:id) %>
 
 two:
   address: two
-  approved: false
+  status: 0
   service_ids: <%= Service.pluck(:id) %>

@@ -1,19 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Weekly Plowing
-  price_per_sq_ft: 1.99
+  name: Driveway Plow
+  price_per_driveway: [25, 40, 60]
   price_per_inch_of_snow: 5.0
-  price_per_season: 200.0
 
 two:
-  name: Emergency Plowing
-  price_per_sq_ft: 2.99
+  name: De-Icing
+  price_per_driveway: [10, 15, 20]
   price_per_inch_of_snow: 5.0
-  price_per_season: 200.0
 
 three:
-  name: De-Icing
-  price_per_sq_ft: 0.99
+  name: Snowblower Rental
+  price_per_driveway: [25, 35, 45]
   price_per_inch_of_snow: 5.0
-  price_per_season: 200.0

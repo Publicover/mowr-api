@@ -8,7 +8,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
                       user_id: [User.first.id, User.last.id].sample,
                       latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
-                      name: Faker::Company.name)
+                      name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
     end
     @address = Address.where.not(user_id: @admin.id).sample
   end

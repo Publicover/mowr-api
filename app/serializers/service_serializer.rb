@@ -2,5 +2,5 @@
 
 class ServiceSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :price_per_sq_ft, :price_per_inch_of_snow, :price_per_season
+  attributes :name, :price_per_driveway, :price_per_inch_of_snow
 end

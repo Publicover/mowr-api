@@ -33,10 +33,10 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
 
   test 'should update as customer' do
     patch api_v1_customer_service_request_path(@service_request), params: { service_request:
-        { approved: true }
+        { status: :confirmed }
       }.to_json, headers: @customer_headers
     assert_response :success
-    assert_equal true, @service_request.reload.approved
+    assert_equal "confirmed", @service_request.reload.status
   end
 
   test 'should destroy as customer' do

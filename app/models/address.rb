@@ -13,6 +13,12 @@ class Address < ApplicationRecord
 
   validates :line_1, :city, :state, :zip, presence: true
 
+  enum driveway: {
+    small: 0,
+    medium: 1,
+    large: 2
+  }
+
   def compact_address
     components = [line_1, city, state, zip]
     line_2.blank? ? components.compact.join(',') : components.insert(1, line_2).compact.join(',')

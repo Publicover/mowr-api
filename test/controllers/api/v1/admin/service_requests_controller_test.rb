@@ -33,10 +33,10 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
 
   test 'should update as admin' do
     patch api_v1_admin_service_request_path(@service_request), params: { service_request:
-        { approved: true }
+        { status: 'confirmed' }
       }.to_json, headers: @admin_headers
     assert_response :success
-    assert_equal true, @service_request.reload.approved
+    assert @service_request.reload.confirmed?
   end
 
   test 'should delete as admin' do

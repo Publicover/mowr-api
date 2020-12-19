@@ -44,7 +44,8 @@ class AddressTest < ActiveSupport::TestCase
     user = users(:three)
     VCR.use_cassette('address unit test geocode validation') do
       Address.create!(line_1: '3300 Lake Rd W', city: 'Ashtabula', state: 'Ohio',
-                      zip: '44004', name: 'KSU', user_id: user.id)
+                      zip: '44004', name: 'KSU', user_id: user.id,
+                      driveway: [:small, :medium, :large].sample)
     end
     assert_not_nil Address.last.latitude
     assert_not_nil Address.last.longitude

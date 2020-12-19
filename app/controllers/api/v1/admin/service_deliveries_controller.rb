@@ -19,8 +19,8 @@ class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
     authorize [:api, :v1, @service_delivery]
 
     if @service_delivery.save
-      @service_delivery.address.service_request.update(approved: true)
-      serialized_response(@service_delivery, ServiceDelivery) if @service_delivery.save
+      @service_delivery.confirm_siblings
+      serialized_response(@service_delivery, ServiceDelivery)
     end
   end
 

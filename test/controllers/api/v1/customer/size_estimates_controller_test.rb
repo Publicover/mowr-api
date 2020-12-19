@@ -23,14 +23,14 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
     address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: @customer.id, latitude: Faker::Address.latitude,
-                    longitude: Faker::Address.longitude, name: Faker::Company.name)
+                    longitude: Faker::Address.longitude, name: Faker::Company.name,
+                    driveway: [:small, :medium, :large].sample)
     post api_v1_customer_size_estimates_path, params: {
       size_estimate: { square_footage: 74.75, address_id: address.id }
       }.to_json,
       headers: @customer_headers
     assert_response :success
     assert 74.75, address.size_estimate.reload.square_footage
-    assert address.reload.estimate_complete
   end
 
   test 'should update own size estimate as customer' do
