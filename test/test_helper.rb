@@ -125,7 +125,6 @@ module CreateData
 end
 
 class Minitest::Test
-  # include AroundEachTest
   include LoginHelpers
   include CreateData
 end

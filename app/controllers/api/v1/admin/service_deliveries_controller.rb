@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
-  before_action :set_service_delivery, except: [:index, :create]
+  before_action :set_service_delivery, except: %i[index create]
 
   def index
     @service_deliveries = policy_scope([:api, :v1, ServiceDelivery])
@@ -17,11 +19,11 @@ class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
     #       confirm_params.require(:service_delivery).require(:confirm) or something
     @service_delivery = ServiceDelivery.new(service_delivery_params)
     authorize [:api, :v1, @service_delivery]
+    return unless @service_delivery.save
 
-    if @service_delivery.save
-      @service_delivery.confirm_siblings
-      serialized_response(@service_delivery, ServiceDelivery)
-    end
+    @service_delivery.confirm_siblings
+    @service_delivery.update(total_cost: @service_delivery.calculate_total_cost)
+    serialized_response(@service_delivery, ServiceDelivery)
   end
 
   def update

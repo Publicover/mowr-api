@@ -18,7 +18,7 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
     assert_equal @service_delivery.id, json['data']['id'].to_i
   end
 
-  test 'should create service delivery as admin' do
+  test 'should create service delivery with class methods' do
     populate_service_request
 
     assert_difference('ServiceDelivery.count') do
@@ -31,6 +31,12 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
           headers: @admin_headers
     end
     assert_response :success
+
+    service_delivery = ServiceDelivery.last
+
+    assert_not_nil service_delivery.total_cost
+    assert @service_request.reload.confirmed?
+    assert @size_estimate.reload.confirmed?
   end
 
   test 'should update any service delivery as admin' do
@@ -49,19 +55,5 @@ class Api::V1::Admin::ServiceDeliveriesControllerTest < ActionDispatch::Integrat
       delete api_v1_admin_service_delivery_path(@service_delivery), headers: @admin_headers
     end
     assert_response :success
-  end
-
-  test 'creation confirms siblings' do
-    populate_service_request
-
-    post api_v1_admin_service_deliveries_path,
-         params: { service_delivery: {
-           total_cost: 300.0,
-           address_id: @address.id
-          }
-        }.to_json,
-        headers: @admin_headers
-    assert @service_request.reload.confirmed?
-    assert @size_estimate.reload.confirmed?
   end
 end
