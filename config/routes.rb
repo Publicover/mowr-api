@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :service_requests
         resources :early_birds
         resources :service_deliveries
+        resources :snow_accumulations
       end
       namespace :driver do
         resources :plows
