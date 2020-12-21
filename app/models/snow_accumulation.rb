@@ -1,0 +1,2 @@
+class SnowAccumulation < ApplicationRecord
+end

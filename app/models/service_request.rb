@@ -17,6 +17,7 @@ class ServiceRequest < ApplicationRecord
     price_index = Address.driveways[address.driveway]
     prices = services.each_with_object([]) do |service, memo|
       memo << service.price_per_driveway[price_index]
+      # memo << (service.address * SnowAccumulation.last.inches)
     end
     prices.sum
   end

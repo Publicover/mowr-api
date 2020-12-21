@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Creating Home Base..."
 
+HomeBase.create!(name: 'Plowr HQ', line_1: '2828 W 13th St', city: 'Ashtabula',
+                 state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
+                 
 puts "Creating 3 services..."
 
 Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,

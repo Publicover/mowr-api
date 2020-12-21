@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=2828%20W%2013th%20St,Ashtabula,Ohio,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 20 Dec 2020 16:34:40 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3MzA3MiwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDY4ODkyNywiYm91bmRpbmdib3giOlsiNDEuODg3NjI5MTQ5NzM2IiwiNDEuODg3NzI5MTQ5NzM2IiwiLTgwLjgyNDcyNDQwMTEzMSIsIi04MC44MjQ2MjQ0MDExMzEiXSwibGF0IjoiNDEuODg3Njc5MTQ5NzM1ODMiLCJsb24iOiItODAuODI0Njc0NDAxMTMwNzEiLCJkaXNwbGF5X25hbWUiOiIyODI4LCBXZXN0IDEzdGggU3RyZWV0LCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJob3VzZSIsImltcG9ydGFuY2UiOjAuNzQwOTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiIyODI4Iiwicm9hZCI6Ildlc3QgMTN0aCBTdHJlZXQiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Sun, 20 Dec 2020 16:34:51 GMT
+recorded_with: VCR 6.0.0

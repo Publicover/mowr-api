@@ -37,6 +37,8 @@ gem 'phony_rails'
 gem 'pundit'
 gem 'rubocop', '~> 0.62'
 gem 'rubocop-rails'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 # group :test do
 #   gem 'database_cleaner'

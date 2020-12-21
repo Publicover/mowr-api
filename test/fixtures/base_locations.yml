@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Plowr HQ
+  line_1: 2828 W 13th St
+  line_2: Second Floor
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.885948
+  longitude: -80.824458

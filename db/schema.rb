@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_150028) do
+ActiveRecord::Schema.define(version: 2020_12_20_160101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 2020_12_18_150028) do
     t.string "name"
     t.integer "driveway"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "base_locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "line_1"
+    t.string "line_2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
   end
 
   create_table "early_birds", force: :cascade do |t|
@@ -83,6 +96,12 @@ ActiveRecord::Schema.define(version: 2020_12_18_150028) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
     t.index ["address_id"], name: "index_size_estimates_on_address_id"
+  end
+
+  create_table "snow_accumulations", force: :cascade do |t|
+    t.integer "inches"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

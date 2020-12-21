@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.weatherbit.io/v2.0/current?country=US&key=6a4dfbb6c3924ce0840963c18682fc8b&postal_code=44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.11.2.2
+      Date:
+      - Sun, 20 Dec 2020 12:04:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Keep-Alive:
+      - timeout=5
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '980'
+      X-Ratelimit-Reset:
+      - '1608508799'
+      X-Proxy-Cache:
+      - HIT
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+      X-Cache-Key:
+      - api.weatherbit.io/v2.0/current?&postal_code=44004&country=US&key=6a4dfbb6c3924ce0840963c18682fc8b
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"rh":91,"pod":"n","lon":-80.7947,"pres":990.9,"timezone":"America\/New_York","ob_time":"2020-12-20
+        11:39","country_code":"US","clouds":0,"ts":1608464340,"solar_rad":0,"state_code":"OH","city_name":"Ashtabula","wind_spd":1,"wind_cdir_full":"southeast","wind_cdir":"SE","slp":1014.7,"vis":5,"h_angle":-90,"sunset":"21:55","dni":0,"dewpt":0.9,"snow":0,"uv":0,"precip":0,"wind_dir":140,"sunrise":"12:46","ghi":0,"dhi":0,"aqi":20,"lat":41.8679,"weather":{"icon":"c04n","code":804,"description":"Overcast
+        clouds"},"datetime":"2020-12-20:11","temp":2.2,"station":"C7309","elev_angle":-19.05,"app_temp":1.7}],"count":1}
+
+'
+  recorded_at: Sun, 20 Dec 2020 12:04:18 GMT
+recorded_with: VCR 6.0.0
