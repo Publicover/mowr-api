@@ -2,16 +2,33 @@ require 'test_helper'
 
 class ServiceDeliveryTest < ActiveSupport::TestCase
   setup do
-    populate_service_request
-    @service_delivery = ServiceDelivery.create!(address_id: @address.id, total_cost: 0)
+    @snow_accumulation = snow_accumulations(:one)
+    @address = populate_blank_address
+    @size_estimate = SizeEstimate.create!(address_id: @address.id, status: :pending)
+    @service_request = ServiceRequest.create!(address_id: @address.id, status: :pending, service_ids: Service.pluck(:id))
   end
 
   test 'should know sibling service_request' do
-    refute @service_delivery.service_request.blank?
+    service_delivery = ServiceDelivery.create!(address_id: @address.id)
+    refute service_delivery.service_request.blank?
   end
 
   test 'should know sibling size_estimate' do
-    refute @service_delivery.size_estimate.blank?
+    service_delivery = ServiceDelivery.create!(address_id: @address.id)
+    refute service_delivery.size_estimate.blank?
+  end
+
+  test 'should calculate total cost before save' do
+    service_delivery = ServiceDelivery.create!(address_id: @address.id)
+    subtotal = service_delivery.service_request.service_subtotal
+    services = Service.find(service_delivery.service_request.service_ids)
+    prices = services.each_with_object([]) do |service, memo|
+      memo << (service.price_per_inch_of_snow * SnowAccumulation.last.inches)
+    end
+    subtotal += prices.sum
+    subtotal *= ServiceDelivery::STATE_TAX
+
+    assert_equal subtotal, service_delivery.reload.total_cost
   end
 
 end

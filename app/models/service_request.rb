@@ -2,6 +2,7 @@
 
 class ServiceRequest < ApplicationRecord
   validates :address, presence: true
+  before_save :calculate_service_cost_subtotal
 
   belongs_to :address, inverse_of: :service_request
 
@@ -17,8 +18,7 @@ class ServiceRequest < ApplicationRecord
     price_index = Address.driveways[address.driveway]
     prices = services.each_with_object([]) do |service, memo|
       memo << service.price_per_driveway[price_index]
-      # memo << (service.address * SnowAccumulation.last.inches)
     end
-    prices.sum
+    self.assign_attributes(service_subtotal: prices.sum)
   end
 end

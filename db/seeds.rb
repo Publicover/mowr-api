@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Creating Home Base..."
 
-HomeBase.create!(name: 'Plowr HQ', line_1: '2828 W 13th St', city: 'Ashtabula',
+BaseLocation.create!(name: 'Plowr HQ', line_1: '2828 W 13th St', city: 'Ashtabula',
                  state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
-                 
+
 puts "Creating 3 services..."
 
 Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,
@@ -65,5 +65,11 @@ customer_count = 1
 
   customer_count += 1
 end
+
+puts "Creating service deliveries..."
+
+# Address.each do |address|
+#   ServiceDelivery.create(cost: address.service)
+# end
 
 puts "Seeds complete."

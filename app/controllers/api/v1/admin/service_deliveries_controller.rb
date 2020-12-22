@@ -15,8 +15,6 @@ class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
   end
 
   def create
-    # TODO: calculate total price automatically here so admin only has to click
-    #       confirm_params.require(:service_delivery).require(:confirm) or something
     @service_delivery = ServiceDelivery.new(service_delivery_params)
     authorize [:api, :v1, @service_delivery]
     return unless @service_delivery.save

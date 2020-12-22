@@ -48,37 +48,37 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
     # customer receives an email
     assert_enqueued_emails 1
 
-    # calculate square footage x rate x rate for depth of snow
-    #   A good rule of thumb for any removal project over six inches is to add $30
-    #   per additional half-foot of snow. So, removal of six inches might start at
-    #   $85, while removal of 18 inches would cost $145. Many contractors require a
-    #   deposit, usually around $50 at the beginning of the season.
-
     # admin confirms size and services
-    # login_as_driver
-    # patch api_v1_driver_address_path(@address), params: confirm_params, headers: @driver_headers
-    # assert_response :success
-    # assert @address.size_estimate.confirmed?
-    # assert @address.service_request.confirmed?
+    login_as_admin
 
+    # we can fudge the address since the flow includes showing the admin the address
+    # and service request before creating this service_delivery
+    assert_difference('ServiceDelivery.count') do
+      post api_v1_admin_service_deliveries_path,
+           params: service_delivery_params,
+           headers: @admin_headers
+    end
+    assert_response :success
 
-    # TODO: when admin confirms service request,
-    #       flip an enum in service request to reflect that
-    #         enum status: { pending: 0, confirmed: 1 }
-
-
-    # admin confirms service and price
-    # login_as_admin
-    # post api_v1_admin_confirmed_services_path, params:
-
-    # deliveries are populated by admin
-      # ApprovedService?
+    # deliveries are populated by backend: see below
     # delvieries are run through OSRM
       # early bird service starts before 8 am and starts the day
       # everyone else goes after them
     # drivers and admins have access to the routes
     # customers can pay through stripe
   end
+
+
+
+  # BACKEND:
+  #   check the snow forecast at midnight
+  #   if it is supposed to snow, generate new table
+  #     create all service deliveries, leaving total cost nil
+  #     run the snow forcast again at 5AM, checking accumulation
+  #       if no accumulation, wipe all from day
+  #       if some accumulation, calculate all service delivery total_cost
+
+
 
   # HERE BE DATA!
 
@@ -124,5 +124,9 @@ class FullAdminDriverCustomerFlow < ActionDispatch::IntegrationTest
       service_ids: Service.pluck(:id)
       }
     }.to_json
+  end
+
+  def service_delivery_params
+    { service_delivery: { address_id: ServiceRequest.last.address.id } }.to_json
   end
 end

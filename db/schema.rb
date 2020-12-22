@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_160101) do
+ActiveRecord::Schema.define(version: 2020_12_22_122031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2020_12_20_160101) do
     t.decimal "longitude", precision: 10, scale: 6
   end
 
+  create_table "daily_routes", force: :cascade do |t|
+    t.integer "deliveries_in_order", array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "early_birds", force: :cascade do |t|
     t.integer "priority", default: 1
     t.bigint "address_id", null: false
@@ -66,9 +72,9 @@ ActiveRecord::Schema.define(version: 2020_12_20_160101) do
 
   create_table "service_deliveries", force: :cascade do |t|
     t.bigint "address_id", null: false
-    t.string "total_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "total_cost", precision: 5, scale: 2
     t.index ["address_id"], name: "index_service_deliveries_on_address_id"
   end
 
@@ -78,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_160101) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
+    t.decimal "service_subtotal", precision: 5, scale: 2
     t.index ["address_id"], name: "index_service_requests_on_address_id"
   end
 

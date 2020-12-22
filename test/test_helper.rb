@@ -122,6 +122,50 @@ module CreateData
     @size_estimate = SizeEstimate.create(address_id: @address.id, status: :pending)
     fill_request_service_ids
   end
+
+  def populate_addresses_with_early_birds
+    @user = users(:three)
+
+    VCR.use_cassette('test helper early birds big list', allow_playback: true) do
+      hil_mak = Address.create!(line_1: '449 Lake Ave', city: 'Ashtabula',
+                                state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: @user.id)
+                # lat: 41.89705, long: -80.80487
+      EarlyBrid.create!(priority: :active, address_id: hil_mak.id)
+      cloven = Address.create!(line_1: '1308 Bridge St', city: 'Ashtabula',
+                               state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: @user.id)
+                # lat: 41.898124, long: -80.802088
+      EarlyBrid.create!(priority: :active, address_id: cloven.id)
+      morrell = Address.create!(line_1: '1040 E 6th St', city: 'Ashtabula',
+                                state: 'OH', zip: '44004', name: 'Morrell Music', user_id: @user.id)
+                # lat: 41.900144, long: -80.787492
+      EarlyBrid.create!(priority: :active, address_id: morrell.id)
+      dollar = Address.create!(line_1: '1708 W Prospect Rd', city: 'Ashtabula',
+                               state: 'OH', zip: '44004', name: 'Dollar General', user_id: @user.id)
+      EarlyBrid.create!(priority: :active, address_id: dollar.id)
+      lake_shore = Address.create!(line_1: '2234 Lake Ave', city: 'Ashtabula',
+                                   state: 'OH', zip: '44004', name: 'Lake Shore Lanes', user_id: @user.id)
+      EarlyBrid.create!(priority: :active, address_id: lake_shore.id)
+      capos = Address.create!(line_1: '1205 Lake Ave', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: "Capo's Pizza", user_id: @user.id)
+      EarlyBrid.create!(priority: :active, address_id: capos.id)
+      main_moon = Address.create!(line_1: '1030 Lake Ave', city: 'Ashtabula',
+                                  state: 'OH', zip: '44004', name: 'Main Moon', user_id: @user.id)
+      EarlyBrid.create!(priority: :active, address_id: main_moon.id)
+
+      Address.create!(line_1: '729 Lake Ave', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Lakeway Restaurant', user_id: @user.id)
+      Address.create!(line_1: '1166 Lake Ave', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Hospice', user_id: @user.id)
+      Address.create!(line_1: '621 Goodwill Dr', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Goodwill', user_id: @user.id)
+      Address.create!(line_1: '1 Ferry Dr', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Harbor Yak', user_id: @user.id)
+      Address.create!(line_1: '1257 Harmon Rd', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: "Crow's Nest", user_id: @user.id)
+      Address.create!(line_1: '1819 E Prospect Rd', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'CVS', user_id: @user.id)
+    end
+  end
 end
 
 class Minitest::Test

@@ -19,6 +19,9 @@ class Address < ApplicationRecord
     large: 2
   }
 
+  scope :without_early_birds, -> { includes(:early_bird).where(early_birds: { id: nil }) }
+  scope :with_early_birds, -> { includes(:early_bird).where.not(early_birds: { id: nil }) }
+
   def compact_address
     components = [line_1, city, state, zip]
     line_2.blank? ? components.compact.join(',') : components.insert(1, line_2).compact.join(',')
