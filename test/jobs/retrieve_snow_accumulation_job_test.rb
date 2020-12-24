@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BlockUnconfirmedDeliveryJobTest < ActiveJob::TestCase
+class RetrieveSnowAccumulationJobTest < ActiveJob::TestCase
   include ActiveJob::TestHelper
 
   setup do

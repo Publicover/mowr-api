@@ -8,6 +8,7 @@ class ServiceDelivery < ApplicationRecord
 
   has_one :size_estimate, through: :address
   has_one :service_request, through: :address
+  has_one :early_bird, through: :address
 
   # confirm size estimate of parent address
 

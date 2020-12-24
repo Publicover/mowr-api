@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://router.project-osrm.org/trip/v1/driving/-80.824458,41.885948;-80.797666,41.900375;-80.807315,41.882113;-80.80487,41.89705;-80.802088,41.898124;-80.787492,41.900144;-80.805392,41.858915;-80.799026,41.88268;-80.804862,41.887921;-80.805206,41.890077?source=first
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Dec 2020 12:18:38 GMT
+      Server:
+      - Apache/2.4.38 (Debian)
+      Content-Length:
+      - '3367'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Content-Type
+      Content-Disposition:
+      - inline; filename="response.json"
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"Ok","waypoints":[{"waypoint_index":0,"trips_index":0,"hint":"rxyRibEckYkMAAAAhAAAAE4AAAA3AAAAbQ8HQaQntkJHtllC8VUWQgwAAACEAAAATgAAADcAAACXSAAA8Lwu-_kgfwJ2ty77_CB_AgEADwD_PPAQ","distance":116.387499,"location":[-80.823056,41.885945],"name":"Eleanor
+        Drive"},{"waypoint_index":3,"trips_index":0,"hint":"hyKRiYoikYkAAAAACAAAAFIAAABMAAAAAAAAAKRnTEE0U8FCZR-LQgAAAAAIAAAAUgAAAEwAAACXSAAAHiAv-1dZfwIeIC_7V1l_AgMADw7_PPAQ","distance":0,"location":[-80.797666,41.900375],"name":"Bridge
+        Street"},{"waypoint_index":7,"trips_index":0,"hint":"ARuRiRvX8IAAAAAAVQAAAGcAAAAcAAAAAAAAAJdovULLTuVCCe_5QQAAAABVAAAAZwAAABwAAACXSAAAbfou-wESfwJt-i77ARJ_AgIATw__PPAQ","distance":0,"location":[-80.807315,41.882113],"name":"West
+        19th Street"},{"waypoint_index":1,"trips_index":0,"hint":"gyKRifMikYkoAAAALAAAAAAAAAAAAAAAc9zeQf6e8UEAAAAAAAAAACgAAAAsAAAAAAAAAAAAAACXSAAAYAQv-1RMfwL6Ay_7Wkx_AgAATwD_PPAQ","distance":8.493713,"location":[-80.804768,41.897044],"name":"Lake
+        Avenue"},{"waypoint_index":2,"trips_index":0,"hint":"jCKRiZoikYlCAAAAFQAAAAAAAAACAAAAXkFtQtZJkkEAAAAAn87DP0IAAAAVAAAAAAAAAAIAAACXSAAAjQ4v-9ZQfwLYDi_7jFB_AgAAjw7_PPAQ","distance":10.311095,"location":[-80.802163,41.898198],"name":"Bridge
+        Street"},{"waypoint_index":4,"trips_index":0,"hint":"oyORibkjkYkHAAAAgAAAADMAAAAAAAAATXZEQVscQ0PaTZ1CAAAAAAcAAACAAAAAMwAAAAAAAACXSAAAz0cv-8JYfwLcRy_7cFh_AgEAfxD_PPAQ","distance":9.171379,"location":[-80.787505,41.900226],"name":"East
+        6th Street"},{"waypoint_index":5,"trips_index":0,"hint":"eBeRiXwXkYlrAAAAowAAAAAAAAAAAAAAomWzQWrQBkIAAAAAAAAAADUAAABSAAAAAAAAAAAAAACXSAAAAAEv-yC3fgLwAS_7Y7d-AgAAPxX_PPAQ","distance":21.268,"location":[-80.805632,41.858848],"name":""},{"waypoint_index":6,"trips_index":0,"hint":"FdfwgNHW8IAZAAAAKAAAAIIAAADMAAAAt5TlQR0LLUIx7xBDQFFjQxkAAAAoAAAAggAAAMwAAACXSAAAfxov-_wTfwLOGi_7OBR_AgQAbwj_PPAQ","distance":9.349908,"location":[-80.799105,41.88262],"name":"Lake
+        Avenue"},{"waypoint_index":8,"trips_index":0,"hint":"hx-RiS0gkYkOAAAACwAAAAAAAAA-AAAAcPqBQbhBPkEAAAAAHeaIQg4AAAALAAAAAAAAAD4AAACXSAAATQQv-78ofwICBC_7sSh_AgAArxX_PPAQ","distance":6.417364,"location":[-80.804787,41.887935],"name":"Lake
+        Avenue"},{"waypoint_index":9,"trips_index":0,"hint":"0h-RiScgkYkfAAAARQAAABMAAAAiAAAAl5wJQoBSmEJq1KVB5cMUQh8AAABFAAAAEwAAACIAAACXSAAAFwIv-wYxfwKqAi_7HTF_AgEAzxX_PPAQ","distance":12.467724,"location":[-80.805353,41.890054],"name":"Lake
+        Avenue"}],"trips":[{"legs":[{"steps":[],"weight":270.1,"distance":2744,"summary":"","duration":270.1},{"steps":[],"weight":40.2,"distance":298.2,"summary":"","duration":40.2},{"steps":[],"weight":49,"distance":445.2,"summary":"","duration":49},{"steps":[],"weight":60.9,"distance":901.9,"summary":"","duration":60.9},{"steps":[],"weight":443.7,"distance":7923.7,"summary":"","duration":431},{"steps":[],"weight":318.9,"distance":3570.3,"summary":"","duration":306.2},{"steps":[],"weight":71,"distance":788.7,"summary":"","duration":71},{"steps":[],"weight":94.8,"distance":995.3,"summary":"","duration":94.8},{"steps":[],"weight":21.7,"distance":240.3,"summary":"","duration":21.7},{"steps":[],"weight":253,"distance":2517.7,"summary":"","duration":253}],"weight_name":"routability","geometry":"ezs~FbwhlNqDKEcFab@hBIaiBe[aCgFiOsLa[mCkEdFc\\y@_[aAwWbCcF|fAmGvTgKjKyPrZ{~@nNgOjKxmA`n@xwAfl@t`BtAq@uAp@sXqw@}_Cd_@RmE`GoJ_HdOdKbb@{Jk`@sIlJ}LbEeLnBoNLH`iB`b@iBDbFpDJ","weight":1623.3,"distance":20425.3,"duration":1597.9}]}'
+  recorded_at: Thu, 24 Dec 2020 12:19:00 GMT
+recorded_with: VCR 6.0.0

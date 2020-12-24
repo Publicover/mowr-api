@@ -126,31 +126,31 @@ module CreateData
   def populate_addresses_with_early_birds
     @user = users(:three)
 
-    VCR.use_cassette('test helper early birds big list', allow_playback: true) do
+    VCR.use_cassette('test helper early birds big list', allow_playback_repeats: true) do
       hil_mak = Address.create!(line_1: '449 Lake Ave', city: 'Ashtabula',
                                 state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: @user.id)
                 # lat: 41.89705, long: -80.80487
-      EarlyBrid.create!(priority: :active, address_id: hil_mak.id)
+      EarlyBird.create!(priority: :active, address_id: hil_mak.id)
       cloven = Address.create!(line_1: '1308 Bridge St', city: 'Ashtabula',
                                state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: @user.id)
                 # lat: 41.898124, long: -80.802088
-      EarlyBrid.create!(priority: :active, address_id: cloven.id)
+      EarlyBird.create!(priority: :active, address_id: cloven.id)
       morrell = Address.create!(line_1: '1040 E 6th St', city: 'Ashtabula',
                                 state: 'OH', zip: '44004', name: 'Morrell Music', user_id: @user.id)
                 # lat: 41.900144, long: -80.787492
-      EarlyBrid.create!(priority: :active, address_id: morrell.id)
+      EarlyBird.create!(priority: :active, address_id: morrell.id)
       dollar = Address.create!(line_1: '1708 W Prospect Rd', city: 'Ashtabula',
                                state: 'OH', zip: '44004', name: 'Dollar General', user_id: @user.id)
-      EarlyBrid.create!(priority: :active, address_id: dollar.id)
+      EarlyBird.create!(priority: :active, address_id: dollar.id)
       lake_shore = Address.create!(line_1: '2234 Lake Ave', city: 'Ashtabula',
                                    state: 'OH', zip: '44004', name: 'Lake Shore Lanes', user_id: @user.id)
-      EarlyBrid.create!(priority: :active, address_id: lake_shore.id)
+      EarlyBird.create!(priority: :active, address_id: lake_shore.id)
       capos = Address.create!(line_1: '1205 Lake Ave', city: 'Ashtabula',
                               state: 'OH', zip: '44004', name: "Capo's Pizza", user_id: @user.id)
-      EarlyBrid.create!(priority: :active, address_id: capos.id)
+      EarlyBird.create!(priority: :active, address_id: capos.id)
       main_moon = Address.create!(line_1: '1030 Lake Ave', city: 'Ashtabula',
                                   state: 'OH', zip: '44004', name: 'Main Moon', user_id: @user.id)
-      EarlyBrid.create!(priority: :active, address_id: main_moon.id)
+      EarlyBird.create!(priority: :active, address_id: main_moon.id)
 
       Address.create!(line_1: '729 Lake Ave', city: 'Ashtabula',
                               state: 'OH', zip: '44004', name: 'Lakeway Restaurant', user_id: @user.id)

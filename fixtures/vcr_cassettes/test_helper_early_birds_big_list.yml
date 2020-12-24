@@ -1,0 +1,509 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=449%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:40:57 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3NzMxMiwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDcwNTc4MiwiYm91bmRpbmdib3giOlsiNDEuODk3MDAwMzg3NzU1IiwiNDEuODk3MTAwMzg3NzU1IiwiLTgwLjgwNDkxOTg1NzE0MyIsIi04MC44MDQ4MTk4NTcxNDMiXSwibGF0IjoiNDEuODk3MDUwMzg3NzU1MTEiLCJsb24iOiItODAuODA0ODY5ODU3MTQyODUiLCJkaXNwbGF5X25hbWUiOiI0NDksIExha2UgQXZlbnVlLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJob3VzZSIsImltcG9ydGFuY2UiOjAuNjMwOTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiI0NDkiLCJyb2FkIjoiTGFrZSBBdmVudWUiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Wed, 23 Dec 2020 07:41:16 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1308%20Bridge%20St,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:40:58 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3Njc3NywibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjE4OTYxODkzLCJib3VuZGluZ2JveCI6WyI0MS44OTgwNzM5NTkxODQiLCI0MS44OTgxNzM5NTkxODQiLCItODAuODAyMTM3ODE2MzI3IiwiLTgwLjgwMjAzNzgxNjMyNyJdLCJsYXQiOiI0MS44OTgxMjM5NTkxODM2NyIsImxvbiI6Ii04MC44MDIwODc4MTYzMjY1MyIsImRpc3BsYXlfbmFtZSI6IjEzMDgsIEJyaWRnZSBTdHJlZXQsIEFzaHRhYnVsYSwgQXNodGFidWxhIENvdW50eSwgT2hpbywgNDQwMDQsIFVuaXRlZCBTdGF0ZXMiLCJjbGFzcyI6InBsYWNlIiwidHlwZSI6ImhvdXNlIiwiaW1wb3J0YW5jZSI6MC42MzA5OTk5OTk5OTk5OTk5LCJhZGRyZXNzIjp7ImhvdXNlX251bWJlciI6IjEzMDgiLCJyb2FkIjoiQnJpZGdlIFN0cmVldCIsImNpdHkiOiJBc2h0YWJ1bGEiLCJjb3VudHkiOiJBc2h0YWJ1bGEgQ291bnR5Iiwic3RhdGUiOiJPaGlvIiwicG9zdGNvZGUiOiI0NDAwNCIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwiY291bnRyeV9jb2RlIjoidXMifX1d
+  recorded_at: Wed, 23 Dec 2020 07:41:17 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1040%20E%206th%20St,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:40:58 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3OTM0OSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjE4OTYxOTAwLCJib3VuZGluZ2JveCI6WyI0MS45MDAwOTQzMzg5MjciLCI0MS45MDAxOTQzMzg5MjciLCItODAuNzg3NTQyNDU0NTI3IiwiLTgwLjc4NzQ0MjQ1NDUyNyJdLCJsYXQiOiI0MS45MDAxNDQzMzg5MjY5ODUiLCJsb24iOiItODAuNzg3NDkyNDU0NTI3MjgiLCJkaXNwbGF5X25hbWUiOiIxMDQwLCBFYXN0IDZ0aCBTdHJlZXQsIEFzaHRhYnVsYSwgQXNodGFidWxhIENvdW50eSwgT2hpbywgNDQwMDQsIFVuaXRlZCBTdGF0ZXMiLCJjbGFzcyI6InBsYWNlIiwidHlwZSI6ImhvdXNlIiwiaW1wb3J0YW5jZSI6MC43MzEsImFkZHJlc3MiOnsiaG91c2VfbnVtYmVyIjoiMTA0MCIsInJvYWQiOiJFYXN0IDZ0aCBTdHJlZXQiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Wed, 23 Dec 2020 07:41:17 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1708%20W%20Prospect%20Rd,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:40:59 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjg0OTg0NDE4LCJsaWNlbmNlIjoiRGF0YSDCqSBPcGVuU3RyZWV0TWFwIGNvbnRyaWJ1dG9ycywgT0RiTCAxLjAuIGh0dHBzOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6Im5vZGUiLCJvc21faWQiOjgxMzgzODMwMzksImJvdW5kaW5nYm94IjpbIjQxLjg1ODg2NTEiLCI0MS44NTg5NjUxIiwiLTgwLjgwNTQ0MTgiLCItODAuODA1MzQxOCJdLCJsYXQiOiI0MS44NTg5MTUxIiwibG9uIjoiLTgwLjgwNTM5MTgiLCJkaXNwbGF5X25hbWUiOiJEb2xsYXIgR2VuZXJhbCwgMTcwOCwgV2VzdCBQcm9zcGVjdCBSb2FkLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJzaG9wIiwidHlwZSI6InZhcmlldHlfc3RvcmUiLCJpbXBvcnRhbmNlIjowLjYzMDk5OTk5OTk5OTk5OTksImFkZHJlc3MiOnsic2hvcCI6IkRvbGxhciBHZW5lcmFsIiwiaG91c2VfbnVtYmVyIjoiMTcwOCIsInJvYWQiOiJXZXN0IFByb3NwZWN0IFJvYWQiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19LHsicGxhY2VfaWQiOjI1ODczNDk2NSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDE3MjA5MSwiYm91bmRpbmdib3giOlsiNDEuODU4NzMzOCIsIjQxLjg1OTE0MjMiLCItODAuODA1NjA3NSIsIi04MC44MDUxOTE2Il0sImxhdCI6IjQxLjg1ODkzODA1IiwibG9uIjoiLTgwLjgwNTM5ODYzNzgxMzg4IiwiZGlzcGxheV9uYW1lIjoiMTcwOCwgV2VzdCBQcm9zcGVjdCBSb2FkLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJidWlsZGluZyIsInR5cGUiOiJ5ZXMiLCJpbXBvcnRhbmNlIjowLjYzMDk5OTk5OTk5OTk5OTksImFkZHJlc3MiOnsiaG91c2VfbnVtYmVyIjoiMTcwOCIsInJvYWQiOiJXZXN0IFByb3NwZWN0IFJvYWQiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Wed, 23 Dec 2020 07:41:18 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=2234%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:00 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3MDMwMCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzE5NzcyMywiYm91bmRpbmdib3giOlsiNDEuODgyNjMwMDU0NTExIiwiNDEuODgyNzMwMDU0NTExIiwiLTgwLjc5OTA3NjExMDExMyIsIi04MC43OTg5NzYxMTAxMTMiXSwibGF0IjoiNDEuODgyNjgwMDU0NTExNDQiLCJsb24iOiItODAuNzk5MDI2MTEwMTEyNjQiLCJkaXNwbGF5X25hbWUiOiIyMjM0LCBMYWtlIEF2ZW51ZSwgQXNodGFidWxhLCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDAwNCwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoicGxhY2UiLCJ0eXBlIjoiaG91c2UiLCJpbXBvcnRhbmNlIjowLjYzMDk5OTk5OTk5OTk5OTksImFkZHJlc3MiOnsiaG91c2VfbnVtYmVyIjoiMjIzNCIsInJvYWQiOiJMYWtlIEF2ZW51ZSIsImNpdHkiOiJBc2h0YWJ1bGEiLCJjb3VudHkiOiJBc2h0YWJ1bGEgQ291bnR5Iiwic3RhdGUiOiJPaGlvIiwicG9zdGNvZGUiOiI0NDAwNCIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwiY291bnRyeV9jb2RlIjoidXMifX1d
+  recorded_at: Wed, 23 Dec 2020 07:41:19 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1205%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:01 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk4MDc3NiwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzE5NzcyNiwiYm91bmRpbmdib3giOlsiNDEuODg3ODcwNTcxNDI5IiwiNDEuODg3OTcwNTcxNDI5IiwiLTgwLjgwNDkxMTY5Mzg3OCIsIi04MC44MDQ4MTE2OTM4NzgiXSwibGF0IjoiNDEuODg3OTIwNTcxNDI4NTY2IiwibG9uIjoiLTgwLjgwNDg2MTY5Mzg3NzU2IiwiZGlzcGxheV9uYW1lIjoiMTIwNSwgTGFrZSBBdmVudWUsIEFzaHRhYnVsYSwgQXNodGFidWxhIENvdW50eSwgT2hpbywgNDQwMDQsIFVuaXRlZCBTdGF0ZXMiLCJjbGFzcyI6InBsYWNlIiwidHlwZSI6ImhvdXNlIiwiaW1wb3J0YW5jZSI6MC42MzA5OTk5OTk5OTk5OTk5LCJhZGRyZXNzIjp7ImhvdXNlX251bWJlciI6IjEyMDUiLCJyb2FkIjoiTGFrZSBBdmVudWUiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Wed, 23 Dec 2020 07:41:20 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1030%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:01 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3MTk0OCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzE5NzcyNiwiYm91bmRpbmdib3giOlsiNDEuODkwMDI2NzQ5MjIxIiwiNDEuODkwMTI2NzQ5MjIxIiwiLTgwLjgwNTI1NTY3MDkxNiIsIi04MC44MDUxNTU2NzA5MTYiXSwibGF0IjoiNDEuODkwMDc2NzQ5MjIwOSIsImxvbiI6Ii04MC44MDUyMDU2NzA5MTU4MSIsImRpc3BsYXlfbmFtZSI6IjEwMzAsIExha2UgQXZlbnVlLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJob3VzZSIsImltcG9ydGFuY2UiOjAuNjMwOTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiIxMDMwIiwicm9hZCI6Ikxha2UgQXZlbnVlIiwiY2l0eSI6IkFzaHRhYnVsYSIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDA0IiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fV0=
+  recorded_at: Wed, 23 Dec 2020 07:41:20 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=729%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:02 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI1ODI0MDg1MCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzA4Mzk5MywiYm91bmRpbmdib3giOlsiNDEuODkyOTA4MiIsIjQxLjg5MzkyIiwiLTgwLjgwNTM1NzciLCItODAuODA1MjAzIl0sImxhdCI6IjQxLjg5MzE4MDciLCJsb24iOiItODAuODA1MzE2IiwiZGlzcGxheV9uYW1lIjoiTGFrZSBBdmVudWUsIEFzaHRhYnVsYSwgQXNodGFidWxhIENvdW50eSwgT2hpbywgNDQwMDQsIFVuaXRlZCBTdGF0ZXMiLCJjbGFzcyI6ImhpZ2h3YXkiLCJ0eXBlIjoic2Vjb25kYXJ5IiwiaW1wb3J0YW5jZSI6MC42MTk5OTk5OTk5OTk5OTk5LCJhZGRyZXNzIjp7InJvYWQiOiJMYWtlIEF2ZW51ZSIsImNpdHkiOiJBc2h0YWJ1bGEiLCJjb3VudHkiOiJBc2h0YWJ1bGEgQ291bnR5Iiwic3RhdGUiOiJPaGlvIiwicG9zdGNvZGUiOiI0NDAwNCIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwiY291bnRyeV9jb2RlIjoidXMifX0seyJwbGFjZV9pZCI6MjU1MzY4MDY5LCJsaWNlbmNlIjoiRGF0YSDCqSBPcGVuU3RyZWV0TWFwIGNvbnRyaWJ1dG9ycywgT0RiTCAxLjAuIGh0dHBzOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6IndheSIsIm9zbV9pZCI6ODczMTk3NzIwLCJib3VuZGluZ2JveCI6WyI0MS44NzA0MTk3IiwiNDEuODcxNTY1MSIsIi04MC43ODM2MDkiLCItODAuNzgwNDEyMSJdLCJsYXQiOiI0MS44NzA3NzM2IiwibG9uIjoiLTgwLjc4MTk2NjgiLCJkaXNwbGF5X25hbWUiOiJMYWtlIEF2ZW51ZSwgQXNodGFidWxhLCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDAwNCwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoiaGlnaHdheSIsInR5cGUiOiJ0ZXJ0aWFyeSIsImltcG9ydGFuY2UiOjAuNjE5OTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJyb2FkIjoiTGFrZSBBdmVudWUiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19LHsicGxhY2VfaWQiOjI1Nzc2MTcyMCwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDcwNTc4MiwiYm91bmRpbmdib3giOlsiNDEuODk2Nzk0IiwiNDEuODk5NjQyIiwiLTgwLjgwNDc5NSIsIi04MC44MDQ0MTcxIl0sImxhdCI6IjQxLjg5ODE5NzYiLCJsb24iOiItODAuODA0NjE2NyIsImRpc3BsYXlfbmFtZSI6Ikxha2UgQXZlbnVlLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJoaWdod2F5IiwidHlwZSI6InJlc2lkZW50aWFsIiwiaW1wb3J0YW5jZSI6MC42MTk5OTk5OTk5OTk5OTk5LCJhZGRyZXNzIjp7InJvYWQiOiJMYWtlIEF2ZW51ZSIsImNpdHkiOiJBc2h0YWJ1bGEiLCJjb3VudHkiOiJBc2h0YWJ1bGEgQ291bnR5Iiwic3RhdGUiOiJPaGlvIiwicG9zdGNvZGUiOiI0NDAwNCIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwiY291bnRyeV9jb2RlIjoidXMifX1d
+  recorded_at: Wed, 23 Dec 2020 07:41:21 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1166%20Lake%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:02 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3MTIyNSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzE5NzcyNiwiYm91bmRpbmdib3giOlsiNDEuODg5MTcxNDYiLCI0MS44ODkyNzE0NiIsIi04MC44MDUwMzMxNiIsIi04MC44MDQ5MzMxNiJdLCJsYXQiOiI0MS44ODkyMjE0NiIsImxvbiI6Ii04MC44MDQ5ODMxNiIsImRpc3BsYXlfbmFtZSI6IjExNjYsIExha2UgQXZlbnVlLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJob3VzZSIsImltcG9ydGFuY2UiOjAuNjMwOTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiIxMTY2Iiwicm9hZCI6Ikxha2UgQXZlbnVlIiwiY2l0eSI6IkFzaHRhYnVsYSIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDA0IiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fV0=
+  recorded_at: Wed, 23 Dec 2020 07:41:21 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=621%20Goodwill%20Dr,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:03 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI1NDUxMDQ3NSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDI5NTY5MCwiYm91bmRpbmdib3giOlsiNDEuODk4NjkxOSIsIjQxLjg5OTk3MSIsIi04MC43OTg0OTMiLCItODAuNzk2NzYyNCJdLCJsYXQiOiI0MS44OTk0Mjg2IiwibG9uIjoiLTgwLjc5Nzg0MTUiLCJkaXNwbGF5X25hbWUiOiJHb29kd2lsbCBEcml2ZSwgQXNodGFidWxhLCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDAwNCwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoiaGlnaHdheSIsInR5cGUiOiJyZXNpZGVudGlhbCIsImltcG9ydGFuY2UiOjAuNjE5OTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJyb2FkIjoiR29vZHdpbGwgRHJpdmUiLCJjaXR5IjoiQXNodGFidWxhIiwiY291bnR5IjoiQXNodGFidWxhIENvdW50eSIsInN0YXRlIjoiT2hpbyIsInBvc3Rjb2RlIjoiNDQwMDQiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn19XQ==
+  recorded_at: Wed, 23 Dec 2020 07:41:22 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1%20Ferry%20Dr,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:04 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: UTF-8
+      string: "[]"
+  recorded_at: Wed, 23 Dec 2020 07:41:23 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1257%20Harmon%20Rd,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:04 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3MjM3NSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3NDgxNTc0NCwiYm91bmRpbmdib3giOlsiNDEuOTAwMDExMjgiLCI0MS45MDAxMTEyOCIsIi04MC43ODM3OTQ0NCIsIi04MC43ODM2OTQ0NCJdLCJsYXQiOiI0MS45MDAwNjEyNzk5OTk5OTYiLCJsb24iOiItODAuNzgzNzQ0NDM5OTk5OTkiLCJkaXNwbGF5X25hbWUiOiIxMjU3LCBIYXJtb24gUm9hZCwgQXNodGFidWxhLCBBc2h0YWJ1bGEgQ291bnR5LCBPaGlvLCA0NDAwNCwgVW5pdGVkIFN0YXRlcyIsImNsYXNzIjoicGxhY2UiLCJ0eXBlIjoiaG91c2UiLCJpbXBvcnRhbmNlIjowLjUzMSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiIxMjU3Iiwicm9hZCI6Ikhhcm1vbiBSb2FkIiwiY2l0eSI6IkFzaHRhYnVsYSIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDA0IiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fV0=
+  recorded_at: Wed, 23 Dec 2020 07:41:23 GMT
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=1819%20E%20Prospect%20Rd,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 23 Dec 2020 07:41:05 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjkyODg4MTgzLCJsaWNlbmNlIjoiRGF0YSDCqSBPcGVuU3RyZWV0TWFwIGNvbnRyaWJ1dG9ycywgT0RiTCAxLjAuIGh0dHBzOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6IndheSIsIm9zbV9pZCI6MTg5NjM4MjQsImJvdW5kaW5nYm94IjpbIjQxLjg3MTk5NTkiLCI0MS44NzM3MzQyIiwiLTgwLjc3OTQ1MjIiLCItODAuNzc2NjUwOCJdLCJsYXQiOiI0MS44NzMxMDIxIiwibG9uIjoiLTgwLjc3NzY1MjIiLCJkaXNwbGF5X25hbWUiOiJFYXN0IFByb3NwZWN0IFJvYWQsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJoaWdod2F5IiwidHlwZSI6InByaW1hcnkiLCJpbXBvcnRhbmNlIjowLjYxLCJhZGRyZXNzIjp7InJvYWQiOiJFYXN0IFByb3NwZWN0IFJvYWQiLCJjb3VudHkiOiJBc2h0YWJ1bGEgQ291bnR5Iiwic3RhdGUiOiJPaGlvIiwicG9zdGNvZGUiOiI0NDAwNCIsImNvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwiY291bnRyeV9jb2RlIjoidXMifX1d
+  recorded_at: Wed, 23 Dec 2020 07:41:24 GMT
+recorded_with: VCR 6.0.0

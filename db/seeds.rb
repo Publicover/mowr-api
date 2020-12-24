@@ -10,6 +10,12 @@ puts "Creating Home Base..."
 BaseLocation.create!(name: 'Plowr HQ', line_1: '2828 W 13th St', city: 'Ashtabula',
                  state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
 
+puts "Populating SnowAccumulation table..."
+
+10.times do
+  SnowAccumulation.create!(inches: Faker::Number.within(range: 1..24))
+end
+
 puts "Creating 3 services..."
 
 Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,
@@ -57,8 +63,9 @@ customer_count = 1
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id,
                               latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
                               name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
-    SizeEstimate.create!(square_footage: Faker::Number.between(from: 20.0, to: 100.0).round(2), address_id: address.id)
+    SizeEstimate.create!(address_id: address.id)
     ServiceRequest.create!(address_id: address.id, service_ids: [Service.first.id, Service.last.id])
+    ServiceDelivery.create!(address_id: address.id)
 
     rand(10) == 5 ? EarlyBird.create(address_id: address.id, priority: :active) : next
   end
