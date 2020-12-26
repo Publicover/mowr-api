@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.2
       Date:
-      - Sun, 20 Dec 2020 12:04:08 GMT
+      - Sat, 26 Dec 2020 15:51:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '1000'
       X-Ratelimit-Remaining:
-      - '979'
+      - '982'
       X-Ratelimit-Reset:
-      - '1608508799'
+      - '1609027199'
       X-Proxy-Cache:
       - HIT
       Access-Control-Allow-Origin:
@@ -48,10 +48,10 @@ http_interactions:
       - api.weatherbit.io/v2.0/current?&postal_code=44004&country=US&key=6a4dfbb6c3924ce0840963c18682fc8b
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"rh":91,"pod":"n","lon":-80.7947,"pres":990.9,"timezone":"America\/New_York","ob_time":"2020-12-20
-        11:39","country_code":"US","clouds":0,"ts":1608464340,"solar_rad":0,"state_code":"OH","city_name":"Ashtabula","wind_spd":1,"wind_cdir_full":"southeast","wind_cdir":"SE","slp":1014.7,"vis":5,"h_angle":-90,"sunset":"21:55","dni":0,"dewpt":0.9,"snow":0,"uv":0,"precip":0,"wind_dir":140,"sunrise":"12:46","ghi":0,"dhi":0,"aqi":20,"lat":41.8679,"weather":{"icon":"c04n","code":804,"description":"Overcast
-        clouds"},"datetime":"2020-12-20:11","temp":2.2,"station":"C7309","elev_angle":-19.05,"app_temp":1.7}],"count":1}
+      string: '{"data":[{"rh":88,"pod":"d","lon":-80.7947,"pres":989,"timezone":"America\/New_York","ob_time":"2020-12-26
+        15:29","country_code":"US","clouds":0,"ts":1608996540,"solar_rad":254.7,"state_code":"OH","city_name":"Ashtabula","wind_spd":0.45,"wind_cdir_full":"south-southwest","wind_cdir":"SSW","slp":1013.7,"vis":5,"h_angle":-36,"sunset":"21:58","dni":650.45,"dewpt":-8.8,"snow":0,"uv":3.16375,"precip":0,"wind_dir":211,"sunrise":"12:49","ghi":254.68,"dhi":73,"aqi":24,"lat":41.8679,"weather":{"icon":"c02d","code":802,"description":"Scattered
+        clouds"},"datetime":"2020-12-26:15","temp":-7.2,"station":"C7309","elev_angle":16.9,"app_temp":-6.8}],"count":1}
 
 '
-  recorded_at: Sun, 20 Dec 2020 12:04:18 GMT
+  recorded_at: Sat, 26 Dec 2020 15:51:51 GMT
 recorded_with: VCR 6.0.0

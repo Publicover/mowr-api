@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.string "name"
     t.integer "driveway"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "line_1"
-    t.string "line_2"
-    t.string "city"
-    t.string "state"
+    t.integer "longitude"
+    t.integer "latitude"
     t.string "zip"
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
+    t.string "state"
+    t.string "city"
+    t.string "line_2"
+    t.string "line_1"
   end
 
   create_table "daily_routes", force: :cascade do |t|
@@ -106,9 +106,9 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
   end
 
   create_table "snow_accumulations", force: :cascade do |t|
-    t.integer "inches"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "inches"
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
     t.index ["role"], name: "index_users_on_role"
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "early_birds", "addresses"
   add_foreign_key "plows", "users"
   add_foreign_key "service_deliveries", "addresses"

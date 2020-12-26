@@ -7,6 +7,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
 require 'vcr'
+require 'webmock/minitest'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -87,6 +88,15 @@ module LoginHelpers
 end
 
 module CreateData
+  def populate_services
+    Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,
+                    price_per_driveway: [25, 40, 60])
+    Service.create!(name: 'De-Icing', price_per_inch_of_snow: 5,
+                    price_per_driveway: [10, 15, 20])
+    Service.create!(name: 'Snowblower Rental', price_per_inch_of_snow: 5,
+                    price_per_driveway: [25, 35, 45])
+  end
+
   def populate_size_estimates
     5.times do
       address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
@@ -163,6 +173,28 @@ module CreateData
       Address.create!(line_1: '1819 E Prospect Rd', city: 'Ashtabula',
                               state: 'OH', zip: '44004', name: 'CVS', user_id: @user.id)
     end
+  end
+
+  def populate_daily_routes_data
+    populate_services
+
+    hil_mak = Address.create!(line_1: '449 Lake Ave', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: User.last.id,
+                              driveway: [:small, :medium, :large].sample)
+    ServiceRequest.create(address_id: hil_mak.id, service_ids: Service.pluck(:id), status: :confirmed)
+    SizeEstimate.create(address_id: hil_mak.id, square_footage: 300, )
+
+    cloven = Address.create!(line_1: '1308 Bridge St', city: 'Ashtabula',
+                             state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: User.last.id,
+                             driveway: [:small, :medium, :large].sample)
+    ServiceRequest.create(address_id: cloven.id, service_ids: Service.pluck(:id), status: :confirmed)
+    SizeEstimate.create(address_id: cloven.id, square_footage: 300, )
+
+    morrell = Address.create!(line_1: '1040 E 6th St', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: 'Morrell Music', user_id: User.last.id,
+                              driveway: [:small, :medium, :large].sample)
+    ServiceRequest.create(address_id: morrell.id, service_ids: Service.pluck(:id), status: :confirmed)
+    SizeEstimate.create(address_id: morrell.id, square_footage: 300, )
   end
 end
 

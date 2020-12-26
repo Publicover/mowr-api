@@ -1,0 +1,143 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.weatherbit.io/v2.0/current?country=US&key=6a4dfbb6c3924ce0840963c18682fc8b&postal_code=96146
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.11.2.2
+      Date:
+      - Sat, 26 Dec 2020 15:59:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Keep-Alive:
+      - timeout=5
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '975'
+      X-Ratelimit-Reset:
+      - '1609027199'
+      X-Proxy-Cache:
+      - HIT
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+      X-Cache-Key:
+      - api.weatherbit.io/v2.0/current?&postal_code=96146&country=US&key=6a4dfbb6c3924ce0840963c18682fc8b
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"rh":98,"pod":"n","lon":-120.1954,"pres":802.6,"timezone":"America\/Los_Angeles","ob_time":"2020-12-26
+        15:30","country_code":"US","clouds":100,"ts":1608996600,"solar_rad":0,"state_code":"CA","city_name":"Sunnyside-Tahoe
+        City","wind_spd":2.6,"wind_cdir_full":"south-southwest","wind_cdir":"SSW","slp":1018.7,"vis":1.5,"h_angle":-90,"sunset":"00:44","dni":0,"dewpt":-2.8,"snow":20,"uv":0,"precip":2,"wind_dir":200,"sunrise":"15:18","ghi":0,"dhi":0,"aqi":38,"lat":39.1752,"weather":{"icon":"s02n","code":601,"description":"Snow"},"datetime":"2020-12-26:15","temp":-2.4,"station":"CF060","elev_angle":-4.09,"app_temp":-5.9}],"count":1}
+
+'
+  recorded_at: Sat, 26 Dec 2020 16:00:17 GMT
+- request:
+    method: get
+    uri: http://router.project-osrm.org/trip/v1/driving/-80,41;-80.797666,41.900375;-80.807315,41.882113?source=first
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 26 Dec 2020 15:59:50 GMT
+      Server:
+      - Apache/2.4.38 (Debian)
+      Content-Length:
+      - '1309'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Content-Type
+      Content-Disposition:
+      - inline; filename="response.json"
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"Ok","waypoints":[{"waypoint_index":0,"trips_index":0,"hint":"xWuDiRJsg4krAAAAAAAAAOcAAAAAAAAAQyeOQQAAAAD7lb9CAAAAACsAAAAAAAAA5wAAAAAAAAClSAAAcjg7-0-bcQIATDv7QJxxAgcAbwZCsDLM","distance":422.200315,"location":[-80.005006,40.999759],"name":""},{"waypoint_index":1,"trips_index":0,"hint":"AjSLiQU0i4kAAAAACAAAAFIAAABMAAAAAAAAAKRnTEE0U8FCZR-LQgAAAAAIAAAAUgAAAEwAAAClSAAAHiAv-1dZfwIeIC_7V1l_AgMADw5CsDLM","distance":0,"location":[-80.797666,41.900375],"name":"Bridge
+        Street"},{"waypoint_index":2,"trips_index":0,"hint":"dyyLiZ6D8IAAAAAAVQAAAGcAAAAcAAAAAAAAAJdovULLTuVCCe_5QQAAAABVAAAAZwAAABwAAAClSAAAbfou-wESfwJt-i77ARJ_AgIATw9CsDLM","distance":0,"location":[-80.807315,41.882113],"name":"West
+        19th Street"}],"trips":[{"legs":[{"steps":[],"weight":7260.7,"distance":162985.2,"summary":"","duration":7260.7},{"steps":[],"weight":264.5,"distance":2706.3,"summary":"","duration":264.5},{"steps":[],"weight":7430.1,"distance":161255.5,"summary":"","duration":7430.1}],"weight_name":"routability","geometry":"owfyFh~hgNnG~dAqkAyvAqzDjvD{aSf{V}`Fp}Aq`CkeAhzBli]cd@fhD`Ghma@blEf|]sjKz`Foh[yoAm}N~|Acty@}[spMnvIyiJkGq_AnlBw}A~OdAb`BdqBh{@feAu{CaVw}BriJfGjsM_vIfoy@|\\j|N{|AhbYtpAyIg~ZdpIiC_`A{cIsFc{a@xc@quCedBm`\\pmBx_@`}EcpAhl@i~BrsQgkSpzDkvDpkAxvAoG_eA","weight":14955.3,"distance":326947,"duration":14955.3}]}'
+  recorded_at: Sat, 26 Dec 2020 16:00:18 GMT
+- request:
+    method: get
+    uri: http://router.project-osrm.org/trip/v1/driving/-80.807315,41.882113;-80.787492,41.900144;-80.80487,41.89705;-80.802088,41.898124?source=first
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 26 Dec 2020 15:59:50 GMT
+      Server:
+      - Apache/2.4.38 (Debian)
+      Content-Length:
+      - '1514'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Content-Type
+      Content-Disposition:
+      - inline; filename="response.json"
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"Ok","waypoints":[{"waypoint_index":0,"trips_index":0,"hint":"dyyLiZ6D8IAAAAAAVQAAAGcAAAAcAAAAAAAAAJdovULLTuVCCe_5QQAAAABVAAAAZwAAABwAAAClSAAAbfou-wESfwJt-i77ARJ_AgIATw9CsDLM","distance":0,"location":[-80.807315,41.882113],"name":"West
+        19th Street"},{"waypoint_index":1,"trips_index":0,"hint":"HjWLiTQ1i4kHAAAAgAAAADMAAAAAAAAATXZEQVscQ0PaTZ1CAAAAAAcAAACAAAAAMwAAAAAAAAClSAAAz0cv-8JYfwLcRy_7cFh_AgEAfxBCsDLM","distance":9.171379,"location":[-80.787505,41.900226],"name":"East
+        6th Street"},{"waypoint_index":3,"trips_index":0,"hint":"_jOLiW40i4koAAAALAAAAAAAAAAAAAAAc9zeQf6e8UEAAAAAAAAAACgAAAAsAAAAAAAAAAAAAAClSAAAYAQv-1RMfwL6Ay_7Wkx_AgAATwBCsDLM","distance":8.493713,"location":[-80.804768,41.897044],"name":"Lake
+        Avenue"},{"waypoint_index":2,"trips_index":0,"hint":"BzSLiRU0i4lCAAAAFQAAAAAAAAACAAAAXkFtQtZJkkEAAAAAn87DP0IAAAAVAAAAAAAAAAIAAAClSAAAjQ4v-9ZQfwLYDi_7jFB_AgAAjw5CsDLM","distance":10.311095,"location":[-80.802163,41.898198],"name":"Bridge
+        Street"}],"trips":[{"legs":[{"steps":[],"weight":325.6,"distance":3608.2,"summary":"","duration":325.6},{"steps":[],"weight":109.9,"distance":1347.1,"summary":"","duration":109.9},{"steps":[],"weight":36.9,"distance":298.2,"summary":"","duration":36.9},{"steps":[],"weight":184.3,"distance":2018.7,"summary":"","duration":184.3}],"weight_name":"routability","geometry":"ebs~FvtelN{Jk`@gGvHsC|AiK`DyOnC_BL{a@aDgMeYsFwP}CkE@_AbAyB|C}Vy@_[x@~Z}C|VcAxBA~@|CjErFvPlDtHtGjNBb@q@Elc@fD~AMxOoChKaDrC}AfGwHzJj`@","weight":656.7,"distance":7272.2,"duration":656.7}]}'
+  recorded_at: Sat, 26 Dec 2020 16:00:18 GMT
+recorded_with: VCR 6.0.0
