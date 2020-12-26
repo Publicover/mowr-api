@@ -19,6 +19,6 @@ class ServiceRequest < ApplicationRecord
     prices = services.each_with_object([]) do |service, memo|
       memo << service.price_per_driveway[price_index]
     end
-    self.assign_attributes(service_subtotal: prices.sum)
+    assign_attributes(service_subtotal: prices.sum)
   end
 end

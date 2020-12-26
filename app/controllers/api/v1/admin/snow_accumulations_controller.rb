@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Admin::SnowAccumulationsController < ApplicationController
-  before_action :set_snow_accumulation, except: [:index, :create]
+  before_action :set_snow_accumulation, except: %i[index create]
 
   def index
     @snow_accumulations = policy_scope([:api, :v1, SnowAccumulation])

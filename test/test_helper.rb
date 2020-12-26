@@ -129,15 +129,15 @@ module CreateData
     VCR.use_cassette('test helper early birds big list', allow_playback_repeats: true) do
       hil_mak = Address.create!(line_1: '449 Lake Ave', city: 'Ashtabula',
                                 state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: @user.id)
-                # lat: 41.89705, long: -80.80487
+                                # lat: 41.89705, long: -80.80487
       EarlyBird.create!(priority: :active, address_id: hil_mak.id)
       cloven = Address.create!(line_1: '1308 Bridge St', city: 'Ashtabula',
                                state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: @user.id)
-                # lat: 41.898124, long: -80.802088
+                               # lat: 41.898124, long: -80.802088
       EarlyBird.create!(priority: :active, address_id: cloven.id)
       morrell = Address.create!(line_1: '1040 E 6th St', city: 'Ashtabula',
                                 state: 'OH', zip: '44004', name: 'Morrell Music', user_id: @user.id)
-                # lat: 41.900144, long: -80.787492
+                               # lat: 41.900144, long: -80.787492
       EarlyBird.create!(priority: :active, address_id: morrell.id)
       dollar = Address.create!(line_1: '1708 W Prospect Rd', city: 'Ashtabula',
                                state: 'OH', zip: '44004', name: 'Dollar General', user_id: @user.id)
@@ -158,8 +158,6 @@ module CreateData
                               state: 'OH', zip: '44004', name: 'Hospice', user_id: @user.id)
       Address.create!(line_1: '621 Goodwill Dr', city: 'Ashtabula',
                               state: 'OH', zip: '44004', name: 'Goodwill', user_id: @user.id)
-      Address.create!(line_1: '1 Ferry Dr', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: 'Harbor Yak', user_id: @user.id)
       Address.create!(line_1: '1257 Harmon Rd', city: 'Ashtabula',
                               state: 'OH', zip: '44004', name: "Crow's Nest", user_id: @user.id)
       Address.create!(line_1: '1819 E Prospect Rd', city: 'Ashtabula',

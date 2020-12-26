@@ -69,19 +69,30 @@ class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
     response = VCR.use_cassette('daily route test early birds scope', allow_playback_repeats: true) do
       CalculateDailyRoute.new.perform_with_early_birds
     end
-    # awesome_print response
     indices = CalculateDailyRoute.new.called_addresses_indices(response)
     addresses_in_order = CalculateDailyRoute.new.return_addresses_in_order(Address.with_early_birds, response)
-
-    # ERROR: THERE IS ONE LESS ITEM IN THE ARRAY SINCE THE FIRST ADDRESS IS FOR BASE LOCATION
-
-    # assert_equal early_bird_ids.count, addresses_in_order.count
-    puts "--------early_bird_ids #{early_bird_ids}--------"
-    puts "--------early_bird_ids #{early_bird_ids.count}--------"
-    puts "--------indices #{indices}--------"
-    puts "--------indices #{indices.count}--------"
-    puts "--------addresses_in_order #{addresses_in_order}--------"
-    puts "--------addresses_in_order #{addresses_in_order.count}--------"
     assert (early_bird_ids - addresses_in_order).empty?
+    assert (addresses_in_order - early_bird_ids).empty?
+  end
+
+  test 'can retrieve last address used in call' do
+    early_bird_ids = CalculateDailyRoute.new.addresses_in_call(Address.with_early_birds)
+    response = VCR.use_cassette('daily route test early birds scope', allow_playback_repeats: true) do
+      CalculateDailyRoute.new.perform_with_early_birds
+    end
+    addresses_in_order = CalculateDailyRoute.new.return_addresses_in_order(Address.with_early_birds, response)
+    last_address = CalculateDailyRoute.new.retrieve_last_called_address(Address.with_early_birds, response)
+    assert early_bird_ids.include?(last_address.id.to_s)
+    assert addresses_in_order.include?(last_address.id.to_s)
+  end
+
+  test 'calling command returns calls with each scope' do
+    response = VCR.use_cassette('daily route full call') do
+      CalculateDailyRoute.new.call
+    end
+    full_call_ids = response.map { |id| id.to_i }
+    early_bird_ids = Address.with_early_birds.pluck(:id)
+    unscoped_ids = Address.without_early_birds.pluck(:id)
+    assert (full_call_ids - early_bird_ids - unscoped_ids).empty?
   end
 end

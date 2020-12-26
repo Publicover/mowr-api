@@ -22,7 +22,7 @@ class ServiceDelivery < ApplicationRecord
     end
     subtotal += prices.sum
     subtotal *= ServiceDelivery::STATE_TAX
-    self.assign_attributes(total_cost: subtotal)
+    assign_attributes(total_cost: subtotal)
   end
 
   def confirm_siblings

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateRoutes < ApplicationJob
   queue_as :default
 

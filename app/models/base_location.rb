@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseLocation < ApplicationRecord
   geocoded_by :compact_address
   after_validation :geocode, if: ->(obj) { obj.line_1.present? && obj.city.present? && obj.latitude.blank? }
