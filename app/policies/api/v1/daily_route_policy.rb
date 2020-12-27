@@ -31,7 +31,7 @@ module Api
       end
 
       def permitted_attributes
-        [:addresses_in_order]
+        [addresses_in_order: []]
       end
     end
   end
