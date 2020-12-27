@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::Driver::AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_as_driver
     5.times do

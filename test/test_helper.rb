@@ -1,11 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-require 'rails/test_help'
 require 'capybara/rails'
 # require 'database_cleaner'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
+require 'rails/test_help'
 require 'vcr'
 require 'webmock/minitest'
 

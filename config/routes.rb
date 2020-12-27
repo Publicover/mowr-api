@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         resources :early_birds
         resources :service_deliveries
         resources :snow_accumulations
+        resources :daily_routes
       end
       namespace :driver do
         resources :plows
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
         resources :addresses
         resources :service_requests, only: [:show]
         resources :early_birds, only: %i[index show]
+        resources :daily_routes, only: [:show]
       end
       namespace :customer do
         resources :plows
