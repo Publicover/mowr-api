@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_171532) do
+ActiveRecord::Schema.define(version: 2020_12_28_090345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "longitude"
-    t.integer "latitude"
+    t.decimal "longitude", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
     t.string "zip"
     t.string "state"
     t.string "city"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_12_22_171532) do
   end
 
   create_table "size_estimates", force: :cascade do |t|
-    t.decimal "square_footage", precision: 5, scale: 2
+    t.decimal "square_footage", precision: 6, scale: 2
     t.bigint "address_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

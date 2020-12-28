@@ -11,6 +11,7 @@ module Api
 
       def index?
         return true if user.admin?
+
         false
       end
 

@@ -53,7 +53,7 @@ class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
     unscoped_ids = CalculateDailyRoute.new.addresses_in_call(Address.without_early_birds)
     assert_not_nil early_bird_ids
     assert_not_nil unscoped_ids
-    assert_equal Address.count, early_bird_ids.count + unscoped_ids.count
+    assert_equal Address.with_service_requests.count, early_bird_ids.count + unscoped_ids.count
   end
 
   test 'can retrieve array of Address index returned in call' do

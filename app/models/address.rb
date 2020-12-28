@@ -19,8 +19,27 @@ class Address < ApplicationRecord
     large: 2
   }
 
-  scope :without_early_birds, -> { includes(:early_bird).where(early_birds: { id: nil }) }
-  scope :with_early_birds, -> { includes(:early_bird).where.not(early_birds: { id: nil }) }
+  scope :with_service_requests, lambda {
+                                  includes(:service_request)
+                                    .where(service_requests: { status: :confirmed })
+                                    .where.not(service_requests: { id: nil })
+                                }
+
+  scope :with_early_birds, lambda {
+                             includes(:early_bird)
+                               .includes(:service_request)
+                               .where(service_requests: { status: :confirmed })
+                               .where.not(early_birds: { id: nil })
+                               .where.not(service_requests: { id: nil })
+                           }
+
+  scope :without_early_birds, lambda {
+                                includes(:early_bird)
+                                  .includes(:service_request)
+                                  .where(service_requests: { status: :confirmed })
+                                  .where(early_birds: { id: nil })
+                                  .where.not(service_requests: { id: nil })
+                              }
 
   def compact_address
     components = [line_1, city, state, zip]

@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://router.project-osrm.org/trip/v1/driving/-80,41;-80.805316,41.893181;-80.804983,41.889221;-80.797842,41.899429;-80.783744,41.900061;-80.777652,41.873102?source=first
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Dec 2020 08:27:57 GMT
+      Server:
+      - Apache/2.4.38 (Debian)
+      Content-Length:
+      - '2233'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Content-Type
+      Content-Disposition:
+      - inline; filename="response.json"
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"Ok","waypoints":[{"waypoint_index":0,"trips_index":0,"hint":"UBuEiZ0bhIkrAAAAAAAAAOcAAAAAAAAAQyeOQQAAAAD7lb9CAAAAACsAAAAAAAAA5wAAAAAAAACwSAAAcjg7-0-bcQIATDv7QJxxAgcAbwYuFcth","distance":422.200315,"location":[-80.005006,40.999759],"name":""},{"waypoint_index":3,"trips_index":0,"hint":"3InwgOGJ8IAAAAAAGAAAAEIAAAAAAAAAAAAAAHos9EGiOqVCAAAAAAAAAAAYAAAAQgAAAAAAAACwSAAAPAIv-z09fwI8Ai_7PT1_AgEArwsuFcth","distance":0,"location":[-80.805316,41.893181],"name":"Lake
+        Avenue"},{"waypoint_index":2,"trips_index":0,"hint":"ZOKLicHii4klAAAAEQAAAAAAAAAoAAAA_yImQjE9lkEAAAAAmOswQiUAAAARAAAAAAAAACgAAACwSAAA_gIv-7EtfwKJAy_7xS1_AgAAnwouFcth","distance":11.750958,"location":[-80.805122,41.889201],"name":"Lake
+        Avenue"},{"waypoint_index":4,"trips_index":0,"hint":"OeWLiUnli4kAAAAAoQAAAAAAAAAAAAAAAAAAALf430IAAAAAAAAAAAAAAAChAAAAAAAAAAAAAACwSAAAbh8v-6VVfwJuHy_7pVV_AgAATwguFcth","distance":0,"location":[-80.797842,41.899429],"name":"Goodwill
+        Drive"},{"waypoint_index":5,"trips_index":0,"hint":"a-aLiYfmi4ktAAAAFwAAACQAAACcAAAApDn8QUmJdkH1DMhBvobZQi0AAAAXAAAAJAAAAJwAAACwSAAArlYv--dXfwKAVi_7HVh_AgEA3w4uFcth","distance":7.108671,"location":[-80.783698,41.900007],"name":"Harmon
+        Road"},{"waypoint_index":1,"trips_index":0,"hint":"Kt6LiSzei4kAAAAACgAAAGsAAABOAAAAAAAAADIhlUFycEFD1VkNQwAAAAAKAAAAawAAAE4AAACwSAAATG4v-87ufgJMbi_7zu5-AgEALwMuFcth","distance":0,"location":[-80.777652,41.873102],"name":"East
+        Prospect Road"}],"trips":[{"legs":[{"steps":[],"weight":7128.5,"distance":159510.6,"summary":"","duration":7128.5},{"steps":[],"weight":284.9,"distance":3322,"summary":"","duration":284.9},{"steps":[],"weight":41.6,"distance":447.9,"summary":"","duration":41.6},{"steps":[],"weight":120.8,"distance":1119.2,"summary":"","duration":120.8},{"steps":[],"weight":137.9,"distance":1495,"summary":"","duration":137.9},{"steps":[],"weight":7262.1,"distance":160754,"summary":"","duration":7262.1}],"weight_name":"routability","geometry":"owfyFh~hgNnG~dAqkAyvAqzDjvD{aSf{V}`Fp}Aq`CkeAhzBli]cd@fhD`Ghma@blEf|]sjKz`Foh[yoAm}N~|A}my@}\\yvMnwIcpJcGtRfaBscBtjD{Wf@af@wm@sBkwA`zAuXljA{pBxiJnG`qMcsI|iy@p]j|N{|AtaYfqAeIy~ZdpIiC_`A{cIsFc{a@xc@quCedBm`\\pmBx_@`}EcpAhl@i~BrsQgkSpzDkvDpkAxvAoG_eA","weight":14975.8,"distance":326648.7,"duration":14975.8}]}'
+  recorded_at: Mon, 28 Dec 2020 08:28:30 GMT
+- request:
+    method: get
+    uri: http://router.project-osrm.org/trip/v1/driving/-80,41;?source=first
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Mon, 28 Dec 2020 08:27:57 GMT
+      Server:
+      - Apache/2.4.38 (Debian)
+      Content-Length:
+      - '79'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Content-Type
+      Content-Disposition:
+      - inline; filename="response.json"
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"message":"Query string malformed close to position 23","code":"InvalidQuery"}'
+  recorded_at: Mon, 28 Dec 2020 08:28:30 GMT
+recorded_with: VCR 6.0.0

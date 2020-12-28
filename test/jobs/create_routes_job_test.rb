@@ -15,15 +15,15 @@ class CreateRoutesJobTest < ActiveJob::TestCase
 
   test 'can assemble routes and create service deliveries' do
     # Fudging here: gonna show that this job creats a service_delivery for each
-    #   service_request, so I need to delete what I have leftover from seeds
+    #   confirmed service_request, so I need to delete what I have leftover from seeds
     ServiceDelivery.delete_all
-    populate_daily_routes_data
+    populate_addresses_with_early_birds
 
     VCR.use_cassette('create routes job') do
-      assert_difference('ServiceDelivery.count', +5) do
+      assert_difference('ServiceDelivery.count', ServiceRequest.confirmed.count) do
         CreateRoutesJob.new.perform(96146)
       end
     end
-    assert_equal ServiceRequest.count, ServiceDelivery.count
+    assert_equal ServiceRequest.confirmed.count, ServiceDelivery.count
   end
 end

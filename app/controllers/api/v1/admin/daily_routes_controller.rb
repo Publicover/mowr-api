@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Admin::DailyRoutesController < ApplicationController
-  before_action :set_daily_route, except: [:index, :create]
+  before_action :set_daily_route, except: %i[index create]
 
   def index
     @daily_routes = policy_scope([:api, :v1, DailyRoute])

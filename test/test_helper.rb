@@ -134,44 +134,91 @@ module CreateData
   end
 
   def populate_addresses_with_early_birds
+    populate_services
     @user = users(:three)
 
     VCR.use_cassette('test helper early birds big list', allow_playback_repeats: true) do
       hil_mak = Address.create!(line_1: '449 Lake Ave', city: 'Ashtabula',
-                                state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: @user.id)
+                                state: 'OH', zip: '44004', name: 'Hil-Mak Seafood', user_id: @user.id,
+                                driveway: [:small, :medium, :large].sample)
                                 # lat: 41.89705, long: -80.80487
       EarlyBird.create!(priority: :active, address_id: hil_mak.id)
+      ServiceRequest.create!(address_id: hil_mak.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: hil_mak.id, square_footage: rand(500..1500))
+
       cloven = Address.create!(line_1: '1308 Bridge St', city: 'Ashtabula',
-                               state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: @user.id)
+                               state: 'OH', zip: '44004', name: 'Cloven Hoof Brewery', user_id: @user.id,
+                               driveway: [:small, :medium, :large].sample)
                                # lat: 41.898124, long: -80.802088
       EarlyBird.create!(priority: :active, address_id: cloven.id)
+      ServiceRequest.create!(address_id: cloven.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: cloven.id, square_footage: rand(500..1500))
+
       morrell = Address.create!(line_1: '1040 E 6th St', city: 'Ashtabula',
-                                state: 'OH', zip: '44004', name: 'Morrell Music', user_id: @user.id)
+                                state: 'OH', zip: '44004', name: 'Morrell Music', user_id: @user.id,
+                                driveway: [:small, :medium, :large].sample)
                                # lat: 41.900144, long: -80.787492
       EarlyBird.create!(priority: :active, address_id: morrell.id)
-      dollar = Address.create!(line_1: '1708 W Prospect Rd', city: 'Ashtabula',
-                               state: 'OH', zip: '44004', name: 'Dollar General', user_id: @user.id)
-      EarlyBird.create!(priority: :active, address_id: dollar.id)
-      lake_shore = Address.create!(line_1: '2234 Lake Ave', city: 'Ashtabula',
-                                   state: 'OH', zip: '44004', name: 'Lake Shore Lanes', user_id: @user.id)
-      EarlyBird.create!(priority: :active, address_id: lake_shore.id)
-      capos = Address.create!(line_1: '1205 Lake Ave', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: "Capo's Pizza", user_id: @user.id)
-      EarlyBird.create!(priority: :active, address_id: capos.id)
-      main_moon = Address.create!(line_1: '1030 Lake Ave', city: 'Ashtabula',
-                                  state: 'OH', zip: '44004', name: 'Main Moon', user_id: @user.id)
-      EarlyBird.create!(priority: :active, address_id: main_moon.id)
+      ServiceRequest.create!(address_id: morrell.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: morrell.id, square_footage: rand(500..1500))
 
-      Address.create!(line_1: '729 Lake Ave', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: 'Lakeway Restaurant', user_id: @user.id)
-      Address.create!(line_1: '1166 Lake Ave', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: 'Hospice', user_id: @user.id)
-      Address.create!(line_1: '621 Goodwill Dr', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: 'Goodwill', user_id: @user.id)
-      Address.create!(line_1: '1257 Harmon Rd', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: "Crow's Nest", user_id: @user.id)
-      Address.create!(line_1: '1819 E Prospect Rd', city: 'Ashtabula',
-                              state: 'OH', zip: '44004', name: 'CVS', user_id: @user.id)
+      dollar = Address.create!(line_1: '1708 W Prospect Rd', city: 'Ashtabula',
+                               state: 'OH', zip: '44004', name: 'Dollar General', user_id: @user.id,
+                               driveway: [:small, :medium, :large].sample)
+      EarlyBird.create!(priority: :active, address_id: dollar.id)
+      ServiceRequest.create!(address_id: dollar.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: dollar.id, square_footage: rand(500..1500))
+
+      lake_shore = Address.create!(line_1: '2234 Lake Ave', city: 'Ashtabula',
+                                   state: 'OH', zip: '44004', name: 'Lake Shore Lanes', user_id: @user.id,
+                                   driveway: [:small, :medium, :large].sample)
+      EarlyBird.create!(priority: :active, address_id: lake_shore.id)
+      ServiceRequest.create!(address_id: lake_shore.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: lake_shore.id, square_footage: rand(500..1500))
+
+      capos = Address.create!(line_1: '1205 Lake Ave', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: "Capo's Pizza", user_id: @user.id,
+                              driveway: [:small, :medium, :large].sample)
+      EarlyBird.create!(priority: :active, address_id: capos.id)
+      ServiceRequest.create!(address_id: capos.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: capos.id, square_footage: rand(500..1500))
+
+      main_moon = Address.create!(line_1: '1030 Lake Ave', city: 'Ashtabula',
+                                  state: 'OH', zip: '44004', name: 'Main Moon', user_id: @user.id,
+                                  driveway: [:small, :medium, :large].sample)
+      EarlyBird.create!(priority: :active, address_id: main_moon.id)
+      ServiceRequest.create!(address_id: main_moon.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: main_moon.id, square_footage: rand(500..1500))
+
+      lakeway = Address.create!(line_1: '729 Lake Ave', city: 'Ashtabula',
+                                state: 'OH', zip: '44004', name: 'Lakeway Restaurant', user_id: @user.id,
+                                driveway: [:small, :medium, :large].sample)
+      ServiceRequest.create!(address_id: lakeway.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: lakeway.id, square_footage: rand(500..1500))
+
+      hospice = Address.create!(line_1: '1166 Lake Ave', city: 'Ashtabula',
+                                state: 'OH', zip: '44004', name: 'Hospice', user_id: @user.id,
+                                driveway: [:small, :medium, :large].sample)
+      ServiceRequest.create!(address_id: hospice.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: hospice.id, square_footage: rand(500..1500))
+
+      goodwill = Address.create!(line_1: '621 Goodwill Dr', city: 'Ashtabula',
+                                 state: 'OH', zip: '44004', name: 'Goodwill', user_id: @user.id,
+                                 driveway: [:small, :medium, :large].sample)
+      ServiceRequest.create!(address_id: goodwill.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: goodwill.id, square_footage: rand(500..1500))
+
+      crows = Address.create!(line_1: '1257 Harmon Rd', city: 'Ashtabula',
+                              state: 'OH', zip: '44004', name: "Crow's Nest", user_id: @user.id,
+                              driveway: [:small, :medium, :large].sample)
+      ServiceRequest.create!(address_id: crows.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: crows.id, square_footage: rand(500..1500))
+
+      cvs = Address.create!(line_1: '1819 E Prospect Rd', city: 'Ashtabula',
+                            state: 'OH', zip: '44004', name: 'CVS', user_id: @user.id,
+                            driveway: [:small, :medium, :large].sample)
+      ServiceRequest.create!(address_id: cvs.id, service_ids: Service.pluck(:id), status: :confirmed)
+      SizeEstimate.create(address_id: cvs.id, square_footage: rand(500..1500))
     end
   end
 
