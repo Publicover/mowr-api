@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 29 Dec 2020 09:37:41 GMT
+      - Tue, 29 Dec 2020 09:26:18 GMT
       Server:
       - Apache/2.4.38 (Debian)
       Content-Length:
@@ -46,51 +46,5 @@ http_interactions:
         Avenue"},{"waypoint_index":6,"trips_index":0,"hint":"QdN4iefTeIkOAAAACwAAAAAAAAA-AAAAcPqBQbhBPkEAAAAAHeaIQg4AAAALAAAAAAAAAD4AAAC-SAAATQQv-78ofwICBC_7sSh_AgAArxX-b8T_","distance":6.417364,"location":[-80.804787,41.887935],"name":"Lake
         Avenue"},{"waypoint_index":7,"trips_index":0,"hint":"jNN4ieHTeIkfAAAARQAAABMAAAAiAAAAl5wJQoBSmEJq1KVB5cMUQh8AAABFAAAAEwAAACIAAAC-SAAAFwIv-wYxfwKqAi_7HTF_AgEAzxX-b8T_","distance":12.467724,"location":[-80.805353,41.890054],"name":"Lake
         Avenue"}],"trips":[{"legs":[{"steps":[],"weight":270.1,"distance":2744,"summary":"","duration":270.1},{"steps":[],"weight":40.2,"distance":298.2,"summary":"","duration":40.2},{"steps":[],"weight":109.9,"distance":1347.1,"summary":"","duration":109.9},{"steps":[],"weight":444.3,"distance":7926,"summary":"","duration":431.6},{"steps":[],"weight":318.8,"distance":3570.3,"summary":"","duration":306.1},{"steps":[],"weight":73.1,"distance":804.4,"summary":"","duration":73.1},{"steps":[],"weight":21.7,"distance":240.3,"summary":"","duration":21.7},{"steps":[],"weight":253,"distance":2517.7,"summary":"","duration":253}],"weight_name":"routability","geometry":"ezs~FbwhlNqDKEcFab@hBIaiBe[aCgFiO_Qy`@bFw\\y@_[aAwWbCcF|fAmGvTgKjKyPrZ{~@rNgOfKxmArp@~|Ati@n{AtAq@uAp@sXqw@}_Cd_@RmE`GoJ}OtZiOxFeLnBoNLH`iB`b@iBDbFpDJ","weight":1531.1,"distance":19448,"duration":1505.7}]}'
-  recorded_at: Tue, 29 Dec 2020 09:37:44 GMT
-- request:
-    method: get
-    uri: http://router.project-osrm.org/trip/v1/driving/-80.805206,41.890077;-80.805316,41.893181;-80.804983,41.889221;-80.797842,41.899429;-80.783744,41.900061;-80.777652,41.873102?source=first
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 29 Dec 2020 09:37:42 GMT
-      Server:
-      - Apache/2.4.38 (Debian)
-      Content-Length:
-      - '2133'
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Methods:
-      - GET
-      Access-Control-Allow-Headers:
-      - X-Requested-With, Content-Type
-      Content-Disposition:
-      - inline; filename="response.json"
-      Connection:
-      - close
-      Content-Type:
-      - application/json; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: '{"code":"Ok","waypoints":[{"waypoint_index":0,"trips_index":0,"hint":"jNN4ieHTeIkfAAAARQAAABMAAAAiAAAAl5wJQoBSmEJq1KVB5cMUQh8AAABFAAAAEwAAACIAAAC-SAAAFwIv-wYxfwKqAi_7HTF_AgEAzxX-b8T_","distance":12.467724,"location":[-80.805353,41.890054],"name":"Lake
-        Avenue"},{"waypoint_index":1,"trips_index":0,"hint":"Vg_vgFsP74AAAAAAGAAAAEIAAAAAAAAAAAAAAHos9EGiOqVCAAAAAAAAAAAYAAAAQgAAAAAAAAC-SAAAPAIv-z09fwI8Ai_7PT1_AgEArwv-b8T_","distance":0,"location":[-80.805316,41.893181],"name":"Lake
-        Avenue"},{"waypoint_index":5,"trips_index":0,"hint":"i9N4iejTeIklAAAAEQAAAAAAAAAoAAAA_yImQjE9lkEAAAAAmOswQiUAAAARAAAAAAAAACgAAAC-SAAA_gIv-7EtfwKJAy_7xS1_AgAAnwr-b8T_","distance":11.750958,"location":[-80.805122,41.889201],"name":"Lake
-        Avenue"},{"waypoint_index":2,"trips_index":0,"hint":"V9Z4iWfWeIkAAAAAoQAAAAAAAAAAAAAAAAAAALf430IAAAAAAAAAAAAAAAChAAAAAAAAAAAAAAC-SAAAbh8v-6VVfwJuHy_7pVV_AgAATwj-b8T_","distance":0,"location":[-80.797842,41.899429],"name":"Goodwill
-        Drive"},{"waypoint_index":3,"trips_index":0,"hint":"hNd4iaDXeIktAAAAFwAAACQAAACcAAAApDn8QUmJdkH1DMhBvobZQi0AAAAXAAAAJAAAAJwAAAC-SAAArlYv--dXfwKAVi_7HVh_AgEA3w7-b8T_","distance":7.108671,"location":[-80.783698,41.900007],"name":"Harmon
-        Road"},{"waypoint_index":4,"trips_index":0,"hint":"Us94iVXPeIlFAAAAAAAAACYAAABZAAAAlNj6QgAAAADnNYhCNusfQ0UAAAAAAAAAJgAAAFkAAAC-SAAATG4v-87ufgJMbi_7zu5-AgIAHwP-b8T_","distance":0,"location":[-80.777652,41.873102],"name":"East
-        Prospect Road"}],"trips":[{"legs":[{"steps":[],"weight":32.9,"distance":351.1,"summary":"","duration":32.9},{"steps":[],"weight":120.8,"distance":1119.2,"summary":"","duration":120.8},{"steps":[],"weight":137.9,"distance":1495,"summary":"","duration":137.9},{"steps":[],"weight":286.2,"distance":5132.4,"summary":"","duration":286.2},{"steps":[],"weight":284.8,"distance":3322.2,"summary":"","duration":284.8},{"steps":[],"weight":8.7,"distance":96.8,"summary":"","duration":8.7}],"weight_name":"routability","geometry":"yst~FlhelNgFr@iKy@qUgB{Rmf@jBaCkB`C_FoJdFc\\_Buh@nEkA}BwF|BvFoEjAUyKxCuD`fAcGlQeHbGmGzEaJh[g`AtFwI|FoDbJ|iA`F|L~FlL|DhN}LrX{_A|uAaBbDGrD{EhGmHdEcObDiDl@","weight":871.3,"distance":11516.7,"duration":871.3}]}'
-  recorded_at: Tue, 29 Dec 2020 09:37:45 GMT
+  recorded_at: Tue, 29 Dec 2020 09:26:20 GMT
 recorded_with: VCR 6.0.0

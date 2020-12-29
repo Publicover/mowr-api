@@ -86,6 +86,25 @@ class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
     assert addresses_in_order.include?(last_address.id.to_s)
   end
 
+  test 'can do full call without early_birds scope' do
+    EarlyBird.destroy_all
+
+    response = VCR.use_cassette('daily route full call no early birds') do
+      CalculateDailyRoute.new.call
+    end
+    assert ServiceRequest.without_early_birds.count, response['waypoints'].size
+  end
+
+  test 'can do full call when all addresses have early birds' do
+    ServiceRequest.without_early_birds.destroy_all
+    refute ServiceRequest.with_early_birds.count.zero?
+
+    response = VCR.use_cassette('daily route full call all early birds') do
+      CalculateDailyRoute.new.call
+    end
+    assert ServiceRequest.with_early_birds.count, response['waypoints'].size
+  end
+
   test 'calling command returns calls with each scope' do
     response = VCR.use_cassette('daily route full call') do
       CalculateDailyRoute.new.call

@@ -30,7 +30,7 @@ class CalculateDailyRoute
     HTTParty.get("#{base_call_url}/#{starting_point_coords}#{string_of_coords(Address.without_early_birds)}#{SOURCE}")
   end
 
-  def call
+  def perform_full_call
     early_response = perform_with_early_birds
     early_bird_ids = return_addresses_in_order(Address.with_early_birds, early_response)
     last_address = retrieve_last_called_address(Address.with_early_birds, early_response)
@@ -38,6 +38,13 @@ class CalculateDailyRoute
     unscoped_response = perform_without_early_birds(last_address_coords)
     unscoped_ids = return_addresses_in_order(Address.without_early_birds, unscoped_response)
     early_bird_ids + unscoped_ids
+  end
+
+  def call
+    return perform_with_early_birds if ServiceRequest.without_early_birds.empty?
+    return perform_without_early_birds(base_location_coords) if ServiceRequest.with_early_birds.empty?
+
+    perform_full_call
   end
 
   def addresses_in_call(scope)
