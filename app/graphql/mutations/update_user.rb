@@ -13,12 +13,12 @@ module Mutations
       if user.update(user_params)
         { user: user }
       else
-        { errors: user.errors.full_messages}
+        { errors: user.errors.full_messages }
       end
 
-    # rescue ActiveRecord::RecordInvalid => e
-    #   GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-    #     " #{e.record.errors.full_messages.join(', ')}")
+      # rescue ActiveRecord::RecordInvalid => e
+      #   GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
+      #     " #{e.record.errors.full_messages.join(', ')}")
     end
   end
 end

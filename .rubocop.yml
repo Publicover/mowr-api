@@ -16,6 +16,7 @@ AllCops:
     - vendor/assets/**/*
     - vendor/bundle/**/*
     - test/**/**
+    - app/controllers/graphql_controller.rb
 
 Layout:
   Metrics/LineLength:
