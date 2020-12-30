@@ -31,6 +31,7 @@ gem 'awesome_print'
 gem 'bcrypt', '~> 3.1.7'
 gem 'fast_jsonapi'
 gem 'geocoder'
+gem 'graphql', '1.9.18'
 gem 'httparty'
 gem 'jwt'
 gem 'phony_rails'
@@ -57,6 +58,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'graphiql-rails'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

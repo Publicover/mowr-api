@@ -14,7 +14,7 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
-# require "sprockets/railtie"
+require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -36,7 +36,7 @@ module MowrApi
     # Skip views, helpers and assets when generating a new resource.
 
     config.active_job.queue_adapter = :sidekiq
-    
+
     config.api_only = true
 
     # rack-cors

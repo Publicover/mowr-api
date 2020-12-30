@@ -94,6 +94,10 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.18)
     hashdiff (1.0.1)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -259,6 +263,8 @@ DEPENDENCIES
   faker
   fast_jsonapi
   geocoder
+  graphiql-rails
+  graphql (= 1.9.18)
   httparty
   jwt
   listen (~> 3.2)
