@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Queries
   class FetchUser < Queries::BaseQuery
     type Types::UserType, null: false
