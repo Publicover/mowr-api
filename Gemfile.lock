@@ -264,7 +264,7 @@ DEPENDENCIES
   fast_jsonapi
   geocoder
   graphiql-rails
-  graphql (= 1.9.18)
+  graphql
   httparty
   jwt
   listen (~> 3.2)
