@@ -1,14 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
 
-class Mutations::AddUserTest < ActionDispatch::IntegrationTest
-  test 'should create user' do
-    assert_difference('User.count') do
-      post graphql_path, params: { query: users_create }
-    end
-
-    assert_response :success
-  end
-
+module UsersMutation
   def users_create
     <<~GQL
     mutation {
@@ -23,6 +15,20 @@ class Mutations::AddUserTest < ActionDispatch::IntegrationTest
         id
         email
         phone
+      }}
+    }
+    GQL
+  end
+
+  def users_update
+    <<~GQL
+    mutation {
+      updateUser(input: { id:#{@user.id}, params: {
+        fName:"Fred"
+      }}) { user {
+        id
+        email
+        fName
       }}
     }
     GQL

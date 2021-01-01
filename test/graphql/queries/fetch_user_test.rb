@@ -11,18 +11,4 @@ class Queries::FetchUserTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal @user.id, json['data']['fetchUser']['id'].to_i
   end
-
-  def users_show
-    <<~GQL
-      query {
-        fetchUser(id:#{@user.id}) {
-          id
-          email
-          phone
-        }
-      }
-    GQL
-  end
-
-
 end
