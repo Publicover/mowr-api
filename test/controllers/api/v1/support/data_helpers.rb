@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CreateData
+module DataHelpers
   def populate_services
     Service.create!(name: 'Driveway Plow', price_per_inch_of_snow: 5,
                     price_per_driveway: [25, 40, 60])

@@ -9,9 +9,10 @@ require 'vcr'
 
 require_relative '../test/graphql/support/users_mutation'
 require_relative '../test/graphql/support/users_query'
-require_relative '../test/support/call_and_response_helpers'
-require_relative '../test/support/create_data'
-require_relative '../test/support/login_helpers'
+require_relative '../test/graphql/support/auth_mutation'
+require_relative '../test/controllers/api/v1/support/call_and_response_helpers'
+require_relative '../test/controllers/api/v1/support/data_helpers'
+require_relative '../test/controllers/api/v1/support/login_helpers'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -35,7 +36,8 @@ end
 class Minitest::Test
   include LoginHelpers
   include CallAndResponseHelpers
-  include CreateData
+  include DataHelpers
   include UsersQuery
   include UsersMutation
+  include AuthMutation
 end
