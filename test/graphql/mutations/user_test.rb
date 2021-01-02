@@ -5,7 +5,14 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
+  test 'should fail without logging in' do
+    post graphql_path, params: { query: users_create }
+    assert_match json['message'], Message.invalid_token
+  end
+
   test 'should create user' do
+    graphql_as_admin
+
     assert_difference('User.count') do
       post graphql_path, params: { query: users_create }
     end
@@ -14,6 +21,8 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update user' do
+    graphql_as_admin
+    
     post graphql_path, params: { query: users_update }
 
     assert_response :success

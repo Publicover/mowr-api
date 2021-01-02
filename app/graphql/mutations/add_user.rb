@@ -10,6 +10,10 @@ module Mutations
       user_params = Hash params
 
       begin
+        unless context[:session][:token] && context[:current_user]
+          raise(ExceptionHandler::InvalidToken, Message.invalid_token)
+        end
+
         user = User.create!(user_params)
 
         { user: user }
