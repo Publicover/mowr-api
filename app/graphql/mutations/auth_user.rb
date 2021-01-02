@@ -17,6 +17,8 @@ module Mutations
 
         token = AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
 
+        context[:session][:token] = token
+
         { user: user, token: token}
       rescue ActiveRecord::RecordInvalid => e
         GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\

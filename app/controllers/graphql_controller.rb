@@ -4,15 +4,17 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
+  # skip_before_action :graph_authorize_request
   skip_before_action :authorize_request
+  # before_action :authorize_request, except: Mutations::AuthUser
 
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
+      session: session
     }
     result = MowrApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -23,6 +25,12 @@ class GraphqlController < ApplicationController
   end
 
   private
+
+    def current_user
+      return unless session[:token]
+
+      User.find(JsonWebToken.decode(session[:token])[:user_id])
+    end
 
     # Handle form data, JSON body, or a blank value
     def ensure_hash(ambiguous_param)

@@ -1,4 +1,4 @@
-# frozone_string_literal: true
+# frozon_string_literal: true
 
 require 'test_helper'
 

@@ -38,6 +38,9 @@ module MowrApi
     config.active_job.queue_adapter = :sidekiq
 
     config.api_only = true
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_coookie_name', expire_after: 30.days
+
 
     # rack-cors
     config.middleware.insert_before 0, Rack::Cors do
