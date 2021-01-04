@@ -8,16 +8,20 @@ module Mutations
     field :user, Types::UserType, null: false
 
     def resolve(id:, params:)
-      user_params = Hash params
-
-      user = User.find(id)
-
       unless context[:session][:token] && context[:current_user]
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
+      user_params = Hash params
+
+      user = User.find(id)
+
       if user.update(user_params)
-        { user: user }
+        if context[:current_user].admin? || user.id == context[:current_user].id
+          { user: user }
+        else
+          raise GraphQL::ExecutionError, Message.unauthorized
+        end 
       else
         { errors: user.errors.full_messages }
       end

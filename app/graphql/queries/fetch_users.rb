@@ -12,7 +12,7 @@ module Queries
       @users = User.all.order(created_at: :asc)
 
       authorized?
-      
+
       @users
     end
   end

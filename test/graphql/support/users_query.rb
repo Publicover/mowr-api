@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UsersQuery
-  def users_index
+  def fetch_users_helper
     <<~GQL
       query { fetchUsers {
           id
@@ -11,7 +11,7 @@ module UsersQuery
     GQL
   end
 
-  def users_show(user_id)
+  def fetch_user_helper(user_id)
     <<~GQL
       query {
         fetchUser(id:#{user_id}) {

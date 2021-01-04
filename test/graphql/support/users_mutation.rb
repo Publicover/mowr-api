@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UsersMutation
-  def users_create
+  def add_user_helper
     <<~GQL
     mutation {
       addUser(input: { params: {
@@ -20,12 +20,12 @@ module UsersMutation
     GQL
   end
 
-  def users_update
+  def update_user_helper(user_id)
     <<~GQL
     mutation {
-      updateUser(input: { id:#{@user.id}, params: {
+      updateUser(input:{id:#{user_id}, params:{
         fName:"Fred"
-      }}) { user {
+      }}) {user{
         id
         email
         fName
