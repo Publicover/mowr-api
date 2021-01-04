@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthMutation
   def graphql_login(email, password)
     <<~GQL

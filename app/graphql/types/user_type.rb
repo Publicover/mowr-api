@@ -3,7 +3,9 @@
 module Types
   class UserType < Types::BaseObject
     def self.authorized?(object, context)
-      super && (context[:current_user].admin? || context[:current_user].driver? || object.id == context[:current_user].id)
+      super && (context[:current_user].admin? ||
+                context[:current_user].driver? ||
+                object.id == context[:current_user].id)
     end
 
     field :id, ID, null: false
@@ -13,5 +15,6 @@ module Types
     field :password_digest, String, null: false
     field :role, Integer, null: false
     field :phone, String, null: false
+    field :addresses, [Types::AddressType], null: false
   end
 end

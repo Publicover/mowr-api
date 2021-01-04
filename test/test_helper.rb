@@ -7,7 +7,9 @@ require 'pry'
 require 'rails/test_help'
 require 'vcr'
 
+require_relative '../test/graphql/support/addresses_query'
 require_relative '../test/graphql/support/auth_mutation'
+require_relative '../test/graphql/support/everything_query'
 require_relative '../test/graphql/support/graphql_login'
 require_relative '../test/graphql/support/users_mutation'
 require_relative '../test/graphql/support/users_query'
@@ -42,4 +44,6 @@ class Minitest::Test
   include UsersMutation
   include AuthMutation
   include GraphqlLogin
+  include AddressesQuery
+  include EverythingQuery
 end

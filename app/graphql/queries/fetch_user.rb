@@ -13,14 +13,6 @@ module Queries
 
       user = User.find(id)
 
-      if context[:current_user].admin? || context[:current_user].driver?
-        user
-      elsif user.id == context[:current_user].id
-        user
-      else
-        raise GraphQL::ExecutionError, Message.unauthorized
-      end
-
     rescue ActiveRecord::RecordNotFound => _e
       GraphQL::ExecutionError.new('User does not exist.')
     rescue ActiveRecord::RecordInvalid => e
