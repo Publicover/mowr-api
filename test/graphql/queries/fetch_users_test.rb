@@ -6,7 +6,7 @@ class Queries::FetchUsersTest < ActionDispatch::IntegrationTest
     assert_match json['message'], Message.invalid_token
   end
 
-  test 'should retrieve all users' do
+  test 'should retrieve all users as admin' do
     graphql_as_admin
 
     post graphql_path, params: { query: users_index }

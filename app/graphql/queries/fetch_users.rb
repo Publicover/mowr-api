@@ -9,7 +9,11 @@ module Queries
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      User.all.order(created_at: :asc)
+      @users = User.all.order(created_at: :asc)
+
+      authorized?
+      
+      @users
     end
   end
 end

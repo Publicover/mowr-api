@@ -11,10 +11,10 @@ module UsersQuery
     GQL
   end
 
-  def users_show
+  def users_show(user_id)
     <<~GQL
       query {
-        fetchUser(id:#{@user.id}) {
+        fetchUser(id:#{user_id}) {
           id
           email
           phone

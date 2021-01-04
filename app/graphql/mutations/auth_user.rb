@@ -18,6 +18,7 @@ module Mutations
         token = AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
 
         context[:session][:token] = token
+        context[:current_user] = user
 
         { user: user, token: token}
       rescue ActiveRecord::RecordInvalid => e
