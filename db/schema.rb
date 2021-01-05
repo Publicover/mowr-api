@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_090345) do
+ActiveRecord::Schema.define(version: 2021_01_05_075015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "line_1"
-    t.string "line_2"
+    t.string "line1"
+    t.string "line2"
     t.string "city"
     t.string "state"
     t.string "zip"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_12_28_090345) do
     t.string "zip"
     t.string "state"
     t.string "city"
-    t.string "line_2"
-    t.string "line_1"
+    t.string "line2"
+    t.string "line1"
   end
 
   create_table "daily_routes", force: :cascade do |t|

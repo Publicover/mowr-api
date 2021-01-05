@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=4717%20Main%20Ave,Ashtabula,OH,44004
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 05 Jan 2021 08:06:54 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4NDk3NTM4MywibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwczovL29zbS5vcmcvY29weXJpZ2h0Iiwib3NtX3R5cGUiOiJ3YXkiLCJvc21faWQiOjg3MzE0NTA1MiwiYm91bmRpbmdib3giOlsiNDEuODYzNTY2NTY2NDAyIiwiNDEuODYzNjY2NTY2NDAyIiwiLTgwLjc4MzAzMjE3ODUxIiwiLTgwLjc4MjkzMjE3ODUxIl0sImxhdCI6IjQxLjg2MzYxNjU2NjQwMjEzNiIsImxvbiI6Ii04MC43ODI5ODIxNzg1MTAyMSIsImRpc3BsYXlfbmFtZSI6IjQ3MTcsIE1haW4gQXZlbnVlLCBBc2h0YWJ1bGEsIEFzaHRhYnVsYSBDb3VudHksIE9oaW8sIDQ0MDA0LCBVbml0ZWQgU3RhdGVzIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJob3VzZSIsImltcG9ydGFuY2UiOjAuNjMwOTk5OTk5OTk5OTk5OSwiYWRkcmVzcyI6eyJob3VzZV9udW1iZXIiOiI0NzE3Iiwicm9hZCI6Ik1haW4gQXZlbnVlIiwiY2l0eSI6IkFzaHRhYnVsYSIsImNvdW50eSI6IkFzaHRhYnVsYSBDb3VudHkiLCJzdGF0ZSI6Ik9oaW8iLCJwb3N0Y29kZSI6IjQ0MDA0IiwiY291bnRyeSI6IlVuaXRlZCBTdGF0ZXMiLCJjb3VudHJ5X2NvZGUiOiJ1cyJ9fV0=
+  recorded_at: Tue, 05 Jan 2021 08:06:59 GMT
+recorded_with: VCR 6.0.0

@@ -20,7 +20,7 @@ class Api::V1::Customer::SizeEstimatesControllerTest < ActionDispatch::Integrati
   end
 
   test 'should create own size estimate and change parent address as customer' do
-    address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+    address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
                     user_id: @customer.id, latitude: Faker::Address.latitude,
                     longitude: Faker::Address.longitude, name: Faker::Company.name,

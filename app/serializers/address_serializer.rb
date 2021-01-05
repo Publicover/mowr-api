@@ -2,7 +2,7 @@
 
 class AddressSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :line_1, :line_2, :city, :state, :zip, :user_id, :name, :latitude, :longitude, :driveway
+  attributes :line1, :line2, :city, :state, :zip, :user_id, :name, :latitude, :longitude, :driveway
 
   belongs_to :user
   has_one :size_estimate

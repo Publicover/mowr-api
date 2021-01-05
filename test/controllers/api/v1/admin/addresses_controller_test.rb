@@ -4,7 +4,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_as_admin
     5.times do
-      Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+      Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
                       user_id: [User.first.id, User.last.id].sample,
                       latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
@@ -39,7 +39,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
       post api_v1_admin_addresses_path,
            params: {
              address: {
-               line_1: '234 Test Ave',
+               line1: '234 Test Ave',
                city: 'Ashtabula',
                state: 'Ohio',
                zip: '44004',

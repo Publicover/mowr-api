@@ -12,23 +12,25 @@ module Mutations
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      user_params = Hash params
+      user_params = Hash(params)
 
       user = User.find(id)
 
       if user.update(user_params)
         if context[:current_user].admin? || user.id == context[:current_user].id
           { user: user }
+        elsif context[:current_user].admin? || user.id == context[:current_user].id
+          { user: user }
         else
           raise GraphQL::ExecutionError, Message.unauthorized
-        end 
+        end
       else
         { errors: user.errors.full_messages }
       end
 
-      # rescue ActiveRecord::RecordInvalid => e
-      #   GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-      #     " #{e.record.errors.full_messages.join(', ')}")
+      rescue ActiveRecord::RecordInvalid => e
+        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
+          " #{e.record.errors.full_messages.join(', ')}")
     end
   end
 end

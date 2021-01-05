@@ -4,7 +4,7 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
   setup do
     login_as_customer
     5.times do
-      Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+      Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                       state: Faker::Address.state, zip: Faker::Address.zip_code,
                       user_id: @customer.id, latitude: Faker::Address.latitude,
                       longitude: Faker::Address.longitude, name: Faker::Company.name,

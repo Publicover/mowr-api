@@ -34,8 +34,8 @@ module Api
 
       def permitted_attributes
         %i[
-          line_1
-          line_2
+          line1
+          line2
           city
           state
           zip

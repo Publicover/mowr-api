@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Creating Home Base..."
 
-BaseLocation.create!(name: 'Plowr HQ', line_1: '2828 W 13th St', city: 'Ashtabula',
+BaseLocation.create!(name: 'Plowr HQ', line1: '2828 W 13th St', city: 'Ashtabula',
                  state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
 
 puts "Populating SnowAccumulation table..."
@@ -59,7 +59,7 @@ customer_count = 1
                       phone: Faker::PhoneNumber.phone_number)
 
   rand(5).times do
-    address = Address.create!(line_1: Faker::Address.street_address, city: Faker::Address.city,
+    address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id,
                               latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
                               name: Faker::Company.name, driveway: [:small, :medium, :large].sample)

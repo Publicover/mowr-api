@@ -2,7 +2,7 @@
 
 class Address < ApplicationRecord
   geocoded_by :compact_address
-  after_validation :geocode, if: ->(obj) { obj.line_1.present? && obj.city.present? && obj.latitude.blank? }
+  after_validation :geocode, if: ->(obj) { obj.line1.present? && obj.city.present? && obj.latitude.blank? }
 
   belongs_to :user, inverse_of: :addresses
 
@@ -11,7 +11,7 @@ class Address < ApplicationRecord
   has_one :early_bird, inverse_of: :address, dependent: :destroy
   has_one :service_delivery, inverse_of: :address, dependent: :destroy
 
-  validates :line_1, :city, :state, :zip, presence: true
+  validates :line1, :city, :state, :zip, presence: true
 
   enum driveway: {
     small: 0,
@@ -42,8 +42,8 @@ class Address < ApplicationRecord
                               }
 
   def compact_address
-    components = [line_1, city, state, zip]
-    line_2.blank? ? components.compact.join(',') : components.insert(1, line_2).compact.join(',')
+    components = [line1, city, state, zip]
+    line2.blank? ? components.compact.join(',') : components.insert(1, line2).compact.join(',')
   end
 
   def service_ids

@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  line_1: 1128 Bridge St
+  line1: 1128 Bridge St
   city: Ashtabula
   state: Ohio
   zip: 44004
@@ -12,7 +12,7 @@ one:
   driveway: medium
 
 two:
-  line_1: 1714 W 19th St
+  line1: 1714 W 19th St
   city: Ashtabula
   state: Ohio
   zip: 44004

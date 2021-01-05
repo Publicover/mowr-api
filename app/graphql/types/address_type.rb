@@ -8,14 +8,14 @@ module Types
                 object.user_id == context[:current_user].id)
     end
     field :id, ID, null: true
-    field :line_1, String, null: false
-    field :line_2, String, null: true
+    field :line1, String, null: false
+    field :line2, String, null: true
     field :city, String, null: false
     field :state, String, null: false
     field :zip, String, null: false
     field :latitude, Float, null: false
     field :longitude, Float, null: false
-    field :name, String, null: true
+    field :name, String, null: false
     field :driveway, Integer, null: false
     field :user, Types::UserType, null: false
   end

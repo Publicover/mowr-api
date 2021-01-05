@@ -2,8 +2,8 @@
 
 one:
   name: Plowr HQ
-  line_1: 2828 W 13th St
-  line_2: Second Floor
+  line1: 2828 W 13th St
+  line2: Second Floor
   city: Ashtabula
   state: Ohio
   zip: 44004

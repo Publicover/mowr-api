@@ -7,7 +7,7 @@ module Mutations
     field :user, Types::UserType, null: false
 
     def resolve(params:)
-      user_params = Hash params
+      user_params = Hash(params)
 
       begin
         unless context[:session][:token] && context[:current_user]
