@@ -9,5 +9,7 @@ module Types
     field :fetch_users, resolver: Queries::FetchUsers
     field :fetch_address, resolver: Queries::FetchAddress
     field :fetch_addresses, resolver: Queries::FetchAddresses
+    field :fetch_early_bird, resolver: Queries::FetchEarlyBird
+    field :fetch_early_birds, resolver: Queries::FetchEarlyBirds
   end
 end
