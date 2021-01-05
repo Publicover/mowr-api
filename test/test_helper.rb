@@ -7,16 +7,8 @@ require 'pry'
 require 'rails/test_help'
 require 'vcr'
 
-require_relative '../test/graphql/support/addresses_query'
-require_relative '../test/graphql/support/addresses_mutation'
-require_relative '../test/graphql/support/auth_mutation'
-require_relative '../test/graphql/support/everything_query'
-require_relative '../test/graphql/support/graphql_login'
-require_relative '../test/graphql/support/users_mutation'
-require_relative '../test/graphql/support/users_query'
-require_relative '../test/controllers/api/v1/support/call_and_response_helpers'
-require_relative '../test/controllers/api/v1/support/data_helpers'
-require_relative '../test/controllers/api/v1/support/login_helpers'
+require_relative '../test/graphql/support/graphql_requirements'
+require_relative '../test/controllers/api_requirements'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -38,14 +30,6 @@ VCR.configure do |config|
 end
 
 class Minitest::Test
-  include LoginHelpers
-  include CallAndResponseHelpers
-  include DataHelpers
-  include UsersQuery
-  include UsersMutation
-  include AuthMutation
-  include GraphqlLogin
-  include AddressesQuery
-  include AddressesMutation
-  include EverythingQuery
+  include ApiRequirements
+  include GraphqlRequirements
 end
