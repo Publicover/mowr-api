@@ -7,5 +7,7 @@ module Types
     field :update_user, mutation: Mutations::UpdateUser
     field :add_address, mutation: Mutations::AddAddress
     field :update_address, mutation: Mutations::UpdateAddress
+    field :add_early_bird, mutation: Mutations::AddEarlyBird
+    field :update_early_bird, mutation: Mutations::UpdateEarlyBird
   end
 end

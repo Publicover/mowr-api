@@ -9,8 +9,8 @@ module Mutations
 
     def ready?(**args)
       raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized unless
-            context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
+      raise GraphQL::ExecutionError, Message.unauthorized if
+            (context[:current_user].customer? && !context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i))
 
       true
     end
@@ -22,7 +22,7 @@ module Mutations
       if address.update(address_params)
         { address: address }
       else
-        { errors: user.errors.full_messages }
+        { errors: address.errors.full_messages }
       end
     end
   end
