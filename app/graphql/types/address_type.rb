@@ -18,5 +18,6 @@ module Types
     field :name, String, null: false
     field :driveway, Integer, null: false
     field :user, Types::UserType, null: false
+    field :early_bird, Types::EarlyBirdType, null: true
   end
 end

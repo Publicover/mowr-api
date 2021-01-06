@@ -7,13 +7,13 @@ module Mutations
 
     field :early_bird, Types::EarlyBirdType, null: false
 
-    # def ready?(**args)
-    #   raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-    #   raise GraphQL::ExecutionError, Message.unauthorized unless
-    #         context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
-    #
-    #   true
-    # end
+    def ready?(**args)
+      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
+      raise GraphQL::ExecutionError, Message.unauthorized unless
+            context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
+
+      true
+    end
 
     def resolve(id:, params:)
       early_bird_params = Hash(params)

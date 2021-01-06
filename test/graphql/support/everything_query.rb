@@ -21,6 +21,11 @@ module EverythingQuery
             driveway
             latitude
             longitude
+
+            earlyBird {
+              id
+              priority
+            }
           }
         }
       }
