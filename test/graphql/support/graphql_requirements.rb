@@ -4,6 +4,7 @@ require_relative '../support/mutations/addresses_mutation'
 require_relative '../support/mutations/auth_mutation'
 require_relative '../support/mutations/early_birds_mutation'
 require_relative '../support/mutations/graphql_login'
+require_relative '../support/mutations/size_estimates_mutation'
 require_relative '../support/mutations/users_mutation'
 require_relative '../support/queries/addresses_query'
 require_relative '../support/queries/early_birds_query'
@@ -19,6 +20,7 @@ module GraphqlRequirements
     include AuthMutation
     include EverythingQuery
     include GraphqlLogin
+    include SizeEstimatesMutation
     include UsersQuery
     include UsersMutation
     include EarlyBirdsQuery

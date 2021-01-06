@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Mutations
-  class UpdateEarlyBird < Mutations::BaseMutation
+  class UpdateSizeEstimate < Mutations::BaseMutation
     argument :id, ID, required: true
-    argument :params, Types::Input::EarlyBirdInputType, required: true
+    argument :params, Types::Input::SizeEstimateInputType, required: true
 
-    field :early_bird, Types::EarlyBirdType, null: false
+    field :size_estimate, Types::SizeEstimateType, null: false
     field :address, Types::AddressType, null: true
 
     def ready?(**args)
@@ -17,14 +17,14 @@ module Mutations
     end
 
     def resolve(id:, params:)
-      early_bird_params = Hash(params)
-      early_bird = EarlyBird.find(id)
-      address = early_bird.address
+      size_estimate_params = Hash(params)
+      size_estimate = SizeEstimate.find(id)
+      address = size_estimate.address
 
-      if early_bird.update(early_bird_params)
-        {early_bird: early_bird, address: address}
+      if size_estimate.update(size_estimate_params)
+        { size_estimate: size_estimate, address: address }
       else
-        { errors: early_bird.errors.full_messages }
+        { errors: size_estimate.errors.full_messages}
       end
     end
   end

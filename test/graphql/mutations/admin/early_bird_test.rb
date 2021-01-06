@@ -23,13 +23,11 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id) }
 
     assert_response :success
-    assert users(:three).addresses.pluck(:id).
-                         include?(json['data']['updateEarlyBird']['earlyBird']['address']['id'].to_i)
+    assert addresses(:two).early_bird.reload.priority, json['data']['updateEarlyBird']['earlyBird']['priority']
 
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id) }
+    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).early_bird.id) }
 
     assert_response :success
-    assert users(:three).addresses.pluck(:id).
-                         include?(json['data']['updateEarlyBird']['earlyBird']['address']['id'].to_i)
+    assert addresses(:one).early_bird.reload.priority, json['data']['updateEarlyBird']['earlyBird']['priority']
   end
 end
