@@ -13,5 +13,7 @@ module Types
     field :fetch_early_birds, resolver: Queries::FetchEarlyBirds
     field :fetch_size_estimate, resolver: Queries::FetchSizeEstimate
     field :fetch_size_estimates, resolver: Queries::FetchSizeEstimates
+    field :fetch_services, resolver: Queries::FetchServices
+    field :fetch_service, resolver: Queries::FetchService
   end
 end

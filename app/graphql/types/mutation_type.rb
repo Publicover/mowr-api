@@ -11,5 +11,7 @@ module Types
     field :update_early_bird, mutation: Mutations::UpdateEarlyBird
     field :update_size_estimate, mutation: Mutations::UpdateSizeEstimate
     field :add_size_estimate, mutation: Mutations::AddSizeEstimate
+    field :add_service, mutation: Mutations::AddService
+    field :update_service, mutation: Mutations::UpdateService
   end
 end
