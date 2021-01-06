@@ -63,7 +63,7 @@ customer_count = 1
                               state: Faker::Address.state, zip: Faker::Address.zip_code, user_id: user.id,
                               latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
                               name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
-    SizeEstimate.create!(address_id: address.id)
+    SizeEstimate.create!(address_id: address.id, square_footage: rand(50..500))
     ServiceRequest.create!(address_id: address.id, service_ids: [Service.first.id, Service.last.id])
     ServiceDelivery.create!(address_id: address.id)
 

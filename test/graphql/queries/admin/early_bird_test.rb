@@ -7,7 +7,7 @@ class Queries::EarlyBirdTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: fetch_early_birds_helper }
 
     assert_response :success
-    assert_equal Address.count, json['data']['fetchEarlyBirds'].size
+    assert_equal EarlyBird.count, json['data']['fetchEarlyBirds'].size
   end
 
   test 'should get any early bird as admin' do
