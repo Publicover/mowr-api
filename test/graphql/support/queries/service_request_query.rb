@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServiceRequestQuery
-  def fetch_service_requests_helper
+  def index_service_requests_helper
     <<~GQL
       query {
-        fetchServiceRequests {
+        indexServiceRequests {
           id
           status
           serviceSubtotal
@@ -28,10 +28,10 @@ module ServiceRequestQuery
     GQL
   end
 
-  def fetch_service_request_helper(id)
+  def show_service_request_helper(id)
     <<~GQL
       query {
-        fetchServiceRequest(id:#{id}) {
+        showServiceRequest(id:#{id}) {
           id
           status
           serviceSubtotal

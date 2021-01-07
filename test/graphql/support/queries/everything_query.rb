@@ -4,7 +4,7 @@ module EverythingQuery
   def fetch_everything_helper
     <<~GQL
       query {
-        fetchUsers {
+        indexUsers {
           id
           fName
           lName

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchServiceDelivery < Queries::BaseQuery
-    type Types::ServiceDeliveryType, null: false
+  class ShowEarlyBird < Queries::BaseQuery
+    type Types::EarlyBirdType, null: false
     argument :id, ID, required: true
 
     def resolve(id:)
@@ -10,7 +10,7 @@ module Queries
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      ServiceDelivery.find(id)
+      EarlyBird.find(id)
     end
   end
 end

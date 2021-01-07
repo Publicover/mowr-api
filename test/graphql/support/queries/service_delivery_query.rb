@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServiceDeliveryQuery
-  def fetch_service_deliveries_helper
+  def index_service_deliveries_helper
     <<~GQL
       query {
-        fetchServiceDeliveries {
+        indexServiceDeliveries {
           id
           totalCost
           addressId
@@ -26,10 +26,10 @@ module ServiceDeliveryQuery
     GQL
   end
 
-  def fetch_service_delivery_helper(id)
+  def show_service_delivery_helper(id)
     <<~GQL
       query {
-        fetchServiceDelivery(id:#{id}) {
+        showServiceDelivery(id:#{id}) {
           id
           totalCost
           addressId

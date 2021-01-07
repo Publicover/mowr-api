@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchUser < Queries::BaseQuery
-    type Types::UserType, null: false
+  class ShowAddress < Queries::BaseQuery
+    type Types::AddressType, null: false
     argument :id, ID, required: true
 
     def resolve(id:)
@@ -10,9 +10,14 @@ module Queries
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      User.find(id)
+      address = Address.find(id)
+
+      return address if context[:current_user].admin? || context[:current_user].driver?
+      return address if address.user_id == context[:current_user].id
+
+      raise GraphQL::ExecutionError, Message.unauthorized
     rescue ActiveRecord::RecordNotFound => _e
-      GraphQL::ExecutionError.new('User does not exist.')
+      GraphQL::ExecutionError.new('Address does not exist.')
     rescue ActiveRecord::RecordInvalid => e
       GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
         " #{e.record.errors.full_messages.join(', ')}")

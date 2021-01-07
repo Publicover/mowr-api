@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchServices < Queries::BaseQuery
-    type [Types::ServiceType], null: false
+  class ShowServiceRequest < Queries::BaseQuery
+    type Types::ServiceRequestType, null: false
+    argument :id, ID, required: true
 
-    def resolve
+    def resolve(id:)
       unless context[:session][:token] && context[:current_user]
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      Service.all.order(created_at: :asc)
+      ServiceRequest.find(id)
     end
   end
 end

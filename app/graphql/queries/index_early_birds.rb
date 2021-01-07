@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchEarlyBirds < Queries::BaseQuery
+  class IndexEarlyBirds < Queries::BaseQuery
     type [Types::EarlyBirdType], null: false
 
     def resolve

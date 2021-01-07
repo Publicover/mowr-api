@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchSizeEstimate < Queries::BaseQuery
-    type Types::SizeEstimateType, null: false
-    argument :id, ID, required: true
+  class IndexSizeEstimates < Queries::BaseQuery
+    type [Types::SizeEstimateType], null: false
 
-    def resolve(id:)
+    def resolve
       unless context[:session][:token] && context[:current_user]
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
-      
-      SizeEstimate.find(id)
+
+      SizeEstimate.all.order(created_at: :asc)
     end
   end
 end

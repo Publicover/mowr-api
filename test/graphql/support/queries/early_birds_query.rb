@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module EarlyBirdsQuery
-  def fetch_early_birds_helper
+  def index_early_birds_helper
     <<~GQL
       query {
-        fetchEarlyBirds {
+        indexEarlyBirds {
           id
           priority
 
@@ -25,10 +25,10 @@ module EarlyBirdsQuery
     GQL
   end
 
-  def fetch_early_bird_helper(id)
+  def show_early_bird_helper(id)
     <<~GQL
         query {
-          fetchEarlyBird(id:#{id}) {
+          showEarlyBird(id:#{id}) {
             id
             priority
             addressId

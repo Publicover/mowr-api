@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchServiceRequest < Queries::BaseQuery
-    type Types::ServiceRequestType, null: false
+  class ShowService < Queries::BaseQuery
+    type Types::ServiceType, null: false
     argument :id, ID, required: true
 
     def resolve(id:)
@@ -10,7 +10,7 @@ module Queries
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      ServiceRequest.find(id)
+      Service.find(id)
     end
   end
 end

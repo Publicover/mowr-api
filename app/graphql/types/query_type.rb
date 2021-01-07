@@ -5,19 +5,19 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :fetch_user, resolver: Queries::FetchUser
-    field :fetch_users, resolver: Queries::FetchUsers
-    field :fetch_address, resolver: Queries::FetchAddress
-    field :fetch_addresses, resolver: Queries::FetchAddresses
-    field :fetch_early_bird, resolver: Queries::FetchEarlyBird
-    field :fetch_early_birds, resolver: Queries::FetchEarlyBirds
-    field :fetch_size_estimate, resolver: Queries::FetchSizeEstimate
-    field :fetch_size_estimates, resolver: Queries::FetchSizeEstimates
-    field :fetch_services, resolver: Queries::FetchServices
-    field :fetch_service, resolver: Queries::FetchService
-    field :fetch_service_request, resolver: Queries::FetchServiceRequest
-    field :fetch_service_requests, resolver: Queries::FetchServiceRequests
-    field :fetch_service_delivery, resolver: Queries::FetchServiceDelivery
-    field :fetch_service_deliveries, resolver: Queries::FetchServiceDeliveries
+    field :show_user, resolver: Queries::ShowUser
+    field :index_users, resolver: Queries::IndexUsers
+    field :show_address, resolver: Queries::ShowAddress
+    field :index_addresses, resolver: Queries::IndexAddresses
+    field :show_early_bird, resolver: Queries::ShowEarlyBird
+    field :index_early_birds, resolver: Queries::IndexEarlyBirds
+    field :show_size_estimate, resolver: Queries::ShowSizeEstimate
+    field :index_size_estimates, resolver: Queries::IndexSizeEstimates
+    field :index_services, resolver: Queries::IndexServices
+    field :show_service, resolver: Queries::ShowService
+    field :show_service_request, resolver: Queries::ShowServiceRequest
+    field :index_service_requests, resolver: Queries::IndexServiceRequests
+    field :show_service_delivery, resolver: Queries::ShowServiceDelivery
+    field :index_service_deliveries, resolver: Queries::IndexServiceDeliveries
   end
 end

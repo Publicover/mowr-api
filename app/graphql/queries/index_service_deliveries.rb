@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchServiceDeliveries < Queries::BaseQuery
+  class IndexServiceDeliveries < Queries::BaseQuery
     type [Types::ServiceDeliveryType], null: false
 
     def resolve

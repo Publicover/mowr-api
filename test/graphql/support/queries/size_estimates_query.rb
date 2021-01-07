@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module SizeEstimatesQuery
-  def fetch_size_estimates_helper
+  def index_size_estimates_helper
     <<~GQL
       query {
-        fetchSizeEstimates {
+        indexSizeEstimates {
           id
           squareFootage
           status
@@ -27,10 +27,10 @@ module SizeEstimatesQuery
     GQL
   end
 
-  def fetch_size_estimate_helper(id)
+  def show_size_estimate_helper(id)
     <<~GQL
       query {
-        fetchSizeEstimate(id:#{id}) {
+        showSizeEstimate(id:#{id}) {
           id
           squareFootage
           status

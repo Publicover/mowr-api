@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServicesQuery
-  def fetch_services_helper
+  def index_services_helper
     <<~GQL
       query {
-        fetchServices {
+        indexServices {
           id
           name
           pricePerInchOfSnow
@@ -14,10 +14,10 @@ module ServicesQuery
     GQL
   end
 
-  def fetch_service_helper(id)
+  def show_service_helper(id)
     <<~GQL
       query {
-        fetchService(id: #{id}) {
+        showService(id: #{id}) {
           id
           name
           pricePerInchOfSnow

@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchEarlyBird < Queries::BaseQuery
-    type Types::EarlyBirdType, null: false
-    argument :id, ID, required: true
+  class IndexServices < Queries::BaseQuery
+    type [Types::ServiceType], null: false
 
-    def resolve(id:)
+    def resolve
       unless context[:session][:token] && context[:current_user]
         raise(ExceptionHandler::InvalidToken, Message.invalid_token)
       end
 
-      EarlyBird.find(id)
+      Service.all.order(created_at: :asc)
     end
   end
 end
