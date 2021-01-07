@@ -5,7 +5,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     populate_blank_address
   end
 
-  test 'should create request for own address as customer' do
+  test 'should create size estimate for own address as customer' do
     create_blank_customer_address
     graphql_as_customer
 
@@ -16,7 +16,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create request for another address as customer' do
+  test 'should not create size estimate for another address as customer' do
     create_blank_admin_address
     graphql_as_customer
 
@@ -26,7 +26,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
 
-  test 'should update own request as customer' do
+  test 'should update own size estimate as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:two).id) }
@@ -35,7 +35,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     assert_equal size_estimates(:two).reload.square_footage, json['data']['updateSizeEstimate']['sizeEstimate']['squareFootage'].to_i
   end
 
-  test 'should not update another request as customer' do
+  test 'should not update another size request as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id) }
