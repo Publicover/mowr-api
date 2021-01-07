@@ -15,5 +15,7 @@ module Types
     field :update_service, mutation: Mutations::UpdateService
     field :add_service_request, mutation: Mutations::AddServiceRequest
     field :update_service_request, mutation: Mutations::UpdateServiceRequest
+    field :add_service_delivery, mutation: Mutations::AddServiceDelivery
+    field :update_service_delivery, mutation: Mutations::UpdateServiceDelivery
   end
 end

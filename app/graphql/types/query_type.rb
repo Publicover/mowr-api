@@ -17,5 +17,7 @@ module Types
     field :fetch_service, resolver: Queries::FetchService
     field :fetch_service_request, resolver: Queries::FetchServiceRequest
     field :fetch_service_requests, resolver: Queries::FetchServiceRequests
+    field :fetch_service_delivery, resolver: Queries::FetchServiceDelivery
+    field :fetch_service_deliveries, resolver: Queries::FetchServiceDeliveries
   end
 end

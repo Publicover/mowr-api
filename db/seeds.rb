@@ -10,6 +10,13 @@ puts "Creating Home Base..."
 BaseLocation.create!(name: 'Plowr HQ', line1: '2828 W 13th St', city: 'Ashtabula',
                  state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
 
+puts "Creating 2 plows..."
+
+Plow.create!(licence_plate: 'PLOWISLYFE', year: "2000", color: "blue",
+             make: "Big", model: "Plow", user_id: 1)
+Plow.create!(licence_plate: 'ITSALIVIN', year: "2000", color: "blue",
+             make: "Big", model: "Plow", user_id: 1)
+
 puts "Populating SnowAccumulation table..."
 
 10.times do
