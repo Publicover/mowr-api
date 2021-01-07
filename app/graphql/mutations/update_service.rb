@@ -7,7 +7,7 @@ module Mutations
 
     field :service, Types::ServiceType, null: false
 
-    def ready(**args)
+    def ready?(**args)
       return true if context[:current_user].admin?
 
       raise GraphQL::ExecutionError, Message.unauthorized

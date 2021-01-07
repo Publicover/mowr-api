@@ -11,7 +11,7 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update any any service' do
+  test 'should update any any service as admin' do
     graphql_as_admin
 
     post graphql_path, params: { query: update_service_helper(services(:one).id) }
