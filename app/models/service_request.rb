@@ -18,7 +18,6 @@ class ServiceRequest < ApplicationRecord
   }
 
   def calculate_service_cost_subtotal
-    # binding.pry
     services = Service.find(service_ids)
     price_index = Address.driveways[address.driveway]
     prices = services.each_with_object([]) do |service, memo|

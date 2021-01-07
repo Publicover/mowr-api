@@ -19,5 +19,7 @@ module Types
     field :driveway, Integer, null: false
     field :user, Types::UserType, null: false
     field :early_bird, Types::EarlyBirdType, null: true
+    field :size_estimate, Types::SizeEstimateType, null: true
+    field :service_request, Types::ServiceRequestType, null: true
   end
 end

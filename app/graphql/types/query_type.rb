@@ -15,5 +15,7 @@ module Types
     field :fetch_size_estimates, resolver: Queries::FetchSizeEstimates
     field :fetch_services, resolver: Queries::FetchServices
     field :fetch_service, resolver: Queries::FetchService
+    field :fetch_service_request, resolver: Queries::FetchServiceRequest
+    field :fetch_service_requests, resolver: Queries::FetchServiceRequests
   end
 end

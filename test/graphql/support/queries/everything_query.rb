@@ -22,6 +22,21 @@ module EverythingQuery
             latitude
             longitude
 
+            sizeEstimate {
+              id
+              squareFootage
+              status
+              addressId
+            }
+
+            serviceRequest {
+              id
+              status
+              serviceIds
+              serviceSubtotal
+              addressId
+            }
+
             earlyBird {
               id
               priority

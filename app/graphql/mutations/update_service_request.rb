@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Mutations
-  class UpdateEarlyBird < Mutations::BaseMutation
+  class UpdateServiceRequest < Mutations::BaseMutation
     argument :id, ID, required: true
-    argument :params, Types::Input::EarlyBirdInputType, required: true
+    argument :params, Types::Input::ServiceRequestInputType, required: true
 
-    field :early_bird, Types::EarlyBirdType, null: false
+    field :service_request, Types::ServiceRequestType, null: false
     field :address, Types::AddressType, null: true
 
     def ready?(**args)
@@ -17,14 +17,14 @@ module Mutations
     end
 
     def resolve(id:, params:)
-      early_bird_params = Hash(params)
-      early_bird = EarlyBird.find(id)
-      address = early_bird.address
+      service_request_params = Hash(params)
+      service_request = ServiceRequest.find(id)
+      address = service_request.address
 
-      if early_bird.update(early_bird_params)
-        { early_bird: early_bird, address: address }
+      if service_request.update(service_request_params)
+        { service_request: service_request, address: address }
       else
-        { errors: early_bird.errors.full_messages }
+        { errors: service_request.errors.full_messages }
       end
     end
   end

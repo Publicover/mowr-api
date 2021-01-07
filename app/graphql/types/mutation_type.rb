@@ -13,5 +13,7 @@ module Types
     field :add_size_estimate, mutation: Mutations::AddSizeEstimate
     field :add_service, mutation: Mutations::AddService
     field :update_service, mutation: Mutations::UpdateService
+    field :add_service_request, mutation: Mutations::AddServiceRequest
+    field :update_service_request, mutation: Mutations::UpdateServiceRequest
   end
 end

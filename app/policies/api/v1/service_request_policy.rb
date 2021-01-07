@@ -11,9 +11,7 @@ module Api
       end
 
       def index?
-        return true if user.admin? || user.customer?
-
-        false
+        true
       end
 
       def show?

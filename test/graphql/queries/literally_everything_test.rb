@@ -16,12 +16,16 @@ class Queries::LiterallyEverythingTest < ActionDispatch::IntegrationTest
     assert_not_nil json['data']['fetchUsers'][0]
     assert_not_nil json['data']['fetchUsers'][0]['addresses']
     assert_not_nil json['data']['fetchUsers'][0]['addresses'][0]['earlyBird']
+    assert_not_nil json['data']['fetchUsers'][0]['addresses'][0]['sizeEstimate']
+    assert_not_nil json['data']['fetchUsers'][0]['addresses'][0]['serviceRequest']
     assert_equal Address.where(user_id: json['data']['fetchUsers'][0]['id']).count,
                  json['data']['fetchUsers'][0]['addresses'].size
     assert_not_nil json['data']['fetchUsers'][1]
     assert_not_nil json['data']['fetchUsers'][2]
     assert_not_nil json['data']['fetchUsers'][2]['addresses']
     assert_not_nil json['data']['fetchUsers'][2]['addresses'][5]['earlyBird']
+    assert_not_nil json['data']['fetchUsers'][2]['addresses'][5]['sizeEstimate']
+    assert_not_nil json['data']['fetchUsers'][2]['addresses'][5]['serviceRequest']
     assert_equal Address.where(user_id: json['data']['fetchUsers'][2]['id']).count,
                  json['data']['fetchUsers'][2]['addresses'].size
   end
