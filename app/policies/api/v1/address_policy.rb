@@ -27,7 +27,6 @@ module Api
       end
 
       def destroy?
-        # binding.pry
         return true if user.admin? || user.customer?
         return false if user.driver?
       end

@@ -23,5 +23,4 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
       assert_match json['message'], Message.invalid_credentials
     end
   end
-
 end

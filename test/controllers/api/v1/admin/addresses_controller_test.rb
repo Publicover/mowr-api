@@ -35,18 +35,20 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create any address' do
-    assert_difference('Address.count') do
-      post api_v1_admin_addresses_path,
-           params: {
-             address: {
-               line1: '234 Test Ave',
-               city: 'Ashtabula',
-               state: 'Ohio',
-               zip: '44004',
-               user_id: User.last.id
-             }
-           }.to_json,
-           headers: @admin_headers
+    VCR.use_cassette('api admin create address') do
+      assert_difference('Address.count') do
+        post api_v1_admin_addresses_path,
+             params: {
+               address: {
+                 line1: '234 Test Ave',
+                 city: 'Ashtabula',
+                 state: 'Ohio',
+                 zip: '44004',
+                 user_id: User.last.id
+               }
+             }.to_json,
+             headers: @admin_headers
+      end
     end
     assert_response :success
   end

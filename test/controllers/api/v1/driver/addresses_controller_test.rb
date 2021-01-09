@@ -33,14 +33,6 @@ class Api::V1::Driver::AddressesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Shropinshire Upon Avon', @address.reload.city
   end
 
-  # test 'should flip enum on size estimate when confirming estimate' do
-  #   patch api_v1_driver_address_path(@address),
-  #     params: { address: { estimate_confirmed: true } }.to_json,
-  #     headers: @driver_headers
-  #   # puts @address.size_estimate.reload.inspect
-  #   assert @address.reload.size_estimate.reload.confirmed?
-  # end
-
   test 'should not delete record as driver' do
     user_address_count = @driver.addresses.count
     address_count = Address.count

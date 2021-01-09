@@ -13,6 +13,24 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
     @address = @customer.addresses.sample
   end
 
+  test 'should create own address as customer' do
+    VCR.use_cassette('api customer create address') do
+      assert_difference('Address.count') do
+        post api_v1_admin_addresses_path,
+             params: {
+               address: {
+                 line1: '234 Test Ave',
+                 city: 'Ashtabula',
+                 state: 'Ohio',
+                 zip: '44004',
+                 user_id: @customer.id
+               }
+             }.to_json,
+             headers: @customer_headers
+      end
+    end
+  end
+
   test "should get customer's addresses" do
     login_as_customer
     get api_v1_customer_addresses_path, headers: @customer_headers

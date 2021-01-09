@@ -26,6 +26,5 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_equal json['errors'][0]['message'], Message.unauthorized
-
   end
 end
