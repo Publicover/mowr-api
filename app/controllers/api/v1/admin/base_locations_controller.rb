@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::Admin::BaseLocationsController < ApplicationController
-  before_action :set_base_location, except: [:index, :create]
+  before_action :set_base_location, except: %i[index create]
 
   def index
     @base_locations = policy_scope([:api, :v1, BaseLocation])

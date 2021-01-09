@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         resources :service_requests, only: [:show]
         resources :early_birds, only: %i[index show]
         resources :daily_routes, only: [:show]
-        resources :base_locations, only: [:index, :show]
+        resources :base_locations, only: %i[index show]
       end
       namespace :customer do
         resources :plows
