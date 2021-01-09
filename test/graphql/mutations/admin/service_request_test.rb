@@ -23,4 +23,14 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert service_requests(:two).reload.service_ids, json['data']['updateServiceRequest']['serviceRequest']['serviceIds']
   end
+
+  test 'should destroy service request as admin' do
+    service_request = service_requests(:two)
+    graphql_as_customer
+
+    post graphql_path, params: { query: destroy_service_request_helper(service_request.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(service_request), json['data']['destroyServiceRequest']['isDeleted']
+  end
 end

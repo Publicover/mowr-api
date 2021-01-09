@@ -51,8 +51,8 @@ class AddressTest < ActiveSupport::TestCase
     assert_not_nil Address.last.longitude
   end
 
-  test 'should return scopes' do
+  # test 'should return scopes' do
     # see commands/calculate_daily_route_test
     #     test 'can stringify Address coords by scope' do
-  end
+  # end
 end

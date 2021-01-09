@@ -33,4 +33,14 @@ module UsersMutation
     }
     GQL
   end
+
+  def destroy_user_helper(id)
+    <<~GQL
+      mutation {
+        destroyUser(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

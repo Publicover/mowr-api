@@ -7,18 +7,16 @@ module Mutations
     field :service_request, Types::ServiceRequestType, null: false
 
     def ready?(**args)
-      # binding.pry
-      # puts "context[:current_user].driver? #{context[:current_user].driver?}"
-      # puts "context[:current_user].customer? #{context[:current_user].customer?}"
-      # puts "(context[:current_user].customer? && !context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i)) #{(context[:current_user].customer? && !context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i))}"
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized if
-            (context[:current_user].customer? && !context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i))
+      return true if context[:current_user].admin?
+      return true if context[:current_user].addresses.pluck(:id)
+                                           .include?(args[:params][:addressId].to_i)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(params:)
+      check_logged_in_user
+
       service_requst_params = Hash(params)
 
       begin
@@ -26,7 +24,6 @@ module Mutations
         address = service_request.address
 
         { service_request: service_request, address: address }
-
       rescue ActiveRecord::RecordInvalid => e
         GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
           " #{e.record.errors.full_messages.join(', ')}")

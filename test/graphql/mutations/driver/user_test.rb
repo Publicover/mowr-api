@@ -28,4 +28,23 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     assert_match Message.unauthorized, json['errors'][0]['message']
   end
 
+  test 'should destroy self as driver' do
+    user = users(:two)
+    graphql_as_driver
+
+    post graphql_path, params: { query: destroy_user_helper(user.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(user), json['data']['destroyUser']['isDeleted']
+  end
+
+  test 'should not destroy another user as driver' do
+    user = users(:three)
+    graphql_as_driver
+
+    post graphql_path, params: { query: destroy_user_helper(user.id) }
+
+    assert_response :success
+    assert_equal Message.unauthorized, json['errors'][0]['message']
+  end
 end

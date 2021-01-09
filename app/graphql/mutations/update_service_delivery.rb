@@ -13,13 +13,15 @@ module Mutations
     field :service_delivery, Types::ServiceDeliveryType, null: false
     field :address, Types::AddressType, null: true
 
-    def ready?(**args)
+    def ready?(**_args)
       return true if context[:current_user].admin?
 
       raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(id:, params:)
+      check_logged_in_user
+
       service_delivery_params = Hash(params)
       service_delivery = ServiceDelivery.find(id)
       address = service_delivery.address

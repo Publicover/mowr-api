@@ -60,4 +60,14 @@ module ServiceRequestMutation
           }
     GQL
   end
+
+  def destroy_service_request_helper(id)
+    <<~GQL
+      mutation {
+        destroyServiceRequest(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

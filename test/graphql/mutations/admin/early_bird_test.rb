@@ -30,4 +30,14 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert addresses(:one).early_bird.reload.priority, json['data']['updateEarlyBird']['earlyBird']['priority']
   end
+
+  test 'should destroy any early bird as admin' do
+    early_bird = early_birds(:two)
+    graphql_as_admin
+
+    post graphql_path, params: { query: destroy_early_bird_helper(early_bird.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(early_bird), json['data']['destroyEarlyBird']['isDeleted']
+  end
 end

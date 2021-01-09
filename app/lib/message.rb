@@ -32,4 +32,10 @@ class Message
   def self.expired_token
     "Sorry, your token has expired. Please log in again to continue."
   end
+
+  # rubocop:disable Naming/PredicateName
+  def self.is_deleted(obj)
+    "#{obj.class} #{obj.id} successfully deleted."
+  end
+  # rubocop:enable Naming/PredicateName
 end

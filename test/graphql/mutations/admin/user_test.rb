@@ -20,4 +20,13 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     assert_equal 'Fred', json['data']['updateUser']['user']['fName']
   end
 
+  test 'should destroy user as admin' do
+    user = users(:two)
+    graphql_as_admin
+
+    post graphql_path, params: { query: destroy_user_helper(user.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(user), json['data']['destroyUser']['isDeleted']
+  end
 end

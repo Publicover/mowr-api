@@ -17,6 +17,8 @@ module Mutations
     end
 
     def resolve(id:, params:)
+      check_logged_in_user
+
       size_estimate_params = Hash(params)
       size_estimate = SizeEstimate.find(id)
       address = size_estimate.address
@@ -24,7 +26,7 @@ module Mutations
       if size_estimate.update(size_estimate_params)
         { size_estimate: size_estimate, address: address }
       else
-        { errors: size_estimate.errors.full_messages}
+        { errors: size_estimate.errors.full_messages }
       end
     end
   end

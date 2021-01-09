@@ -5,6 +5,8 @@ module Queries
     type [Types::ServiceDeliveryType], null: false
 
     def resolve
+      check_logged_in_user
+
       ServiceDelivery.all.order(created_at: :asc)
     end
   end

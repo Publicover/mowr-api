@@ -51,4 +51,14 @@ module SizeEstimatesMutation
       }
     GQL
   end
+
+  def destroy_size_estimate_helper(id)
+    <<~GQL
+      mutation {
+        destroySizeEstimate(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

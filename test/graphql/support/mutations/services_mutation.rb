@@ -38,4 +38,14 @@ module ServicesMutation
       }
     GQL
   end
+
+  def destroy_service_helper(id)
+    <<~GQL
+      mutation {
+        destroyService(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

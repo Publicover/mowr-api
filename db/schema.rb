@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_075015) do
+ActiveRecord::Schema.define(version: 2021_01_08_095335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_075015) do
     t.index ["role"], name: "index_users_on_role"
   end
 
-  add_foreign_key "early_birds", "addresses"
+  add_foreign_key "early_birds", "addresses", on_delete: :cascade
   add_foreign_key "plows", "users"
   add_foreign_key "service_deliveries", "addresses"
   add_foreign_key "service_requests", "addresses"

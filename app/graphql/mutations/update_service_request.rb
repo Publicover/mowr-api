@@ -17,6 +17,8 @@ module Mutations
     end
 
     def resolve(id:, params:)
+      check_logged_in_user
+
       service_request_params = Hash(params)
       service_request = ServiceRequest.find(id)
       address = service_request.address

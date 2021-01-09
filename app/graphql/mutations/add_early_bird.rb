@@ -7,14 +7,15 @@ module Mutations
     field :early_bird, Types::EarlyBirdType, null: false
 
     def ready?(**args)
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized if
-            (context[:current_user].customer? && !context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i))
+      return true if context[:current_user].admin?
+      return true if context[:current_user].addresses.pluck(:id).include?(args[:params][:addressId].to_i)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(params:)
+      check_logged_in_user
+
       early_bird_params = Hash(params)
 
       begin
@@ -22,7 +23,6 @@ module Mutations
         address = early_bird.address
 
         { early_bird: early_bird, address: address }
-
       rescue ActiveRecord::RecordInvalid => e
         GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
           " #{e.record.errors.full_messages.join(', ')}")

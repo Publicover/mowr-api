@@ -7,6 +7,7 @@ module Mutations
     field :token, String, null: true
     field :user, Types::UserType, null: true
 
+    # rubocop:disable Metrics/AbcSize
     def resolve(params:)
       auth_params = Hash(params)
 
@@ -26,5 +27,6 @@ module Mutations
           " #{e.record.errors.full_messages.join(', ')}")
       end
     end
+    # rubocop:enable Metrics/AbcSize
   end
 end

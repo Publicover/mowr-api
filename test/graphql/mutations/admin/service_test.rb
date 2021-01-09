@@ -18,4 +18,13 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal services(:one).reload.price_per_inch_of_snow, json['data']['updateService']['service']['pricePerInchOfSnow'].to_i
   end
+
+  test 'should destroy any service as admin' do
+    graphql_as_admin
+
+    post graphql_path, params: { query: destroy_service_helper(services(:one).id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(services(:one)), json['data']['destroyService']['isDeleted']
+  end
 end

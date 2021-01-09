@@ -15,7 +15,8 @@ class Mutations::ServiceDeliveryTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update service delivery as admin' do
-    
-  end
+  # test 'should update service delivery as admin' do
+    # There's not really anything in this record that can be changed
+    # so I'm skipping this test.
+  # end
 end

@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Creating Home Base..."
 
-BaseLocation.create!(name: 'Plowr HQ', line1: '2828 W 13th St', city: 'Ashtabula',
-                 state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
+VCR.user_cassette('seeds home base') do
+  BaseLocation.create!(name: 'Plowr HQ', line1: '2828 W 13th St', city: 'Ashtabula',
+                   state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
+  end
 
 puts "Creating 2 plows..."
 

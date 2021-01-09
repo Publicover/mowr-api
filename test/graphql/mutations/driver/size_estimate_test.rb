@@ -22,4 +22,15 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
+
+  test 'should not destroy size estimate as driver' do
+    estimate = size_estimates(:one)
+    graphql_as_driver
+
+    post graphql_path, params: { query: destroy_size_estimate_helper(estimate.id) }
+
+    assert_response :success
+    assert_equal Message.unauthorized, json['errors'][0]['message']
+  end
+
 end

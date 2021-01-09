@@ -18,4 +18,13 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
+
+  test 'should not destroy service as customer' do
+    graphql_as_customer
+
+    post graphql_path, params: { query: destroy_service_helper(services(:one).id) }
+
+    assert_response :success
+    assert_equal Message.unauthorized, json['errors'][0]['message']
+  end
 end

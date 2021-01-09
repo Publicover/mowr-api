@@ -36,4 +36,14 @@ module EarlyBirdsMutation
       }
     GQL
   end
+
+  def destroy_early_bird_helper(id)
+    <<~GQL
+      mutation {
+        destroyEarlyBird(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

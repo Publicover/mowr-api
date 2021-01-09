@@ -5,10 +5,9 @@ module Queries
     type Types::AddressType, null: false
     argument :id, ID, required: true
 
+    # rubocop:disable Metrics/AbcSize
     def resolve(id:)
-      unless context[:session][:token] && context[:current_user]
-        raise(ExceptionHandler::InvalidToken, Message.invalid_token)
-      end
+      check_logged_in_user
 
       address = Address.find(id)
 
@@ -22,5 +21,6 @@ module Queries
       GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
         " #{e.record.errors.full_messages.join(', ')}")
     end
+    # rubocop:enable Metrics/AbcSize
   end
 end

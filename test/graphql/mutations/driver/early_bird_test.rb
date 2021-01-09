@@ -18,4 +18,14 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
+
+  test 'should not destroy early bird as driver' do
+    early_bird = early_birds(:one)
+    graphql_as_driver
+
+    post graphql_path, params: { query: destroy_early_bird_helper(early_bird.id) }
+
+    assert_response :success
+    assert_equal Message.unauthorized, json['errors'][0]['message']
+  end
 end

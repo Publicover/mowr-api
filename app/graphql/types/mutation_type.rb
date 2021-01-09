@@ -17,5 +17,11 @@ module Types
     field :update_service_request, mutation: Mutations::UpdateServiceRequest
     field :add_service_delivery, mutation: Mutations::AddServiceDelivery
     field :update_service_delivery, mutation: Mutations::UpdateServiceDelivery
+    field :destroy_address, mutation: Mutations::DestroyAddress
+    field :destroy_early_bird, mutation: Mutations::DestroyEarlyBird
+    field :destroy_service_request, mutation: Mutations::DestroyServiceRequest
+    field :destroy_service, mutation: Mutations::DestroyService
+    field :destroy_size_estimate, mutation: Mutations::DestroySizeEstimate
+    field :destroy_user, mutation: Mutations::DestroyUser
   end
 end

@@ -6,9 +6,7 @@ module Queries
     argument :id, ID, required: true
 
     def resolve(id:)
-      unless context[:session][:token] && context[:current_user]
-        raise(ExceptionHandler::InvalidToken, Message.invalid_token)
-      end
+      check_logged_in_user
 
       EarlyBird.find(id)
     end

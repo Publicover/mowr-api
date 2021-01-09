@@ -6,20 +6,21 @@ module Mutations
 
     field :service, Types::ServiceType, null: false
 
-    def ready?(**args)
+    def ready?(**_args)
       return true if context[:current_user].admin?
 
       raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(params:)
+      check_logged_in_user
+
       service_params = Hash(params)
 
       begin
         service = Service.create!(service_params)
 
         { service: service }
-
       rescue ActiveRecord::RecordInvalid => e
         GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
           " #{e.record.errors.full_messages.join(', ')}")

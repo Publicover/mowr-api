@@ -5,6 +5,8 @@ module Queries
     type [Types::AddressType], null: false
 
     def resolve
+      check_logged_in_user
+
       Address.all.order(created_at: :asc)
     end
   end

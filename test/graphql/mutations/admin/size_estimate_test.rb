@@ -22,4 +22,14 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal size_estimates(:one).reload.square_footage, json['data']['updateSizeEstimate']['sizeEstimate']['squareFootage']
   end
+
+  test 'should destroy size estimate as admin' do
+    estimate = size_estimates(:two)
+    graphql_as_admin
+
+    post graphql_path, params: { query: destroy_size_estimate_helper(estimate.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(estimate), json['data']['destroySizeEstimate']['isDeleted']
+  end
 end

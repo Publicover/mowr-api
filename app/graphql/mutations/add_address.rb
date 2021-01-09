@@ -15,6 +15,8 @@ module Mutations
     end
 
     def resolve(params:)
+      check_logged_in_user
+
       address_params = Hash(params)
 
       begin

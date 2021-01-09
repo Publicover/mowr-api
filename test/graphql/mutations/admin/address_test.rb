@@ -23,4 +23,14 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal addresses(:one).reload.name, json['data']['updateAddress']['address']['name']
   end
+
+  test 'can destroy any address as admin' do
+    address = addresses(:one)
+    graphql_as_admin
+
+    post graphql_path, params: { query: destroy_address_helper(address.id) }
+
+    assert_response :success
+    assert_equal Message.is_deleted(address), json['data']['destroyAddress']['isDeleted']
+  end
 end

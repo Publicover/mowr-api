@@ -52,4 +52,14 @@ module AddressesMutation
       }
     GQL
   end
+
+  def destroy_address_helper(id)
+    <<~GQL
+      mutation {
+        destroyAddress(input:{id:#{id}}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

@@ -5,9 +5,7 @@ module Queries
     type [Types::ServiceType], null: false
 
     def resolve
-      unless context[:session][:token] && context[:current_user]
-        raise(ExceptionHandler::InvalidToken, Message.invalid_token)
-      end
+      check_logged_in_user
 
       Service.all.order(created_at: :asc)
     end

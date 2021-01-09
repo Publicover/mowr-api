@@ -9,14 +9,15 @@ module Mutations
     field :address, Types::AddressType, null: true
 
     def ready?(**args)
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized unless
-            context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
+      return true if context[:current_user].admin?
+      return true if context[:current_user].early_birds.pluck(:id).include?(args[:id].to_i)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(id:, params:)
+      check_logged_in_user
+
       early_bird_params = Hash(params)
       early_bird = EarlyBird.find(id)
       address = early_bird.address
