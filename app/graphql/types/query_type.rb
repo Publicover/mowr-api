@@ -19,5 +19,7 @@ module Types
     field :index_service_requests, resolver: Queries::IndexServiceRequests
     field :show_service_delivery, resolver: Queries::ShowServiceDelivery
     field :index_service_deliveries, resolver: Queries::IndexServiceDeliveries
+    field :index_base_locations, resolver: Queries::IndexBaseLocations
+    field :show_base_location, resolver: Queries::ShowBaseLocation
   end
 end

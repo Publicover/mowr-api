@@ -1,3 +1,5 @@
+# frozen_string_literal:true
+
 module AddressesMutation
   def add_address_helper(user_id)
     VCR.use_cassette('address mutation add address') do

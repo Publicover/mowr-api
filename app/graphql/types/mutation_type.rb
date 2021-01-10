@@ -23,5 +23,8 @@ module Types
     field :destroy_service, mutation: Mutations::DestroyService
     field :destroy_size_estimate, mutation: Mutations::DestroySizeEstimate
     field :destroy_user, mutation: Mutations::DestroyUser
+    field :add_base_location, mutation: Mutations::AddBaseLocation
+    field :update_base_location, mutation: Mutations::UpdateBaseLocation
+    field :destroy_base_location, mutation: Mutations::DestroyBaseLocation
   end
 end
