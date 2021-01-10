@@ -26,5 +26,8 @@ module Types
     field :add_base_location, mutation: Mutations::AddBaseLocation
     field :update_base_location, mutation: Mutations::UpdateBaseLocation
     field :destroy_base_location, mutation: Mutations::DestroyBaseLocation
+    field :add_plow, mutation: Mutations::AddPlow
+    field :update_plow, mutation: Mutations::UpdatePlow
+    field :destroy_plow, mutation: Mutations::DestroyPlow
   end
 end

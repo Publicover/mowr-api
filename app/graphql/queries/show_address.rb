@@ -10,7 +10,7 @@ module Queries
       check_logged_in_user
 
       address = Address.find(id)
-
+      
       return address if context[:current_user].admin? || context[:current_user].driver?
       return address if address.user_id == context[:current_user].id
 
