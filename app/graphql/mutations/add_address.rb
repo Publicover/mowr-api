@@ -7,11 +7,11 @@ module Mutations
     field :address, Types::AddressType, null: false
 
     def ready?(**args)
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized unless
-            context[:current_user].admin? || args[:params][:userId] == context[:current_user].id.to_s
+      return true if context[:current_user].admin?
+      return true if (context[:current_user].customer? &&
+                      args[:params][:userId] == context[:current_user].id.to_s)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(params:)
