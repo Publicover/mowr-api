@@ -10,6 +10,7 @@ require_relative '../support/mutations/service_request_mutation'
 require_relative '../support/mutations/service_delivery_mutation'
 require_relative '../support/mutations/services_mutation'
 require_relative '../support/mutations/size_estimates_mutation'
+require_relative '../support/mutations/snow_accumulations_mutation'
 require_relative '../support/mutations/users_mutation'
 require_relative '../support/queries/addresses_query'
 require_relative '../support/queries/base_locations_query'
@@ -20,6 +21,7 @@ require_relative '../support/queries/service_delivery_query'
 require_relative '../support/queries/service_request_query'
 require_relative '../support/queries/services_query'
 require_relative '../support/queries/size_estimates_query'
+require_relative '../support/queries/snow_accumulations_query'
 require_relative '../support/queries/users_query'
 
 module GraphqlRequirements
@@ -46,5 +48,7 @@ module GraphqlRequirements
     include BaseLocationsMutation
     include PlowsQuery
     include PlowsMutation
+    include SnowAccumulationsQuery
+    include SnowAccumulationsMutation
   end
 end

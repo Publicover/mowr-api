@@ -29,5 +29,8 @@ module Types
     field :add_plow, mutation: Mutations::AddPlow
     field :update_plow, mutation: Mutations::UpdatePlow
     field :destroy_plow, mutation: Mutations::DestroyPlow
+    field :add_snow_accumulation, mutation: Mutations::AddSnowAccumulation
+    field :udpate_snow_accumulation, mutation: Mutations::UpdateSnowAccumulation
+    field :destroy_snow_accumulation, mutation: Mutations::DestroySnowAccumulation
   end
 end

@@ -23,5 +23,7 @@ module Types
     field :show_base_location, resolver: Queries::ShowBaseLocation
     field :index_plows, resolver: Queries::IndexPlows
     field :show_plow, resolver: Queries::ShowPlow
+    field :index_snow_accumulations, resolver: Queries::IndexSnowAccumulations
+    field :show_snow_accumulation, resolver: Queries::ShowSnowAccumulation
   end
 end
