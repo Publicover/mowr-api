@@ -14,6 +14,6 @@ module Types
     field :state, String, null: false
     field :zip, String, null: false
     field :latitude, Float, null: false
-    field :longitude, Float, null: false 
+    field :longitude, Float, null: false
   end
 end

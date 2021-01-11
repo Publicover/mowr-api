@@ -10,7 +10,6 @@ module Queries
 
       begin
         BaseLocation.find(id)
-
       rescue ActiveRecord::RecordNotFound => _e
         GraphQL::ExecutionError.new('Address does not exist.')
       rescue ActiveRecord::RecordInvalid => e

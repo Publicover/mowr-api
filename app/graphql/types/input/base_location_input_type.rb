@@ -10,7 +10,7 @@ module Types
       argument :zip, String, required: false
       argument :name, String, required: false
       argument :latitude, Float, required: false
-      argument :longitude, Float, required: false 
+      argument :longitude, Float, required: false
     end
   end
 end

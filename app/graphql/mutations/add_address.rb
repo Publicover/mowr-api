@@ -8,8 +8,8 @@ module Mutations
 
     def ready?(**args)
       return true if context[:current_user].admin?
-      return true if (context[:current_user].customer? &&
-                      args[:params][:userId] == context[:current_user].id.to_s)
+      return true if context[:current_user].customer? &&
+                     args[:params][:userId] == context[:current_user].id.to_s
 
       raise GraphQL::ExecutionError, Message.unauthorized
     end
