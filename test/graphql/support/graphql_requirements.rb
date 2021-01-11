@@ -3,6 +3,7 @@
 require_relative '../support/mutations/addresses_mutation'
 require_relative '../support/mutations/auth_mutation'
 require_relative '../support/mutations/base_locations_mutation'
+require_relative '../support/mutations/daily_routes_mutation'
 require_relative '../support/mutations/early_birds_mutation'
 require_relative '../support/mutations/graphql_login'
 require_relative '../support/mutations/plows_mutation'
@@ -52,5 +53,6 @@ module GraphqlRequirements
     include SnowAccumulationsQuery
     include SnowAccumulationsMutation
     include DailyRoutesQuery
+    include DailyRoutesMutation
   end
 end

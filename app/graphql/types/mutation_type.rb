@@ -32,5 +32,8 @@ module Types
     field :add_snow_accumulation, mutation: Mutations::AddSnowAccumulation
     field :udpate_snow_accumulation, mutation: Mutations::UpdateSnowAccumulation
     field :destroy_snow_accumulation, mutation: Mutations::DestroySnowAccumulation
+    field :add_daily_route, mutation: Mutations::AddDailyRoute
+    field :update_daily_route, mutation: Mutations::UpdateDailyRoute
+    field :destroy_daily_route, mutation: Mutations::DestroyDailyRoute
   end
 end

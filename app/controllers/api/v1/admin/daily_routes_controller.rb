@@ -20,7 +20,6 @@ class Api::V1::Admin::DailyRoutesController < ApplicationController
 
   def update
     @daily_route.update(daily_route_params)
-    # binding.pry
     serialized_response(@daily_route, DailyRoute) if @daily_route.save
   end
 
