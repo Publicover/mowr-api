@@ -14,6 +14,7 @@ require_relative '../support/mutations/snow_accumulations_mutation'
 require_relative '../support/mutations/users_mutation'
 require_relative '../support/queries/addresses_query'
 require_relative '../support/queries/base_locations_query'
+require_relative '../support/queries/daily_routes_query'
 require_relative '../support/queries/early_birds_query'
 require_relative '../support/queries/everything_query'
 require_relative '../support/queries/plows_query'
@@ -50,5 +51,6 @@ module GraphqlRequirements
     include PlowsMutation
     include SnowAccumulationsQuery
     include SnowAccumulationsMutation
+    include DailyRoutesQuery
   end
 end

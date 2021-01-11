@@ -25,5 +25,7 @@ module Types
     field :show_plow, resolver: Queries::ShowPlow
     field :index_snow_accumulations, resolver: Queries::IndexSnowAccumulations
     field :show_snow_accumulation, resolver: Queries::ShowSnowAccumulation
+    field :index_daily_routes, resolver: Queries::IndexDailyRoutes
+    field :show_daily_route, resolver: Queries::ShowDailyRoute
   end
 end

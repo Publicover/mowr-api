@@ -82,10 +82,14 @@ customer_count = 1
   customer_count += 1
 end
 
-puts "Creating service deliveries..."
+puts "Creating some daily routes for historical accuracy"
 
-# Address.each do |address|
-#   ServiceDelivery.create(cost: address.service)
-# end
+5.times do
+  ary = Array.new
+  25.times do
+    ary << rand(Address.first.id..Address.last.id)
+  end
+  DailyRoute.create!(addresses_in_order: ary)
+end
 
 puts "Seeds complete."
