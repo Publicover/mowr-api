@@ -19,7 +19,7 @@ module SnowAccumulationsMutation
   def update_snow_accumulation_helper(id)
     <<~GQL
       mutation {
-        udpateSnowAccumulation(input:{id:#{id}, params:{
+        updateSnowAccumulation(input:{id:#{id}, params:{
           inches:55
         }}) {
           snowAccumulation {

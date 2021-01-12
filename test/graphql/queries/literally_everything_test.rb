@@ -32,5 +32,6 @@ class Queries::LiterallyEverythingTest < ActionDispatch::IntegrationTest
                  json['data']['indexUsers'][2]['addresses'].size
     assert_not_nil json['data']['indexDailyRoutes']
     assert_not_nil json['data']['indexServiceDeliveries']
+    assert_not_nil json['data']['indexServices']
   end
 end

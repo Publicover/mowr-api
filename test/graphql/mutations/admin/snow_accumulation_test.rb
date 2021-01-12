@@ -16,7 +16,7 @@ class Mutations::SnowAccumulationTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: update_snow_accumulation_helper(snowfall.id) }
 
     assert_response :success
-    assert_equal snowfall.reload.inches, json['data']['udpateSnowAccumulation']['snowAccumulation']['inches']
+    assert_equal snowfall.reload.inches, json['data']['updateSnowAccumulation']['snowAccumulation']['inches']
   end
 
   test 'should destroy snow accumulation as admin' do

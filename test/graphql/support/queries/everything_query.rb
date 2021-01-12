@@ -79,6 +79,13 @@ module EverythingQuery
           addressId
           totalCost
         }
+
+        indexServices {
+          id
+          name
+          pricePerInchOfSnow
+          pricePerDriveway
+        }
       }
     GQL
   end
