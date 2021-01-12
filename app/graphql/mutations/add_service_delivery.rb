@@ -7,25 +7,17 @@ module Mutations
     field :service_delivery, Types::ServiceDeliveryType, null: false
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(params:)
       check_logged_in_user
 
       service_delivery_params = Hash(params)
+      service_delivery = ServiceDelivery.create!(service_delivery_params)
+      address = service_delivery.address
 
-      begin
-        service_delivery = ServiceDelivery.create!(service_delivery_params)
-        address = service_delivery.address
-
-        { service_delivery: service_delivery, address: address }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { service_delivery: service_delivery, address: address }
     end
   end
 end

@@ -52,4 +52,55 @@ module PlowsMutation
       }
     GQL
   end
+
+  def failure_to_add_helper(user_id)
+    <<~GQL
+      mutation {
+        addPlow(input:{params:{
+          year:"2020",
+          make:"Car",
+          model:"Plow",
+          userId:#{user_id}
+        }}) {
+          plow {
+            id
+            licencePlate
+            year
+            make
+            model
+            userId
+          }
+        }
+      }
+    GQL
+  end
+
+  def failure_to_update_helper(id)
+    <<~GQL
+      mutation {
+        updatePlow(input:{id:#{id}, params:{
+          name: "FAIL"
+        }}) {
+          plow {
+            id
+            licencePlate
+            year
+            make
+            model
+            userId
+          }
+        }
+      }
+    GQL
+  end
+
+  def failure_to_destroy_helper
+    <<~GQL
+      mutation {
+        destroyPlow(input:{id:60000}) {
+          isDeleted
+        }
+      }
+    GQL
+  end
 end

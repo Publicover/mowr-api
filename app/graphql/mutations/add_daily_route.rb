@@ -7,24 +7,16 @@ module Mutations
     field :daily_route, Types::DailyRouteType, null: false
 
     def ready?(**args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(params:)
       check_logged_in_user
 
       daily_route_params = Hash(params)
+      daily_route = DailyRoute.create!(daily_route_params)
 
-      begin
-        daily_route = DailyRoute.create!(daily_route_params)
-
-        { daily_route: daily_route }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { daily_route: daily_route }
     end
   end
 end

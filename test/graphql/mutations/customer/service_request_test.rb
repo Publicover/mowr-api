@@ -32,7 +32,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: update_service_request_helper(service_requests(:two).id, services(:two).id) }
 
     assert_response :success
-    assert_equal service_requests(:two).reload.service_ids.size, 1
+    assert_equal service_requests(:two).reload.service_ids, ["#{services(:two).id}".to_i]
   end
 
   test 'should not update another request as customer' do

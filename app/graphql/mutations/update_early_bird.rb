@@ -22,11 +22,7 @@ module Mutations
       early_bird = EarlyBird.find(id)
       address = early_bird.address
 
-      if early_bird.update(early_bird_params)
-        { early_bird: early_bird, address: address }
-      else
-        { errors: early_bird.errors.full_messages }
-      end
+      { early_bird: early_bird, address: address }
     end
   end
 end

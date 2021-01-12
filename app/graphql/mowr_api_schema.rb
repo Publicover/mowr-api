@@ -11,4 +11,12 @@ class MowrApiSchema < GraphQL::Schema
   def self.unauthorized_field(_error)
     raise GraphQL::ExecutionError, Message.unauthorized
   end
+
+  rescue_from(ActiveRecord::RecordInvalid) do |err|
+    raise GraphQL::ExecutionError, "#{err}"
+  end
+
+  rescue_from(ActiveRecord::RecordNotFound) do |err|
+    raise GraphQL::ExecutionError, "#{err}"
+  end
 end

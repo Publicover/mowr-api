@@ -8,9 +8,7 @@ module Mutations
     field :snow_accumulation, Types::SnowAccumulationType, null: false
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(id:, params:)
@@ -19,11 +17,7 @@ module Mutations
       snow_accumulation_params = Hash(params)
       snow_accumulation = SnowAccumulation.find(id)
 
-      if snow_accumulation.update(snow_accumulation_params)
-        { snow_accumulation: snow_accumulation }
-      else
-        { errors: address.errors.full_messages }
-      end
+      { snow_accumulation: snow_accumulation }
     end
   end
 end

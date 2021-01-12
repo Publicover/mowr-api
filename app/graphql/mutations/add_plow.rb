@@ -7,24 +7,16 @@ module Mutations
     field :plow, Types::PlowType, null: false
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(params:)
       check_logged_in_user
 
       plow_params = Hash(params)
+      plow = Plow.create!(plow_params)
 
-      begin
-        plow = Plow.create!(plow_params)
-
-        { plow: plow }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { plow: plow }
     end
   end
 end

@@ -9,11 +9,10 @@ module Mutations
     field :address, Types::AddressType, null: true
 
     def ready?(**args)
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized unless
-            context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
+      return true if context[:current_user].admin?
+      return true if context[:current_user].service_requests.pluck(:id).include?(args[:id].to_i)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(id:, params:)

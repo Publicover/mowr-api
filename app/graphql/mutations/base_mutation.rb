@@ -12,5 +12,11 @@ module Mutations
 
       raise(ExceptionHandler::InvalidToken, Message.invalid_token)
     end
+
+    def error_unless_admin
+      return true if context[:current_user].admin?
+
+      raise GraphQL::ExecutionError, Message.unauthorized
+    end
   end
 end

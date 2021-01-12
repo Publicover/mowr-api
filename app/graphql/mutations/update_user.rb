@@ -18,7 +18,6 @@ module Mutations
       check_logged_in_user
 
       user_params = Hash(params)
-
       user = User.find(id)
 
       if user.update(user_params)

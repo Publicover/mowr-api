@@ -12,8 +12,6 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     assert_difference('SizeEstimate.count') do
       post graphql_path, params: { query: add_size_estimate_helper(@customer_address.id) }
     end
-
-    assert_response :success
   end
 
   test 'should not create size estimate for another address as customer' do

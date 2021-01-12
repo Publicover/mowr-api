@@ -8,9 +8,7 @@ module Mutations
     field :daily_route, Types::DailyRouteType, null: false
 
     def ready?(**args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(id:, params:)
@@ -19,11 +17,7 @@ module Mutations
       daily_route_params = Hash(params)
       daily_route = DailyRoute.find(id)
 
-      if daily_route.update(daily_route_params)
-        { daily_route: daily_route }
-      else
-        { errors: daily_route.errors.full_messages }
-      end
+      { daily_route: daily_route }
     end
   end
 end

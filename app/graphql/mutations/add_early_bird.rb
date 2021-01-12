@@ -18,15 +18,10 @@ module Mutations
 
       early_bird_params = Hash(params)
 
-      begin
-        early_bird = EarlyBird.create!(early_bird_params)
-        address = early_bird.address
+      early_bird = EarlyBird.create!(early_bird_params)
+      address = early_bird.address
 
-        { early_bird: early_bird, address: address }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { early_bird: early_bird, address: address }
     end
   end
 end

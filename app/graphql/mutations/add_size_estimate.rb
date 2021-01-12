@@ -19,16 +19,10 @@ module Mutations
       check_logged_in_user
 
       size_estimate_params = Hash(params)
+      size_estimate = SizeEstimate.create!(size_estimate_params)
+      address = size_estimate.address
 
-      begin
-        size_estimate = SizeEstimate.create!(size_estimate_params)
-        address = size_estimate.address
-
-        { size_estimate: size_estimate, address: address }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { size_estimate: size_estimate, address: address }
     end
   end
 end

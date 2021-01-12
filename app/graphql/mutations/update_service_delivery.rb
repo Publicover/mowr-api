@@ -14,9 +14,7 @@ module Mutations
     field :address, Types::AddressType, null: true
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(id:, params:)
@@ -26,11 +24,7 @@ module Mutations
       service_delivery = ServiceDelivery.find(id)
       address = service_delivery.address
 
-      if service_delivery.update(service_delivery_params)
-        { service_delivery: service_delivery, address: address }
-      else
-        { errors: service_delivery.errors.full_messages }
-      end
+      { service_delivery: service_delivery, address: address }
     end
   end
 end

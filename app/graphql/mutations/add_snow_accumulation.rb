@@ -7,24 +7,16 @@ module Mutations
     field :snow_accumulation, Types::SnowAccumulationType, null: false
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(params:)
       check_logged_in_user
 
       snow_accumulation_params = Hash(params)
+      snow_accumulation = SnowAccumulation.create!(snow_accumulation_params)
 
-      begin
-        snow_accumulation = SnowAccumulation.create!(snow_accumulation_params)
-
-        { snow_accumulation: snow_accumulation }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { snow_accumulation: snow_accumulation }
     end
   end
 end

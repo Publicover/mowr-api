@@ -8,9 +8,7 @@ module Mutations
     field :service, Types::ServiceType, null: false
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(id:, params:)
@@ -19,11 +17,7 @@ module Mutations
       service_params = Hash(params)
       service = Service.find(id)
 
-      if service.update(service_params)
-        { service: service }
-      else
-        { errors: service.errors.full_messages }
-      end
+      { service: service }
     end
   end
 end

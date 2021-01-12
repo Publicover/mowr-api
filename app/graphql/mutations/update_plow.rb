@@ -8,9 +8,7 @@ module Mutations
     field :plow, Types::PlowType, null: true
 
     def ready?(**_args)
-      return true if context[:current_user].admin?
-
-      raise GraphQL::ExecutionError, Message.unauthorized
+      error_unless_admin
     end
 
     def resolve(id:, params:)
@@ -19,11 +17,7 @@ module Mutations
       plow_params = Hash(params)
       plow = Plow.find(id)
 
-      if plow.update(plow_params)
-        { plow: plow }
-      else
-        { errors: plow.errors.full_messages }
-      end
+      { plow: plow }
     end
   end
 end

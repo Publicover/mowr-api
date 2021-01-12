@@ -9,11 +9,10 @@ module Mutations
     field :address, Types::AddressType, null: true
 
     def ready?(**args)
-      raise GraphQL::ExecutionError, Message.unauthorized if context[:current_user].driver?
-      raise GraphQL::ExecutionError, Message.unauthorized unless
-            context[:current_user].admin? || context[:current_user].addresses.pluck(:id).include?(args[:id].to_i)
+      return true if context[:current_user].admin?
+      return true if context[:current_user].size_estimates.pluck(:id).include?(args[:id].to_i)
 
-      true
+      raise GraphQL::ExecutionError, Message.unauthorized
     end
 
     def resolve(id:, params:)
@@ -23,11 +22,7 @@ module Mutations
       size_estimate = SizeEstimate.find(id)
       address = size_estimate.address
 
-      if size_estimate.update(size_estimate_params)
-        { size_estimate: size_estimate, address: address }
-      else
-        { errors: size_estimate.errors.full_messages }
-      end
+      { size_estimate: size_estimate, address: address }
     end
   end
 end

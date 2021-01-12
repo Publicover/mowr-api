@@ -19,15 +19,10 @@ module Mutations
 
       service_requst_params = Hash(params)
 
-      begin
-        service_request = ServiceRequest.create!(service_requst_params)
-        address = service_request.address
+      service_request = ServiceRequest.create!(service_requst_params)
+      address = service_request.address
 
-        { service_request: service_request, address: address }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { service_request: service_request, address: address }
     end
   end
 end

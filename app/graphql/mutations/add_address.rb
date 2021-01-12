@@ -18,15 +18,9 @@ module Mutations
       check_logged_in_user
 
       address_params = Hash(params)
+      address = Address.create!(address_params)
 
-      begin
-        address = Address.create!(address_params)
-
-        { address: address }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
-      end
+      { address: address }
     end
   end
 end
