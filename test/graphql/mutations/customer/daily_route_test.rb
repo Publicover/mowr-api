@@ -12,6 +12,7 @@ class Mutations::DailyRouteTest < ActionDispatch::IntegrationTest
 
   test 'should not update daily route as customer' do
     route = daily_routes(:one)
+    ary = [12, 121]
     graphql_as_customer
 
     post graphql_path, params: { query: update_daily_route_helper(route.id) }

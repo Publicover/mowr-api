@@ -17,6 +17,7 @@ module Mutations
 
         snow_accumulation_params = Hash(params)
         snow_accumulation = SnowAccumulation.find(id)
+        snow_accumulation.update(snow_accumulation_params)
 
         { snow_accumulation: snow_accumulation }
       end

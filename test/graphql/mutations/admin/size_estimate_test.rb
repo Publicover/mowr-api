@@ -15,12 +15,13 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update any size estimate as admin' do
+    area = 900
     graphql_as_admin
 
-    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id) }
+    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id, area) }
 
     assert_response :success
-    assert_equal size_estimates(:one).reload.square_footage, json['data']['updateSizeEstimate']['sizeEstimate']['squareFootage']
+    assert_equal size_estimates(:one).reload.square_footage, area
   end
 
   test 'should destroy size estimate as admin' do

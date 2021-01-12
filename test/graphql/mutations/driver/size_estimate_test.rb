@@ -14,10 +14,11 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
 
-  test 'should not get single estimate as driver' do
+  test 'should not update single estimate as driver' do
+    area = 900
     graphql_as_driver
 
-    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id) }
+    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id, area) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

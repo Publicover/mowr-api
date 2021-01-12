@@ -19,11 +19,11 @@ module EarlyBirdsMutation
     GQL
   end
 
-  def update_early_bird_helper(id)
+  def update_early_bird_helper(id, priority)
     <<~GQL
       mutation {
         updateEarlyBird(input:{id:#{id}, params:{
-          priority:1
+          priority:#{priority}
           }}) {
             earlyBird {
               id

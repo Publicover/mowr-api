@@ -25,24 +25,26 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update own size estimate as customer' do
+    area = 900
     graphql_as_customer
 
-    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:two).id) }
+    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:two).id, area) }
 
     assert_response :success
     assert_equal size_estimates(:two).reload.square_footage, json['data']['updateSizeEstimate']['sizeEstimate']['squareFootage'].to_i
   end
 
   test 'should not update another size request as customer' do
+    area = 900
     graphql_as_customer
 
-    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id) }
+    post graphql_path, params: { query: update_size_estimate_helper(size_estimates(:one).id, area) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
 
-  test 'should destroy size estimate as customer' do
+  test 'should destroy own size estimate as customer' do
     estimate = size_estimates(:two)
     graphql_as_customer
 

@@ -20,15 +20,9 @@ module Mutations
 
         user_params = Hash(params)
         user = User.find(id)
+        user.update(user_params)
 
-        if user.update(user_params)
-          { user: user }
-        else
-          { errors: user.errors.full_messages }
-        end
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
+        { user: user }
       end
     end
   end

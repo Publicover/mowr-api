@@ -17,6 +17,7 @@ module Mutations
 
         plow_params = Hash(params)
         plow = Plow.find(id)
+        plow.update(plow_params)
 
         { plow: plow }
       end

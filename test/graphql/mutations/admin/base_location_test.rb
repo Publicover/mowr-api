@@ -16,12 +16,13 @@ class Mutations::BaseLocationTest < ActionDispatch::IntegrationTest
   end
 
   test 'can update location as admin' do
+    name = Faker::Lorem.word
     graphql_as_admin
 
-    post graphql_path, params: { query: update_base_location_helper(base_locations(:one).id) }
+    post graphql_path, params: { query: update_base_location_helper(base_locations(:one).id, name) }
 
     assert_response :success
-    assert_equal base_locations(:one).reload.name, json['data']['updateBaseLocation']['baseLocation']['name']
+    assert_equal base_locations(:one).reload.name, name
   end
 
   test 'can destroy location as admin' do

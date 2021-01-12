@@ -27,11 +27,11 @@ module SizeEstimatesMutation
     GQL
   end
 
-  def update_size_estimate_helper(id)
+  def update_size_estimate_helper(id, area)
     <<~GQL
       mutation {
         updateSizeEstimate(input:{id:#{id}, params:{
-          squareFootage:300
+          squareFootage:#{area}
         }}) {
           sizeEstimate {
             id

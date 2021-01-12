@@ -20,6 +20,7 @@ module Mutations
 
         address_params = Hash(params)
         address = Address.find(id)
+        address.update(address_params)
 
         { address: address }
       end

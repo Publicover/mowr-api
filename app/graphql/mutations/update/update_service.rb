@@ -17,6 +17,7 @@ module Mutations
 
         service_params = Hash(params)
         service = Service.find(id)
+        service.update(service_params)
 
         { service: service }
       end

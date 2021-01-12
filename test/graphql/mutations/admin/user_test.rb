@@ -12,12 +12,13 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update any user as admin' do
+    name = "Frank"
     graphql_as_admin
 
-    post graphql_path, params: { query: update_user_helper(users(:two).id) }
+    post graphql_path, params: { query: update_user_helper(users(:two).id, name) }
 
     assert_response :success
-    assert_equal 'Fred', json['data']['updateUser']['user']['fName']
+    assert_equal users(:two).reload.f_name, name
   end
 
   test 'should destroy user as admin' do

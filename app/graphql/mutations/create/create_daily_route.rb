@@ -7,7 +7,7 @@ module Mutations
 
       field :daily_route, Types::Api::DailyRouteType, null: false
 
-      def ready?(**args)
+      def ready?(**_args)
         error_unless_admin
       end
 

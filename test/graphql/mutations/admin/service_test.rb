@@ -12,11 +12,12 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update any any service as admin' do
+    price = 15
     graphql_as_admin
 
-    post graphql_path, params: { query: update_service_helper(services(:one).id) }
+    post graphql_path, params: { query: update_service_helper(services(:one).id, price) }
     assert_response :success
-    assert_equal services(:one).reload.price_per_inch_of_snow, json['data']['updateService']['service']['pricePerInchOfSnow'].to_i
+    assert_equal services(:one).reload.price_per_inch_of_snow, price
   end
 
   test 'should destroy any service as admin' do

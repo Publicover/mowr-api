@@ -17,6 +17,7 @@ module Mutations
 
         base_location_params = Hash(params)
         base_location = BaseLocation.find(id)
+        base_location.update(base_location_params)
 
         { base_location: base_location }
       end

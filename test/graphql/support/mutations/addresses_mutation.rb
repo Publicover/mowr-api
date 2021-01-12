@@ -38,11 +38,11 @@ module AddressesMutation
     end
   end
 
-  def update_address_helper(id)
+  def update_address_helper(id, name)
     <<~GQL
       mutation {
         updateAddress(input:{id:#{id}, params:{
-          name:"City Hall"
+          name:"#{name}"
         }}) {
           address {
             id

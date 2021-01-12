@@ -25,18 +25,20 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
   end
 
   test 'cannot update another address as customer' do
+    name = Faker::Lorem.word
     graphql_as_customer
 
-    post graphql_path, params: { query: update_address_helper(addresses(:one).id) }
+    post graphql_path, params: { query: update_address_helper(addresses(:one).id, name) }
 
     assert_response :success
     assert_equal json['errors'][0]['message'], Message.unauthorized
   end
 
   test 'can update own address as customer' do
+    name = Faker::Lorem.word
     graphql_as_customer
 
-    post graphql_path, params: { query: update_address_helper(addresses(:two).id) }
+    post graphql_path, params: { query: update_address_helper(addresses(:two).id, name) }
 
     assert_response :success
     assert_equal addresses(:two).reload.name, json['data']['updateAddress']['address']['name']

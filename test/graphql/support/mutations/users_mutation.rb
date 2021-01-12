@@ -20,11 +20,11 @@ module UsersMutation
     GQL
   end
 
-  def update_user_helper(user_id)
+  def update_user_helper(user_id, name)
     <<~GQL
     mutation {
       updateUser(input:{id:#{user_id}, params:{
-        fName:"Fred"
+        fName:"#{name}"
       }}) {user{
         id
         email

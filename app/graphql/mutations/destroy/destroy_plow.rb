@@ -7,7 +7,7 @@ module Mutations
 
       field :is_deleted, String, null: true
 
-      def ready?(**args)
+      def ready?(**_args)
         error_unless_admin
       end
 

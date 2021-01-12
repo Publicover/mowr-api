@@ -21,6 +21,7 @@ module Mutations
 
         early_bird_params = Hash(params)
         early_bird = EarlyBird.find(id)
+        early_bird.update(early_bird_params)
         address = early_bird.address
 
         { early_bird: early_bird, address: address }

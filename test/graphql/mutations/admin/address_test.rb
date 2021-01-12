@@ -16,12 +16,13 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
   end
 
   test 'can update any address as admin' do
+    name = Faker::Lorem.word
     graphql_as_admin
 
-    post graphql_path, params: { query: update_address_helper(addresses(:one).id) }
+    post graphql_path, params: { query: update_address_helper(addresses(:one).id, name) }
 
     assert_response :success
-    assert_equal addresses(:one).reload.name, json['data']['updateAddress']['address']['name']
+    assert_equal addresses(:one).reload.name, name
   end
 
   test 'can destroy any address as admin' do

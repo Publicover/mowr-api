@@ -11,9 +11,10 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update any any service as customer' do
+    price = 15
     graphql_as_customer
 
-    post graphql_path, params: { query: update_service_helper(services(:one).id) }
+    post graphql_path, params: { query: update_service_helper(services(:one).id, price) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

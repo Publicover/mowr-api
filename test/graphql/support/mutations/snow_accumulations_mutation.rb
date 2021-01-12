@@ -16,11 +16,11 @@ module SnowAccumulationsMutation
     GQL
   end
 
-  def update_snow_accumulation_helper(id)
+  def update_snow_accumulation_helper(id, inches)
     <<~GQL
       mutation {
         updateSnowAccumulation(input:{id:#{id}, params:{
-          inches:55
+          inches:#{inches}
         }}) {
           snowAccumulation {
             id

@@ -18,17 +18,14 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update any early bird as admin' do
+    early_bird = early_birds(:one)
+    priority = 1
     graphql_as_admin
 
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id) }
+    post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id, priority) }
 
     assert_response :success
-    assert addresses(:two).early_bird.reload.priority, json['data']['updateEarlyBird']['earlyBird']['priority']
-
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).early_bird.id) }
-
-    assert_response :success
-    assert addresses(:one).early_bird.reload.priority, json['data']['updateEarlyBird']['earlyBird']['priority']
+    assert addresses(:two).early_bird.reload.priority, priority
   end
 
   test 'should destroy any early bird as admin' do

@@ -22,11 +22,11 @@ module ServicesMutation
     GQL
   end
 
-  def update_service_helper(id)
+  def update_service_helper(id, price)
     <<~GQL
       mutation {
         updateService(input:{id:#{id}, params:{
-          pricePerInchOfSnow:1
+          pricePerInchOfSnow:#{price}
         }}) {
           service {
             id

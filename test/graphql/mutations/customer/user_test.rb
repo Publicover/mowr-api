@@ -10,18 +10,20 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update own record as customer' do
+    name = "Frank"
     graphql_as_customer
 
-    post graphql_path, params: { query: update_user_helper(users(:three).id) }
+    post graphql_path, params: { query: update_user_helper(users(:three).id, name) }
 
     assert_response :success
-    assert_equal 'Fred', json['data']['updateUser']['user']['fName']
+    assert_equal name, json['data']['updateUser']['user']['fName']
   end
 
   test 'should not update any user as customer' do
+    name = "Frank"
     graphql_as_customer
 
-    post graphql_path, params: { query: update_user_helper(users(:one).id) }
+    post graphql_path, params: { query: update_user_helper(users(:one).id, name) }
 
     assert_match Message.unauthorized, json['errors'][0]['message']
   end

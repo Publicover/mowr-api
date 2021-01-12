@@ -24,11 +24,11 @@ module PlowsMutation
     GQL
   end
 
-  def update_plow_helper(id)
+  def update_plow_helper(id, plate)
     <<~GQL
       mutation {
         updatePlow(input:{id:#{id}, params:{
-          licencePlate:"NICETRY",
+          licencePlate:"#{plate}",
         }}) {
           plow {
             id

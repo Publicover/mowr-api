@@ -21,13 +21,10 @@ module Mutations
 
         service_request_params = Hash(params)
         service_request = ServiceRequest.find(id)
+        service_request.update(service_request_params)
         address = service_request.address
 
-        if service_request.update(service_request_params)
-          { service_request: service_request, address: address }
-        else
-          { errors: service_request.errors.full_messages }
-        end
+        { service_request: service_request, address: address }
       end
     end
   end

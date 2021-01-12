@@ -7,7 +7,6 @@ module Mutations
     field :token, String, null: true
     field :user, Types::Api::UserType, null: true
 
-    # rubocop:disable Metrics/AbcSize
     def resolve(params:)
       auth_params = Hash(params)
 
@@ -22,11 +21,7 @@ module Mutations
         context[:current_user] = user
 
         { user: user, token: token }
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-          " #{e.record.errors.full_messages.join(', ')}")
       end
     end
-    # rubocop:enable Metrics/AbcSize
   end
 end

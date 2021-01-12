@@ -21,6 +21,7 @@ module Mutations
 
         size_estimate_params = Hash(params)
         size_estimate = SizeEstimate.find(id)
+        size_estimate.update(size_estimate_params)
         address = size_estimate.address
 
         { size_estimate: size_estimate, address: address }

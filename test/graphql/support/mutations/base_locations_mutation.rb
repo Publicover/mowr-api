@@ -26,11 +26,11 @@ module BaseLocationsMutation
     GQL
   end
 
-  def update_base_location_helper(id)
+  def update_base_location_helper(id, name)
     <<~GQL
       mutation {
         updateBaseLocation(input:{id:#{id}, params:{
-          name: "Old High School High",
+          name: "#{name}",
         }}) {
           baseLocation {
             id

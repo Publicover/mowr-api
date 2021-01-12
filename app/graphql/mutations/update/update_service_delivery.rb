@@ -23,6 +23,7 @@ module Mutations
 
         service_delivery_params = Hash(params)
         service_delivery = ServiceDelivery.find(id)
+        service_delivery.update(service_delivery_params)
         address = service_delivery.address
 
         { service_delivery: service_delivery, address: address }

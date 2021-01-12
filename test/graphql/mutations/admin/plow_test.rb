@@ -10,12 +10,13 @@ class Mutations::PlowTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update plow as admin' do
+    plate = "ICU81MI"
     graphql_as_admin
 
-    post graphql_path, params: { query: update_plow_helper(plows(:one).id) }
+    post graphql_path, params: { query: update_plow_helper(plows(:one).id, plate) }
 
     assert_response :success
-    assert_equal plows(:one).reload.licence_plate, json['data']['updatePlow']['plow']['licencePlate']
+    assert_equal plows(:one).reload.licence_plate, plate
   end
 
   test 'should destroy plow as admin' do

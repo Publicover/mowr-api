@@ -11,9 +11,10 @@ class Mutations::BaseLocationTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update location as driver' do
+    name = Faker::Lorem.word
     graphql_as_driver
 
-    post graphql_path, params: { query: update_base_location_helper(base_locations(:one).id) }
+    post graphql_path, params: { query: update_base_location_helper(base_locations(:one).id, name) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

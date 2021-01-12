@@ -13,10 +13,10 @@ class PlowrApiSchema < GraphQL::Schema
   end
 
   rescue_from(ActiveRecord::RecordInvalid) do |err|
-    raise GraphQL::ExecutionError, "#{err}"
+    raise GraphQL::ExecutionError, err.to_s
   end
 
   rescue_from(ActiveRecord::RecordNotFound) do |err|
-    raise GraphQL::ExecutionError, "#{err}"
+    raise GraphQL::ExecutionError, err.to_s
   end
 end

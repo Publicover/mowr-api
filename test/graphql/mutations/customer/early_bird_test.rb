@@ -21,9 +21,10 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update own early bird as customer' do
+    priority = 1
     graphql_as_customer
 
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id) }
+    post graphql_path, params: { query: update_early_bird_helper(addresses(:two).early_bird.id, priority) }
 
     assert_response :success
     assert users(:three).addresses.pluck(:id).
@@ -31,9 +32,10 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update another early bird as customer' do
+    priority = 1
     graphql_as_customer
 
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).id) }
+    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).early_bird.id, priority) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

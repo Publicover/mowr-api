@@ -8,7 +8,7 @@ module Mutations
 
       field :daily_route, Types::Api::DailyRouteType, null: false
 
-      def ready?(**args)
+      def ready?(**_args)
         error_unless_admin
       end
 
@@ -17,6 +17,7 @@ module Mutations
 
         daily_route_params = Hash(params)
         daily_route = DailyRoute.find(id)
+        daily_route.update(daily_route_params)
 
         { daily_route: daily_route }
       end

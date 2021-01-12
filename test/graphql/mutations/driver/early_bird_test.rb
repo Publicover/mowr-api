@@ -11,9 +11,10 @@ class Mutations::EarlyBirdTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update any early bird as driver' do
+    priority = 1
     graphql_as_driver
 
-    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).id) }
+    post graphql_path, params: { query: update_early_bird_helper(addresses(:one).id, priority) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
