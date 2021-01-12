@@ -8,7 +8,7 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
   test 'should not get estimates as driver' do
     graphql_as_driver
 
-    post graphql_path, params: { query: add_size_estimate_helper(@address.id) }
+    post graphql_path, params: { query: create_size_estimate_helper(@address.id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

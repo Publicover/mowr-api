@@ -3,19 +3,19 @@
 module Types
   class MutationType < Types::BaseObject
     field :auth_user, mutation: Mutations::AuthUser
-    field :add_user, mutation: Mutations::AddUser
+    field :create_user, mutation: Mutations::CreateUser
     field :update_user, mutation: Mutations::UpdateUser
-    field :add_address, mutation: Mutations::AddAddress
+    field :create_address, mutation: Mutations::CreateAddress
     field :update_address, mutation: Mutations::UpdateAddress
-    field :add_early_bird, mutation: Mutations::AddEarlyBird
+    field :create_early_bird, mutation: Mutations::CreateEarlyBird
     field :update_early_bird, mutation: Mutations::UpdateEarlyBird
     field :update_size_estimate, mutation: Mutations::UpdateSizeEstimate
-    field :add_size_estimate, mutation: Mutations::AddSizeEstimate
-    field :add_service, mutation: Mutations::AddService
+    field :create_size_estimate, mutation: Mutations::CreateSizeEstimate
+    field :create_service, mutation: Mutations::CreateService
     field :update_service, mutation: Mutations::UpdateService
-    field :add_service_request, mutation: Mutations::AddServiceRequest
+    field :create_service_request, mutation: Mutations::CreateServiceRequest
     field :update_service_request, mutation: Mutations::UpdateServiceRequest
-    field :add_service_delivery, mutation: Mutations::AddServiceDelivery
+    field :create_service_delivery, mutation: Mutations::CreateServiceDelivery
     field :update_service_delivery, mutation: Mutations::UpdateServiceDelivery
     field :destroy_address, mutation: Mutations::DestroyAddress
     field :destroy_early_bird, mutation: Mutations::DestroyEarlyBird
@@ -23,16 +23,16 @@ module Types
     field :destroy_service, mutation: Mutations::DestroyService
     field :destroy_size_estimate, mutation: Mutations::DestroySizeEstimate
     field :destroy_user, mutation: Mutations::DestroyUser
-    field :add_base_location, mutation: Mutations::AddBaseLocation
+    field :create_base_location, mutation: Mutations::CreateBaseLocation
     field :update_base_location, mutation: Mutations::UpdateBaseLocation
     field :destroy_base_location, mutation: Mutations::DestroyBaseLocation
-    field :add_plow, mutation: Mutations::AddPlow
+    field :create_plow, mutation: Mutations::CreatePlow
     field :update_plow, mutation: Mutations::UpdatePlow
     field :destroy_plow, mutation: Mutations::DestroyPlow
-    field :add_snow_accumulation, mutation: Mutations::AddSnowAccumulation
+    field :create_snow_accumulation, mutation: Mutations::CreateSnowAccumulation
     field :udpate_snow_accumulation, mutation: Mutations::UpdateSnowAccumulation
     field :destroy_snow_accumulation, mutation: Mutations::DestroySnowAccumulation
-    field :add_daily_route, mutation: Mutations::AddDailyRoute
+    field :create_daily_route, mutation: Mutations::CreateDailyRoute
     field :update_daily_route, mutation: Mutations::UpdateDailyRoute
     field :destroy_daily_route, mutation: Mutations::DestroyDailyRoute
   end

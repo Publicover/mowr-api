@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module EarlyBirdsMutation
-  def add_early_bird_helper(address_id)
+  def create_early_bird_helper(address_id)
     <<~GQL
       mutation {
-        addEarlyBird(input:{params:{
+        createEarlyBird(input:{params:{
           priority:0,
           addressId:#{address_id}
           }}) {

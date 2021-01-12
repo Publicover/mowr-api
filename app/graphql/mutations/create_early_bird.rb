@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddEarlyBird < Mutations::BaseMutation
+  class CreateEarlyBird < Mutations::BaseMutation
     argument :params, Types::Input::EarlyBirdInputType, required: true
 
     field :early_bird, Types::EarlyBirdType, null: false

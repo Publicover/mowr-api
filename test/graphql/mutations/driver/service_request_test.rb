@@ -8,7 +8,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
   test 'should not create request as driver' do
     graphql_as_driver
 
-    post graphql_path, params: { query: add_service_request_helper(@address.id) }
+    post graphql_path, params: { query: create_service_request_helper(@address.id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

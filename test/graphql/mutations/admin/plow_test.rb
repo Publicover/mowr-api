@@ -5,7 +5,7 @@ class Mutations::PlowTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('Plow.count') do
-      post graphql_path, params: { query: add_plow_helper(users(:one).id) }
+      post graphql_path, params: { query: create_plow_helper(users(:one).id) }
     end
   end
 
@@ -29,7 +29,7 @@ class Mutations::PlowTest < ActionDispatch::IntegrationTest
   test 'should fail gracefully' do
     graphql_as_admin
 
-    post graphql_path, params: { query: failure_to_add_helper(users(:one).id) }
+    post graphql_path, params: { query: failure_to_create_helper(users(:one).id) }
 
     assert_response :success
     assert_not_nil json['errors'][0]['message']

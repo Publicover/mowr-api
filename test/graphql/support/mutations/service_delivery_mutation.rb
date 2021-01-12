@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServiceDeliveryMutation
-  def add_service_delivery_helper(id)
+  def create_service_delivery_helper(id)
     <<~GQL
       mutation {
-        addServiceDelivery(input:{params:{
+        createServiceDelivery(input:{params:{
           addressId:#{id}
         }}) {
           serviceDelivery {

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServiceRequestMutation
-  def add_service_request_helper(address_id)
+  def create_service_request_helper(address_id)
     <<~GQL
       mutation {
-        addServiceRequest(input:{params:{
+        createServiceRequest(input:{params:{
           addressId:#{address_id},
           serviceIds:#{Service.pluck(:id)}
         }}) {

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddServiceRequest < Mutations::BaseMutation
+  class CreateServiceRequest < Mutations::BaseMutation
     argument :params, Types::Input::ServiceRequestInputType, required: true
 
     field :service_request, Types::ServiceRequestType, null: false

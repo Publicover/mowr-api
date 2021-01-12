@@ -1,11 +1,11 @@
 # frozen_string_literal:true
 
 module AddressesMutation
-  def add_address_helper(user_id)
+  def create_address_helper(user_id)
     VCR.use_cassette('address mutation add address') do
       <<~GQL
         mutation {
-          addAddress(input:{params:{
+          createAddress(input:{params:{
             line1:"4717 Main Ave",
             city:"Ashtabula",
             state:"OH",

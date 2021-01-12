@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddSizeEstimate < Mutations::BaseMutation
+  class CreateSizeEstimate < Mutations::BaseMutation
     argument :params, Types::Input::SizeEstimateInputType, required: true
 
     field :size_estimate, Types::SizeEstimateType, null: false

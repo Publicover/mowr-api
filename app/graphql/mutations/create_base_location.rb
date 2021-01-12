@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddBaseLocation < Mutations::BaseMutation
+  class CreateBaseLocation < Mutations::BaseMutation
     argument :params, Types::Input::BaseLocationInputType, required: true
 
     field :base_location, Types::BaseLocationType, null: false

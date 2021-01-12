@@ -5,7 +5,7 @@ class Mutations::SnowAccumulationTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('SnowAccumulation.count') do
-      post graphql_path, params: { query: add_snow_accumulation_helper }
+      post graphql_path, params: { query: create_snow_accumulation_helper }
     end
   end
 

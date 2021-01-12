@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddSnowAccumulation < Mutations::BaseMutation
+  class CreateSnowAccumulation < Mutations::BaseMutation
     argument :params, Types::Input::SnowAccumulationInputType, required: true
 
     field :snow_accumulation, Types::SnowAccumulationType, null: false

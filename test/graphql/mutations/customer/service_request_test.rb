@@ -10,7 +10,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     graphql_as_customer
 
     assert_difference('ServiceRequest.count') do
-      post graphql_path, params: { query: add_service_request_helper(@customer_address.id) }
+      post graphql_path, params: { query: create_service_request_helper(@customer_address.id) }
     end
 
     assert_response :success
@@ -20,7 +20,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     create_blank_admin_address
     graphql_as_customer
 
-    post graphql_path, params: { query: add_service_request_helper(@admin_address.id) }
+    post graphql_path, params: { query: create_service_request_helper(@admin_address.id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

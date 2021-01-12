@@ -5,7 +5,7 @@ class Mutations::DailyRouteTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('DailyRoute.count') do
-      post graphql_path, params: { query: add_daily_route_helper }
+      post graphql_path, params: { query: create_daily_route_helper }
     end
   end
 

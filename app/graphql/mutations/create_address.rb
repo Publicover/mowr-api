@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddAddress < Mutations::BaseMutation
+  class CreateAddress < Mutations::BaseMutation
     argument :params, Types::Input::AddressInputType, required: true
 
     field :address, Types::AddressType, null: false

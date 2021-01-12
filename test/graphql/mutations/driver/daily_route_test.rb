@@ -4,7 +4,7 @@ class Mutations::DailyRouteTest < ActionDispatch::IntegrationTest
   test 'should create daily route as driver' do
     graphql_as_driver
 
-    post graphql_path, params: { query: add_daily_route_helper }
+    post graphql_path, params: { query: create_daily_route_helper }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

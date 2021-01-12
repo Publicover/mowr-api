@@ -5,7 +5,7 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('User.count') do
-      post graphql_path, params: { query: add_user_helper }
+      post graphql_path, params: { query: create_user_helper }
     end
 
     assert_response :success

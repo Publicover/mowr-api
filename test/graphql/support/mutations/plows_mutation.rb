@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module PlowsMutation
-  def add_plow_helper(user_id)
+  def create_plow_helper(user_id)
     <<~GQL
       mutation {
-        addPlow(input:{params:{
+        createPlow(input:{params:{
           licencePlate:"3RDXsTHACHARM",
           year:"2020",
           make:"Car",
@@ -53,10 +53,10 @@ module PlowsMutation
     GQL
   end
 
-  def failure_to_add_helper(user_id)
+  def failure_to_create_helper(user_id)
     <<~GQL
       mutation {
-        addPlow(input:{params:{
+        createPlow(input:{params:{
           year:"2020",
           make:"Car",
           model:"Plow",

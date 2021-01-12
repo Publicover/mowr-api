@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module BaseLocationsMutation
-  def add_base_location_helper
+  def create_base_location_helper
     <<~GQL
       mutation {
-        addBaseLocation(input:{params:{
+        createBaseLocation(input:{params:{
           name: "Harbor High",
           line1: "221 Lake Ave.",
           city: "Ashtabula",

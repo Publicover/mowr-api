@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module UsersMutation
-  def add_user_helper
+  def create_user_helper
     <<~GQL
     mutation {
-      addUser(input: { params: {
+      createUser(input: { params: {
         email:"jimgraph@graph.com",
         fName:"Jim",
         lName:"Graph",

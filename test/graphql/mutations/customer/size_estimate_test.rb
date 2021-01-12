@@ -10,7 +10,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     graphql_as_customer
 
     assert_difference('SizeEstimate.count') do
-      post graphql_path, params: { query: add_size_estimate_helper(@customer_address.id) }
+      post graphql_path, params: { query: create_size_estimate_helper(@customer_address.id) }
     end
   end
 
@@ -18,7 +18,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
     create_blank_admin_address
     graphql_as_customer
 
-    post graphql_path, params: { query: add_size_estimate_helper(@admin_address.id) }
+    post graphql_path, params: { query: create_size_estimate_helper(@admin_address.id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

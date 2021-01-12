@@ -4,7 +4,7 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
   test 'should not add service as customer' do
     graphql_as_customer
 
-    post graphql_path, params: { query: add_service_helper }
+    post graphql_path, params: { query: create_service_helper }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

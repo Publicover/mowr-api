@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module SnowAccumulationsMutation
-  def add_snow_accumulation_helper
+  def create_snow_accumulation_helper
     <<~GQL
       mutation {
-        addSnowAccumulation(input:{params:{
+        createSnowAccumulation(input:{params:{
           inches:110
         }}) {
           snowAccumulation {

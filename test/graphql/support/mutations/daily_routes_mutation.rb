@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module DailyRoutesMutation
-  def add_daily_route_helper
+  def create_daily_route_helper
     <<~GQL
       mutation {
-        addDailyRoute(input:{params:{
+        createDailyRoute(input:{params:{
           addressesInOrder:[
             12, 14, 15, 22
           ]

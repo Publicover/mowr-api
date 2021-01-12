@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddServiceDelivery < Mutations::BaseMutation
+  class CreateServiceDelivery < Mutations::BaseMutation
     argument :params, Types::Input::ServiceDeliveryInputType, required: true
 
     field :service_delivery, Types::ServiceDeliveryType, null: false

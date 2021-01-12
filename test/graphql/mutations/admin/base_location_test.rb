@@ -6,7 +6,7 @@ class Mutations::BaseLocationTest < ActionDispatch::IntegrationTest
 
     assert_difference('BaseLocation.count') do
       VCR.use_cassette('base location graphql admin') do
-        post graphql_path, params: { query: add_base_location_helper }
+        post graphql_path, params: { query: create_base_location_helper }
       end
     end
 

@@ -5,7 +5,7 @@ class Mutations::ServiceTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('Service.count') do
-      post graphql_path, params: { query: add_service_helper }
+      post graphql_path, params: { query: create_service_helper }
     end
 
     assert_response :success

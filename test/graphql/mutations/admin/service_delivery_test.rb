@@ -9,7 +9,7 @@ class Mutations::ServiceDeliveryTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('ServiceDelivery.count') do
-      post graphql_path, params: { query: add_service_delivery_helper(@address.id) }
+      post graphql_path, params: { query: create_service_delivery_helper(@address.id) }
     end
 
     assert_response :success

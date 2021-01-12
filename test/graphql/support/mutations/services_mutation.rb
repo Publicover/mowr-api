@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ServicesMutation
-  def add_service_helper
+  def create_service_helper
     <<~GQL
       mutation {
-        addService(input:{params:{
+        createService(input:{params:{
           name:"Test this thing",
           pricePerInchOfSnow:10,
           pricePerDriveway: [

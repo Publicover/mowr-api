@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddDailyRoute < Mutations::BaseMutation
+  class CreateDailyRoute < Mutations::BaseMutation
     argument :params, Types::Input::DailyRouteInputType, required: true
 
     field :daily_route, Types::DailyRouteType, null: false

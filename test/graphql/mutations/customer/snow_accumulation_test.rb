@@ -4,7 +4,7 @@ class Mutations::SnowAccumulationTest < ActionDispatch::IntegrationTest
   test 'can create snow accumulation as customer' do
     graphql_as_customer
 
-    post graphql_path, params: { query: add_snow_accumulation_helper }
+    post graphql_path, params: { query: create_snow_accumulation_helper }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

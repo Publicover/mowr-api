@@ -4,7 +4,7 @@ class Mutations::PlowTest < ActionDispatch::IntegrationTest
   test 'can create plow as driver' do
     graphql_as_driver
 
-    post graphql_path, params: { query: add_plow_helper(users(:one).id) }
+    post graphql_path, params: { query: create_plow_helper(users(:one).id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

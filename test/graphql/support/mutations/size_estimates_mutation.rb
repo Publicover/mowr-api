@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module SizeEstimatesMutation
-  def add_size_estimate_helper(address_id)
+  def create_size_estimate_helper(address_id)
     <<~GQL
       mutation {
-        addSizeEstimate(input:{params:{
+        createSizeEstimate(input:{params:{
           addressId:#{address_id},
           squareFootage:300
         }}) {

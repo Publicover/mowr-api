@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddPlow < Mutations::BaseMutation
+  class CreatePlow < Mutations::BaseMutation
     argument :params, Types::Input::PlowInputType, required: true
 
     field :plow, Types::PlowType, null: false

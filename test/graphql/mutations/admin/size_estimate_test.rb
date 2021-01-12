@@ -9,7 +9,7 @@ class Mutations::SizeEstimateTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('SizeEstimate.count') do
-      post graphql_path, params: { query: add_size_estimate_helper(@address.id) }
+      post graphql_path, params: { query: create_size_estimate_helper(@address.id) }
     end
     assert_response :success
   end
