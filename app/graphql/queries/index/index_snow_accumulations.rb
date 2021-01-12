@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexSnowAccumulations < Queries::BaseQuery
-      type [Types::SnowAccumulationType], null: false
+      type [Types::Api::SnowAccumulationType], null: false
 
       def resolve
         check_logged_in_user

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ServiceDeliveryMutation
+module ServiceDeliveriesMutation
   def create_service_delivery_helper(id)
     <<~GQL
       mutation {

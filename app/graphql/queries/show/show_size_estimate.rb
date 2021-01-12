@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowSizeEstimate < Queries::BaseQuery
-      type Types::SizeEstimateType, null: false
+      type Types::Api::SizeEstimateType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

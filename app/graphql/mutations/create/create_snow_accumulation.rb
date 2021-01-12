@@ -5,7 +5,7 @@ module Mutations
     class CreateSnowAccumulation < Mutations::BaseMutation
       argument :params, Types::Input::SnowAccumulationInputType, required: true
 
-      field :snow_accumulation, Types::SnowAccumulationType, null: false
+      field :snow_accumulation, Types::Api::SnowAccumulationType, null: false
 
       def ready?(**_args)
         error_unless_admin

@@ -5,7 +5,7 @@ module Mutations
     class CreateDailyRoute < Mutations::BaseMutation
       argument :params, Types::Input::DailyRouteInputType, required: true
 
-      field :daily_route, Types::DailyRouteType, null: false
+      field :daily_route, Types::Api::DailyRouteType, null: false
 
       def ready?(**args)
         error_unless_admin

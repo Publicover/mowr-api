@@ -6,7 +6,7 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::AddressInputType, required: true
 
-      field :address, Types::AddressType, null: false
+      field :address, Types::Api::AddressType, null: false
 
       def ready?(**args)
         return true if context[:current_user].admin?

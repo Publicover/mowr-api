@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ServiceDeliveryQuery
+module ServiceDeliveriesQuery
   def index_service_deliveries_helper
     <<~GQL
       query {

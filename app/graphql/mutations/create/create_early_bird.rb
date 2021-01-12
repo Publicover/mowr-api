@@ -5,7 +5,7 @@ module Mutations
     class CreateEarlyBird < Mutations::BaseMutation
       argument :params, Types::Input::EarlyBirdInputType, required: true
 
-      field :early_bird, Types::EarlyBirdType, null: false
+      field :early_bird, Types::Api::EarlyBirdType, null: false
 
       def ready?(**args)
         return true if context[:current_user].admin?

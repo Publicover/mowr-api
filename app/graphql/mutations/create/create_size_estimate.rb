@@ -5,8 +5,8 @@ module Mutations
     class CreateSizeEstimate < Mutations::BaseMutation
       argument :params, Types::Input::SizeEstimateInputType, required: true
 
-      field :size_estimate, Types::SizeEstimateType, null: false
-      field :address, Types::AddressType, null: true
+      field :size_estimate, Types::Api::SizeEstimateType, null: false
+      field :address, Types::Api::AddressType, null: true
 
       def ready?(**args)
         return true if context[:current_user].admin?

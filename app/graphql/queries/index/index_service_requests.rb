@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexServiceRequests < Queries::BaseQuery
-      type [Types::ServiceRequestType], null: false
+      type [Types::Api::ServiceRequestType], null: false
 
       def resolve
         check_logged_in_user

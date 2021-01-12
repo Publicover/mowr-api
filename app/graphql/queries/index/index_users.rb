@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexUsers < Queries::BaseQuery
-      type [Types::UserType], null: false
+      type [Types::Api::UserType], null: false
 
       def resolve
         check_logged_in_user

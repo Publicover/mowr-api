@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexBaseLocations < Queries::BaseQuery
-      type [Types::BaseLocationType], null: false
+      type [Types::Api::BaseLocationType], null: false
 
       def resolve
         check_logged_in_user

@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowPlow < Queries::BaseQuery
-      type Types::PlowType, null: false
+      type Types::Api::PlowType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

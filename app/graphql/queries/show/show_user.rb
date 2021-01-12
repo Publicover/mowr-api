@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowUser < Queries::BaseQuery
-      type Types::UserType, null: false
+      type Types::Api::UserType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

@@ -5,7 +5,7 @@ module Mutations
     class CreateServiceDelivery < Mutations::BaseMutation
       argument :params, Types::Input::ServiceDeliveryInputType, required: true
 
-      field :service_delivery, Types::ServiceDeliveryType, null: false
+      field :service_delivery, Types::Api::ServiceDeliveryType, null: false
 
       def ready?(**_args)
         error_unless_admin

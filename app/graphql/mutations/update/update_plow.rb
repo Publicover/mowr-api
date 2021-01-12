@@ -6,7 +6,7 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::PlowInputType, required: true
 
-      field :plow, Types::PlowType, null: true
+      field :plow, Types::Api::PlowType, null: true
 
       def ready?(**_args)
         error_unless_admin

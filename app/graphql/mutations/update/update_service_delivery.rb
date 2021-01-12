@@ -11,8 +11,8 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::ServiceDeliveryInputType, required: true
 
-      field :service_delivery, Types::ServiceDeliveryType, null: false
-      field :address, Types::AddressType, null: true
+      field :service_delivery, Types::Api::ServiceDeliveryType, null: false
+      field :address, Types::Api::AddressType, null: true
 
       def ready?(**_args)
         error_unless_admin

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ServiceRequestMutation
+module ServiceRequestsMutation
   def create_service_request_helper(address_id)
     <<~GQL
       mutation {

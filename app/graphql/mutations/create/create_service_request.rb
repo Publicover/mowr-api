@@ -5,7 +5,7 @@ module Mutations
     class CreateServiceRequest < Mutations::BaseMutation
       argument :params, Types::Input::ServiceRequestInputType, required: true
 
-      field :service_request, Types::ServiceRequestType, null: false
+      field :service_request, Types::Api::ServiceRequestType, null: false
 
       def ready?(**args)
         return true if context[:current_user].admin?

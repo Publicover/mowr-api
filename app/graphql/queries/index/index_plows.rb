@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexPlows < Queries::BaseQuery
-      type [Types::PlowType], null: false
+      type [Types::Api::PlowType], null: false
 
       def resolve
         check_logged_in_user

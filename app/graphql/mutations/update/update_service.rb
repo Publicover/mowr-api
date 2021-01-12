@@ -6,7 +6,7 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::ServiceInputType, required: true
 
-      field :service, Types::ServiceType, null: false
+      field :service, Types::Api::ServiceType, null: false
 
       def ready?(**_args)
         error_unless_admin

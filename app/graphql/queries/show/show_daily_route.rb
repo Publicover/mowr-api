@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowDailyRoute < Queries::BaseQuery
-      type Types::DailyRouteType, null: false
+      type Types::Api::DailyRouteType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

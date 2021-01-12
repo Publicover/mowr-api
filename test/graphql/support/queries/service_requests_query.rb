@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ServiceRequestQuery
+module ServiceRequestsQuery
   def index_service_requests_helper
     <<~GQL
       query {

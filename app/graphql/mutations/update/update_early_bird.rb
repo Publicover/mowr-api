@@ -6,8 +6,8 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::EarlyBirdInputType, required: true
 
-      field :early_bird, Types::EarlyBirdType, null: false
-      field :address, Types::AddressType, null: true
+      field :early_bird, Types::Api::EarlyBirdType, null: false
+      field :address, Types::Api::AddressType, null: true
 
       def ready?(**args)
         return true if context[:current_user].admin?

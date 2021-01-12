@@ -5,7 +5,7 @@ module Mutations
     argument :params, Types::Input::UserInputType, required: true
 
     field :token, String, null: true
-    field :user, Types::UserType, null: true
+    field :user, Types::Api::UserType, null: true
 
     # rubocop:disable Metrics/AbcSize
     def resolve(params:)

@@ -5,7 +5,7 @@ module Mutations
     class CreatePlow < Mutations::BaseMutation
       argument :params, Types::Input::PlowInputType, required: true
 
-      field :plow, Types::PlowType, null: false
+      field :plow, Types::Api::PlowType, null: false
 
       def ready?(**_args)
         error_unless_admin

@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowServiceDelivery < Queries::BaseQuery
-      type Types::ServiceDeliveryType, null: false
+      type Types::Api::ServiceDeliveryType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

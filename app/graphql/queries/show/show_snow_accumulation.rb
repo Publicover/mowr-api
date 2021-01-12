@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowSnowAccumulation < Queries::BaseQuery
-      type Types::SnowAccumulationType, null: false
+      type Types::Api::SnowAccumulationType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

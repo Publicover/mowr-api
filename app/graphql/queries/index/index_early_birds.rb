@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexEarlyBirds < Queries::BaseQuery
-      type [Types::EarlyBirdType], null: false
+      type [Types::Api::EarlyBirdType], null: false
 
       def resolve
         check_logged_in_user

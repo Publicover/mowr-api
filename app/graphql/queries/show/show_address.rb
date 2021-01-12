@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowAddress < Queries::BaseQuery
-      type Types::AddressType, null: false
+      type Types::Api::AddressType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

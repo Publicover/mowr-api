@@ -6,8 +6,8 @@ module Mutations
       argument :id, ID, required: true
       argument :params, Types::Input::ServiceRequestInputType, required: true
 
-      field :service_request, Types::ServiceRequestType, null: false
-      field :address, Types::AddressType, null: true
+      field :service_request, Types::Api::ServiceRequestType, null: false
+      field :address, Types::Api::AddressType, null: true
 
       def ready?(**args)
         return true if context[:current_user].admin?

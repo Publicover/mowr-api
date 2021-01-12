@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowBaseLocation < Queries::BaseQuery
-      type Types::BaseLocationType, null: false
+      type Types::Api::BaseLocationType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

@@ -5,7 +5,7 @@ module Mutations
     class CreateBaseLocation < Mutations::BaseMutation
       argument :params, Types::Input::BaseLocationInputType, required: true
 
-      field :base_location, Types::BaseLocationType, null: false
+      field :base_location, Types::Api::BaseLocationType, null: false
 
       def ready?(**_args)
         error_unless_admin

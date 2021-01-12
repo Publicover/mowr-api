@@ -3,7 +3,7 @@
 module Queries
   module Show
     class ShowEarlyBird < Queries::BaseQuery
-      type Types::EarlyBirdType, null: false
+      type Types::Api::EarlyBirdType, null: false
       argument :id, ID, required: true
 
       def resolve(id:)

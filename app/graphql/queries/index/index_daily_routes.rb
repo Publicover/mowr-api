@@ -3,7 +3,7 @@
 module Queries
   module Index
     class IndexDailyRoutes < Queries::BaseQuery
-      type [Types::DailyRouteType], null: false
+      type [Types::Api::DailyRouteType], null: false
 
       def resolve
         check_logged_in_user
