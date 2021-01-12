@@ -38,7 +38,7 @@ puts "Creating 2 admins..."
 
 admin_count = 1
 2.times do
-  User.create!(email: "admin_#{admin_count}@mowr.com", f_name: Faker::Name.first_name,
+  User.create!(email: "admin_#{admin_count}@plowr.com", f_name: Faker::Name.first_name,
                l_name: Faker::Name.last_name, password: "password", role: :admin,
                phone: Faker::PhoneNumber.phone_number)
 
@@ -49,7 +49,7 @@ puts "Creating 4 drivers..."
 
 driver_count = 1
 4.times do
-  User.create!(email: "driver_#{driver_count}@mowr.com", f_name: Faker::Name.first_name,
+  User.create!(email: "driver_#{driver_count}@plowr.com", f_name: Faker::Name.first_name,
                l_name: Faker::Name.last_name, password: "password", role: :driver,
                phone: Faker::PhoneNumber.phone_number)
 
@@ -63,7 +63,7 @@ puts "And a few early bird specials..."
 customer_count = 1
 
 300.times do
-  user = User.create!(email: "customer_#{customer_count}@mowr.com", f_name: Faker::Name.first_name,
+  user = User.create!(email: "customer_#{customer_count}@plowr.com", f_name: Faker::Name.first_name,
                       l_name: Faker::Name.last_name, password: "password", role: :customer,
                       phone: Faker::PhoneNumber.phone_number)
 

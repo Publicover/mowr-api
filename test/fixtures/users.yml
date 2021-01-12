@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: admin@mowr.com
+  email: admin@plowr.com
   f_name: Jim
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
@@ -9,7 +9,7 @@ one:
   phone: 3334445555
 
 two:
-  email: driver@mowr.com
+  email: driver@plowr.com
   f_name: Mike
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
@@ -17,7 +17,7 @@ two:
   phone: 4445556666
 
 three:
-  email: customer@mowr.com
+  email: customer@plowr.com
   f_name: Dana
   l_name: Pub
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
