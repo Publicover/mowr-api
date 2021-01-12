@@ -10,18 +10,16 @@ module Mutations
     def resolve(params:)
       auth_params = Hash(params)
 
-      begin
-        user = User.find_by(email: auth_params[:email])
+      user = User.find_by(email: auth_params[:email])
 
-        return unless user
+      return unless user
 
-        token = AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
+      token = AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
 
-        context[:session][:token] = token
-        context[:current_user] = user
+      context[:session][:token] = token
+      context[:current_user] = user
 
-        { user: user, token: token }
-      end
+      { user: user, token: token }
     end
   end
 end
