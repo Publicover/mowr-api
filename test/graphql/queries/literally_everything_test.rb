@@ -12,6 +12,8 @@ class Queries::LiterallyEverythingTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_not_nil json['data']
+    assert_not_nil json['data']['indexBaseLocations']
+    assert_not_nil json['data']['indexPlows']
     assert_not_nil json['data']['indexUsers']
     assert_not_nil json['data']['indexUsers'][0]
     assert_not_nil json['data']['indexUsers'][0]['addresses']
@@ -28,5 +30,7 @@ class Queries::LiterallyEverythingTest < ActionDispatch::IntegrationTest
     assert_not_nil json['data']['indexUsers'][2]['addresses'][5]['serviceRequest']
     assert_equal Address.where(user_id: json['data']['indexUsers'][2]['id']).count,
                  json['data']['indexUsers'][2]['addresses'].size
+    assert_not_nil json['data']['indexDailyRoutes']
+    assert_not_nil json['data']['indexServiceDeliveries']
   end
 end

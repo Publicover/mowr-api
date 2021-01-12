@@ -4,6 +4,31 @@ module EverythingQuery
   def fetch_everything_helper
     <<~GQL
       query {
+        indexBaseLocations{
+          id
+          name
+          line1
+          line2
+          city
+          state
+          zip
+          latitude
+          longitude
+         }
+
+         indexPlows {
+           id
+           licencePlate
+           year
+           make
+           model
+           userId
+         }
+
+         indexSnowAccumulations {
+           inches
+         }
+
         indexUsers {
           id
           fName
@@ -42,6 +67,17 @@ module EverythingQuery
               priority
             }
           }
+        }
+
+        indexDailyRoutes {
+          id
+          addressesInOrder
+        }
+
+        indexServiceDeliveries {
+          id
+          addressId
+          totalCost
         }
       }
     GQL
