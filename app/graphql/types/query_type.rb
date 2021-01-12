@@ -5,27 +5,28 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :show_user, resolver: Queries::ShowUser
-    field :index_users, resolver: Queries::IndexUsers
-    field :show_address, resolver: Queries::ShowAddress
-    field :index_addresses, resolver: Queries::IndexAddresses
-    field :show_early_bird, resolver: Queries::ShowEarlyBird
-    field :index_early_birds, resolver: Queries::IndexEarlyBirds
-    field :show_size_estimate, resolver: Queries::ShowSizeEstimate
-    field :index_size_estimates, resolver: Queries::IndexSizeEstimates
-    field :index_services, resolver: Queries::IndexServices
-    field :show_service, resolver: Queries::ShowService
-    field :show_service_request, resolver: Queries::ShowServiceRequest
-    field :index_service_requests, resolver: Queries::IndexServiceRequests
-    field :show_service_delivery, resolver: Queries::ShowServiceDelivery
-    field :index_service_deliveries, resolver: Queries::IndexServiceDeliveries
-    field :index_base_locations, resolver: Queries::IndexBaseLocations
-    field :show_base_location, resolver: Queries::ShowBaseLocation
-    field :index_plows, resolver: Queries::IndexPlows
-    field :show_plow, resolver: Queries::ShowPlow
-    field :index_snow_accumulations, resolver: Queries::IndexSnowAccumulations
-    field :show_snow_accumulation, resolver: Queries::ShowSnowAccumulation
-    field :index_daily_routes, resolver: Queries::IndexDailyRoutes
-    field :show_daily_route, resolver: Queries::ShowDailyRoute
+    field :index_addresses, resolver: Queries::Index::IndexAddresses
+    field :index_base_locations, resolver: Queries::Index::IndexBaseLocations
+    field :index_daily_routes, resolver: Queries::Index::IndexDailyRoutes
+    field :index_early_birds, resolver: Queries::Index::IndexEarlyBirds
+    field :index_plows, resolver: Queries::Index::IndexPlows
+    field :index_services, resolver: Queries::Index::IndexServices
+    field :index_service_deliveries, resolver: Queries::Index::IndexServiceDeliveries
+    field :index_service_requests, resolver: Queries::Index::IndexServiceRequests
+    field :index_size_estimates, resolver: Queries::Index::IndexSizeEstimates
+    field :index_snow_accumulations, resolver: Queries::Index::IndexSnowAccumulations
+    field :index_users, resolver: Queries::Index::IndexUsers
+
+    field :show_address, resolver: Queries::Show::ShowAddress
+    field :show_base_location, resolver: Queries::Show::ShowBaseLocation
+    field :show_daily_route, resolver: Queries::Show::ShowDailyRoute
+    field :show_early_bird, resolver: Queries::Show::ShowEarlyBird
+    field :show_plow, resolver: Queries::Show::ShowPlow
+    field :show_service, resolver: Queries::Show::ShowService
+    field :show_service_delivery, resolver: Queries::Show::ShowServiceDelivery
+    field :show_service_request, resolver: Queries::Show::ShowServiceRequest
+    field :show_size_estimate, resolver: Queries::Show::ShowSizeEstimate
+    field :show_snow_accumulation, resolver: Queries::Show::ShowSnowAccumulation
+    field :show_user, resolver: Queries::Show::ShowUser
   end
 end
