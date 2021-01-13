@@ -28,4 +28,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post signup_path, headers: @headers, params: {}
     assert json['message'].include?("Validation failed")
   end
+
+  test 'user will get Stripe ID upon account creation' do
+    VCR.use_cassette('user controller stripe customer') do
+      post signup_path, headers: @headers, params: @user_params
+    end
+    assert_response :created
+    assert_not_nil User.last.reload.stripe_id
+  end
 end

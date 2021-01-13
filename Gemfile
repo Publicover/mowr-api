@@ -40,6 +40,8 @@ gem 'rubocop', '~> 0.62'
 gem 'rubocop-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'stripe'
+gem 'stripe_event'
 
 # group :test do
 #   gem 'database_cleaner'
@@ -55,6 +57,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'vcr'
   gem 'webmock'
+end
+
+group :development, :test, :staging do
+  gem 'stripe-ruby-mock', '~> 2.5.8', require: 'stripe_mock'
 end
 
 group :development do

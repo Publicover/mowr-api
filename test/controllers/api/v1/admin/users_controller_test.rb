@@ -27,9 +27,8 @@ class Api::V1::Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should delete user of choice as admin' do
-    user_count = User.count
-    delete api_v1_admin_user_path(@admin), params: { target_id: User.last.id }.to_json, headers: @admin_headers
-    assert_response :success
-    assert User.count, user_count - 1
+    assert_difference('User.count', -1) do
+      delete api_v1_admin_user_path(@admin), params: { target_id: User.last.id }.to_json, headers: @admin_headers
+    end
   end
 end

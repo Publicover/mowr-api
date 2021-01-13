@@ -22,6 +22,8 @@ class Api::V1::Admin::UsersController < ApplicationController
 
   def destroy
     authorize [:api, :v1, @user]
+    # TODO: test wiping customer from Stripe
+    remove_stripe_customer unless Rails.env.test?
     @user.destroy!
     serialized_response(@user, User)
   end
@@ -34,5 +36,10 @@ class Api::V1::Admin::UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(policy([:api, :v1, User]).permitted_attributes)
+    end
+
+    def remove_stripe_customer
+      stripe_id = User.find(params[:target_id]).stripe_id
+      Stripe::Customer.delete(stripe_id)
     end
 end
