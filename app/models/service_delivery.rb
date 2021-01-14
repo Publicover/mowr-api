@@ -39,4 +39,8 @@ class ServiceDelivery < ApplicationRecord
     size_estimate.confirmed! if size_estimate.pending?
     service_request.confirmed! if service_request.pending?
   end
+
+  def total_cost_in_cents
+    (total_cost * 100).to_i
+  end
 end

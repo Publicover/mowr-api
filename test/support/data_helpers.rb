@@ -173,4 +173,24 @@ module DataHelpers
     @service_delivery2 = ServiceDelivery.create!(address_id: @address2.id, status: :scheduled)
     @daily_route = DailyRoute.create!(addresses_in_order: [Address.pluck(:id)])
   end
+
+  def populate_for_stripe_call
+    @user = users(:three)
+    @address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
+                    state: Faker::Address.state, zip: Faker::Address.zip_code,
+                    user_id: @user.id, latitude: Faker::Address.latitude,
+                    longitude: Faker::Address.longitude, name: Faker::Company.name, driveway: :large)
+    @snow_accumulation = snow_accumulations(:one)
+    @size_estimate = SizeEstimate.create!(address_id: @address.id, status: :confirmed)
+    @service_request = ServiceRequest.create!(address_id: @address.id, status: :confirmed, service_ids: Service.pluck(:id))
+    @service_delivery = ServiceDelivery.create!(address_id: @address.id, status: :scheduled)
+    @address2 = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
+                    state: Faker::Address.state, zip: Faker::Address.zip_code,
+                    user_id: @user.id, latitude: Faker::Address.latitude,
+                    longitude: Faker::Address.longitude, name: Faker::Company.name, driveway: :large)
+    @size_estimate2 = SizeEstimate.create!(address_id: @address2.id, status: :confirmed)
+    @service_request2 = ServiceRequest.create!(address_id: @address2.id, status: :confirmed, service_ids: Service.pluck(:id))
+    @service_delivery2 = ServiceDelivery.create!(address_id: @address2.id, status: :scheduled)
+    @daily_route = DailyRoute.create!(addresses_in_order: [@address.id, @address2.id])
+  end
 end

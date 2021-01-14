@@ -8,7 +8,7 @@ require 'rails/test_help'
 require 'vcr'
 
 require_relative '../test/graphql/support/graphql_requirements'
-require_relative '../test/controllers/api_requirements'
+require_relative '../test/api_requirements'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

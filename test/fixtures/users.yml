@@ -23,3 +23,4 @@ three:
   password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
   role: 2
   phone: 5556667777
+  stripe_id: cus_Il0otsjoN4ck5r

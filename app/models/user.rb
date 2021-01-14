@@ -20,4 +20,8 @@ class User < ApplicationRecord
     driver: 1,
     customer: 2
   }
+
+  def payment_method
+    payment_methods.primary.first
+  end
 end
