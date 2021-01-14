@@ -7,18 +7,18 @@ class Api::V1::Driver::AddressesController < ApplicationController
   def index
     @addresses = policy_scope([:api, :v1, Address])
     authorize [:api, :v1, @addresses]
-    serialized_response(@addresses, Address)
+    serialized_response(@addresses)
   end
 
   def show
-    serialized_response(@address, Address)
+    serialized_response(@address)
   end
 
   def create
     @address = Address.new(address_params)
     authorize [:api, :v1, @address]
 
-    serialized_response(@address, Address) if @address.save
+    serialized_response(@address) if @address.save
   end
 
   def update
@@ -35,12 +35,12 @@ class Api::V1::Driver::AddressesController < ApplicationController
     #   puts params
     # end
     @address.size_estimate.confirmed! if address_params[:estimate_confirmed].present?
-    serialized_response(@address, Address)
+    serialized_response(@address)
   end
 
   def destroy
     @address.destroy!
-    serialized_response(@address, Address)
+    serialized_response(@address)
   end
 
   private

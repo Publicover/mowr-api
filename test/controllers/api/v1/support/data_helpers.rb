@@ -158,4 +158,19 @@ module DataHelpers
       SizeEstimate.create(address_id: morrell.id, square_footage: 300, )
     end
   end
+
+  def populate_for_daily_routes
+    populate_services
+
+    @snow_accumulation = snow_accumulations(:one)
+    @address = populate_blank_address
+    @size_estimate = SizeEstimate.create!(address_id: @address.id, status: :confirmed)
+    @service_request = ServiceRequest.create!(address_id: @address.id, status: :confirmed, service_ids: Service.pluck(:id))
+    @service_delivery = ServiceDelivery.create!(address_id: @address.id, status: :scheduled)
+    @address2 = populate_blank_address
+    @size_estimate2 = SizeEstimate.create!(address_id: @address2.id, status: :confirmed)
+    @service_request2 = ServiceRequest.create!(address_id: @address2.id, status: :confirmed, service_ids: Service.pluck(:id))
+    @service_delivery2 = ServiceDelivery.create!(address_id: @address2.id, status: :scheduled)
+    @daily_route = DailyRoute.create!(addresses_in_order: [Address.pluck(:id)])
+  end
 end

@@ -7,28 +7,28 @@ class Api::V1::Admin::ServiceRequestsController < ApplicationController
     @service_requests = policy_scope([:api, :v1, ServiceRequest])
     authorize [:api, :v1, @service_requests]
 
-    serialized_response(@service_requests, ServiceRequest)
+    serialized_response(@service_requests)
   end
 
   def show
-    serialized_response(@service_request, ServiceRequest)
+    serialized_response(@service_request)
   end
 
   def create
     @service_request = ServiceRequest.new(service_request_params)
     authorize [:api, :v1, @service_request]
 
-    serialized_response(@service_request, ServiceRequest) if @service_request.save
+    serialized_response(@service_request) if @service_request.save
   end
 
   def update
     @service_request.update(service_request_params)
-    serialized_response(@service_request, ServiceRequest)
+    serialized_response(@service_request)
   end
 
   def destroy
     @service_request.destroy!
-    serialized_response(@service_request, ServiceRequest)
+    serialized_response(@service_request)
   end
 
   private

@@ -2,7 +2,7 @@
 
 class EarlyBirdSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :user_id, :priority
+  attributes :address_id, :priority
 
-  belongs_to :user
+  belongs_to :address
 end

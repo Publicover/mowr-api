@@ -7,11 +7,11 @@ class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
     @service_deliveries = policy_scope([:api, :v1, ServiceDelivery])
     authorize [:api, :v1, @service_deliveries]
 
-    serialized_response(@service_deliveries, ServiceDelivery)
+    serialized_response(@service_deliveries)
   end
 
   def show
-    serialized_response(@service_delivery, ServiceDelivery)
+    serialized_response(@service_delivery)
   end
 
   def create
@@ -21,17 +21,17 @@ class Api::V1::Admin::ServiceDeliveriesController < ApplicationController
 
     @service_delivery.confirm_siblings
     @service_delivery.update(total_cost: @service_delivery.calculate_total_cost)
-    serialized_response(@service_delivery, ServiceDelivery)
+    serialized_response(@service_delivery)
   end
 
   def update
     @service_delivery.update(service_delivery_params)
-    serialized_response(@service_delivery, ServiceDelivery)
+    serialized_response(@service_delivery)
   end
 
   def destroy
     @service_delivery.destroy
-    serialized_response(@service_delivery, ServiceDelivery)
+    serialized_response(@service_delivery)
   end
 
   private

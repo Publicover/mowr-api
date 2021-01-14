@@ -49,11 +49,12 @@ class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
   end
 
   test 'can retrieve Address ids used in call by scope' do
+    # TODO: probably need to swap out for scope with curret service deliveries
     early_bird_ids = CalculateDailyRoute.new.addresses_in_call(Address.with_early_birds)
     unscoped_ids = CalculateDailyRoute.new.addresses_in_call(Address.without_early_birds)
     assert_not_nil early_bird_ids
     assert_not_nil unscoped_ids
-    assert_equal Address.with_service_requests.count, early_bird_ids.count + unscoped_ids.count
+    assert_equal Address.with_current_service_requests.count, early_bird_ids.count + unscoped_ids.count
   end
 
   test 'can retrieve array of Address index returned in call' do

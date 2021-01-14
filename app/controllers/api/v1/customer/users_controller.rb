@@ -6,24 +6,24 @@ class Api::V1::Customer::UsersController < ApplicationController
   def index
     @users = policy_scope([:api, :v1, User])
     authorize [:api, :v1, @users]
-    serialized_response(@users, User)
+    serialized_response(@users)
   end
 
   def show
     authorize [:api, :v1, @user]
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   def update
     authorize [:api, :v1, @user]
     @user.update(user_params)
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   def destroy
     authorize [:api, :v1, @user]
     @user.destroy!
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   private

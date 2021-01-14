@@ -6,26 +6,26 @@ class Api::V1::Admin::DailyRoutesController < ApplicationController
   def index
     @daily_routes = policy_scope([:api, :v1, DailyRoute])
     authorize [:api, :v1, @daily_routes]
-    serialized_response(@daily_routes, DailyRoute)
+    serialized_response(@daily_routes)
   end
 
   def show
-    serialized_response(@daily_route, DailyRoute)
+    serialized_response(@daily_route)
   end
 
   def create
     @daily_route = DailyRoute.new(daily_route_params)
-    serialized_response(@daily_route, DailyRoute) if @daily_route.save
+    serialized_response(@daily_route) if @daily_route.save
   end
 
   def update
     @daily_route.update(daily_route_params)
-    serialized_response(@daily_route, DailyRoute) if @daily_route.save
+    serialized_response(@daily_route) if @daily_route.save
   end
 
   def destroy
     @daily_route.destroy
-    serialized_response(@daily_route, DailyRoute)
+    serialized_response(@daily_route)
   end
 
   private

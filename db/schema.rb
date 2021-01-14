@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_095632) do
+ActiveRecord::Schema.define(version: 2021_01_14_084000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,29 @@ ActiveRecord::Schema.define(version: 2021_01_13_095632) do
     t.index ["address_id"], name: "index_early_birds_on_address_id"
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "nickname"
+    t.string "stripe_pm_id"
+    t.string "stripe_user_id"
+    t.string "stripe_token"
+    t.string "brand"
+    t.string "last4"
+    t.string "exp_month"
+    t.string "exp_year"
+    t.integer "status", default: 1
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_payment_methods_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "cost_in_cents"
+    t.string "stripe_charge_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
   create_table "plows", force: :cascade do |t|
     t.string "licence_plate"
     t.string "year"
@@ -75,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_095632) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "total_cost", precision: 5, scale: 2
+    t.integer "status", default: 0
     t.index ["address_id"], name: "index_service_deliveries_on_address_id"
   end
 
@@ -126,6 +150,8 @@ ActiveRecord::Schema.define(version: 2021_01_13_095632) do
   end
 
   add_foreign_key "early_birds", "addresses", on_delete: :cascade
+  add_foreign_key "payment_methods", "users"
+  add_foreign_key "payments", "users"
   add_foreign_key "plows", "users"
   add_foreign_key "service_deliveries", "addresses"
   add_foreign_key "service_requests", "addresses"

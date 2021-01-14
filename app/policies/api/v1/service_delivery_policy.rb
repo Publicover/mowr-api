@@ -30,7 +30,7 @@ module Api
       end
 
       def permitted_attributes
-        %i[total_cost address_id]
+        %i[total_cost address_id status]
       end
     end
   end

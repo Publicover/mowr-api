@@ -6,28 +6,28 @@ class Api::V1::Customer::ServicesController < ApplicationController
   def index
     @services = policy_scope([:api, :v1, Service])
     authorize [:api, :v1, @services]
-    serialized_response(@services, Service)
+    serialized_response(@services)
   end
 
   def show
-    serialized_response(@service, Service)
+    serialized_response(@service)
   end
 
   def create
     @service = Service.new(service_params)
     authorize [:api, :v1, @service]
 
-    serialized_response(@service, Service) if @service.save
+    serialized_response(@service) if @service.save
   end
 
   def update
     @service.update(service_params)
-    serialized_response(@service, Service)
+    serialized_response(@service)
   end
 
   def destroy
     @service.destroy!
-    serialized_response(@service, Service)
+    serialized_response(@service)
   end
 
   private

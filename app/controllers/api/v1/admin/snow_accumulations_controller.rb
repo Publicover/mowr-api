@@ -7,27 +7,27 @@ class Api::V1::Admin::SnowAccumulationsController < ApplicationController
     @snow_accumulations = policy_scope([:api, :v1, SnowAccumulation])
     authorize [:api, :v1, @snow_accumulations]
 
-    serialized_response(@snow_accumulations, SnowAccumulation)
+    serialized_response(@snow_accumulations)
   end
 
   def show
-    serialized_response(@snow_accumulation, SnowAccumulation)
+    serialized_response(@snow_accumulation)
   end
 
   def create
     @snow_accumulation = SnowAccumulation.new(snow_accumulation_params)
 
-    serialized_response(@snow_accumulation, SnowAccumulation) if @snow_accumulation.save
+    serialized_response(@snow_accumulation) if @snow_accumulation.save
   end
 
   def update
     @snow_accumulation.update(snow_accumulation_params)
-    serialized_response(@snow_accumulation, SnowAccumulation)
+    serialized_response(@snow_accumulation)
   end
 
   def destroy
     @snow_accumulation.destroy
-    serialized_response(@snow_accumulation, SnowAccumulation)
+    serialized_response(@snow_accumulation)
   end
 
   private

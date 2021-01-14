@@ -9,8 +9,18 @@ class ServiceDelivery < ApplicationRecord
   has_one :size_estimate, through: :address
   has_one :service_request, through: :address
   has_one :early_bird, through: :address
+  has_one :user, through: :address
 
-  # confirm size estimate of parent address
+  enum status: {
+    scheduled: 0,
+    complete: 1,
+    incomplete: 2,
+    paid: 3
+  }
+
+  scope :deliveries_today, -> {
+        scheduled.where('created_at > ?', Time.zone.yesterday.end_of_day + 1.hour)
+  }
 
   STATE_TAX = 1.08
 
@@ -26,7 +36,7 @@ class ServiceDelivery < ApplicationRecord
   end
 
   def confirm_siblings
-    size_estimate.confirmed!
-    service_request.confirmed!
+    size_estimate.confirmed! if size_estimate.pending?
+    service_request.confirmed! if service_request.pending?
   end
 end

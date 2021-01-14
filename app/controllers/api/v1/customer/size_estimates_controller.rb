@@ -7,28 +7,28 @@ class Api::V1::Customer::SizeEstimatesController < ApplicationController
   def index
     @size_estimates = policy_scope([:api, :v1, SizeEstimate])
     authorize [:api, :v1, @size_estimates]
-    serialized_response(@size_estimates, SizeEstimate)
+    serialized_response(@size_estimates)
   end
 
   def show
-    serialized_response(@size_estimate, SizeEstimate)
+    serialized_response(@size_estimate)
   end
 
   def create
     @size_estimate = SizeEstimate.new(size_estimate_params)
     authorize [:api, :v1, @size_estimate]
 
-    serialized_response(@size_estimate, SizeEstimate) if @size_estimate.save
+    serialized_response(@size_estimate) if @size_estimate.save
   end
 
   def update
     @size_estimate.update(size_estimate_params)
-    serialized_response(@size_estimate, SizeEstimate)
+    serialized_response(@size_estimate)
   end
 
   def destroy
     @size_estimate.destroy!
-    serialized_response(@size_estimate, SizeEstimate)
+    serialized_response(@size_estimate)
   end
 
   private

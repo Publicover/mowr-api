@@ -8,6 +8,7 @@ class ServiceRequest < ApplicationRecord
   has_one :early_bird, through: :address
 
   has_one :user, through: :address
+  has_one :service_delivery, through: :address
 
   scope :with_early_birds, -> { includes(:early_bird).where.not(early_birds: { id: nil }) }
   scope :without_early_birds, -> { includes(:early_bird).where(early_birds: { id: nil }) }

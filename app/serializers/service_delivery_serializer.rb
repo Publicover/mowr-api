@@ -2,7 +2,7 @@
 
 class ServiceDeliverySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :total_cost, :address_id
+  attributes :total_cost, :address_id, :status
 
   belongs_to :address
 end

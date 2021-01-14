@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         resources :snow_accumulations
         resources :daily_routes
         resources :base_locations
+        resources :complete_daily_routes, only: [:update]
+        resources :payment_methods
       end
       namespace :driver do
         resources :plows

@@ -7,28 +7,28 @@ class Api::V1::Admin::BaseLocationsController < ApplicationController
     @base_locations = policy_scope([:api, :v1, BaseLocation])
     authorize [:api, :v1, @base_locations]
 
-    serialized_response(@base_locations, BaseLocation)
+    serialized_response(@base_locations)
   end
 
   def show
-    serialized_response(@base_location, BaseLocation)
+    serialized_response(@base_location)
   end
 
   def create
     @base_location = BaseLocation.new(base_location_params)
     authorize [:api, :v1, @base_location]
 
-    serialized_response(@base_location, BaseLocation) if @base_location.save
+    serialized_response(@base_location) if @base_location.save
   end
 
   def update
     @base_location.update(base_location_params)
-    serialized_response(@base_location, BaseLocation)
+    serialized_response(@base_location)
   end
 
   def destroy
     @base_location.destroy
-    serialized_response(@base_location, BaseLocation)
+    serialized_response(@base_location)
   end
 
   private

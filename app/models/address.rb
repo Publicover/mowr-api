@@ -25,6 +25,12 @@ class Address < ApplicationRecord
                                     .where.not(service_requests: { id: nil })
                                 }
 
+  scope :with_current_service_requests, lambda {
+                                          includes(:service_request)
+                                            .where(service_requests: { status: :confirmed })
+                                            .where('service_requests.created_at > ?', Time.zone.now.yesterday.end_of_day)
+                                        }
+
   scope :with_early_birds, lambda {
                              includes(:early_bird)
                                .includes(:service_request)
@@ -48,5 +54,23 @@ class Address < ApplicationRecord
 
   def service_ids
     service_request.blank? ? nil : service_request.service_ids
+  end
+
+  def serve_today?
+    (service_delivery.last.created_at.day == DailyRoute.last.created_at.day) &&
+    (service_delivery.last.created_at.month == DailyRoute.last.created_at.month) &&
+    (service_delivery.last.created_at.year == DailyRoute.last.created_at.year)
+  end
+
+  def current_delivery
+    service_delivery.last
+  end
+
+  def current_charges
+    service_delivery.last.total_cost
+  end
+
+  def mark_serviced
+    service_delivery.last.complete!
   end
 end

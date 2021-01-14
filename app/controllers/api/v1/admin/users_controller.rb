@@ -6,18 +6,18 @@ class Api::V1::Admin::UsersController < ApplicationController
   def index
     @users = policy_scope([:api, :v1, User])
     authorize [:api, :v1, @users]
-    serialized_response(@users, User)
+    serialized_response(@users)
   end
 
   def show
     authorize [:api, :v1, @user]
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   def update
     authorize [:api, :v1, @user]
     @user.update(user_params)
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   def destroy
@@ -25,7 +25,7 @@ class Api::V1::Admin::UsersController < ApplicationController
     # TODO: test wiping customer from Stripe
     remove_stripe_customer unless Rails.env.test?
     @user.destroy!
-    serialized_response(@user, User)
+    serialized_response(@user)
   end
 
   private

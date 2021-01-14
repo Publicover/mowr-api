@@ -4,12 +4,12 @@ class Api::V1::Driver::EarlyBirdsController < ApplicationController
   def index
     @early_birds = policy_scope([:api, :v1, EarlyBird])
     authorize [:api, :v1, @early_birds]
-    serialized_response(@early_birds, EarlyBird)
+    serialized_response(@early_birds)
   end
 
   def show
     @early_bird = EarlyBird.find(params[:id])
     authorize [:api, :v1, @early_bird]
-    serialized_response(@early_bird, EarlyBird)
+    serialized_response(@early_bird)
   end
 end
