@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::Admin::PaymentMethodsController < ApplicationController
+class Api::V1::Customer::PaymentMethodsController < ApplicationController
   before_action :set_payment_method, except: [:index, :create]
 
   def index

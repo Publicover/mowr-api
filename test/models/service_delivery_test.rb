@@ -3,9 +3,9 @@ require 'test_helper'
 class ServiceDeliveryTest < ActiveSupport::TestCase
   setup do
     @snow_accumulation = snow_accumulations(:one)
-    @address = populate_blank_address
-    @size_estimate = SizeEstimate.create!(address_id: @address.id, status: :pending)
-    @service_request = ServiceRequest.create!(address_id: @address.id, status: :pending, service_ids: Service.pluck(:id))
+    @address = addresses(:one)
+    @size_estimate = @address.size_estimate
+    @service_request = @address.service_request
   end
 
   test 'should know sibling service_request' do

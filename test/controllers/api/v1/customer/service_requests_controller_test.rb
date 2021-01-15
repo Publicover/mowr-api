@@ -20,11 +20,11 @@ class Api::V1::Customer::ServiceRequestsControllerTest < ActionDispatch::Integra
   end
 
   test 'should create as customer' do
-    populate_blank_address
+    address = addresses(:blank)
     assert_difference('ServiceRequest.count') do
       post api_v1_customer_service_requests_path, params: { service_request: {
-        address_id: @address.id, approved: false, recurring: false,
-        service_ids: [ServiceRequest.first.id] }
+        address_id: address.id, approved: false, recurring: false,
+        service_ids: [Service.first.id] }
         }.to_json,
         headers: @customer_headers
     end

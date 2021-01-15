@@ -14,16 +14,19 @@ class CreateRoutesJobTest < ActiveJob::TestCase
   end
 
   test 'can assemble routes and create service deliveries' do
-    # Fudging here: gonna show that this job creats a service_delivery for each
-    #   confirmed service_request, so I need to delete what I have leftover from seeds
-    ServiceDelivery.delete_all
-    populate_addresses_with_early_birds
+    # First, I have to mark the service_deliveries that I already have in the fixtures
+    # then I have to fill the service_ids array in the service_requests.
+    previous_count = ServiceDelivery.count
+    fill_request_service_ids
 
-    VCR.use_cassette('create routes job') do
-      assert_difference('ServiceDelivery.count', ServiceRequest.confirmed.count) do
-        CreateRoutesJob.new.perform(96146)
-      end
+    # assert_difference doesn't take the kind of math I need to do here.
+    VCR.use_cassette('create routes job', allow_playback_repeats: true) do
+      CreateRoutesJob.new.perform(99549)
     end
-    assert_equal ServiceRequest.confirmed.count, ServiceDelivery.count
+    # Each confirmed service_request gets a new service_delivery every time it snows,
+    # so it makes sense to add the existing service_deliveries because they were already
+    # generated the last time it snowed. 12 service_deliveries are generated here, so
+    # we want the test to reflect a total count of 15.
+    assert_equal ServiceRequest.confirmed.count + previous_count, ServiceDelivery.count
   end
 end

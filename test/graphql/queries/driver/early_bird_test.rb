@@ -7,7 +7,7 @@ class Queries::EarlyBirdTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: index_early_birds_helper }
 
     assert_response :success
-    assert_equal Address.count, json['data']['indexEarlyBirds'].size
+    assert_equal EarlyBird.count, json['data']['indexEarlyBirds'].size
   end
 
   test 'should get any early bird as driver' do

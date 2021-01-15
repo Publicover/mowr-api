@@ -18,7 +18,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can sign up with valid request' do
-    post signup_path, headers: @headers, params: @user_params
+    VCR.use_cassette('user controller signup test') do
+      post signup_path, headers: @headers, params: @user_params
+    end
     assert_response :created
     assert_match json['message'], Message.account_created
     refute_nil json['auth_token']

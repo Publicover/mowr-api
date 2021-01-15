@@ -7,6 +7,6 @@ class AddressSerializer
   belongs_to :user
   has_one :size_estimate
   has_one :service_request
-  has_one :service_delivery
   has_one :early_bird
+  has_many :service_deliveries
 end

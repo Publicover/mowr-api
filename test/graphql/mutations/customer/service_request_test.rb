@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
   setup do
-    populate_blank_address
+    @address = addresses(:blank)
   end
 
   test 'should create request for own address as customer' do

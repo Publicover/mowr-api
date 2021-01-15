@@ -7,3 +7,55 @@ one:
 two:
   square_footage: 100.0
   address: two
+
+three:
+  square_footage: 150.0
+  address: three
+
+hil_mak:
+  square_footage: 100.0
+  address: hil_mak
+
+cloven:
+  square_footage: 100.0
+  address: cloven
+
+morrell:
+  square_footage: 100.0
+  address: morrell
+
+dollar:
+  square_footage: 100.0
+  address: dollar
+
+lake_shore:
+  square_footage: 100.0
+  address: lake_shore
+
+capos:
+  square_footage: 100.0
+  address: capos
+
+main_moon:
+  square_footage: 100.0
+  address: main_moon
+
+lakeway:
+  square_footage: 100.0
+  address: lakeway
+
+hospice:
+  square_footage: 100.0
+  address: hospice
+
+goodwill:
+  square_footage: 100.0
+  address: goodwill
+
+crows:
+  square_footage: 100.0
+  address: crows
+
+cvs:
+  square_footage: 100.0
+  address: cvs

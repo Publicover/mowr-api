@@ -3,7 +3,6 @@ require 'test_helper'
 class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
   setup do
     @base_location = base_locations(:one)
-    populate_addresses_with_early_birds
   end
 
   test 'VCR is in working order' do

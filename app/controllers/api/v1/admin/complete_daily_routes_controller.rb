@@ -3,7 +3,7 @@
 class Api::V1::Admin::CompleteDailyRoutesController < ApplicationController
   def update
     @daily_route = DailyRoute.find(params[:id])
-    authorize @daily_route
+    authorize [:api, :v1, @daily_route]
 
     @daily_route.addresses.each do |address|
       next unless address.serve_today?

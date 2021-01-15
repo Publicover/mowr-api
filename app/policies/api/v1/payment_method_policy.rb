@@ -15,32 +15,38 @@ module Api
       end
 
       def show?
-        index?
+        return true if user.admin?
+        return true if record.user_id == user.id
+
+        false
       end
 
       def create?
-        index?
+        show?
       end
 
       def update?
-        index?
+        show?
       end
 
       def destroy?
-        index?
+        show?
       end
 
       def permitted_attributes
-        %[
-          nickname
-          stripe_pm_id
-          stripe_user_id
-          stripe_token
-          brand
-          last4
-          exp_month
-          exp_year
-          status
-          user_id
+        %i[
+           nickname
+           stripe_pm_id
+           stripe_user_id
+           stripe_token
+           brand
+           last4
+           exp_month
+           exp_year
+           status
+           user_id
         ]
       end
+    end
+  end
+end

@@ -2,7 +2,10 @@ require 'test_helper'
 
 class Queries::LiterallyEverythingTest < ActionDispatch::IntegrationTest
   setup do
-    populate_addresses_with_early_birds
+    # So I the blank address doesn't have latitude and longitude, but it's very
+    # helpful for testing other stuff. I destroy it here so as not to mess up
+    # my nullable fields in the Address index query.
+    addresses(:blank).destroy
   end
 
   test 'return just literally everything' do

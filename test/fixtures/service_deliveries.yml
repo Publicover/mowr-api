@@ -7,3 +7,7 @@ one:
 two:
   total_cost: 22.0
   address: two
+
+three:
+  total_cost: 125.0
+  address: three

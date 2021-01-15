@@ -1,9 +1,41 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  priority: 0
+  priority: active
   address: one
 
 two:
-  priority: 1
+  priority: cancelled
   address: two
+
+hil_mak:
+  priority: active
+  address: hil_mak
+
+cloven:
+  priority: active
+  address: cloven
+
+morrell:
+  priority: active
+  address: morrell
+
+dollar:
+  priority: active
+  address: dollar
+
+lake_shore:
+  priority: active
+  address: lake_shore
+
+capos:
+  priority: active
+  address: capos
+
+main_moon:
+  priority: active
+  address: main_moon
+
+cloven:
+  priority: active
+  address: cloven

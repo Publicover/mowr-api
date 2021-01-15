@@ -2,10 +2,75 @@
 
 one:
   address: one
-  status: 0
+  status: pending
   service_ids: <%= Service.pluck(:id) %>
 
 two:
   address: two
-  status: 0
+  status: pending
+  service_ids: <%= Service.pluck(:id) %>
+
+three:
+  address: three
+  status: pending
+  service_ids: <%= Service.pluck(:id) %>
+
+hil_mak:
+  address: hil_mak
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+cloven:
+  address: cloven
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+morrell:
+  address: morrell
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+dollar:
+  address: dollar
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+lake_shore:
+  address: lake_shore
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+capos:
+  address: capos
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+main_moon:
+  address: main_moon
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+lakeway:
+  address: lakeway
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+hospice:
+  address: hospice
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+goodwill:
+  address: goodwill
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+crows:
+  address: crows
+  status: confirmed
+  service_ids: <%= Service.pluck(:id) %>
+
+cvs:
+  address: cvs
+  status: confirmed
   service_ids: <%= Service.pluck(:id) %>

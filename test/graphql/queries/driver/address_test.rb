@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class Queries::AddressTest < ActionDispatch::IntegrationTest
+  setup do
+    addresses(:blank).destroy
+  end
+
   test 'should get all addresses as driver' do
     graphql_as_driver
 

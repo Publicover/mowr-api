@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: UTF-8
+      string: email=jim%40home.com&description=Jim+Pub+at+%2B13334445555
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.29.0
+      Authorization:
+      - Bearer sk_test_51I95ykL76OlF2WAccwl0HsRTmXYy2PKajyfplcPN6I19Q1GhPa4nHqBfUG0A47UtTfdaWekVZ8PX4ZesPyTI0a7800NBYMOaYi
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.29.0","lang":"ruby","lang_version":"2.6.6 p146 (2020-03-31)","platform":"x86_64-darwin18","engine":"ruby","publisher":"stripe","uname":"Darwin
+        MacBook-Pro.local 18.6.0 Darwin Kernel Version 18.6.0: Thu Apr 25 23:16:27
+        PDT 2019; root:xnu-4903.261.4~2/RELEASE_X86_64 x86_64","hostname":"MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 15 Jan 2021 07:54:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '570'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_RqkQR08mNvn8cz
+      Stripe-Version:
+      - '2020-08-27'
+      X-Stripe-C-Cost:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "cus_IlJlRg6utOMlrY",
+          "object": "customer",
+          "address": null,
+          "balance": 0,
+          "created": 1610697255,
+          "currency": null,
+          "default_source": null,
+          "delinquent": false,
+          "description": "Jim Pub at +13334445555",
+          "discount": null,
+          "email": "jim@home.com",
+          "invoice_prefix": "9C60A8FD",
+          "invoice_settings": {
+            "custom_fields": null,
+            "default_payment_method": null,
+            "footer": null
+          },
+          "livemode": false,
+          "metadata": {
+          },
+          "name": null,
+          "phone": null,
+          "preferred_locales": [
+
+          ],
+          "shipping": null,
+          "tax_exempt": "none"
+        }
+  recorded_at: Fri, 15 Jan 2021 07:54:48 GMT
+recorded_with: VCR 6.0.0

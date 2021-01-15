@@ -21,3 +21,155 @@ two:
   name: Convenient Mart
   user: three
   driveway: large
+
+three:
+  line1: 4717 Main Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.8642
+  longitude: -80.7831
+  name: City Hall
+  user: three
+  driveway: large
+
+hil_mak:
+  line1: 449 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.89705
+  longitude: -80.80487
+  name: Hil-Mak Seafood
+  user: three
+  driveway: large
+
+cloven:
+  line1: 1308 Bridge St
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.898124
+  longitude: -80.802088
+  name: Cloven Hoof Brewery
+  user: three
+  driveway: small
+
+morrell:
+  line1: 1040 E 6th St
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.900144
+  longitude: -80.787492
+  name: Morrell Music
+  user: three
+  driveway: medium
+
+dollar:
+  line1: 1708 W Prospect Rd
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.858915
+  longitude: -80.805392
+  name: Dollar General
+  user: three
+  driveway: large
+
+lake_shore:
+  line1: 2234 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.88268
+  longitude: -80.799026
+  name: Lake Shore Lanes
+  user: three
+  driveway: large
+
+capos:
+  line1: 1205 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.887921
+  longitude: -80.804862
+  name: Capos Pizza
+  user: three
+  driveway: small
+
+main_moon:
+  line1: 1030 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.890077
+  longitude: -80.805206
+  name: Main Moon
+  user: three
+  driveway: large
+
+lakeway:
+  line1: 729 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.893181
+  longitude: -80.805316
+  name: Lakeway
+  user: three
+  driveway: small
+
+hospice:
+  line1: 1166 Lake Ave
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.889221
+  longitude: -80.804983
+  name: Hospice
+  user: three
+  driveway: large
+
+goodwill:
+  line1: 621 Goodwill Dr
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.899429
+  longitude: -80.797842
+  name: Goodwill
+  user: three
+  driveway: large
+
+crows:
+  line1: 1257 Harmon Rd
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.900061
+  longitude: -80.783744
+  name: Crows Nest
+  user: three
+  driveway: large
+
+cvs:
+  line1: 1819 E Prospect Rd
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  latitude: 41.87310
+  longitude: -80.777652
+  name: Crows Nest
+  user: three
+  driveway: large
+
+blank:
+  line1: <%= Faker::Address.street_address %>
+  city: Ashtabula
+  state: Ohio
+  zip: 44004
+  name: Blank Address
+  user: three
+  driveway: medium

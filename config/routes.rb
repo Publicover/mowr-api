@@ -40,6 +40,7 @@ Rails.application.routes.draw do
         resources :size_estimates
         resources :service_requests
         resources :early_birds
+        resources :payment_methods
       end
     end
   end

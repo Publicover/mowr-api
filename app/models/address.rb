@@ -9,7 +9,7 @@ class Address < ApplicationRecord
   has_one :size_estimate, inverse_of: :address, dependent: :destroy
   has_one :service_request, inverse_of: :address, dependent: :destroy
   has_one :early_bird, inverse_of: :address, dependent: :destroy
-  has_one :service_delivery, inverse_of: :address, dependent: :destroy
+  has_many :service_deliveries, inverse_of: :address, dependent: :destroy
 
   validates :line1, :city, :state, :zip, presence: true
 
@@ -57,20 +57,18 @@ class Address < ApplicationRecord
   end
 
   def serve_today?
-    (service_delivery.last.created_at.day == DailyRoute.last.created_at.day) &&
-    (service_delivery.last.created_at.month == DailyRoute.last.created_at.month) &&
-    (service_delivery.last.created_at.year == DailyRoute.last.created_at.year)
+    current_delivery.create_at.all_day == DailyRoute.last.created_at.all_day
   end
 
   def current_delivery
-    service_delivery.last
+    service_deliveries.last
   end
 
   def current_charges
-    service_delivery.last.total_cost
+    current_delivery.total_cost
   end
 
   def mark_serviced
-    service_delivery.last.complete!
+    current_delivery.complete!
   end
 end

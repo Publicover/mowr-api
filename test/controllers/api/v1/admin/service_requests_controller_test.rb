@@ -5,6 +5,7 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
     login_as_admin
     fill_request_service_ids
     @service_request = ServiceRequest.last
+    # @service_request = service_requests(:blank)
   end
 
   test "should get index" do
@@ -20,11 +21,11 @@ class Api::V1::Admin::ServiceRequestsControllerTest < ActionDispatch::Integratio
   end
 
   test 'should create as admin' do
-    populate_blank_address
+    address = addresses(:blank)
     assert_difference('ServiceRequest.count') do
       post api_v1_admin_service_requests_path, params: { service_request: {
-        address_id: @address.id, approved: false,
-        service_ids: [ServiceRequest.first.id] }
+        address_id: address.id, approved: false,
+        service_ids: [Service.first.id] }
         }.to_json,
         headers: @admin_headers
     end

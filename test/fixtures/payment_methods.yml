@@ -3,7 +3,7 @@
 one:
   nickname: Mega Platinum
   stripe_pm_id: pm_card_visa
-  stripe_user_id: cus_4242
+  stripe_user_id: cus_Il0otsjoN4ck5r
   stripe_token: tok_visa
   brand: visa
   last4: 4242
@@ -15,7 +15,7 @@ one:
 two:
   nickname: Super Gold
   stripe_pm_id: pm_card_mastercard
-  stripe_user_id: cus_4242
+  stripe_user_id: cus_Il0otsjoN4ck5r
   stripe_token: tok_mastercard
   brand: mastercard
   last4: 4444
@@ -23,3 +23,15 @@ two:
   exp_year: 2050
   status: 1
   user: three
+
+three:
+  nickname: Mega Ultra Platinum
+  stripe_pm_id: pm_card_mastercard
+  stripe_user_id: cus_Il4tKddQnAmNYJ
+  stripe_token: tok_mastercard
+  brand: mastercard
+  last4: 4444
+  exp_month: 12
+  exp_year: 2050
+  status: 1
+  user: one
