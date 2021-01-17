@@ -28,7 +28,10 @@ class Address < ApplicationRecord
   scope :with_current_service_requests, lambda {
                                           includes(:service_request)
                                             .where(service_requests: { status: :confirmed })
-                                            .where('service_requests.created_at > ?', Time.zone.now.yesterday.end_of_day)
+                                            .where(
+                                              'service_requests.created_at > ?',
+                                              Time.zone.now.yesterday.end_of_day
+                                            )
                                         }
 
   scope :with_early_birds, lambda {

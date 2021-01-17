@@ -6,7 +6,8 @@ module Api
       class Scope < Scope
         def resolve
           return scope.all if user.admin?
-          return scope.where(user_id: user.id)
+
+          scope.where(user_id: user.id)
         end
       end
 
@@ -35,16 +36,16 @@ module Api
 
       def permitted_attributes
         %i[
-           nickname
-           stripe_pm_id
-           stripe_user_id
-           stripe_token
-           brand
-           last4
-           exp_month
-           exp_year
-           status
-           user_id
+          nickname
+          stripe_pm_id
+          stripe_user_id
+          stripe_token
+          brand
+          last4
+          exp_month
+          exp_year
+          status
+          user_id
         ]
       end
     end

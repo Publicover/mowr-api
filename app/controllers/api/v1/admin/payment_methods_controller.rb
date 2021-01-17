@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::Admin::PaymentMethodsController < ApplicationController
-  before_action :set_payment_method, except: [:index, :create]
+  before_action :set_payment_method, except: %i[index create]
 
   def index
     @payment_methods = policy_scope([:api, :v1, PaymentMethod])

@@ -22,7 +22,7 @@ module Mutations
         payment_method = PaymentMethod.find(id)
         payment_method.update(payment_method_params)
 
-        { payment_method: payment_method}
+        { payment_method: payment_method }
       end
     end
   end

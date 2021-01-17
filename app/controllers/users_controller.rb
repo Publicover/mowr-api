@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 
     def add_stripe_customer(user)
       response = Stripe::Customer.create(
-                         email: user.email,
-                         description: "#{user.f_name} #{user.l_name} at #{user.phone}"
-                         )
+        email: user.email,
+        description: "#{user.f_name} #{user.l_name} at #{user.phone}"
+      )
       user.update!(stripe_id: response[:id])
     end
 end

@@ -18,8 +18,8 @@ class ServiceDelivery < ApplicationRecord
     paid: 3
   }
 
-  scope :deliveries_today, -> {
-        scheduled.where('created_at > ?', Time.zone.yesterday.end_of_day + 1.hour)
+  scope :deliveries_today, lambda {
+    scheduled.where('created_at > ?', Time.zone.yesterday.end_of_day + 1.hour)
   }
 
   STATE_TAX = 1.08
