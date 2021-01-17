@@ -56,6 +56,21 @@ driver_count = 1
   driver_count += 1
 end
 
+puts "Creating 3 payment methods..."
+
+PaymentMethod.create!(nickname: 'Mega Platinum',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "admin_1@plowr.com"))
+
+PaymentMethod.create!(nickname: 'Plain Plastic',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_1@plowr.com"))
+
+PaymentMethod.create!(nickname: 'Fake Card',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_2@plowr.com"))
+
+
 puts "Creating 300 customers with addresses and size estimates..."
 puts "With requests..."
 puts "And a few early bird specials..."

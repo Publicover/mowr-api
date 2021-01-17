@@ -6,6 +6,7 @@ require_relative '../support/mutations/base_locations_mutation'
 require_relative '../support/mutations/daily_routes_mutation'
 require_relative '../support/mutations/early_birds_mutation'
 require_relative '../support/mutations/graphql_login'
+require_relative '../support/mutations/payment_methods_mutation'
 require_relative '../support/mutations/plows_mutation'
 require_relative '../support/mutations/service_requests_mutation'
 require_relative '../support/mutations/service_deliveries_mutation'
@@ -18,6 +19,7 @@ require_relative '../support/queries/base_locations_query'
 require_relative '../support/queries/daily_routes_query'
 require_relative '../support/queries/early_birds_query'
 require_relative '../support/queries/everything_query'
+require_relative '../support/queries/payment_methods_query'
 require_relative '../support/queries/plows_query'
 require_relative '../support/queries/service_deliveries_query'
 require_relative '../support/queries/service_requests_query'
@@ -40,6 +42,8 @@ module GraphqlRequirements
     include EverythingQuery
     include GraphqlLogin
     include PlowsMutation
+    include PaymentMethodsMutation
+    include PaymentMethodsQuery
     include PlowsQuery
     include ServiceDeliveriesMutation
     include ServiceDeliveriesQuery

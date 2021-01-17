@@ -1,14 +1,16 @@
 require 'test_helper'
 
 class Queries::ServiceRequestTest < ActionDispatch::IntegrationTest
-  test 'should not get all requests as customer' do
+  test 'should retrieve owned addresses as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: index_service_requests_helper }
 
     assert_response :success
-    assert_equal Message.unauthorized, json['errors'][0]['message']
+    assert_equal users(:three).service_requests.count, json['data']['indexServiceRequests'].size
+    assert ServiceRequest.count > users(:three).service_requests.count
   end
+
 
   test 'should not get another request as customer' do
     graphql_as_customer

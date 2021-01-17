@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Queries::DailyRouteTest < ActionDispatch::IntegrationTest
-  test 'should get all routes as customer' do
+  test 'should not get routes as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: index_daily_routes_helper }
@@ -10,7 +10,7 @@ class Queries::DailyRouteTest < ActionDispatch::IntegrationTest
     assert_equal Message.unauthorized, json['errors'][0]['message']
   end
 
-  test 'should get single route as customer' do
+  test 'should not get single route as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: show_daily_route_helper(daily_routes(:one).id) }

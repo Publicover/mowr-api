@@ -8,7 +8,7 @@ module Queries
       def resolve
         check_logged_in_user
 
-        SizeEstimate.all.order(created_at: :asc)
+        return_for_admin_driver_or_owner(SizeEstimate)
       end
     end
   end

@@ -1,13 +1,14 @@
 require 'test_helper'
 
 class Queries::EarlyBirdTest < ActionDispatch::IntegrationTest
-  test 'should not get size estimates as customer' do
+  test 'should retrieve owned size estimates as customer' do
     graphql_as_customer
 
     post graphql_path, params: { query: index_size_estimates_helper }
 
     assert_response :success
-    assert_equal Message.unauthorized, json['errors'][0]['message']
+    assert_equal users(:three).size_estimates.count, json['data']['indexSizeEstimates'].size
+    assert SizeEstimate.count > users(:three).size_estimates.count
   end
 
   test 'should only get own size estimate as customer' do

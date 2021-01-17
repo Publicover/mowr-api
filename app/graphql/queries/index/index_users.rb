@@ -9,10 +9,6 @@ module Queries
         check_logged_in_user
 
         @users = User.all.order(created_at: :asc)
-
-        authorized?
-
-        @users
       end
     end
   end

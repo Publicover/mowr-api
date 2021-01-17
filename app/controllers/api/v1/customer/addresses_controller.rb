@@ -40,7 +40,6 @@ class Api::V1::Customer::AddressesController < ApplicationController
     def set_address
       @address = Address.find(params[:id])
       authorize [:api, :v1, @address]
-      # binding.pry
     end
 
     def address_params

@@ -7,6 +7,8 @@
 class PaymentMethod < ApplicationRecord
   belongs_to :user, inverse_of: :payment_methods
 
+  validates :stripe_pm_id, :stripe_user_id, :stripe_token, :last4, :user_id, presence: true
+
   enum status: {
     primary: 0,
     tertiary: 1

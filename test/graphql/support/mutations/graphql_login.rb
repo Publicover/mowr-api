@@ -6,7 +6,6 @@ module GraphqlLogin
   end
 
   def graphql_as_admin
-    # binding.pry
     post graphql_path, params: { query: graphql_login(users(:one).email, 'password') }
   end
 
