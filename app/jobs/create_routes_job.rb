@@ -8,7 +8,7 @@ class CreateRoutesJob < ApplicationJob
     return unless CurrentSnowfall.new.snowfall(zip) > 1
 
     result = CalculateDailyRoute.new.call
-    latest_route = DailyRoute.create(addresses_in_order: result)
+    latest_route = DailyRoute.last
 
     latest_route.addresses_in_order.each do |id|
       ServiceDelivery.create(address_id: id)

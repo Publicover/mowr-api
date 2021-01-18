@@ -17,8 +17,7 @@ class Mutations::DailyRouteTest < ActionDispatch::IntegrationTest
         post graphql_path, params: { query: auto_create_daily_route_helper }
       end
     end
-    puts DailyRoute.last.inspect
-    assert_not_nil DailyRoute.last.reload
+    assert_not_nil DailyRoute.last.reload.addresses_in_order
   end
 
   test 'should manually update daily route as admin' do

@@ -109,7 +109,7 @@ class CalculateDailyRouteTest < ActionDispatch::IntegrationTest
     response = VCR.use_cassette('daily route full call') do
       CalculateDailyRoute.new.call
     end
-    full_call_ids = response.map { |id| id.to_i }
+    full_call_ids = DailyRoute.last.reload.addresses_in_order
     early_bird_ids = Address.with_early_birds.pluck(:id)
     unscoped_ids = Address.without_early_birds.pluck(:id)
     assert (full_call_ids - early_bird_ids - unscoped_ids).empty?
