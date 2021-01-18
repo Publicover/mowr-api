@@ -11,7 +11,7 @@ module Mutations
         error_unless_admin
       end
 
-      def resolve(params:nil, calculate_route:nil)
+      def resolve(params: nil)
         check_logged_in_user
 
         daily_route_params = Hash(params)

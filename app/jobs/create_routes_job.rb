@@ -7,7 +7,7 @@ class CreateRoutesJob < ApplicationJob
     return unless SnowAccumulation.last.inches.positive?
     return unless CurrentSnowfall.new.snowfall(zip) > 1
 
-    result = CalculateDailyRoute.new.call
+    CalculateDailyRoute.new.call
     latest_route = DailyRoute.last
 
     latest_route.addresses_in_order.each do |id|
