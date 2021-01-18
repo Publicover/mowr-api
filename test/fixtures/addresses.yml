@@ -10,6 +10,7 @@ one:
   name: Iriquois Lounge
   user: one
   driveway: medium
+  service_address: active
 
 two:
   line1: 1714 W 19th St
@@ -21,6 +22,7 @@ two:
   name: Convenient Mart
   user: three
   driveway: large
+  service_address: active
 
 three:
   line1: 4717 Main Ave
@@ -32,6 +34,7 @@ three:
   name: City Hall
   user: three
   driveway: large
+  service_address: active
 
 hil_mak:
   line1: 449 Lake Ave
@@ -43,6 +46,7 @@ hil_mak:
   name: Hil-Mak Seafood
   user: three
   driveway: large
+  service_address: active
 
 cloven:
   line1: 1308 Bridge St
@@ -54,6 +58,7 @@ cloven:
   name: Cloven Hoof Brewery
   user: three
   driveway: small
+  service_address: active
 
 morrell:
   line1: 1040 E 6th St
@@ -65,6 +70,7 @@ morrell:
   name: Morrell Music
   user: three
   driveway: medium
+  service_address: active
 
 dollar:
   line1: 1708 W Prospect Rd
@@ -76,6 +82,7 @@ dollar:
   name: Dollar General
   user: three
   driveway: large
+  service_address: active
 
 lake_shore:
   line1: 2234 Lake Ave
@@ -87,6 +94,7 @@ lake_shore:
   name: Lake Shore Lanes
   user: three
   driveway: large
+  service_address: active
 
 capos:
   line1: 1205 Lake Ave
@@ -98,6 +106,7 @@ capos:
   name: Capos Pizza
   user: three
   driveway: small
+  service_address: active
 
 main_moon:
   line1: 1030 Lake Ave
@@ -109,6 +118,7 @@ main_moon:
   name: Main Moon
   user: three
   driveway: large
+  service_address: active
 
 lakeway:
   line1: 729 Lake Ave
@@ -120,6 +130,7 @@ lakeway:
   name: Lakeway
   user: three
   driveway: small
+  service_address: active
 
 hospice:
   line1: 1166 Lake Ave
@@ -131,6 +142,7 @@ hospice:
   name: Hospice
   user: three
   driveway: large
+  service_address: active
 
 goodwill:
   line1: 621 Goodwill Dr
@@ -142,6 +154,7 @@ goodwill:
   name: Goodwill
   user: three
   driveway: large
+  service_address: active
 
 crows:
   line1: 1257 Harmon Rd
@@ -153,6 +166,7 @@ crows:
   name: Crows Nest
   user: three
   driveway: large
+  service_address: active
 
 cvs:
   line1: 1819 E Prospect Rd
@@ -164,6 +178,7 @@ cvs:
   name: Crows Nest
   user: three
   driveway: large
+  service_address: active
 
 blank:
   line1: <%= Faker::Address.street_address %>

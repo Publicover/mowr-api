@@ -51,8 +51,11 @@ class AddressTest < ActiveSupport::TestCase
     assert_not_nil Address.last.longitude
   end
 
-  # test 'should return scopes' do
-    # see commands/calculate_daily_route_test
-    #     test 'can stringify Address coords by scope' do
-  # end
+  test 'should check matching zip code' do
+    VCR.use_cassette('address unit test service area') do
+      Address.create!(line1: '3551 N Ridge Ave E', city: 'Ashtabula', state: 'OH',
+                      zip: '44004', name: 'Walmart Supercenter', user_id: users(:three).id)
+    end
+    assert_equal 'active', Address.last.reload.service_address
+  end
 end

@@ -1,0 +1,5 @@
+class AddIndexOfLatLongOnAddresses < ActiveRecord::Migration[6.0]
+  def change
+    add_index :addresses, [:latitude, :longitude]
+  end
+end

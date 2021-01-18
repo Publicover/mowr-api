@@ -3,6 +3,7 @@
 class Address < ApplicationRecord
   geocoded_by :compact_address
   after_validation :geocode, if: ->(obj) { obj.line1.present? && obj.city.present? && obj.latitude.blank? }
+  before_save :check_service_area, if: ->(obj) { obj.service_address.blank? }
 
   belongs_to :user, inverse_of: :addresses
 
@@ -19,14 +20,21 @@ class Address < ApplicationRecord
     large: 2
   }
 
+  enum service_address: {
+    active: 0,
+    out_of_bounds: 1
+  }
+
   scope :with_service_requests, lambda {
                                   includes(:service_request)
+                                  .active
                                     .where(service_requests: { status: :confirmed })
                                     .where.not(service_requests: { id: nil })
                                 }
 
   scope :with_current_service_requests, lambda {
                                           includes(:service_request)
+                                          .active
                                             .where(service_requests: { status: :confirmed })
                                             .where(
                                               'service_requests.created_at > ?',
@@ -37,6 +45,7 @@ class Address < ApplicationRecord
   scope :with_early_birds, lambda {
                              includes(:early_bird)
                                .includes(:service_request)
+                               .active
                                .where(service_requests: { status: :confirmed })
                                .where.not(early_birds: { id: nil })
                                .where.not(service_requests: { id: nil })
@@ -44,6 +53,7 @@ class Address < ApplicationRecord
 
   scope :without_early_birds, lambda {
                                 includes(:early_bird)
+                                .active
                                   .includes(:service_request)
                                   .where(service_requests: { status: :confirmed })
                                   .where(early_birds: { id: nil })
@@ -73,5 +83,11 @@ class Address < ApplicationRecord
 
   def mark_serviced
     current_delivery.complete!
+  end
+
+  def check_service_area
+    BaseLocation.all.each do |location|
+      active! if location.zip == zip
+    end
   end
 end

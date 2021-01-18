@@ -22,7 +22,7 @@ class Api::V1::Admin::DailyRoutesControllerTest < ActionDispatch::IntegrationTes
     best_route = [602651795, 584672788, 266048639, 185941117, 690240434,
                   615667035, 56587658, 864014653, 725632920, 877234649,
                   96031389, 1037305836]
-    VCR.use_cassette('daily routes admin auto create') do
+    VCR.use_cassette('daily route admin auto create') do
       assert_difference('DailyRoute.count') do
         post api_v1_admin_daily_routes_path, params: { daily_route:
           { calculate_route: true }
