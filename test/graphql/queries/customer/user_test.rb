@@ -11,7 +11,7 @@ class Queries::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should retrieve own record as customer' do
-    user = users(:three)
+    user = users(:customer)
     graphql_as_customer
 
     post graphql_path, params: { query: show_user_helper(user.id) }

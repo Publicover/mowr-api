@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ServiceReqeustMailerTest < ActionMailer::TestCase
   setup do
-    @customer = users(:three)
+    @customer = users(:customer)
   end
 
   test 'service request created' do

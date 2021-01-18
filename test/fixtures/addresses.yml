@@ -8,7 +8,7 @@ one:
   latitude: 41.900375
   longitude: -80.797666
   name: Iriquois Lounge
-  user: one
+  user: admin
   driveway: medium
   service_address: active
 
@@ -20,7 +20,7 @@ two:
   latitude: 41.882113
   longitude: -80.807315
   name: Convenient Mart
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -32,7 +32,7 @@ three:
   latitude: 41.8642
   longitude: -80.7831
   name: City Hall
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -44,7 +44,7 @@ hil_mak:
   latitude: 41.89705
   longitude: -80.80487
   name: Hil-Mak Seafood
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -56,7 +56,7 @@ cloven:
   latitude: 41.898124
   longitude: -80.802088
   name: Cloven Hoof Brewery
-  user: three
+  user: customer
   driveway: small
   service_address: active
 
@@ -68,7 +68,7 @@ morrell:
   latitude: 41.900144
   longitude: -80.787492
   name: Morrell Music
-  user: three
+  user: customer
   driveway: medium
   service_address: active
 
@@ -80,7 +80,7 @@ dollar:
   latitude: 41.858915
   longitude: -80.805392
   name: Dollar General
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -92,7 +92,7 @@ lake_shore:
   latitude: 41.88268
   longitude: -80.799026
   name: Lake Shore Lanes
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -104,7 +104,7 @@ capos:
   latitude: 41.887921
   longitude: -80.804862
   name: Capos Pizza
-  user: three
+  user: customer
   driveway: small
   service_address: active
 
@@ -116,7 +116,7 @@ main_moon:
   latitude: 41.890077
   longitude: -80.805206
   name: Main Moon
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -128,7 +128,7 @@ lakeway:
   latitude: 41.893181
   longitude: -80.805316
   name: Lakeway
-  user: three
+  user: customer
   driveway: small
   service_address: active
 
@@ -140,7 +140,7 @@ hospice:
   latitude: 41.889221
   longitude: -80.804983
   name: Hospice
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -152,7 +152,7 @@ goodwill:
   latitude: 41.899429
   longitude: -80.797842
   name: Goodwill
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -164,7 +164,7 @@ crows:
   latitude: 41.900061
   longitude: -80.783744
   name: Crows Nest
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -176,7 +176,7 @@ cvs:
   latitude: 41.87310
   longitude: -80.777652
   name: Crows Nest
-  user: three
+  user: customer
   driveway: large
   service_address: active
 
@@ -186,5 +186,5 @@ blank:
   state: Ohio
   zip: 44004
   name: Blank Address
-  user: three
+  user: customer
   driveway: medium

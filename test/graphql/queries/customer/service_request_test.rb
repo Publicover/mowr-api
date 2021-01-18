@@ -7,8 +7,8 @@ class Queries::ServiceRequestTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: index_service_requests_helper }
 
     assert_response :success
-    assert_equal users(:three).service_requests.count, json['data']['indexServiceRequests'].size
-    assert ServiceRequest.count > users(:three).service_requests.count
+    assert_equal users(:customer).service_requests.count, json['data']['indexServiceRequests'].size
+    assert ServiceRequest.count > users(:customer).service_requests.count
   end
 
 

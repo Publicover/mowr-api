@@ -10,6 +10,6 @@ class SizeEstimateTest < ActiveSupport::TestCase
   end
 
   test 'should know user' do
-    assert_equal users(:one).id, @size_estimate.user.id
+    assert_equal users(:admin).id, @size_estimate.user.id
   end
 end

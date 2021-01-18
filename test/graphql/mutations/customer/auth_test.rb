@@ -4,7 +4,7 @@ require 'test_helper'
 
 class Mutations::AuthTest < ActionDispatch::IntegrationTest
   test 'should sign in as customer' do
-    user = users(:three)
+    user = users(:customer)
     post graphql_path, params: { query: graphql_login(user.email, "password") }
 
     assert_response :success

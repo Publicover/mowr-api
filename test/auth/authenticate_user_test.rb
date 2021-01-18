@@ -20,7 +20,7 @@ class AuthenticateUserTest < ActionDispatch::IntegrationTest
   end
 
   test 'can log in with short method' do
-    user = users(:one)
+    user = users(:admin)
     @valid_creds = { email: user.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
     @authorized_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")

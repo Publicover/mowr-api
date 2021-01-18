@@ -67,7 +67,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
   def create_blank_admin_address
     @admin_address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                      state: Faker::Address.state, zip: Faker::Address.zip_code,
-                     user_id: users(:one).id, latitude: Faker::Address.latitude,
+                     user_id: users(:admin).id, latitude: Faker::Address.latitude,
                      longitude: Faker::Address.longitude, name: Faker::Company.name,
                      driveway: [:small, :medium, :large].sample)
   end
@@ -75,7 +75,7 @@ class Mutations::ServiceRequestTest < ActionDispatch::IntegrationTest
   def create_blank_customer_address
     @customer_address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: users(:three).id, latitude: Faker::Address.latitude,
+                    user_id: users(:customer).id, latitude: Faker::Address.latitude,
                     longitude: Faker::Address.longitude, name: Faker::Company.name,
                     driveway: [:small, :medium, :large].sample)
   end

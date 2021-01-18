@@ -5,14 +5,14 @@ class Mutations::PaymentMethodTest < ActionDispatch::IntegrationTest
     graphql_as_customer
 
     assert_difference('PaymentMethod.count') do
-      post graphql_path, params: { query: create_payment_method_helper(users(:three).id) }
+      post graphql_path, params: { query: create_payment_method_helper(users(:customer).id) }
     end
   end
 
   test 'should not create another payment method as customer' do
     graphql_as_customer
 
-    post graphql_path, params: { query: create_payment_method_helper(users(:one).id) }
+    post graphql_path, params: { query: create_payment_method_helper(users(:admin).id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

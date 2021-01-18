@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/payment_intents
     body:
       encoding: UTF-8
-      string: amount=2200&capture_method=automatic&confirmation_method=automatic&confirm=true&currency=usd&customer=cus_Il0otsjoN4ck5r&metadata[service_delivery_id]=298486374&metadata[customer_id]=113629430&payment_method_types[0]=card&payment_method=pm_card_visa&receipt_email=customer%40plowr.com
+      string: amount=2200&capture_method=automatic&confirmation_method=automatic&confirm=true&currency=usd&customer=cus_Il0otsjoN4ck5r&metadata[service_delivery_id]=298486374&metadata[customer_id]=20549131&payment_method_types[0]=card&payment_method=pm_card_visa&receipt_email=customer%40plowr.com
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/5.29.0
@@ -29,11 +29,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 15 Jan 2021 10:09:13 GMT
+      - Mon, 18 Jan 2021 17:47:31 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '4446'
+      - '4444'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_bA0sgIw5C6pSH0
+      - req_ebKGQKUwLBBfDB
       Stripe-Version:
       - '2020-08-27'
       X-Stripe-C-Cost:
@@ -60,7 +60,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "pi_1I9pEyL76OlF2WAchUM0ZwgB",
+          "id": "pi_1IB1p8L76OlF2WAcyhMkTuAw",
           "object": "payment_intent",
           "amount": 2200,
           "amount_capturable": 0,
@@ -74,7 +74,7 @@ http_interactions:
             "object": "list",
             "data": [
               {
-                "id": "ch_1I9pEyL76OlF2WAce7nnGB4k",
+                "id": "ch_1IB1p8L76OlF2WAcszubk3Hi",
                 "object": "charge",
                 "amount": 2200,
                 "amount_captured": 2200,
@@ -82,7 +82,7 @@ http_interactions:
                 "application": null,
                 "application_fee": null,
                 "application_fee_amount": null,
-                "balance_transaction": "txn_1I9pEzL76OlF2WAczz3lDV1o",
+                "balance_transaction": "txn_1IB1p9L76OlF2WAcMuqCBEjM",
                 "billing_details": {
                   "address": {
                     "city": null,
@@ -98,7 +98,7 @@ http_interactions:
                 },
                 "calculated_statement_descriptor": "Stripe",
                 "captured": true,
-                "created": 1610705352,
+                "created": 1610992050,
                 "currency": "usd",
                 "customer": "cus_Il0otsjoN4ck5r",
                 "description": null,
@@ -113,7 +113,7 @@ http_interactions:
                 "livemode": false,
                 "metadata": {
                   "service_delivery_id": "298486374",
-                  "customer_id": "113629430"
+                  "customer_id": "20549131"
                 },
                 "on_behalf_of": null,
                 "order": null,
@@ -121,13 +121,13 @@ http_interactions:
                   "network_status": "approved_by_network",
                   "reason": null,
                   "risk_level": "normal",
-                  "risk_score": 31,
+                  "risk_score": 52,
                   "seller_message": "Payment complete.",
                   "type": "authorized"
                 },
                 "paid": true,
-                "payment_intent": "pi_1I9pEyL76OlF2WAchUM0ZwgB",
-                "payment_method": "pm_1I9pExL76OlF2WAcX0EeVeIY",
+                "payment_intent": "pi_1IB1p8L76OlF2WAcyhMkTuAw",
+                "payment_method": "pm_1IB1p8L76OlF2WAclGgVhzha",
                 "payment_method_details": {
                   "card": {
                     "brand": "visa",
@@ -151,7 +151,7 @@ http_interactions:
                 },
                 "receipt_email": "customer@plowr.com",
                 "receipt_number": null,
-                "receipt_url": "https://pay.stripe.com/receipts/acct_1I95ykL76OlF2WAc/ch_1I9pEyL76OlF2WAce7nnGB4k/rcpt_IlLwaLJBSWYteXnS9kY0aBUlc5BSTmb",
+                "receipt_url": "https://pay.stripe.com/receipts/acct_1I95ykL76OlF2WAc/ch_1IB1p8L76OlF2WAcszubk3Hi/rcpt_Imb1vVAVoALqEZx9A9dBJOh7hbvWktq",
                 "refunded": false,
                 "refunds": {
                   "object": "list",
@@ -160,7 +160,7 @@ http_interactions:
                   ],
                   "has_more": false,
                   "total_count": 0,
-                  "url": "/v1/charges/ch_1I9pEyL76OlF2WAce7nnGB4k/refunds"
+                  "url": "/v1/charges/ch_1IB1p8L76OlF2WAcszubk3Hi/refunds"
                 },
                 "review": null,
                 "shipping": null,
@@ -175,11 +175,11 @@ http_interactions:
             ],
             "has_more": false,
             "total_count": 1,
-            "url": "/v1/charges?payment_intent=pi_1I9pEyL76OlF2WAchUM0ZwgB"
+            "url": "/v1/charges?payment_intent=pi_1IB1p8L76OlF2WAcyhMkTuAw"
           },
-          "client_secret": "pi_1I9pEyL76OlF2WAchUM0ZwgB_secret_R216OLCq4nlprcq3qVDBAlQZe",
+          "client_secret": "pi_1IB1p8L76OlF2WAcyhMkTuAw_secret_G5VhVaQe2xiBskp1Ealr6YM6T",
           "confirmation_method": "automatic",
-          "created": 1610705352,
+          "created": 1610992050,
           "currency": "usd",
           "customer": "cus_Il0otsjoN4ck5r",
           "description": null,
@@ -188,11 +188,11 @@ http_interactions:
           "livemode": false,
           "metadata": {
             "service_delivery_id": "298486374",
-            "customer_id": "113629430"
+            "customer_id": "20549131"
           },
           "next_action": null,
           "on_behalf_of": null,
-          "payment_method": "pm_1I9pExL76OlF2WAcX0EeVeIY",
+          "payment_method": "pm_1IB1p8L76OlF2WAclGgVhzha",
           "payment_method_options": {
             "card": {
               "installments": null,
@@ -214,5 +214,5 @@ http_interactions:
           "transfer_data": null,
           "transfer_group": null
         }
-  recorded_at: Fri, 15 Jan 2021 10:09:48 GMT
+  recorded_at: Mon, 18 Jan 2021 17:48:13 GMT
 recorded_with: VCR 6.0.0

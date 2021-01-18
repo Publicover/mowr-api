@@ -6,7 +6,7 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
 
     assert_difference('Address.count') do
       VCR.use_cassette('graphql admin add address') do
-        post graphql_path, params: { query: create_address_helper(users(:three).id) }
+        post graphql_path, params: { query: create_address_helper(users(:customer).id) }
       end
     end
 

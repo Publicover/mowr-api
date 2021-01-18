@@ -10,7 +10,7 @@ one:
   exp_month: 12
   exp_year: 2050
   status: 0
-  user: three
+  user: customer
 
 two:
   nickname: Super Gold
@@ -22,7 +22,7 @@ two:
   exp_month: 12
   exp_year: 2050
   status: 1
-  user: three
+  user: customer
 
 three:
   nickname: Mega Ultra Platinum
@@ -34,4 +34,4 @@ three:
   exp_month: 12
   exp_year: 2050
   status: 1
-  user: one
+  user: admin

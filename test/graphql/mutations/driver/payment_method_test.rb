@@ -4,7 +4,7 @@ class Mutations::PaymentMethodTest < ActionDispatch::IntegrationTest
   test 'should not create payment method as driver' do
     graphql_as_driver
 
-    post graphql_path, params: { query: create_payment_method_helper(users(:three).id) }
+    post graphql_path, params: { query: create_payment_method_helper(users(:customer).id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']

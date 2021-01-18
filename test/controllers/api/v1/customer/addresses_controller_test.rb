@@ -57,7 +57,7 @@ class Api::V1::Customer::AddressesControllerTest < ActionDispatch::IntegrationTe
     # with DatabaseCleaner either. This test will pass in isolation or when just
     # this file is run but it fails in the larger test suite. Logging in manually
     # without using the helper method does the job for some reason.
-    @customer = users(:three)
+    @customer = users(:customer)
     @valid_creds = { email: @customer.email, password: 'password' }.to_json
     post auth_login_path, headers: unauthorized_headers, params: @valid_creds
     @customer_headers = unauthorized_headers.merge('Authorization' => "#{json['auth_token']}")

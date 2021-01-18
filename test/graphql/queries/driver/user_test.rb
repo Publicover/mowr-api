@@ -11,7 +11,7 @@ class Queries::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should retrieve own record as driver' do
-    user = users(:two)
+    user = users(:driver)
     graphql_as_driver
 
     post graphql_path, params: { query: show_user_helper(user.id) }

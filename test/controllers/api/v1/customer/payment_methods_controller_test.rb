@@ -54,7 +54,7 @@ class Api::V1::Admin::PaymentMethodsControllerTest < ActionDispatch::Integration
         exp_month: '12',
         exp_year: '2050',
         status: :primary,
-        user_id: users(:one).id
+        user_id: users(:admin).id
       }
     }.to_json, headers: @customer_headers
     assert_equal Message.unauthorized, json['message']

@@ -15,14 +15,14 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     name = "Frank"
     graphql_as_admin
 
-    post graphql_path, params: { query: update_user_helper(users(:two).id, name) }
+    post graphql_path, params: { query: update_user_helper(users(:driver).id, name) }
 
     assert_response :success
-    assert_equal users(:two).reload.f_name, name
+    assert_equal users(:driver).reload.f_name, name
   end
 
   test 'should destroy user as admin' do
-    user = users(:two)
+    user = users(:driver)
     graphql_as_admin
 
     post graphql_path, params: { query: destroy_user_helper(user.id) }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::Admin::UsersController < ApplicationController
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: %i[index update]
 
   def index
     @users = policy_scope([:api, :v1, User])
@@ -15,6 +15,7 @@ class Api::V1::Admin::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:target_id].to_i)
     authorize [:api, :v1, @user]
     @user.update(user_params)
     serialized_response(@user)

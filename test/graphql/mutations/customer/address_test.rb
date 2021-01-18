@@ -4,7 +4,7 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
   test 'cannot create address for another user as customer' do
     graphql_as_customer
 
-    post graphql_path, params: { query: create_address_helper(users(:one).id) }
+    post graphql_path, params: { query: create_address_helper(users(:admin).id) }
 
     assert_response :success
     assert_equal Message.unauthorized, json['errors'][0]['message']
@@ -15,7 +15,7 @@ class Mutations::AddressTest < ActionDispatch::IntegrationTest
 
     assert_difference('Address.count') do
       VCR.use_cassette('graphql customer add address') do
-        post graphql_path, params: { query: create_address_helper(users(:three).id) }
+        post graphql_path, params: { query: create_address_helper(users(:customer).id) }
       end
     end
 

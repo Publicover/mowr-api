@@ -23,7 +23,7 @@ class Api::V1::Admin::PaymentMethodsControllerTest < ActionDispatch::Integration
         nickname: "Dana's new card", stripe_pm_id: 'returned from front end',
         stripe_user_id: 'returned from front end', stripe_token: 'returned from front end',
         brand: 'visa', last4: '5309', exp_month: '12', exp_year: '2075', status: :primary,
-        user_id: users(:three).id
+        user_id: users(:customer).id
       } }.to_json, headers: @admin_headers
     end
   end

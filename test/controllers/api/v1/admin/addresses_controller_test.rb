@@ -44,7 +44,7 @@ class Api::V1::Admin::AddressesControllerTest < ActionDispatch::IntegrationTest
                  city: 'Ashtabula',
                  state: 'Ohio',
                  zip: '44004',
-                 user_id: users(:three).id
+                 user_id: users(:customer).id
                }
              }.to_json,
              headers: @admin_headers

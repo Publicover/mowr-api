@@ -5,7 +5,7 @@ class Mutations::PaymentMethodTest < ActionDispatch::IntegrationTest
     graphql_as_admin
 
     assert_difference('PaymentMethod.count') do
-      post graphql_path, params: { query: create_payment_method_helper(users(:three).id) }
+      post graphql_path, params: { query: create_payment_method_helper(users(:customer).id) }
     end
   end
 

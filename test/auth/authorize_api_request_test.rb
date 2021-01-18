@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AuthorizeApiRequestApiTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:admin)
     @header = { 'Authorization' => token_generator(@user.id) }
     @request_object = AuthorizeApiRequest.new(@header)
   end

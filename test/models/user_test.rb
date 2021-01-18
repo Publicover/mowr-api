@@ -52,12 +52,12 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should retrieve size estimates' do
-    user = users(:three)
+    user = users(:customer)
     assert_not_nil user.size_estimates
   end
 
   test 'should know service_requests' do
-    user = users(:three)
+    user = users(:customer)
     assert_not_nil user.service_requests
   end
 

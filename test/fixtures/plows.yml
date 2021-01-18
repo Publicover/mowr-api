@@ -5,11 +5,11 @@ one:
   color: Red
   make: Toyota
   model: Corolla
-  user: one
+  user: admin
 
 two:
   licence_plate: 123 NOPE
   color: Blue
   make: Toyota
   model: Corolla
-  user: two
+  user: driver

@@ -13,7 +13,7 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     name = "Frank"
     graphql_as_customer
 
-    post graphql_path, params: { query: update_user_helper(users(:three).id, name) }
+    post graphql_path, params: { query: update_user_helper(users(:customer).id, name) }
 
     assert_response :success
     assert_equal name, json['data']['updateUser']['user']['fName']
@@ -23,13 +23,13 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
     name = "Frank"
     graphql_as_customer
 
-    post graphql_path, params: { query: update_user_helper(users(:one).id, name) }
+    post graphql_path, params: { query: update_user_helper(users(:admin).id, name) }
 
     assert_match Message.unauthorized, json['errors'][0]['message']
   end
 
   test 'should destroy self as customer' do
-    user = users(:three)
+    user = users(:customer)
     graphql_as_customer
 
     post graphql_path, params: { query: destroy_user_helper(user.id) }
@@ -39,7 +39,7 @@ class Mutations::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not destroy another user as customer' do
-    user = users(:two)
+    user = users(:driver)
     graphql_as_customer
 
     post graphql_path, params: { query: destroy_user_helper(user.id) }

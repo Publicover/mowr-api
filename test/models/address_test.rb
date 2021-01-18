@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AddressTest < ActiveSupport::TestCase
   setup do
-    @user = users(:one)
+    @user = users(:admin)
   end
 
   test 'should validate line1' do
@@ -41,7 +41,7 @@ class AddressTest < ActiveSupport::TestCase
   end
 
   test 'should geocode after_validation' do
-    user = users(:three)
+    user = users(:customer)
     VCR.use_cassette('address unit test geocode validation') do
       Address.create!(line1: '3300 Lake Rd W', city: 'Ashtabula', state: 'Ohio',
                       zip: '44004', name: 'KSU', user_id: user.id,
@@ -54,7 +54,7 @@ class AddressTest < ActiveSupport::TestCase
   test 'should check matching zip code' do
     VCR.use_cassette('address unit test service area') do
       Address.create!(line1: '3551 N Ridge Ave E', city: 'Ashtabula', state: 'OH',
-                      zip: '44004', name: 'Walmart Supercenter', user_id: users(:three).id)
+                      zip: '44004', name: 'Walmart Supercenter', user_id: users(:customer).id)
     end
     assert_equal 'active', Address.last.reload.service_address
   end

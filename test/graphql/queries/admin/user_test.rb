@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Queries::UserTest < ActionDispatch::IntegrationTest
   test 'should fail without logggin in' do
-    user = users(:one)
+    user = users(:admin)
     post graphql_path, params: { query: show_user_helper(user.id) }
     assert_match json['message'], Message.invalid_token
   end
@@ -17,7 +17,7 @@ class Queries::UserTest < ActionDispatch::IntegrationTest
   end
 
   test 'should retrieve any single user as admin' do
-    user = users(:three)
+    user = users(:customer)
     graphql_as_admin
 
     post graphql_path, params: { query: show_user_helper(user.id) }

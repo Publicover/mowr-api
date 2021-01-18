@@ -4,7 +4,7 @@ require "test_helper"
 
 class CurrentSnowfallTest < ActiveSupport::TestCase
   setup do
-    @user = users(:three)
+    @user = users(:customer)
   end
 
   test 'should return current weather conditions' do

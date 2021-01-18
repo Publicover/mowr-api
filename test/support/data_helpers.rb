@@ -29,7 +29,7 @@ module DataHelpers
   def populate_blank_address
     @address = Address.create!(line1: Faker::Address.street_address, city: Faker::Address.city,
                     state: Faker::Address.state, zip: Faker::Address.zip_code,
-                    user_id: [User.first.id, User.last.id].sample,
+                    user_id: [users(:admin).id, users(:customer).id].sample,
                     latitude: Faker::Address.latitude, longitude: Faker::Address.longitude,
                     name: Faker::Company.name, driveway: [:small, :medium, :large].sample)
   end
@@ -48,7 +48,7 @@ module DataHelpers
 
   def populate_addresses_with_early_birds
     populate_services
-    @user = users(:three)
+    @user = users(:customer)
 
     VCR.use_cassette('test helper early birds big list', allow_playback_repeats: true) do
       hil_mak = Address.create!(line1: '449 Lake Ave', city: 'Ashtabula',
@@ -176,7 +176,7 @@ module DataHelpers
 
   def populate_for_stripe_call
     @snow_accumulation = snow_accumulations(:one)
-    @user = users(:three)
+    @user = users(:customer)
     @address = addresses(:two)
     @size_estimate = size_estimates(:two)
     @service_request = service_requests(:two)

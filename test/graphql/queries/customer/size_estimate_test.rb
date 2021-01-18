@@ -7,8 +7,8 @@ class Queries::EarlyBirdTest < ActionDispatch::IntegrationTest
     post graphql_path, params: { query: index_size_estimates_helper }
 
     assert_response :success
-    assert_equal users(:three).size_estimates.count, json['data']['indexSizeEstimates'].size
-    assert SizeEstimate.count > users(:three).size_estimates.count
+    assert_equal users(:customer).size_estimates.count, json['data']['indexSizeEstimates'].size
+    assert SizeEstimate.count > users(:customer).size_estimates.count
   end
 
   test 'should only get own size estimate as customer' do

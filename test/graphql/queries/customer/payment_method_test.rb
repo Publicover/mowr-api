@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Queries::PaymentMethodTest < ActionDispatch::IntegrationTest
   test 'should get all payment methods as customer' do
-    user_method_count = users(:three).payment_methods.count
+    user_method_count = users(:customer).payment_methods.count
     graphql_as_customer
 
     post graphql_path, params: { query: index_payment_methods_helper }

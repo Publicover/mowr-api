@@ -17,13 +17,14 @@ class Api::V1::Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update user of choice as admin' do
+    user = users(:customer)
     patch api_v1_admin_user_path(@admin),
       params: {
-        target_id: User.last.id, user: { f_name: 'New Guy' }
+        target_id: user.id, user: { f_name: 'New Customer' }
         }.to_json,
       headers: @admin_headers
     assert_response :success
-    assert_equal 'New Guy', User.last.f_name
+    assert_equal 'New Customer', user.reload.f_name
   end
 
   test 'should delete user of choice as admin' do

@@ -27,14 +27,14 @@ class Address < ApplicationRecord
 
   scope :with_service_requests, lambda {
                                   includes(:service_request)
-                                  .active
+                                    .active
                                     .where(service_requests: { status: :confirmed })
                                     .where.not(service_requests: { id: nil })
                                 }
 
   scope :with_current_service_requests, lambda {
                                           includes(:service_request)
-                                          .active
+                                            .active
                                             .where(service_requests: { status: :confirmed })
                                             .where(
                                               'service_requests.created_at > ?',
@@ -53,7 +53,7 @@ class Address < ApplicationRecord
 
   scope :without_early_birds, lambda {
                                 includes(:early_bird)
-                                .active
+                                  .active
                                   .includes(:service_request)
                                   .where(service_requests: { status: :confirmed })
                                   .where(early_birds: { id: nil })
@@ -86,7 +86,7 @@ class Address < ApplicationRecord
   end
 
   def check_service_area
-    BaseLocation.all.each do |location|
+    BaseLocation.all.find_each do |location|
       active! if location.zip == zip
     end
   end
