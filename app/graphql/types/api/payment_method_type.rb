@@ -20,6 +20,7 @@ module Types
       field :status, Integer, null: false
       field :user_id, ID, null: false
       field :user, Types::Api::UserType, null: true
+      field :calculate_route, String, null: true
     end
   end
 end

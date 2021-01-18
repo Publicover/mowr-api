@@ -18,6 +18,21 @@ module DailyRoutesMutation
     GQL
   end
 
+  def auto_create_daily_route_helper
+    <<~GQL
+      mutation {
+        createDailyRoute(input:{params:{
+          calculateRoute: "true"
+        }}) {
+          dailyRoute {
+            id
+            addressesInOrder
+          }
+        }
+      }    
+    GQL
+  end
+
   def update_daily_route_helper(id)
     <<~GQL
       mutation {

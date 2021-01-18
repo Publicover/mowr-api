@@ -9,7 +9,19 @@ class Mutations::DailyRouteTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should update daily route as admin' do
+  test 'should auto update daily route as admin' do
+    graphql_as_admin
+
+    VCR.use_cassette('graphql daily route admin auto create') do
+      assert_difference('DailyRoute.count') do
+        post graphql_path, params: { query: auto_create_daily_route_helper }
+      end
+    end
+    puts DailyRoute.last.inspect
+    assert_not_nil DailyRoute.last.reload
+  end
+
+  test 'should manually update daily route as admin' do
     route = daily_routes(:one)
     ary = [12, 121]
     graphql_as_admin

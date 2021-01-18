@@ -37,7 +37,7 @@ class CalculateDailyRoute
     last_address_coords = "#{last_address.longitude},#{last_address.latitude};"
     unscoped_response = perform_without_early_birds(last_address_coords)
     unscoped_ids = return_addresses_in_order(Address.without_early_birds, unscoped_response)
-    early_bird_ids + unscoped_ids
+    DailyRoute.create!(addresses_in_order: early_bird_ids + unscoped_ids)
   end
 
   def call

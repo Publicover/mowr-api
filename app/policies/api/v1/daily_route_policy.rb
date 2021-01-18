@@ -32,7 +32,7 @@ module Api
       end
 
       def permitted_attributes
-        [addresses_in_order: []]
+        [:calculate_route, addresses_in_order: []]
       end
     end
   end

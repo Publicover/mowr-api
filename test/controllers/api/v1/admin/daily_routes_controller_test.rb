@@ -18,7 +18,22 @@ class Api::V1::Admin::DailyRoutesControllerTest < ActionDispatch::IntegrationTes
     assert_equal @daily_route.id, json['data']['id'].to_i
   end
 
-  test 'should create record as admin' do
+  test 'should automatically create record as admin' do
+    best_route = [602651795, 584672788, 266048639, 185941117, 690240434,
+                  615667035, 56587658, 864014653, 725632920, 877234649,
+                  96031389, 1037305836]
+    VCR.use_cassette('daily routes admin auto create') do
+      assert_difference('DailyRoute.count') do
+        post api_v1_admin_daily_routes_path, params: { daily_route:
+          { calculate_route: true }
+        }.to_json,
+        headers: @admin_headers
+      end
+    end
+    assert_equal DailyRoute.last.addresses_in_order, best_route
+  end
+
+  test 'should manually create record as admin' do
     assert_difference('DailyRoute.count') do
       post api_v1_admin_daily_routes_path, params: { daily_route:
         { addresses_in_order: [4, 5, 6, 7, 8, 9] }

@@ -3,7 +3,7 @@
 module Mutations
   module Create
     class CreateDailyRoute < Mutations::BaseMutation
-      argument :params, Types::Input::DailyRouteInputType, required: true
+      argument :params, Types::Input::DailyRouteInputType, required: false
 
       field :daily_route, Types::Api::DailyRouteType, null: false
 
@@ -11,11 +11,16 @@ module Mutations
         error_unless_admin
       end
 
-      def resolve(params:)
+      def resolve(params:nil, calculate_route:nil)
         check_logged_in_user
 
         daily_route_params = Hash(params)
-        daily_route = DailyRoute.create!(daily_route_params)
+        if daily_route_params[:calculate_route].present?
+          CalculateDailyRoute.new.call
+          daily_route = DailyRoute.last
+        else
+          daily_route = DailyRoute.create!(daily_route_params)
+        end
 
         { daily_route: daily_route }
       end

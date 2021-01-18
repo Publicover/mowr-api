@@ -14,7 +14,13 @@ class Api::V1::Admin::DailyRoutesController < ApplicationController
   end
 
   def create
-    @daily_route = DailyRoute.new(daily_route_params)
+    if daily_route_params[:calculate_route].present?
+      CalculateDailyRoute.new.call
+      @daily_route = DailyRoute.last
+    else
+      @daily_route = DailyRoute.new(daily_route_params)
+    end
+    authorize [:api, :v1, @daily_route]
     serialized_response(@daily_route) if @daily_route.save
   end
 
