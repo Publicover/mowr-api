@@ -7,17 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Creating Home Base..."
 
-VCR.user_cassette('seeds home base') do
+VCR.use_cassette('seeds home base') do
   BaseLocation.create!(name: 'Plowr HQ', line1: '2828 W 13th St', city: 'Ashtabula',
                    state: 'OH', zip: '44004', latitude: 41.885948, longitude: -80.824458)
   end
-
-puts "Creating 2 plows..."
-
-Plow.create!(licence_plate: 'PLOWISLYFE', year: "2000", color: "blue",
-             make: "Big", model: "Plow", user_id: 1)
-Plow.create!(licence_plate: 'ITSALIVIN', year: "2000", color: "blue",
-             make: "Big", model: "Plow", user_id: 1)
 
 puts "Populating SnowAccumulation table..."
 
@@ -45,6 +38,13 @@ admin_count = 1
   admin_count += 1
 end
 
+puts "Creating 2 plows..."
+
+Plow.create!(licence_plate: 'PLOWISLYFE', year: "2000", color: "blue",
+             make: "Big", model: "Plow", user_id: 1)
+Plow.create!(licence_plate: 'ITSALIVIN', year: "2000", color: "blue",
+             make: "Big", model: "Plow", user_id: 1)
+
 puts "Creating 4 drivers..."
 
 driver_count = 1
@@ -55,21 +55,6 @@ driver_count = 1
 
   driver_count += 1
 end
-
-puts "Creating 3 payment methods..."
-
-PaymentMethod.create!(nickname: 'Mega Platinum',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
-  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
-  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "admin_1@plowr.com"))
-
-PaymentMethod.create!(nickname: 'Plain Plastic',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
-  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
-  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_1@plowr.com"))
-
-PaymentMethod.create!(nickname: 'Fake Card',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
-  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
-  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_2@plowr.com"))
-
 
 puts "Creating 300 customers with addresses and size estimates..."
 puts "With requests..."
@@ -96,6 +81,20 @@ customer_count = 1
 
   customer_count += 1
 end
+
+puts "Creating 3 payment methods..."
+
+PaymentMethod.create!(nickname: 'Mega Platinum',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "admin_1@plowr.com"))
+
+PaymentMethod.create!(nickname: 'Plain Plastic',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_1@plowr.com"))
+
+PaymentMethod.create!(nickname: 'Fake Card',  stripe_pm_id: 'pm_card_visa', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+  stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
+  exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_2@plowr.com"))
 
 puts "Creating some daily routes for historical accuracy"
 
