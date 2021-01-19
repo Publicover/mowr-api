@@ -33,14 +33,14 @@ module Api
 
       def permitted_attributes
         [
-          :name, 
-          :line1, 
-          :line2, 
-          :city, 
-          :state, 
-          :zip, 
-          :latitude, 
-          :longitude, 
+          :name,
+          :line1,
+          :line2,
+          :city,
+          :state,
+          :zip,
+          :latitude,
+          :longitude,
           admin_ids: []
         ]
       end
