@@ -30,6 +30,20 @@ module Api
       def destroy?
         create?
       end
+
+      def permitted_attributes
+        [
+          :name, 
+          :line1, 
+          :line2, 
+          :city, 
+          :state, 
+          :zip, 
+          :latitude, 
+          :longitude, 
+          admin_ids: []
+        ]
+      end
     end
   end
 end

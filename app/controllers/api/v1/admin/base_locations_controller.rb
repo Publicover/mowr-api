@@ -39,6 +39,6 @@ class Api::V1::Admin::BaseLocationsController < ApplicationController
     end
 
     def base_location_params
-      params.require(:base_location).permit(:name, :line1, :line2, :city, :state, :zip, :latitude, :longitude)
+      params.require(:base_location).permit(policy([:api, :v1, BaseLocation]).permitted_attributes)
     end
 end
