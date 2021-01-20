@@ -19,9 +19,11 @@ class Api::V1::Admin::DailyRoutesControllerTest < ActionDispatch::IntegrationTes
   end
 
   test 'should automatically create record as admin' do
+    # The following array represents the best route between all the addresses
+    # when there is light traffic, which is most of the time.
     best_route = [602651795, 584672788, 266048639, 185941117, 690240434,
-                  615667035, 56587658, 864014653, 725632920, 877234649,
-                  96031389, 1037305836]
+                  615667035, 56587658, 877234649, 864014653, 96031389,
+                  725632920, 1037305836]
     VCR.use_cassette('daily route admin auto create') do
       assert_difference('DailyRoute.count') do
         post api_v1_admin_daily_routes_path, params: { daily_route:
