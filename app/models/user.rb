@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :service_requests, through: :addresses
   has_many :early_birds, through: :addresses
   has_many :payment_methods, inverse_of: :user, dependent: :destroy
+  has_many :payments, inverse_of: :user, dependent: :destroy
 
   has_one :plow, inverse_of: :user, dependent: :destroy
 

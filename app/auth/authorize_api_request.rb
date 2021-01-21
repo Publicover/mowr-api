@@ -6,7 +6,11 @@ class AuthorizeApiRequest
   end
 
   def call
-    { user: user }
+    if controller == 'stripe'
+      { user: current_user }
+    else
+      { user: user }
+    end
   end
 
   private

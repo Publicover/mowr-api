@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
+  namespace :stripe do
+    mount StripeEvent::Engine, at: '/webhooks'
+  end
   namespace :api do
     namespace :v1 do
       namespace :admin do

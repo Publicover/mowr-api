@@ -27,6 +27,9 @@ class GraphqlController < ApplicationController
   private
 
     def current_user
+      # This gives a token to the front end that is checked before every action--
+      # cookies have been turned on in dev but this will have to be caught with
+      # Apollo or similar in production
       return unless session[:token]
 
       User.find(JsonWebToken.decode(session[:token])[:user_id])
