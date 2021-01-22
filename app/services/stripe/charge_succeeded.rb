@@ -2,8 +2,8 @@
 
 module Stripe
   class ChargeSucceeded
+    # rubocop:disable Metrics/AbcSize
     def call(event)
-      binding.pry
       return unless event.data.object.status == "succeeded"
 
       payment_method = PaymentMethod.find_by(stripe_pm_id: event.data.object.payment_method)
@@ -18,5 +18,6 @@ module Stripe
         receipt_url: event.data.object.receipt_url
       )
     end
+    # rubocop:enable Metrics/AbcSize
   end
 end

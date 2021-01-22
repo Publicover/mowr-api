@@ -9,6 +9,7 @@ module Types
     field :index_base_locations, resolver: Queries::Index::IndexBaseLocations
     field :index_daily_routes, resolver: Queries::Index::IndexDailyRoutes
     field :index_early_birds, resolver: Queries::Index::IndexEarlyBirds
+    field :index_payments, resolver: Queries::Index::IndexPayments
     field :index_payment_methods, resolver: Queries::Index::IndexPaymentMethods
     field :index_plows, resolver: Queries::Index::IndexPlows
     field :index_services, resolver: Queries::Index::IndexServices
@@ -22,6 +23,7 @@ module Types
     field :show_base_location, resolver: Queries::Show::ShowBaseLocation
     field :show_daily_route, resolver: Queries::Show::ShowDailyRoute
     field :show_early_bird, resolver: Queries::Show::ShowEarlyBird
+    field :show_payment, resolver: Queries::Show::ShowPayment
     field :show_payment_method, resolver: Queries::Show::ShowPaymentMethod
     field :show_plow, resolver: Queries::Show::ShowPlow
     field :show_service, resolver: Queries::Show::ShowService

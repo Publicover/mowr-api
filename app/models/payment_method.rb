@@ -7,6 +7,8 @@
 class PaymentMethod < ApplicationRecord
   belongs_to :user, inverse_of: :payment_methods
 
+  has_many :payments, inverse_of: :payment_method, dependent: :destroy
+
   validates :stripe_pm_id, :stripe_user_id, :stripe_token, :last4, :user_id, presence: true
 
   enum status: {

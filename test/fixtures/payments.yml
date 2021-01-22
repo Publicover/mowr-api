@@ -1,0 +1,26 @@
+one:
+  cost_in_cents: 1000
+  stripe_charge_id: cus_paid
+  user: customer
+  stripe_user_id: cus_Il0otsjoN4ck5r
+  payment_method: one
+  last4: 4242
+  receipt_url: www.paid.com
+
+two:
+  cost_in_cents: 5000
+  stripe_charge_id: cus_paid_again
+  user: customer
+  stripe_user_id: cus_Il0otsjoN4ck5r
+  payment_method: one
+  last4: 4242
+  receipt_url: www.paid.com
+
+three:
+  cost_in_cents: 5000
+  stripe_charge_id: admin_paid
+  user: admin
+  stripe_user_id: cus_Il4tKddQnAmNYJ
+  payment_method_id: pm_card_mastercard
+  last4: 4242
+  receipt_url: www.paid.com

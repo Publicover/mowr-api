@@ -4,9 +4,7 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
-  # skip_before_action :graph_authorize_request
   skip_before_action :authorize_request
-  # before_action :authorize_request, except: Mutations::AuthUser
 
   def execute
     variables = ensure_hash(params[:variables])

@@ -9,7 +9,7 @@ class Api::V1::Admin::CompleteDailyRoutesController < ApplicationController
       next unless address.serve_today?
 
       StripePayment.capture_and_charge(address.current_charges, address.user)
-      # Payment.create(address.current_delivery.id)
+
       address.mark_serviced
     end
   end

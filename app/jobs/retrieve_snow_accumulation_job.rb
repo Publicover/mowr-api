@@ -3,8 +3,8 @@
 class RetrieveSnowAccumulationJob < ApplicationJob
   queue_as :default
 
-  # using the heroku scheduler is ideal
-  # fire off at midnight, check it at 4AM
+  # Using the heroku scheduler is ideal.
+  # Fire this off at midnight and check it at 4AM
   def perform(zip)
     SnowAccumulation.create!(inches: CurrentSnowfall.new.snowfall(zip))
   end

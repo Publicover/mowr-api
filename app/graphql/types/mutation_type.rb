@@ -8,6 +8,7 @@ module Types
     field :create_base_location, mutation: Mutations::Create::CreateBaseLocation
     field :create_daily_route, mutation: Mutations::Create::CreateDailyRoute
     field :create_early_bird, mutation: Mutations::Create::CreateEarlyBird
+    field :create_payment, mutation: Mutations::Create::CreatePayment
     field :create_payment_method, mutation: Mutations::Create::CreatePaymentMethod
     field :create_plow, mutation: Mutations::Create::CreatePlow
     field :create_service, mutation: Mutations::Create::CreateService
@@ -21,6 +22,7 @@ module Types
     field :destroy_base_location, mutation: Mutations::Destroy::DestroyBaseLocation
     field :destroy_daily_route, mutation: Mutations::Destroy::DestroyDailyRoute
     field :destroy_early_bird, mutation: Mutations::Destroy::DestroyEarlyBird
+    field :destroy_payment, mutation: Mutations::Destroy::DestroyPayment
     field :destroy_payment_method, mutation: Mutations::Destroy::DestroyPaymentMethod
     field :destroy_plow, mutation: Mutations::Destroy::DestroyPlow
     field :destroy_service, mutation: Mutations::Destroy::DestroyService
@@ -33,6 +35,7 @@ module Types
     field :update_base_location, mutation: Mutations::Update::UpdateBaseLocation
     field :update_daily_route, mutation: Mutations::Update::UpdateDailyRoute
     field :update_early_bird, mutation: Mutations::Update::UpdateEarlyBird
+    field :update_payment, mutation: Mutations::Update::UpdatePayment
     field :update_payment_method, mutation: Mutations::Update::UpdatePaymentMethod
     field :update_plow, mutation: Mutations::Update::UpdatePlow
     field :update_service, mutation: Mutations::Update::UpdateService

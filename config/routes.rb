@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         resources :base_locations
         resources :complete_daily_routes, only: [:update]
         resources :payment_methods
+        resources :payments
       end
       namespace :driver do
         resources :plows
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
         resources :service_requests
         resources :early_birds
         resources :payment_methods
+        resources :payments, only: [:index, :show]
       end
     end
   end

@@ -96,6 +96,29 @@ PaymentMethod.create!(nickname: 'Fake Card',  stripe_pm_id: 'pm_card_visa', stri
   stripe_user_id: 'cus_Il0otsjoN4ck5r', stripe_token: 'tok_visa', brand: 'visa', last4: '4242',
   exp_month: '12', exp_year: '2050', status: :primary, user: User.find_by(email: "customer_2@plowr.com"))
 
+puts "Creating 3 payments..."
+
+Payment.create!(cost_in_cents: 1000, stripe_charge_id: 'fake_charge_0', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+                user_id: User.find_by(email: "customer_1@plowr.com").id,
+                payment_method_id: PaymentMethod.find_by(nickname: "Mega Platinum").id,
+                last4: "4242", receipt_url: "www.paidup.com")
+
+Payment.create!(cost_in_cents: 1000, stripe_charge_id: 'fake_charge_1', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+                user_id: User.find_by(email: "customer_1@plowr.com").id,
+                payment_method_id: PaymentMethod.find_by(nickname: "Mega Platinum").id,
+                last4: "4242", receipt_url: "www.paidup.com")
+
+Payment.create!(cost_in_cents: 1000, stripe_charge_id: 'fake_charge_2', stripe_user_id: 'cus_Il0otsjoN4ck5r',
+                user_id: User.find_by(email: "customer_1@plowr.com").id,
+                payment_method_id: PaymentMethod.find_by(nickname: "Mega Platinum").id,
+                last4: "4242", receipt_url: "www.paidup.com")
+
+puts "Creating my stripe test user..."
+
+User.create!(email: 'jim@graphtestgraph.com', f_name: 'Jim', l_name: 'Pub',
+             stripe_id: 'cus_Ikc4eqEUqmfYoU', role: :admin, password: 'password',
+             phone: '440-614-4949')
+
 puts "Creating some daily routes for historical accuracy"
 
 5.times do

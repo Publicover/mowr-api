@@ -80,10 +80,13 @@ ActiveRecord::Schema.define(version: 2021_01_21_091947) do
     t.integer "cost_in_cents"
     t.string "stripe_charge_id"
     t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "stripe_user_id"
-    t.string "payment_method_id"
     t.string "last4"
     t.string "receipt_url"
+    t.bigint "payment_method_id"
+    t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
@@ -157,6 +160,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_091947) do
 
   add_foreign_key "early_birds", "addresses", on_delete: :cascade
   add_foreign_key "payment_methods", "users"
+  add_foreign_key "payments", "payment_methods"
   add_foreign_key "payments", "users"
   add_foreign_key "plows", "users"
   add_foreign_key "service_deliveries", "addresses"
