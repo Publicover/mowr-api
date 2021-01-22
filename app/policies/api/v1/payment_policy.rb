@@ -36,15 +36,15 @@ module Api
       end
 
       def permitted_attributes
-        [
-          :cost_in_cents,
-          :stripe_charge_id,
-          :user_id,
-          :stripe_user_id,
-          :payment_method_id,
-          :last4,
-          :receipt_url,
-          :stripe_payment_id
+        %i[
+          cost_in_cents
+          stripe_charge_id
+          user_id
+          stripe_user_id
+          payment_method_id
+          last4
+          receipt_url
+          stripe_payment_id
         ]
       end
     end

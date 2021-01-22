@@ -45,7 +45,7 @@ Rails.application.routes.draw do
         resources :service_requests
         resources :early_birds
         resources :payment_methods
-        resources :payments, only: [:index, :show]
+        resources :payments, only: %i[index show]
       end
     end
   end

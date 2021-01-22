@@ -7,7 +7,7 @@ module Mutations
 
       field :payment, Types::Api::PaymentType, null: false
 
-      def ready?(**args)
+      def ready?(**_args)
         return true if context[:current_user].admin?
 
         raise GraphQL::ExecutionError, Message.unauthorized

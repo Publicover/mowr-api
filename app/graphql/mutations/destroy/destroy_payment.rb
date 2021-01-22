@@ -7,7 +7,7 @@ module Mutations
 
       field :is_deleted, String, null: true
 
-      def ready?(**args)
+      def ready?(**_args)
         return true if context[:current_user].admin?
 
         raise GraphQL::ExecutionError, Message.unauthorized

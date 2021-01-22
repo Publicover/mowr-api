@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-
-
 # TODO: include all relations in all serializers
 class UserSerializer
   include FastJsonapi::ObjectSerializer
