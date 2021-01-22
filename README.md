@@ -1,24 +1,13 @@
-# README
+# PLOWR: an API using REST and GraphQL
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PLOWR is an Rails 6.0.3 ruby 2.6.6 api-only app that uses both REST and GraphQL that would be used to manage a snowplowing business. There are no views. It uses Nomatim for geocoding, the Open Source Routing Maching for pathing, Stripe for payment, stripe_event for Stripe webhooks integration and Weatherbit for real-time weather data. 
 
-Things you may want to cover:
+This is a portfolio piece where I get to play with GraphqL while I wait for the Immigration Offices in Germany to open back up so I can get my work papers. All the test data is for Ashtabula, OH because 1) that's my hometown so it's easier to test the route pathing, and 2) it snows a lot there. 
 
-* Ruby version
+PLOWR has three user types: admin, driver and customer. The admin sets up a HQ base location, snowplow information and a service list. A customer would sign up for seasonal services. Once this service request is approved by an admin, the address is added to the list of addresses that require service when it snows. The customer then gets an email stating that they have been approved for services. Each day, a background job checks if it is snowing (ideally, this will be up on heroku and fired at midnight or 1 AM) then records the result. At 4 AM, the result is checked again. If it snowed enough to warrant a snowplowing, the latitude and longitude of addresses with approved service requests is run throught the OSRM and returned as an array of addresses to go to that could be fed through any front end mapping service. The driver, um, drives the plows to the addresses and performs the services. An admin can hit an endpoint that fires off the payment processing job when services are complete. 
 
-* System dependencies
+The prices of services may not be accurate according to real-world snowplow services, but that's for an implementation to figure out. Customers can add a flat fee to their service request (an Early Bird fee) that guarantees their services will be performed before 8 AM (the time most people start driving to work). So when the daily routes are calculated, two paths are really generated them added together: addresses with the Early Bird rider and then those without. 
 
-* Configuration
+Admins have full control of the system and can manually do any operation that is automated, such as generating daily routes or correcting Payment objects (which are created when a successful charge comes back via webhook). Also, drivers are given the option to mark any service call incomplete so the address is not sent through with the batch that gets charged by Stripe. 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I rolled by own authentication system with JWT for both REST and GraphQL. In the former, the token should be passed with an "Authorization" heading with every request; in the latter, the front end will have to rely on Apollo or something similar to catch the token. (I'm not sure what all is available, as I've only ever worked with React Native front end engineers on this sort of thing.) Tokens expire after 24 hours. I used pundit for authorization on the REST side and relied on the built-in `ready?` and `authorized?` methods for the GraphQL part. Since the app relies on both timing and location, I use the VCR gem for the (quite robust, if I do say so myself) minitest suite. I chose fixtures instead of factories for speed of development. I'm using HTTParty for HTTP calls, phony_rails for phone number inputs, sidekiq for jobs and fast_jsonapi for serializing. Rubocop keeps the style clean. 
